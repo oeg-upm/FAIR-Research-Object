@@ -1,0 +1,957 @@
+{
+    "metric_specification": "https://doi.org/10.5281/zenodo.4081213",
+    "metric_version": "metrics_v0.4.yaml",
+    "request": {
+        "metadata_service_endpoint": "",
+        "metadata_service_type": "oai_pmh",
+        "normalized_object_identifier": "10.1186/2041-1480-4-37",
+        "oaipmh_endpoint": null,
+        "object_identifier": "https://doi.org/10.1186/2041-1480-4-37",
+        "test_debug": true,
+        "use_datacite": true
+    },
+    "results": [
+        {
+            "id": 1,
+            "maturity": 3,
+            "metric_identifier": "FsF-F1-01D",
+            "metric_name": "Data is assigned a globally unique identifier.",
+            "metric_tests": {
+                "FsF-F1-01D-1": {
+                    "metric_test_maturity": 3,
+                    "metric_test_name": "Identifier is resolvable and follows a defined unique identifier syntax (IRI, URL)",
+                    "metric_test_score": 1,
+                    "metric_test_status": "pass"
+                },
+                "FsF-F1-01D-2": {
+                    "metric_test_maturity": null,
+                    "metric_test_name": "Identifier is not resolvable but follows an UUID or HASH type syntax",
+                    "metric_test_score": 0,
+                    "metric_test_status": "fail"
+                }
+            },
+            "output": {
+                "guid": "https://doi.org/10.1186/2041-1480-4-37",
+                "guid_scheme": "doi"
+            },
+            "score": {
+                "earned": 1,
+                "total": 1
+            },
+            "test_debug": [
+                "INFO: Using idutils schemes",
+                "SUCCESS: Unique identifier schemes found ['doi']",
+                "INFO: Finalized unique identifier scheme - doi"
+            ],
+            "test_status": "pass"
+        },
+        {
+            "id": 2,
+            "maturity": 3,
+            "metric_identifier": "FsF-F1-02D",
+            "metric_name": "Data is assigned a persistent identifier.",
+            "metric_tests": {
+                "FsF-F1-02D-1": {
+                    "metric_test_maturity": 1,
+                    "metric_test_name": "Identifier follows a defined persistent identifier syntax",
+                    "metric_test_score": 0.5,
+                    "metric_test_status": "pass"
+                },
+                "FsF-F1-02D-2": {
+                    "metric_test_maturity": 3,
+                    "metric_test_name": "Persistent identifier is resolvable",
+                    "metric_test_score": 0.5,
+                    "metric_test_status": "pass"
+                }
+            },
+            "output": {
+                "pid": "http://doi.org/10.1186/2041-1480-4-37",
+                "pid_scheme": "doi",
+                "resolvable_status": true,
+                "resolved_url": "https://jbiomedsem.biomedcentral.com/articles/10.1186/2041-1480-4-37"
+            },
+            "score": {
+                "earned": 1,
+                "total": 1
+            },
+            "test_debug": [
+                "INFO: PID schemes-based assessment supported by the assessment service - ['ark', 'arxiv', 'bioproject', 'biosample', 'doi', 'ensembl', 'genome', 'gnd', 'handle', 'lsid', 'pmid', 'pmcid', 'purl', 'refseq', 'sra', 'uniprot', 'urn']",
+                "INFO: Retrieving page -: http://doi.org/10.1186/2041-1480-4-37 as text/html, application/xhtml+xml, application/xml;q=0.5, text/xml;q=0.5, application/rdf+xml;q=0.5",
+                "INFO: Object identifier active (status code = 200)",
+                "SUCCESS: Persistence identifier scheme -: doi"
+            ],
+            "test_status": "pass"
+        },
+        {
+            "id": 3,
+            "maturity": 3,
+            "metric_identifier": "FsF-F2-01M",
+            "metric_name": "Metadata includes descriptive core elements (creator, title, data identifier, publisher, publication date, summary and keywords) to support data findability.",
+            "metric_tests": {
+                "FsF-F2-01M-1": {
+                    "metric_test_maturity": 1,
+                    "metric_test_name": "Metadata has been made available via common web methods",
+                    "metric_test_score": 0.5,
+                    "metric_test_status": "pass"
+                },
+                "FsF-F2-01M-1a": {
+                    "metric_test_maturity": null,
+                    "metric_test_name": "Metadata is embedded in the landing page XHTML/HTML code",
+                    "metric_test_score": 0,
+                    "metric_test_status": "pass"
+                },
+                "FsF-F2-01M-1b": {
+                    "metric_test_maturity": null,
+                    "metric_test_name": "Metadata is accessible through content negotiation",
+                    "metric_test_score": 0,
+                    "metric_test_status": "fail"
+                },
+                "FsF-F2-01M-1c": {
+                    "metric_test_maturity": null,
+                    "metric_test_name": "Metadata is accessible via typed links",
+                    "metric_test_score": 0,
+                    "metric_test_status": "fail"
+                },
+                "FsF-F2-01M-1d": {
+                    "metric_test_maturity": null,
+                    "metric_test_name": "Metadata is accessible via signposting links",
+                    "metric_test_score": 0,
+                    "metric_test_status": "fail"
+                },
+                "FsF-F2-01M-2": {
+                    "metric_test_maturity": 2,
+                    "metric_test_name": "Core data citation metadata is available",
+                    "metric_test_score": 0.5,
+                    "metric_test_status": "pass"
+                },
+                "FsF-F2-01M-3": {
+                    "metric_test_maturity": 3,
+                    "metric_test_name": "Core descriptive metadata is available",
+                    "metric_test_score": 1,
+                    "metric_test_status": "pass"
+                }
+            },
+            "output": {
+                "core_metadata_found": {
+                    "creator": [
+                        "Ciccarese, Paolo",
+                        "Soiland-Reyes, Stian",
+                        "Belhajjame, Khalid",
+                        "Gray, Alasdair JG",
+                        "Goble, Carole",
+                        "Clark, Tim"
+                    ],
+                    "keywords": "Algorithms,Computer Appl. in Life Sciences,Data Mining and Knowledge Discovery,Computational Biology/Bioinformatics,Bioinformatics,Combinatorial Libraries",
+                    "object_identifier": "doi:10.1186/2041-1480-4-37",
+                    "object_type": "ScholarlyArticle",
+                    "publication_date": "2013-11-22",
+                    "publisher": "BioMed Central",
+                    "summary": "Provenance is a critical ingredient for establishing trust of published scientific content. This is true whether we are considering a data set, a computational workflow, a peer-reviewed publication or a simple scientific claim with supportive evidence. Existing vocabularies such as Dublin Core Terms (DC Terms) and the W3C Provenance Ontology (PROV-O) are domain-independent and general-purpose and they allow and encourage for extensions to cover more specific needs. In particular, to track authoring and versioning information of web resources, PROV-O provides a basic methodology but not any specific classes and properties for identifying or distinguishing between the various roles assumed by agents manipulating digital artifacts, such as author, contributor and curator. We present the Provenance, Authoring and Versioning ontology (PAV, namespace \n                    http://purl.org/pav/\n                    \n                  ): a lightweight ontology for capturing \u201cjust enough\u201d descriptions essential for tracking the provenance, authoring and versioning of web resources. We argue that such descriptions are essential for digital scientific content. PAV distinguishes between contributors, authors and curators of content and creators of representations in addition to the provenance of originating resources that have been accessed, transformed and consumed. We explore five projects (and communities) that have adopted PAV illustrating their usage through concrete examples. Moreover, we present mappings that show how PAV extends the W3C PROV-O ontology to support broader interoperability. The initial design of the PAV ontology was driven by requirements from the AlzSWAN project with further requirements incorporated later from other projects detailed in this paper. The authors strived to keep PAV lightweight and compact by including only those terms that have demonstrated to be pragmatically useful in existing applications, and by recommending terms from existing ontologies when plausible. We analyze and compare PAV with related approaches, namely Provenance Vocabulary (PRV), DC Terms and BIBFRAME. We identify similarities and analyze differences between those vocabularies and PAV, outlining strengths and weaknesses of our proposed model. We specify SKOS mappings that align PAV with DC Terms. We conclude the paper with general remarks on the applicability of PAV.",
+                    "title": "PAV ontology: provenance, authoring and versioning"
+                },
+                "core_metadata_source": [
+                    [
+                        "Schema.org JSON-LD (Embedded)",
+                        "embedded"
+                    ],
+                    [
+                        "Embedded DublinCore",
+                        "embedded"
+                    ],
+                    [
+                        "Embedded Microdata",
+                        "embedded"
+                    ],
+                    [
+                        "Embedded RDFa",
+                        "embedded"
+                    ],
+                    [
+                        "Embedded OpenGraph",
+                        "embedded"
+                    ]
+                ],
+                "core_metadata_status": "all metadata"
+            },
+            "score": {
+                "earned": 2,
+                "total": 2
+            },
+            "test_debug": [
+                "INFO: Trying to identify some EMBEDDED metadata in content retrieved during PID verification process (FsF-F1-02D)",
+                "INFO: Content negotiation accept=text/html, application/xhtml+xml, application/xml;q=0.5, text/xml;q=0.5, application/rdf+xml;q=0.5, status=200",
+                "INFO: Using Cached response content",
+                "INFO: Starting to identify EMBEDDED metadata at -: https://jbiomedsem.biomedcentral.com/articles/10.1186/2041-1480-4-37",
+                "INFO: Trying to retrieve schema.org JSON-LD metadata from html page",
+                "INFO: Trying to extract schema.org JSON-LD metadata from -: Schema.org JSON-LD (Embedded)",
+                "INFO: 'MainEntity' detected in JSON-LD, trying to identify its properties",
+                "INFO: Found schema.org JSON-LD which seems to be valid, based on the given context type -:ScholarlyArticle",
+                "SUCCESS: Found schema.org JSON-LD metadata in html page -: dict_keys(['object_type', 'publication_date', 'modified_date', 'creator', 'publisher', 'license', 'summary', 'keywords', 'related_resources'])",
+                "INFO: Trying to retrieve Dublin Core metadata from html page",
+                "SUCCESS: Found DublinCore metadata -: dict_keys(['title', 'related_resources', 'file_format_only', 'publisher', 'publication_date', 'object_type', 'access_level', 'summary', 'object_identifier', 'creator', 'keywords'])",
+                "INFO: Trying to retrieve Microdata metadata from html page",
+                "INFO: Trying to extract Microdata metadata from -: Embedded Microdata",
+                "SUCCESS: Found microdata metadata -: dict_keys(['object_type'])",
+                "INFO: Trying to retrieve RDFa metadata from html page",
+                "INFO: Found RDF Graph which was sucessfully parsed",
+                "INFO: Trying to identify namespaces in RDF Graph",
+                "INFO: Trying to query generic SPARQL on RDF",
+                "INFO: Found RDFa like triples but at least some of them seem to be XHTML properties which are excluded",
+                "INFO: Could not find core metadata elements through generic SPARQL query on RDF but found 45 triples in the given graph",
+                "SUCCESS: Found RDFa metadata -: dict_keys(['object_type'])",
+                "INFO: Trying to retrieve OpenGraph metadata from html page",
+                "INFO: Found OpenGraph metadata-: dict_keys(['title', 'object_identifier', 'summary', 'object_type', 'publisher'])",
+                "INFO: Could not identify OpenGraph metadata",
+                "SUCCESS: Found OpenGraph metadata -: dict_keys(['title', 'object_identifier', 'summary', 'object_type', 'publisher'])",
+                "INFO: Trying to identify Typed Links in html page",
+                "INFO: Starting to identify EXTERNAL metadata through content negotiation or typed links",
+                "INFO: Trying to retrieve XML metadata through content negotiation from URL -: http://doi.org/10.1186/2041-1480-4-37",
+                "INFO: Retrieving page -: https://jbiomedsem.biomedcentral.com/articles/10.1186/2041-1480-4-37 as application/xml, text/xml;q=0.5",
+                "INFO: Content negotiation accept=application/xml, text/xml;q=0.5, status=200",
+                "INFO: Using Cached response content",
+                "INFO: Trying to extract/parse XML metadata from URL -: Generic XML (Negotiated)",
+                "INFO: Expected XML but content negotiation responded -: html",
+                "INFO: Could not identify XML metadata",
+                "INFO: Trying to retrieve schema.org JSON-LD metadata through content negotiation from URL -: http://doi.org/10.1186/2041-1480-4-37",
+                "INFO: Retrieving page -: http://doi.org/10.1186/2041-1480-4-37 as application/vnd.schemaorg.ld+json, application/ld+json",
+                "WARNING: Request failed, reason -: http://doi.org/10.1186/2041-1480-4-37, application/vnd.schemaorg.ld+json, application/ld+json - HTTP Error 406: Not Acceptable",
+                "WARNING: No response received from -: http://doi.org/10.1186/2041-1480-4-37",
+                "INFO: Could not identify JSON-LD schema.org metadata",
+                "INFO: Schema.org metadata through content negotiation UNAVAILABLE",
+                "INFO: Trying to retrieve XML metadata through content negotiation from URL -: https://jbiomedsem.biomedcentral.com/articles/10.1186/2041-1480-4-37",
+                "INFO: Retrieving page -: https://jbiomedsem.biomedcentral.com/articles/10.1186/2041-1480-4-37 as application/xml, text/xml;q=0.5",
+                "INFO: Content negotiation accept=application/xml, text/xml;q=0.5, status=200",
+                "INFO: Using Cached response content",
+                "INFO: Trying to extract/parse XML metadata from URL -: Generic XML (Negotiated)",
+                "INFO: Expected XML but content negotiation responded -: html",
+                "INFO: Could not identify XML metadata",
+                "INFO: Trying to retrieve schema.org JSON-LD metadata through content negotiation from URL -: https://jbiomedsem.biomedcentral.com/articles/10.1186/2041-1480-4-37",
+                "INFO: Retrieving page -: https://jbiomedsem.biomedcentral.com/articles/10.1186/2041-1480-4-37 as application/vnd.schemaorg.ld+json, application/ld+json",
+                "INFO: Content negotiation accept=application/vnd.schemaorg.ld+json, application/ld+json, status=200",
+                "INFO: Using Cached response content",
+                "INFO: Trying to extract schema.org JSON-LD metadata from -: Schema.org JSON-LD (Negotiated)",
+                "INFO: Found JSON-LD schema.org but record is not of type \"Dataset\"",
+                "INFO: Schema.org metadata through content negotiation UNAVAILABLE",
+                "INFO: Trying to retrieve RDF metadata through content negotiation from URL -: https://jbiomedsem.biomedcentral.com/articles/10.1186/2041-1480-4-37",
+                "INFO: Retrieving page -: https://jbiomedsem.biomedcentral.com/articles/10.1186/2041-1480-4-37 as text/turtle, application/turtle, application/x-turtle;q=0.8, application/rdf+xml, text/n3;q=0.9, text/rdf+n3;q=0.9,application/ld+json",
+                "INFO: Content negotiation accept=text/turtle, application/turtle, application/x-turtle;q=0.8, application/rdf+xml, text/n3;q=0.9, text/rdf+n3;q=0.9,application/ld+json, status=200",
+                "INFO: Using Cached response content",
+                "INFO: Seems to be HTML not RDF, therefore skipped parsing RDF from -: https://jbiomedsem.biomedcentral.com/articles/10.1186/2041-1480-4-37",
+                "INFO: Linked Data metadata UNAVAILABLE",
+                "INFO: Trying to retrieve datacite metadata",
+                "INFO: Retrieving page -: http://doi.org/10.1186/2041-1480-4-37 as application/vnd.datacite.datacite+json",
+                "WARNING: Request failed, reason -: http://doi.org/10.1186/2041-1480-4-37, application/vnd.datacite.datacite+json - HTTP Error 406: Not Acceptable",
+                "WARNING: No response received from -: http://doi.org/10.1186/2041-1480-4-37",
+                "INFO: Datacite metadata UNAVAILABLE",
+                "INFO: Type of object described by the metadata -: ScholarlyArticle",
+                "INFO: Testing for required core descriptive metadata elements -: ['creator', 'title', 'publisher', 'publication_date', 'summary', 'keywords', 'object_identifier', 'object_type']",
+                "SUCCESS: Found required core descriptive metadata elements -: ['creator', 'title', 'publisher', 'publication_date', 'summary', 'keywords', 'object_identifier', 'object_type']"
+            ],
+            "test_status": "pass"
+        },
+        {
+            "id": 4,
+            "maturity": 0,
+            "metric_identifier": "FsF-F3-01M",
+            "metric_name": "Metadata includes the identifier of the data it describes.",
+            "metric_tests": {
+                "FsF-F3-01M-1": {
+                    "metric_test_maturity": null,
+                    "metric_test_name": "Metadata contains data content related information (file name, size, type)",
+                    "metric_test_score": 0,
+                    "metric_test_status": "fail"
+                },
+                "FsF-F3-01M-2": {
+                    "metric_test_maturity": null,
+                    "metric_test_name": "Metadata contains a PID or URL which indicates the location of the downloadable data content",
+                    "metric_test_score": 0,
+                    "metric_test_status": "fail"
+                }
+            },
+            "output": {
+                "object_content_identifier_included": []
+            },
+            "score": {
+                "earned": 0,
+                "total": 1
+            },
+            "test_debug": [
+                "WARNING: Data (content) identifier is missing."
+            ],
+            "test_status": "fail"
+        },
+        {
+            "id": 5,
+            "maturity": 3,
+            "metric_identifier": "FsF-F4-01M",
+            "metric_name": "Metadata is offered in such a way that it can be retrieved programmatically.",
+            "metric_tests": {
+                "FsF-F4-01M-1": {
+                    "metric_test_maturity": 3,
+                    "metric_test_name": "Metadata is given in a way major search engines can ingest it for their catalogues (JSON-LD, Dublin Core, RDFa)",
+                    "metric_test_score": 1,
+                    "metric_test_status": "pass"
+                },
+                "FsF-F4-01M-2": {
+                    "metric_test_maturity": null,
+                    "metric_test_name": "Metadata is registered in major research data registries (DataCite)",
+                    "metric_test_score": 0,
+                    "metric_test_status": "fail"
+                }
+            },
+            "output": {
+                "search_mechanisms": [
+                    {
+                        "mechanism": "structured data",
+                        "mechanism_info": [
+                            "Embedded DublinCore",
+                            "Schema.org JSON-LD (Embedded)",
+                            "Embedded RDFa"
+                        ]
+                    }
+                ]
+            },
+            "score": {
+                "earned": 1,
+                "total": 2
+            },
+            "test_debug": [
+                "INFO: Supported tests of metadata retrieval/extraction -: 'Embedded DublinCore', 'Embedded OpenGraph', 'Schema.org JSON-LD (Embedded)', 'Schema.org JSON-LD (Negotiated)', 'Datacite Search', 'Typed Links', 'Signposting Typed Links', 'RDF-based Typed Links', 'Linked Data (RDF)', 'B2FIND Metadata Aggregator', 'Guessed XML Link', 'Generic XML (Negotiated)', 'Embedded RDFa', 'Embedded Microdata', 'OAI-ORE'",
+                "INFO: Metadata found through - structured data",
+                "INFO: Querying DataCite API for -:10.1186/2041-1480-4-37",
+                "INFO: Identifier not listed in DataCite catalogue -:10.1186/2041-1480-4-37",
+                "INFO: Identifier not listed in Google Dataset Search cache -:['10.1186/2041-1480-4-37', 'https://jbiomedsem.biomedcentral.com/articles/10.1186/2041-1480-4-37']",
+                "INFO: Querying Mendeley Data API for -:10.1186/2041-1480-4-37",
+                "INFO: Identifier not listed in Mendeley Data catalogue -:10.1186/2041-1480-4-37",
+                "INFO: Querying Mendeley Data API for -:https://jbiomedsem.biomedcentral.com/articles/10.1186/2041-1480-4-37",
+                "INFO: Identifier not listed in Mendeley Data catalogue -:https://jbiomedsem.biomedcentral.com/articles/10.1186/2041-1480-4-37",
+                "WARNING: Metadata is NOT found through registries considered by the assessment service  -: ['Datacite Search', 'DataCite Registry', <Sources.MENDELEY_DATA: 'Mendeley Data'>, <Sources.GOOGLE_DATASET: 'Google Dataset Search'>]"
+            ],
+            "test_status": "pass"
+        },
+        {
+            "id": 6,
+            "maturity": 1,
+            "metric_identifier": "FsF-A1-01M",
+            "metric_name": "Metadata contains access level and access conditions of the data.",
+            "metric_tests": {
+                "FsF-A1-01M-1": {
+                    "metric_test_maturity": 1,
+                    "metric_test_name": "Information about access restrictions or rights can be identified in metadata",
+                    "metric_test_score": 0.5,
+                    "metric_test_status": "pass"
+                },
+                "FsF-A1-01M-2": {
+                    "metric_test_maturity": null,
+                    "metric_test_name": "Data access information is machine readable",
+                    "metric_test_score": 0,
+                    "metric_test_status": "fail"
+                },
+                "FsF-A1-01M-3": {
+                    "metric_test_maturity": null,
+                    "metric_test_name": "Data access information is indicated by (not machine readable) standard terms",
+                    "metric_test_score": 0,
+                    "metric_test_status": "fail"
+                }
+            },
+            "output": {
+                "access_details": {
+                    "access_condition": "2013 Ciccarese et al.; licensee BioMed Central Ltd."
+                },
+                "access_level": null
+            },
+            "score": {
+                "earned": 0.5,
+                "total": 1
+            },
+            "test_debug": [
+                "INFO: Access information specified -: 2013 Ciccarese et al.; licensee BioMed Central Ltd.",
+                "INFO: Verify name through SPDX registry -: 2013 Ciccarese et al.; licensee BioMed Central Ltd.",
+                "INFO: Found access rights information in dedicated metadata element",
+                "WARNING: Unable to determine the access level"
+            ],
+            "test_status": "pass"
+        },
+        {
+            "id": 10,
+            "maturity": 2,
+            "metric_identifier": "FsF-I1-01M",
+            "metric_name": "Metadata is represented using a formal knowledge representation language.",
+            "metric_tests": {
+                "FsF-I1-01M-1": {
+                    "metric_test_maturity": 2,
+                    "metric_test_name": "Parsable, structured metadata (JSON-LD, RDFa) is embedded in the landing page XHTML/HTML code",
+                    "metric_test_score": 1,
+                    "metric_test_status": "pass"
+                },
+                "FsF-I1-01M-2": {
+                    "metric_test_maturity": null,
+                    "metric_test_name": "Parsable, graph data (RDF, JSON-LD) is accessible through content negotiation, typed links or sparql endpoint",
+                    "metric_test_score": 0,
+                    "metric_test_status": "fail"
+                }
+            },
+            "output": [
+                {
+                    "is_metadata_found": true,
+                    "serialization_format": "JSON-LD",
+                    "source": "structured_data"
+                },
+                {
+                    "is_metadata_found": true,
+                    "serialization_format": "RDFa",
+                    "source": "structured_data"
+                }
+            ],
+            "score": {
+                "earned": 1,
+                "total": 2
+            },
+            "test_debug": [
+                "INFO: Check of structured data (RDF serialization) embedded in the data page",
+                "INFO: JSON-LD (schema.org) serialization found in the data page - JSON-LD",
+                "INFO: RDFa serialization found in the data page - RDFa",
+                "SUCCESS: Found structured data (RDF serialization) in the data page",
+                "INFO: Check if RDF-based typed link included",
+                "INFO: NO RDF-based typed link found",
+                "INFO: Check if RDF metadata available through content negotiation",
+                "INFO: NO RDF metadata available through content negotiation",
+                "WARNING: NO SPARQL endpoint found through re3data based on the object URI provided"
+            ],
+            "test_status": "pass"
+        },
+        {
+            "id": 11,
+            "maturity": 3,
+            "metric_identifier": "FsF-I1-02M",
+            "metric_name": "Metadata uses semantic resources",
+            "metric_tests": {
+                "FsF-I1-02M-1": {
+                    "metric_test_maturity": 1,
+                    "metric_test_name": "Vocabulary namespace URIs can be identified in metadata",
+                    "metric_test_score": 0,
+                    "metric_test_status": "pass"
+                },
+                "FsF-I1-02M-2": {
+                    "metric_test_maturity": 3,
+                    "metric_test_name": "Namespaces of known semantic resources can be identified in metadata",
+                    "metric_test_score": 1,
+                    "metric_test_status": "pass"
+                }
+            },
+            "output": [
+                {
+                    "is_namespace_active": true,
+                    "namespace": "http://purl.org/pav/"
+                }
+            ],
+            "score": {
+                "earned": 1,
+                "total": 1
+            },
+            "test_debug": [
+                "INFO: Number of vocabulary namespaces extracted from all RDF-based metadata -: 9",
+                "INFO: Default vocabulary namespace(s) excluded -: ['http://www.w3.org/1999/xhtml/vocab#', 'http://purl.org/dc/elements/1.1/', 'http://ogp.me/ns#', 'http://schema.org/']",
+                "INFO: Check the remaining namespace(s) exists in LOD -: ['http://purl.org/pav/']",
+                "SUCCESS: Namespace matches found -: ['http://purl.org/pav/']",
+                "WARNING: Vocabulary namespace (s) or URIs specified but no match is found in LOD reference list (examples) -: ['https://media.springernature.com/w200/springer-static/cover/journal', 'https://jbiomedsem.biomedcentral.com/articles/10.1186', 'http://creativecommons.org/licenses/by', 'http://www.w3.org/1999/xhtml']"
+            ],
+            "test_status": "pass"
+        },
+        {
+            "id": 12,
+            "maturity": 2,
+            "metric_identifier": "FsF-I3-01M",
+            "metric_name": "Metadata includes links between the data and its related entities.",
+            "metric_tests": {
+                "FsF-I3-01M-1": {
+                    "metric_test_maturity": 2,
+                    "metric_test_name": "Related resources are explicitly mentioned in metadata",
+                    "metric_test_score": 1,
+                    "metric_test_status": "pass"
+                },
+                "FsF-I3-01M-2": {
+                    "metric_test_maturity": null,
+                    "metric_test_name": "Related resources are indicated by machine readable links or identifiers",
+                    "metric_test_score": 0,
+                    "metric_test_status": "fail"
+                }
+            },
+            "output": [
+                {
+                    "related_resource": {
+                        "@type": [
+                            "Periodical",
+                            "PublicationVolume"
+                        ],
+                        "issn": [
+                            "2041-1480"
+                        ],
+                        "name": "Journal of Biomedical Semantics",
+                        "volumeNumber": "4"
+                    },
+                    "relation_type": "isPartOf"
+                },
+                {
+                    "related_resource": "Journal of Biomedical Semantics 2013 4:1",
+                    "relation_type": "wasDerivedFrom"
+                }
+            ],
+            "score": {
+                "earned": 1,
+                "total": 1
+            },
+            "test_debug": [
+                "INFO: 1 related resource(s) extracted from -: Schema.org JSON-LD (Embedded)",
+                "INFO: number of related resource(s) extracted from DublinCore -: 1 from Embedded DublinCore",
+                "INFO: Total number of related resources extracted -: 2",
+                "SUCCESS: Number of related resources after QC step -: 2"
+            ],
+            "test_status": "pass"
+        },
+        {
+            "id": 13,
+            "maturity": 1,
+            "metric_identifier": "FsF-R1-01MD",
+            "metric_name": "Metadata specifies the content of the data.",
+            "metric_tests": {
+                "FsF-R1-01MD-1": {
+                    "metric_test_maturity": 1,
+                    "metric_test_name": "Minimal information about available data content is given in metadata",
+                    "metric_test_score": 1,
+                    "metric_test_status": "pass"
+                },
+                "FsF-R1-01MD-1a": {
+                    "metric_test_maturity": null,
+                    "metric_test_name": "Resource type (e.g. dataset) is given in metadata",
+                    "metric_test_score": 0,
+                    "metric_test_status": "pass"
+                },
+                "FsF-R1-01MD-1b": {
+                    "metric_test_maturity": null,
+                    "metric_test_name": "Information about data content (e.g. links) is given in metadata",
+                    "metric_test_score": 0,
+                    "metric_test_status": "fail"
+                },
+                "FsF-R1-01MD-2": {
+                    "metric_test_maturity": null,
+                    "metric_test_name": "Verifiable data descriptors (file info, measured variables or observation types) are specified in metadata",
+                    "metric_test_score": 0,
+                    "metric_test_status": "fail"
+                },
+                "FsF-R1-01MD-2a": {
+                    "metric_test_maturity": null,
+                    "metric_test_name": "File size and type information are specified in metadata",
+                    "metric_test_score": 0,
+                    "metric_test_status": "fail"
+                },
+                "FsF-R1-01MD-2b": {
+                    "metric_test_maturity": null,
+                    "metric_test_name": "Measured variables or observation types are specified in metadata",
+                    "metric_test_score": 0,
+                    "metric_test_status": "fail"
+                },
+                "FsF-R1-01MD-3": {
+                    "metric_test_maturity": null,
+                    "metric_test_name": "Data content matches file type and size specified in metadata",
+                    "metric_test_score": 0,
+                    "metric_test_status": "fail"
+                },
+                "FsF-R1-01MD-4": {
+                    "metric_test_maturity": null,
+                    "metric_test_name": "Data content matches measured variables or observation types specified in metadata",
+                    "metric_test_score": 0,
+                    "metric_test_status": "fail"
+                }
+            },
+            "output": {
+                "data_content_descriptor": [],
+                "object_type": "scholarlyarticle"
+            },
+            "score": {
+                "earned": 1,
+                "total": 4
+            },
+            "test_debug": [
+                "INFO: Object landing page accessible status -: True",
+                "SUCCESS: Resource type specified -: scholarlyarticle",
+                "WARNING: NO data object content available/accessible to perform file descriptors (type and size) tests",
+                "WARNING: NO measured variables found in metadata, skip 'measured_variable' test.",
+                "WARNING: Measured variables given in metadata do not match data object content"
+            ],
+            "test_status": "fail"
+        },
+        {
+            "id": 14,
+            "maturity": 3,
+            "metric_identifier": "FsF-R1.1-01M",
+            "metric_name": "Metadata includes license information under which data can be reused.",
+            "metric_tests": {
+                "FsF-R1.1-01M-1": {
+                    "metric_test_maturity": 1,
+                    "metric_test_name": "Licence information is given in an appropriate metadata element",
+                    "metric_test_score": 1,
+                    "metric_test_status": "pass"
+                },
+                "FsF-R1.1-01M-2": {
+                    "metric_test_maturity": 3,
+                    "metric_test_name": "Recognized licence is valid and registered at SPDX",
+                    "metric_test_score": 1,
+                    "metric_test_status": "pass"
+                }
+            },
+            "output": [
+                {
+                    "details_url": "http://spdx.org/licenses/CC-BY-2.0.html",
+                    "license": "http://creativecommons.org/licenses/by/2.0",
+                    "osi_approved": false
+                }
+            ],
+            "score": {
+                "earned": 2,
+                "total": 2
+            },
+            "test_debug": [
+                "INFO: License metadata found (schema.org) -: http://creativecommons.org/licenses/by/2.0",
+                "SUCCESS: Found licence information in metadata",
+                "INFO: Verify URL through SPDX registry -: http://creativecommons.org/licenses/by/2.0",
+                "INFO: Found SPDX license representation -: http://spdx.org/licenses/CC-BY-2.0.json",
+                "SUCCESS: Found SPDX license representation (spdx url, osi_approved)"
+            ],
+            "test_status": "pass"
+        },
+        {
+            "id": 15,
+            "maturity": 3,
+            "metric_identifier": "FsF-R1.2-01M",
+            "metric_name": "Metadata includes provenance information about data creation or generation.",
+            "metric_tests": {
+                "FsF-R1.2-01M-1": {
+                    "metric_test_maturity": 2,
+                    "metric_test_name": "Metadata contains elements which hold provenance information and can be mapped to PROV",
+                    "metric_test_score": 1,
+                    "metric_test_status": "pass"
+                },
+                "FsF-R1.2-01M-2": {
+                    "metric_test_maturity": 3,
+                    "metric_test_name": "Metadata contains provenance information using formal provenance ontologies (PROV-O)",
+                    "metric_test_score": 1,
+                    "metric_test_status": "pass"
+                }
+            },
+            "output": {
+                "provenance_metadata_included": {
+                    "is_available": true,
+                    "provenance_metadata": [
+                        {
+                            "metadata_element": "publication_date",
+                            "metadata_value": "2013-11-22",
+                            "prov_o_mapping": "prov:generatedAtTime"
+                        },
+                        {
+                            "metadata_element": "modified_date",
+                            "metadata_value": "2013-11-22",
+                            "prov_o_mapping": "prov:generatedAtTime"
+                        },
+                        {
+                            "metadata_element": "creator",
+                            "metadata_value": [
+                                "Ciccarese, Paolo",
+                                "Soiland-Reyes, Stian",
+                                "Belhajjame, Khalid",
+                                "Gray, Alasdair JG",
+                                "Goble, Carole",
+                                "Clark, Tim"
+                            ],
+                            "prov_o_mapping": "prov:wasAttributedTo"
+                        },
+                        {
+                            "metadata_element": "publisher",
+                            "metadata_value": "BioMed Central",
+                            "prov_o_mapping": "prov:wasAttributedTo"
+                        }
+                    ]
+                },
+                "structured_provenance_available": {
+                    "is_available": true,
+                    "provenance_metadata": [
+                        {
+                            "namespace": "http://purl.org/pav/"
+                        }
+                    ]
+                }
+            },
+            "score": {
+                "earned": 2,
+                "total": 2
+            },
+            "test_debug": [
+                "INFO: Check if provenance information is available in descriptive metadata",
+                "INFO: Check if provenance information is available in metadata about related resources",
+                "SUCCESS: Found data creation-related provenance information",
+                "INFO: Check if provenance specific namespaces are listed in metadata",
+                "SUCCESS: Found use of dedicated provenance ontologies"
+            ],
+            "test_status": "pass"
+        },
+        {
+            "id": 16,
+            "maturity": 1,
+            "metric_identifier": "FsF-R1.3-01M",
+            "metric_name": "Metadata follows a standard recommended by the target research community of the data.",
+            "metric_tests": {
+                "FsF-R1.3-01M-1": {
+                    "metric_test_maturity": null,
+                    "metric_test_name": "Community specific metadata standard is detected using namespaces or schemas found in provided metadata or metadata services outputs",
+                    "metric_test_score": 0,
+                    "metric_test_status": "fail"
+                },
+                "FsF-R1.3-01M-2": {
+                    "metric_test_maturity": null,
+                    "metric_test_name": "Community specific metadata standard is listed in the re3data record of the responsible repository",
+                    "metric_test_score": 0,
+                    "metric_test_status": "fail"
+                },
+                "FsF-R1.3-01M-3": {
+                    "metric_test_maturity": 1,
+                    "metric_test_name": "Multidisciplinary but community endorsed metadata (RDA Metadata Standards Catalog) standard is listed in the re3data record or detected by namespace",
+                    "metric_test_score": 0,
+                    "metric_test_status": "pass"
+                }
+            },
+            "output": [
+                {
+                    "metadata_standard": "Dublin Core",
+                    "subject_areas": [
+                        "Multidisciplinary"
+                    ],
+                    "urls": [
+                        "http://purl.org/dc/elements/1.1/"
+                    ]
+                }
+            ],
+            "score": {
+                "earned": 0,
+                "total": 1
+            },
+            "test_debug": [
+                "INFO: Retrieving API and Standards",
+                "INFO: re3data/datacite client id -: None",
+                "INFO: Trying to retrieve metadata info from re3data/datacite services using client id -: None",
+                "WARNING: NO valid OAI-PMH endpoint found",
+                "INFO: Namespaces included in the metadata -: ['https://media.springernature.com/w200/springer-static/cover/journal', 'http://www.w3.org/1999/xhtml/vocab#', 'http://purl.org/dc/elements/1.1/', 'https://jbiomedsem.biomedcentral.com/articles/10.1186', 'http://creativecommons.org/licenses/by', 'http://purl.org/pav/', 'http://ogp.me/ns#', 'http://schema.org/', 'http://www.w3.org/1999/xhtml']",
+                "INFO: Found non-disciplinary standard (but RDA listed) found through namespaces -: Dublin Core (http://purl.org/dc/elements/1.1/)",
+                "INFO: The following standards found through namespaces are excluded as they are not listed in RDA metadata catalog -: ['https://media.springernature.com/w200/springer-static/cover/journal', 'http://www.w3.org/1999/xhtml/vocab#', 'https://jbiomedsem.biomedcentral.com/articles/10.1186', 'http://creativecommons.org/licenses/by', 'http://purl.org/pav/', 'http://ogp.me/ns#', 'http://schema.org/', 'http://www.w3.org/1999/xhtml']",
+                "WARNING: NO metadata standard(s) of the repository specified in re3data"
+            ],
+            "test_status": "pass"
+        },
+        {
+            "id": 17,
+            "maturity": 0,
+            "metric_identifier": "FsF-R1.3-02D",
+            "metric_name": "Data is available in a file format recommended by the target research community.",
+            "metric_tests": {
+                "FsF-R1.3-02D-1": {
+                    "metric_test_maturity": null,
+                    "metric_test_name": "The format of a data file given in the metadata is listed in the long term file formats, open file formats or scientific file formats controlled list",
+                    "metric_test_score": 0,
+                    "metric_test_status": "fail"
+                },
+                "FsF-R1.3-02D-1a": {
+                    "metric_test_maturity": null,
+                    "metric_test_name": "The format of the data file is an open format",
+                    "metric_test_score": 0,
+                    "metric_test_status": "fail"
+                },
+                "FsF-R1.3-02D-1b": {
+                    "metric_test_maturity": null,
+                    "metric_test_name": "The format of the data file is a long term format",
+                    "metric_test_score": 0,
+                    "metric_test_status": "fail"
+                },
+                "FsF-R1.3-02D-1c": {
+                    "metric_test_maturity": null,
+                    "metric_test_name": "The format of the data file is a scientific format",
+                    "metric_test_score": 0,
+                    "metric_test_status": "fail"
+                }
+            },
+            "output": [],
+            "score": {
+                "earned": 0,
+                "total": 1
+            },
+            "test_debug": [
+                "WARNING: Could not perform file format checks as data content identifier(s) unavailable/inaccesible"
+            ],
+            "test_status": "fail"
+        },
+        {
+            "id": 8,
+            "maturity": 0,
+            "metric_identifier": "FsF-A1-03D",
+            "metric_name": "Data is accessible through a standardized communication protocol.",
+            "metric_tests": {
+                "FsF-A1-03D-1": {
+                    "metric_test_maturity": null,
+                    "metric_test_name": "Metadata includes a resolvable link to data based on standardized web communication protocols.",
+                    "metric_test_score": 0,
+                    "metric_test_status": "fail"
+                }
+            },
+            "output": {
+                "standard_data_protocol": null
+            },
+            "score": {
+                "earned": 0,
+                "total": 1
+            },
+            "test_debug": [
+                "INFO: NO content (data) identifier is given in metadata"
+            ],
+            "test_status": "fail"
+        },
+        {
+            "id": 7,
+            "maturity": 3,
+            "metric_identifier": "FsF-A1-02M",
+            "metric_name": "Metadata is accessible through a standardized communication protocol.",
+            "metric_tests": {
+                "FsF-A1-02M-1": {
+                    "metric_test_maturity": 3,
+                    "metric_test_name": "Landing page link is based on standardized web communication protocols.",
+                    "metric_test_score": 1,
+                    "metric_test_status": "pass"
+                }
+            },
+            "output": {
+                "standard_metadata_protocol": {
+                    "https": "Hyper Text Transfer Protocol Secure"
+                }
+            },
+            "score": {
+                "earned": 1,
+                "total": 1
+            },
+            "test_debug": [
+                "SUCCESS: Standard protocol for access to metadata found -: https"
+            ],
+            "test_status": "pass"
+        }
+    ],
+    "software_version": "1.4.6",
+    "summary": {
+        "maturity": {
+            "A": 1,
+            "A1": 1,
+            "F": 2,
+            "F1": 3,
+            "F2": 3,
+            "F3": 0,
+            "F4": 3,
+            "FAIR": 1.75,
+            "I": 2,
+            "I1": 2,
+            "I3": 2,
+            "R": 2,
+            "R1": 1,
+            "R1.1": 3,
+            "R1.2": 3,
+            "R1.3": 1
+        },
+        "score_earned": {
+            "A": 1.5,
+            "A1": 1.5,
+            "F": 5,
+            "F1": 2,
+            "F2": 2,
+            "F3": 0,
+            "F4": 1,
+            "FAIR": 14.5,
+            "I": 3,
+            "I1": 2,
+            "I3": 1,
+            "R": 5,
+            "R1": 1,
+            "R1.1": 2,
+            "R1.2": 2,
+            "R1.3": 0
+        },
+        "score_percent": {
+            "A": 50,
+            "A1": 50,
+            "F": 71.43,
+            "F1": 100,
+            "F2": 100,
+            "F3": 0,
+            "F4": 50,
+            "FAIR": 60.42,
+            "I": 75,
+            "I1": 66.67,
+            "I3": 100,
+            "R": 50,
+            "R1": 25,
+            "R1.1": 100,
+            "R1.2": 100,
+            "R1.3": 0
+        },
+        "score_total": {
+            "A": 3,
+            "A1": 3,
+            "F": 7,
+            "F1": 2,
+            "F2": 2,
+            "F3": 1,
+            "F4": 2,
+            "FAIR": 24,
+            "I": 4,
+            "I1": 3,
+            "I3": 1,
+            "R": 10,
+            "R1": 4,
+            "R1.1": 2,
+            "R1.2": 2,
+            "R1.3": 2
+        },
+        "status_passed": {
+            "A": 2,
+            "A1": 2,
+            "F": 4,
+            "F1": 2,
+            "F2": 1,
+            "F3": 0,
+            "F4": 1,
+            "FAIR": 12,
+            "I": 3,
+            "I1": 2,
+            "I3": 1,
+            "R": 3,
+            "R1": 0,
+            "R1.1": 1,
+            "R1.2": 1,
+            "R1.3": 1
+        },
+        "status_total": {
+            "A": 3,
+            "A1": 3,
+            "F": 5,
+            "F1": 2,
+            "F2": 1,
+            "F3": 1,
+            "F4": 1,
+            "FAIR": 16,
+            "I": 3,
+            "I1": 2,
+            "I3": 1,
+            "R": 5,
+            "R1": 1,
+            "R1.1": 1,
+            "R1.2": 1,
+            "R1.3": 2
+        }
+    },
+    "test_id": "3449cc46f8a3a874b0d7cb49972e156fc7977773",
+    "timestamp": "2022-04-10T22:17:03Z",
+    "total_metrics": 16
+}

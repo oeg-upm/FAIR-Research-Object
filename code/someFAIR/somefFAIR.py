@@ -96,7 +96,6 @@ class SoftwareFAIRnessCalculator:
                  "total_passed_tests": 0,
                  "total_tests_run"   : 0
                  }
-        test_passed = total_tests = 0
 
         # test 1 - check title
         title = []
@@ -114,10 +113,11 @@ class SoftwareFAIRnessCalculator:
         missing_metadata = []
 
         if len(title) > 1:
-            test_passed += 1
+            check["total_passed_tests"] += 1
         else:
             missing_metadata.append("Title")
-        total_tests += 1
+        check["total_tests_run"] += 1
+        
 
         # TODO: description, license, installation instructions, requirements, creator, creationDate
         

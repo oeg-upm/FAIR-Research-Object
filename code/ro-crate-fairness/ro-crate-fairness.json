@@ -32,14 +32,14 @@
         },
         {
             "category_id": "Interoperable",
-            "description": "This check verifies if the RO fields are part of the RO specification, or any of the known profiles (schema.org, w3id.org)",
+            "description": "This check verifies if the RO use a FAIR context (schema.org or w3id.org)",
             "explanation": [
-                "These URIs are not from known profiles: https://language-archives.services/metadata-definitions#orthographicNotes",
+                "These vocabularies do not belong to schema.org, w3id.org: https://language-archives.services/metadata-definitions#orthographicNotes",
                 "These URIs are not accessibles: https://w3id.org/fake"
             ],
-            "principle_id": "I1",
+            "principle_id": "I2",
             "status": "error",
-            "title": "(Meta)data use a formal, accessible, shared, and broadly applicable language for knowledge representation.",
+            "title": "(Meta)data use vocabularies that follow FAIR principles",
             "total_passed_tests": 0,
             "total_tests_run": 2
         }

@@ -36,7 +36,7 @@ class ROCrateFAIRnessCalculator():
         self.evaluate_f1()
         self.evaluate_f2()
         self.evaluate_f3()
-        self.evaluate_i1()
+        self.evaluate_i2()
         print(self.fair_output)
     
     def save_to_file(self):
@@ -187,11 +187,11 @@ class ROCrateFAIRnessCalculator():
         check["total_tests_run"] += 1
         self.fair_output["checks"].append(check)
 
-    def evaluate_i1(self):
-        check = {"principle_id": "I1",
+    def evaluate_i2(self):
+        check = {"principle_id": "I2",
                  "category_id" : "Interoperable",
-                 "title"       : "(Meta)data use a formal, accessible, shared, and broadly applicable language for knowledge representation.",
-                 "description" : "This check verifies if the RO fields are part of the RO specification, or any of the known profiles (schema.org, w3id.org)",
+                 "title"       : "(Meta)data use vocabularies that follow FAIR principles",
+                 "description" : "This check verifies if the RO use a FAIR context (schema.org or w3id.org)",
                  "total_passed_tests": 0,
                  "total_tests_run"   : 0
                  }   
@@ -199,35 +199,35 @@ class ROCrateFAIRnessCalculator():
         # test 1
         keys = []
         extract_all_keys_recursively(self.ro_json["@context"], keys)  
-        valid_context = ["schema.org", "w3id.org"]
+        valid_vocab = ["schema.org", "w3id.org"]
         
-        invalid_context, notknown_context = [], []
+        invalid_vocab, notknown_vocab = [], []
         
         for key in keys:
             # check if the URI of the context belong to a known profiles (schema and w3id)
-            if any(context in key for context in valid_context):
+            if any(context in key for context in valid_vocab):
                 # check if the URI is available
                 response = requests.get(key)
                 if response.status_code >= 400:
-                    invalid_context.append(key)
+                    invalid_vocab.append(key)
             else:
-                notknown_context.append(key)
+                notknown_vocab.append(key)
         check["total_tests_run"] += 2 # one for the known profiles and other for being accessible
         check["explanation"] = []
 
-        if len(notknown_context) == 0:
+        if len(notknown_vocab) == 0:
             check["total_passed_tests"] += 1
-            check["explanation"].append( f"All the URIs are from known profiles ({', '.join(valid_context)})")
+            check["explanation"].append( f"All the vocabularies are FAIR")
         else:
             check["status"] = "error"
-            check["explanation"].append( f"These URIs are not from known profiles: {', '.join(notknown_context)}")
+            check["explanation"].append( f"These vocabularies do not belong to {', '.join(valid_vocab)}: {', '.join(notknown_vocab)}")
         
-        if len(invalid_context) == 0:
+        if len(invalid_vocab) == 0:
             check["total_passed_tests"] += 1
             check["explanation"].append("All the URIs are accessibles")
         else:
             check["status"] = "error"
-            check["explanation"].append( f"These URIs are not accessibles: {', '.join(invalid_context)}")
+            check["explanation"].append( f"These URIs are not accessibles: {', '.join(invalid_vocab)}")
 
         if not "status" in check:
             check["status"] = "ok"

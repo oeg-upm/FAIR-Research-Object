@@ -6,6 +6,17 @@ from os import listdir
 from os.path import isfile, isdir, join
 import validators
 
+def extract_all_keys_recursively(element, keys):
+    if type(element) is str:
+        keys.append(element)
+    elif type(element) is dict:
+        for key in element:
+            extract_all_keys_recursively(element[key], keys)
+    elif type(element) is list:
+        for ele in element:
+            extract_all_keys_recursively(ele, keys)
+
+
 class ROCrateFAIRnessCalculator():
     def __init__(self, ro_path) -> None:
         self.ro_path = ro_path
@@ -25,6 +36,7 @@ class ROCrateFAIRnessCalculator():
         self.evaluate_f1()
         self.evaluate_f2()
         self.evaluate_f3()
+        self.evaluate_i1()
         print(self.fair_output)
     
     def save_to_file(self):
@@ -175,11 +187,57 @@ class ROCrateFAIRnessCalculator():
         check["total_tests_run"] += 1
         self.fair_output["checks"].append(check)
 
-            
+    def evaluate_i1(self):
+        check = {"principle_id": "I1",
+                 "category_id" : "Interoperable",
+                 "title"       : "(Meta)data use a formal, accessible, shared, and broadly applicable language for knowledge representation.",
+                 "description" : "This check verifies if the RO fields are part of the RO specification, or any of the known profiles (schema.org, w3id.org)",
+                 "total_passed_tests": 0,
+                 "total_tests_run"   : 0
+                 }   
+        
+        # test 1
+        keys = []
+        extract_all_keys_recursively(self.ro_json["@context"], keys)  
+        valid_context = ["schema.org", "w3id.org"]
+        
+        invalid_context, notknown_context = [], []
+        
+        for key in keys:
+            # check if the URI of the context belong to a known profiles (schema and w3id)
+            if any(context in key for context in valid_context):
+                # check if the URI is available
+                response = requests.get(key)
+                if response.status_code >= 400:
+                    invalid_context.append(key)
+            else:
+                notknown_context.append(key)
+        check["total_tests_run"] += 2 # one for the known profiles and other for being accessible
+        check["explanation"] = []
+
+        if len(notknown_context) == 0:
+            check["total_passed_tests"] += 1
+            check["explanation"].append( f"All the URIs are from known profiles ({', '.join(valid_context)})")
+        else:
+            check["status"] = "error"
+            check["explanation"].append( f"These URIs are not from known profiles: {', '.join(notknown_context)}")
+        
+        if len(invalid_context) == 0:
+            check["total_passed_tests"] += 1
+            check["explanation"].append("All the URIs are accessibles")
+        else:
+            check["status"] = "error"
+            check["explanation"].append( f"These URIs are not accessibles: {', '.join(invalid_context)}")
+
+        if not "status" in check:
+            check["status"] = "ok"
+
+        self.fair_output["checks"].append(check)
 
 roFAIR = ROCrateFAIRnessCalculator("example-ro-crate")
 roFAIR.calculate_fairness()
 roFAIR.save_to_file()
+
 
 
 

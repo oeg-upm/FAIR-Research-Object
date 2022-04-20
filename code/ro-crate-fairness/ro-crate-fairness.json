@@ -29,6 +29,19 @@
             "title": "Metadata clearly and explicitly include the identifier of the data they describe",
             "total_passed_tests": 1,
             "total_tests_run": 1
+        },
+        {
+            "category_id": "Interoperable",
+            "description": "This check verifies if the RO fields are part of the RO specification, or any of the known profiles (schema.org, w3id.org)",
+            "explanation": [
+                "These URIs are not from known profiles: https://language-archives.services/metadata-definitions#orthographicNotes",
+                "These URIs are not accessibles: https://w3id.org/fake"
+            ],
+            "principle_id": "I1",
+            "status": "error",
+            "title": "(Meta)data use a formal, accessible, shared, and broadly applicable language for knowledge representation.",
+            "total_passed_tests": 0,
+            "total_tests_run": 2
         }
     ]
 }

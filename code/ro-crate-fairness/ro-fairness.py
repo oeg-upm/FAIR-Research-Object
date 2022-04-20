@@ -26,6 +26,10 @@ class ROCrateFAIRnessCalculator():
         self.evaluate_f2()
         self.evaluate_f3()
         print(self.fair_output)
+    
+    def save_to_file(self):
+        with open('ro-crate-fairness.json', 'w') as f:
+            json.dump(self.fair_output, f, sort_keys=True, indent=4)
 
     def evaluate_f1(self):
         check = {"principle_id": "F1",
@@ -48,13 +52,13 @@ class ROCrateFAIRnessCalculator():
                     if response.status_code < 400:
                         check["status"] = "ok"
                         check["total_passed_tests"] += 1
-                        check["explanation"] = "The identifier is unique and persistent"
+                        check["explanation"] = f"The identifier is unique and persistent [{identifier}]"
                     else:
                         check["status"] = "error"
-                        check["explanation"] = "The identifier does not exist"
+                        check["explanation"] = f"The identifier [{identifier}] does not exist"
                 else:
                     check["status"] = "error"
-                    check["explanation"] = "Not using a persistent id. We checked w3id, purl, DOI and W3C"
+                    check["explanation"] = f"The identifier ({identifier}) of the root data entity is not unique and persistent. The identifier should be store in any of this [w3id.org, doi.org, purl.org, www.w3.org]"
             else:
                 check["status"] = "error"
                 check["explanation"] = "No identifier in root data entity"
@@ -175,6 +179,7 @@ class ROCrateFAIRnessCalculator():
 
 roFAIR = ROCrateFAIRnessCalculator("example-ro-crate")
 roFAIR.calculate_fairness()
+roFAIR.save_to_file()
 
 
 

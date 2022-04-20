@@ -1,0 +1,34 @@
+{
+    "checks": [
+        {
+            "category_id": "Findable",
+            "description": "This check verifies if the RO has a persintance and unique identifier (w3id, doi, purl or w3).",
+            "explanation": "The identifier (ro-crate-metadata.json) of the root data entity is not unique and persistent. The identifier should be store in any of this [w3id.org, doi.org, purl.org, www.w3.org]",
+            "principle_id": "F1",
+            "status": "error",
+            "title": "(Meta)data are assigned a globally unique and persistent identifier",
+            "total_passed_tests": 0,
+            "total_tests_run": 1
+        },
+        {
+            "category_id": "Findable",
+            "description": "This check verifies if the the following minimum metadata [author, license, description and at least one resource] are present in the ro-crate",
+            "explanation": "Missing the following metadata: author",
+            "principle_id": "F2",
+            "status": "error",
+            "title": "Data are described with rich metadata",
+            "total_passed_tests": 0,
+            "total_tests_run": 1
+        },
+        {
+            "category_id": "Findable",
+            "description": "This check verifies that the elements described in the ro exist in the directory given (or in their URIs)",
+            "explanation": "All element identifiers exist",
+            "principle_id": "F3",
+            "status": "ok",
+            "title": "Metadata clearly and explicitly include the identifier of the data they describe",
+            "total_passed_tests": 1,
+            "total_tests_run": 1
+        }
+    ]
+}

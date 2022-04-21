@@ -34,13 +34,13 @@
             "category_id": "Interoperable",
             "description": "This check verifies if the RO use a FAIR context (schema.org or w3id.org)",
             "explanation": [
-                "These vocabularies do not belong to schema.org, w3id.org: https://language-archives.services/metadata-definitions#orthographicNotes",
-                "These URIs are not accessibles: https://w3id.org/fake"
+                "All the vocabularies are FAIR",
+                "All the URIs are accessibles"
             ],
             "principle_id": "I2",
-            "status": "error",
+            "status": "ok",
             "title": "(Meta)data use vocabularies that follow FAIR principles",
-            "total_passed_tests": 0,
+            "total_passed_tests": 2,
             "total_tests_run": 2
         },
         {
@@ -55,6 +55,46 @@
             "title": "(Meta)data are released with a clear and accessible data usage license",
             "total_passed_tests": 1,
             "total_tests_run": 2
+        },
+        {
+            "category_id": "Reusable",
+            "description": "This check verifies that: Dataset entities has an author, datePublished and citation. Files has an author",
+            "explanation": [
+                "The Dataset with @id=results/ do not have [datePublished, citation]",
+                "The Dataset with @id=results/bwa/ do not have [author, datePublished, citation]",
+                "The Dataset with @id=results/bwa/mergedLibrary/ do not have [author, datePublished, citation]",
+                "The Dataset with @id=results/bwa/mergedLibrary/bigwig/ do not have [author, datePublished, citation]",
+                "The Dataset with @id=results/bwa/mergedLibrary/bigwig/scale/ do not have [author, datePublished, citation]",
+                "The Dataset with @id=results/bwa/mergedLibrary/deepTools/ do not have [author, datePublished, citation]",
+                "The Dataset with @id=results/bwa/mergedLibrary/deepTools/plotFingerprint/ do not have [author, datePublished, citation]",
+                "The Dataset with @id=results/bwa/mergedLibrary/deepTools/plotProfile/ do not have [author, datePublished, citation]",
+                "The Dataset with @id=results/bwa/mergedLibrary/macs/ do not have [author, datePublished, citation]",
+                "The Dataset with @id=results/bwa/mergedLibrary/phantompeakqualtools/ do not have [author, datePublished, citation]",
+                "The Dataset with @id=results/bwa/mergedLibrary/picard_metrics/ do not have [author, datePublished, citation]",
+                "The Dataset with @id=results/fastqc/ do not have [author, datePublished, citation]",
+                "The Dataset with @id=results/fastqc/zips/ do not have [author, datePublished, citation]",
+                "The Dataset with @id=results/genome/ do not have [author, datePublished, citation]",
+                "The Dataset with @id=results/igv/ do not have [author, datePublished, citation]",
+                "The Dataset with @id=results/igv/broadPeak/ do not have [author, datePublished, citation]",
+                "The Dataset with @id=results/multiqc/ do not have [author, datePublished, citation]",
+                "The Dataset with @id=results/multiqc/broadPeak/ do not have [author, datePublished, citation]",
+                "The Dataset with @id=results/multiqc/broadPeak/multiqc_data/ do not have [author, datePublished, citation]",
+                "The Dataset with @id=results/pipeline_info/ do not have [author, datePublished, citation]",
+                "The Dataset with @id=results/trim_galore/ do not have [author, datePublished, citation]",
+                "The Dataset with @id=results/trim_galore/fastqc/ do not have [author, datePublished, citation]",
+                "The Dataset with @id=results/trim_galore/fastqc/zips/ do not have [author, datePublished, citation]",
+                "The Dataset with @id=results/trim_galore/logs/ do not have [author, datePublished, citation]",
+                "The File with @id=.nextflow.log do not have [author]",
+                "The File with @id=chipseq_20200910.json do not have [author]",
+                "The File with @id=nextflow.log do not have [author]",
+                "The File with @id=results/genome/genome.fa do not have [author]",
+                "The File with @id=results/igv/broadPeak/igv_session.xml do not have [author]",
+                "The File with @id=results/multiqc/broadPeak/multiqc_report.html do not have [author]"
+            ],
+            "principle_id": "R1.2",
+            "title": "(Meta)data are associated with detailed provenance",
+            "total_passed_tests": 0,
+            "total_tests_run": 1
         }
     ]
 }

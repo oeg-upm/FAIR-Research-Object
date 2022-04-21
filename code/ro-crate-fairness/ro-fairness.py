@@ -37,6 +37,7 @@ class ROCrateFAIRnessCalculator():
         self.evaluate_f2()
         self.evaluate_f3()
         self.evaluate_i2()
+        self.evaluate_r1_1()
         print(self.fair_output)
     
     def save_to_file(self):
@@ -234,6 +235,65 @@ class ROCrateFAIRnessCalculator():
 
         self.fair_output["checks"].append(check)
 
+    def evaluate_r1_1(self):
+        check = {"principle_id": "R1.1",
+                "category_id" : "Reusable",
+                "title"       : "(Meta)data are released with a clear and accessible data usage license",
+                "description" : "This check verifies whether the RO has a licence. It also checks that there is a licence in the entity data of [CreativeWork, Dataset, File]",
+                "total_passed_tests": 0,
+                "total_tests_run"   : 0
+                }
+        check["explanation"] = []
+
+        # test 1. Licence in root data entity
+        try:
+            root_data_entity = self.ro.metadata.as_jsonld()
+
+            if "license" in root_data_entity:
+                check["status"] = "ok"
+                check["explanation"].append("The root data entity has a license")
+                check["total_passed_tests"] += 1
+            else:
+                check["status"] = "error"
+                check["explanation"].append("The root data entity has not a license")
+
+        except:
+            check["status"] = "error"
+            check["explanation"].append("No root data entity. Cound not check the license of the RO")
+        check["total_tests_run"] += 1 
+        
+
+        # test 2. License in data entities
+        all_elements = self.ro_json["@graph"]
+        valid_types = ["CreativeWork", "Dataset", "File"]
+
+        def check_nested_license(element):
+            ''' This function accepts a nested dictionary as argument
+                and iterate over all values of nested dictionaries.
+                It returns True if it finds a key named "license".
+            '''
+            if "license" in element:
+                return True  
+
+            for _ , value in element.items():
+                if isinstance(value, dict):
+                    if "license" in value:
+                        return True
+                    else:
+                        check_nested_license(value)
+        
+        unlicensed_elements = [element["@id"] for element in all_elements if any(type in element["@type"] for type in valid_types) and not check_nested_license(element)]
+
+        if len(unlicensed_elements) == 0:
+            check["total_passed_tests"] += 1
+            check["explanation"].append(f"All the data entities of type {valid_types} have a license")
+        else:
+            check["explanation"].append(f"These entities of type {valid_types} have not a license: {' ,'.join(unlicensed_elements)}")
+        check["total_tests_run"] += 1 
+
+        self.fair_output["checks"].append(check)
+
+        
 roFAIR = ROCrateFAIRnessCalculator("example-ro-crate")
 roFAIR.calculate_fairness()
 roFAIR.save_to_file()

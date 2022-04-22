@@ -47,8 +47,8 @@ class ROCrateFAIRnessCalculator():
     def evaluate_f1(self):
         check = {"principle_id": "F1",
                  "category_id" : "Findable",
-                 "title"       : "(Meta)data are assigned a globally unique and persistent identifier",
-                 "description" : "This check verifies if the RO has a persintance and unique identifier (w3id, doi, purl or w3).",
+                 "title"       : "(Meta)data are assigned a persistent identifier",
+                 "description" : "This check verifies if the RO has a persintance identifier (w3id, doi, purl or w3).",
                  "total_passed_tests": 0,
                  "total_tests_run"   : 0
                  }
@@ -65,13 +65,13 @@ class ROCrateFAIRnessCalculator():
                     if response.status_code < 400:
                         check["status"] = "ok"
                         check["total_passed_tests"] += 1
-                        check["explanation"] = f"The identifier is unique and persistent [{identifier}]"
+                        check["explanation"] = f"The identifier is persistent [{identifier}]"
                     else:
                         check["status"] = "error"
                         check["explanation"] = f"The identifier [{identifier}] does not exist"
                 else:
                     check["status"] = "error"
-                    check["explanation"] = f"The identifier ({identifier}) of the root data entity is not unique and persistent. The identifier should be store in any of this [w3id.org, doi.org, purl.org, www.w3.org]"
+                    check["explanation"] = f"The identifier ({identifier}) of the root data entity is not persistent. The identifier should be store in any of this [w3id.org, doi.org, purl.org, www.w3.org]"
             else:
                 check["status"] = "error"
                 check["explanation"] = "No identifier in root data entity"
@@ -192,7 +192,7 @@ class ROCrateFAIRnessCalculator():
         check = {"principle_id": "I2",
                  "category_id" : "Interoperable",
                  "title"       : "(Meta)data use vocabularies that follow FAIR principles",
-                 "description" : "This check verifies if the RO use a FAIR context (schema.org or w3id.org)",
+                 "description" : "This check verifies if the RO use a FAIR context (schema.org)",
                  "total_passed_tests": 0,
                  "total_tests_run"   : 0
                  }
@@ -200,7 +200,7 @@ class ROCrateFAIRnessCalculator():
         # test 1
         keys = []
         extract_all_values_recursively(self.ro_json["@context"], keys)
-        valid_vocab = ["schema.org", "w3id.org"]
+        valid_vocab = ["schema.org"]
 
         invalid_vocab, notknown_vocab = [], []
 

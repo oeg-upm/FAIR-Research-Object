@@ -1,116 +1,116 @@
-from rocrate.rocrate import ROCrate
+from rocrate.rocrate import ROCrate, read_metadata, Metadata
 import json
 import requests
-
-from os import listdir
 from os.path import isfile, isdir, join
 import validators
+import random # remove
 
-def extract_all_values_recursively(element, values):
-    if type(element) is str:
-        values.append(element)
-    elif type(element) is dict:
-        for key in element:
-            extract_all_values_recursively(element[key], values)
-    elif type(element) is list:
-        for ele in element:
-            extract_all_values_recursively(ele, values)
-
+def check_element_has_key(element, keys):
+    has, has_not = [], []
+    for key in keys:
+        has.append(key) if key in element else has_not.append(key)
+    return has, has_not
 
 class ROCrateFAIRnessCalculator():
     def __init__(self, ro_path) -> None:
         self.ro_path = ro_path
 
-        with open(self.ro_path + "/ro-crate-metadata.json", "r") as f:
-            self.ro_raw_plain =  ' '.join(f.read().split())
-
-        with open(self.ro_path + "/ro-crate-metadata.json", "r") as f:
-            self.ro_json = json.load(f)
-
-        self.ro = ROCrate("example-ro-crate") # TODO
-
-        self.fair_output = {"checks": []}
-
-    def calculate_fairness(self):
+        self.rocrate = ROCrate(ro_path)
+        
+        self.ro_metadata = self.rocrate.metadata.as_jsonld() # ro metadata
+        self.ro          = self.rocrate.dereference("./").as_jsonld() # ro itself
+        self.ro_parts    = [self.rocrate.dereference(part["@id"]).as_jsonld() for part in self.ro["hasPart"]] # all the parts of the ro
+        
+        self.fair_output = {}
+        self.add_header_to_file()
+        self.fair_output["checks"] = []
+        
+    def calculate_fairness(self, aggregation_mode=0):
         self.evaluate_f1()
         self.evaluate_f2()
         self.evaluate_f3()
         self.evaluate_i2()
         self.evaluate_r1_1()
         self.evaluate_r1_2()
-        print(self.fair_output)
-
+        self.calculate_fair_score(aggregation_mode)
+        
     def save_to_file(self):
         with open('ro-crate-fairness.json', 'w') as f:
             json.dump(self.fair_output, f, sort_keys=True, indent=4)
 
+    def add_header_to_file(self):
+        # add header info to the final output
+        self.fair_output["rocrate_path"] = self.ro_path + Metadata.BASENAME
+        
+    def calculate_fair_score(self, aggregation_mode): # Proof of concept. TODO:
+        
+        if aggregation_mode == 0:
+            description = "Description of the way of calculate the score"
+            self.fair_output["score"] = {"description" : description, "total_sum" : {"earned": 0, "total": 0}}
+
+            for check in self.fair_output["checks"]:
+                self.fair_output["score"]["total_sum"]["earned"] += check["total_passed_tests"]
+                self.fair_output["score"]["total_sum"]["total"]  += check["total_tests_run"]
+            self.fair_output["score"]["final"] = (self.fair_output["score"]["total_sum"]["earned"] / self.fair_output["score"]["total_sum"]["total"]) * 100
+            
+        elif aggregation_mode == 1:
+            description = "Random score"
+            self.fair_output["score"] = {"description": description, "value" : random.uniform(0,100)}
+            
+        elif aggregation_mode == 2:
+            description = "Perfect score"
+            self.fair_output["score"] = {"description": description, "value" : 100}
+        
+        
     def evaluate_f1(self):
+        valid_domains = ["w3id.org", "doi.org", "purl.org", "www.w3.org"]
         check = {"principle_id": "F1",
                  "category_id" : "Findable",
                  "title"       : "(Meta)data are assigned a persistent identifier",
-                 "description" : "This check verifies if the RO has a persintance identifier (w3id, doi, purl or w3).",
+                 "description" : f"This check verifies if the RO has a persintance identifier {valid_domains}",
                  "total_passed_tests": 0,
                  "total_tests_run"   : 0
                  }
 
         # test 1
-        try:
-            root_data_entity = self.ro.metadata.as_jsonld()
-            if "identifier" in root_data_entity:
-                identifier = root_data_entity["identifier"]
-                valid_domains = ["w3id.org", "doi.org", "purl.org", "www.w3.org"]
-
-                if any(domain in identifier for domain in valid_domains):
-                    response = requests.get(identifier)
-                    if response.status_code < 400:
-                        check["status"] = "ok"
-                        check["total_passed_tests"] += 1
-                        check["explanation"] = f"The identifier is persistent [{identifier}]"
-                    else:
-                        check["status"] = "error"
-                        check["explanation"] = f"The identifier [{identifier}] does not exist"
+        if "identifier" in self.ro_metadata:
+            identifier = self.ro_metadata["identifier"]
+        
+            if any(domain in identifier for domain in valid_domains):
+                response = requests.get(identifier)
+                if response.status_code < 400:
+                    check["status"] = "ok"
+                    check["total_passed_tests"] += 1
+                    check["explanation"] = f"The identifier is persistent [{identifier}]"
                 else:
                     check["status"] = "error"
-                    check["explanation"] = f"The identifier ({identifier}) of the root data entity is not persistent. The identifier should be store in any of this [w3id.org, doi.org, purl.org, www.w3.org]"
+                    check["explanation"] = f"The identifier [{identifier}] does not exist"
             else:
                 check["status"] = "error"
-                check["explanation"] = "No identifier in root data entity"
-            check["total_tests_run"] += 1
-        except:
+                check["explanation"] = f"The identifier ({identifier}) of the root data entity is not persistent. The identifier should be store in any of this [w3id.org, doi.org, purl.org, www.w3.org]"
+        else:
             check["status"] = "error"
-            check["explanation"] = "No root data entity"
+            check["explanation"] = "No identifier in root data entity"
+        check["total_tests_run"] += 1
 
         self.fair_output["checks"].append(check)
 
     def evaluate_f2(self):
+        minimum_metadata = ["author", "license", "description"]
         check = {"principle_id": "F2",
                 "category_id" : "Findable",
                 "title"       : "Data are described with rich metadata",
-                "description" : "This check verifies if the the following minimum metadata [author, license, description and at least one resource] are present in the ro-crate",
+                "description" : f"This check verifies if the the following minimum metadata {minimum_metadata} are present in the ro-crate",
                 "total_passed_tests": 0,
                 "total_tests_run"   : 0
                 }
-
         missing_metadata_error = "Missing the following metadata: "
         missing_metadata = []
 
-
-        try:
-            root_data_entity = self.ro.metadata.as_jsonld()
-        except:
-            check["status"] = "error"
-            check["explanation"] = "No root data entity"
-            check["total_tests_run"] += 1
-
         # test 1
-        min_meta = ["author", "license", "description"]
-        for meta in min_meta:
-            if not meta in root_data_entity:
+        for meta in minimum_metadata:
+            if not meta in self.ro:
                 missing_metadata.append(meta)
-
-        if not len(self.ro_json["@graph"] ) > 1:
-            missing_metadata.append("at least one resource")
-
 
         if len(missing_metadata) > 0:
             check["status"] = "error"
@@ -119,7 +119,8 @@ class ROCrateFAIRnessCalculator():
         else:
             check["status"] = "ok"
             check["total_passed_tests"] += 1
-            check["explanation"] = "The ro-crate contains the following metadata [author, license, description and at least one resource]"
+            check["explanation"] = f"The ro-crate contains the following metadata {minimum_metadata}"
+
         check["total_tests_run"] += 1
 
         self.fair_output["checks"].append(check)
@@ -128,67 +129,48 @@ class ROCrateFAIRnessCalculator():
         check = {"principle_id": "F3",
                 "category_id" : "Findable",
                 "title"       : "Metadata clearly and explicitly include the identifier of the data they describe",
-                "description" : "This check verifies that the elements described in the ro exist in the directory given (or in their URIs)",
+                "description" : "This check verifies that the hasPart elements exists and are describe in the ro",
                 "total_passed_tests": 0,
                 "total_tests_run"   : 0
                 }
 
-        # test 1
-        all_elements = self.ro_json["@graph"]
-        files_in_dir = [f for f in listdir(self.ro_path) if isfile(join(self.ro_path, f))]
-
+        # test 1. check if the hasParts exist in the directory. if they are urls make a request
         errors_found = []
 
-        for element in all_elements:
-            id = element["@id"]
+        for part in self.ro_parts:
+            part_id = part["@id"]
 
-            if id in files_in_dir:
-                # print("FILE FOUND: ", id)
-                pass
-
-            elif validators.url(id):
-                try:
-                    response = requests.get(id)
-                except:
-                    # print("BAD IRI: ", id)
-                    errors_found.append(f"This IRI has not been found: {id}")
-
+            # checks if the id is a URL
+            if validators.url(part_id):
+                response = requests.get(part_id)
                 if response.status_code < 400:
-                    # print("IRI FOUND: ", id)
-                    pass
+                    print(f"{part_id} exists remotely")
                 else:
-                    # print("IRI NOT FOUND: ", id)
-                    errors_found.append(f"This IRI has not been found: {id}")
-
+                    print(f"{part_id} could not be found")
+                    errors_found.append(f"This IRI could not be found: {part_id}")
+             
+            # The ROCrate library does not allow an id that is not defined. 
+            # So the elements inside hasPart will always be defined
             else:
-                path = join(self.ro_path, id)
-                if isdir(path):
-                    # print("DIR FOUND: ", id)
-                    pass
-                elif isfile(path):
-                    # print("FILE FOUND: ", id)
-                    pass
-                else:
-                    # check if the id was already created:
-                    if self.ro_raw_plain.count(f'"@id": "{id}"') > 1:
-                        # print("ALREADY CREATED ID: ", id)
-                        pass
-                    else:
-                        errors_found.append(f"Unknown id: {id}")
-                        print("ID NOT CREATED: ", id)
+                path = join(self.ro_path, part_id)
+                
+                if not isdir(path) and not isfile(path):
+                    print("UNKOWN: ", part_id)
+                    errors_found.append(f"{part_id} is described but has not been found locally")
 
         if len(errors_found) > 0:
             check["status"] = "error"
             check["explanation"] = errors_found
         else:
             check["status"] = "ok"
-            check["explanation"] = "All element identifiers exist"
+            check["explanation"] = "All element identifiers exists"
             check["total_passed_tests"] += 1
 
         check["total_tests_run"] += 1
         self.fair_output["checks"].append(check)
 
     def evaluate_i2(self):
+        # assume that it is a simple context ( "@context": "https://w3id.org/ro/crate/1.0/context" )
         check = {"principle_id": "I2",
                  "category_id" : "Interoperable",
                  "title"       : "(Meta)data use vocabularies that follow FAIR principles",
@@ -198,97 +180,60 @@ class ROCrateFAIRnessCalculator():
                  }
 
         # test 1
-        keys = []
-        extract_all_values_recursively(self.ro_json["@context"], keys)
         valid_vocab = ["schema.org"]
-
-        invalid_vocab, notknown_vocab = [], []
-
-        for key in keys:
-            # check if the URI of the context belong to a known profiles (schema and w3id)
-            if any(context in key for context in valid_vocab):
-                # check if the URI is available
-                response = requests.get(key)
-                if response.status_code >= 400:
-                    invalid_vocab.append(key)
-            else:
-                notknown_vocab.append(key)
-        check["total_tests_run"] += 2 # one for the known profiles and other for being accessible
-        check["explanation"] = []
-
-        if len(notknown_vocab) == 0:
-            check["total_passed_tests"] += 1
-            check["explanation"].append( f"All the vocabularies are FAIR")
-        else:
-            check["status"] = "error"
-            check["explanation"].append( f"These vocabularies do not belong to {', '.join(valid_vocab)}: {', '.join(notknown_vocab)}")
-
-        if len(invalid_vocab) == 0:
-            check["total_passed_tests"] += 1
-            check["explanation"].append("All the URIs are accessibles")
-        else:
-            check["status"] = "error"
-            check["explanation"].append( f"These URIs are not accessibles: {', '.join(invalid_vocab)}")
-
-        if not "status" in check:
+        
+        # get the vocabulary of the context 
+        context, _ = read_metadata(self.ro_path + Metadata.BASENAME)
+        request = requests.get(context)
+        context_vocab = request.json()["@context"]
+        
+        unfair_vocabs = []
+        
+        # check vocab use in the definitions of the parts (hasPart):
+        for part in self.ro_parts:
+            for key in list(part.keys()):
+                if key[0] != '@':
+                    if not any(vocab in context_vocab[key] for vocab in valid_vocab):
+                        unfair_vocabs.append(context_vocab[key])
+                        print("UNFAIR vocab: ",context_vocab[key])
+                        
+        if len(unfair_vocabs) == 0:
             check["status"] = "ok"
-
-        self.fair_output["checks"].append(check)
-
+            check["explanation"] = "All vocabularies are FAIR"
+            check["total_passed_tests"] += 1
+        else:
+            check["status"] = "error"
+            check["explanation"] = f"This vocabularies are unFAIR: {unfair_vocabs}"
+        check["total_tests_run"] += 1
+        
+        self.fair_output["checks"].append(check)   
+        
+    
     def evaluate_r1_1(self):
         check = {"principle_id": "R1.1",
                 "category_id" : "Reusable",
                 "title"       : "(Meta)data are released with a clear and accessible data usage license",
-                "description" : "This check verifies whether the RO has a licence. It also checks that there is a licence in the entity data of [CreativeWork, Dataset, File]",
+                "description" : "This check verifies whether the RO has a licence. It also checks that there is a licence in RO parts",
                 "total_passed_tests": 0,
                 "total_tests_run"   : 0
                 }
-        check["explanation"] = []
 
         # test 1. Licence in root data entity
-        try:
-            root_data_entity = self.ro.metadata.as_jsonld()
-
-            if "license" in root_data_entity:
-                check["status"] = "ok"
-                check["explanation"].append("The root data entity has a license")
-                check["total_passed_tests"] += 1
-            else:
-                check["status"] = "error"
-                check["explanation"].append("The root data entity has not a license")
-
-        except:
-            check["status"] = "error"
-            check["explanation"].append("No root data entity. Cound not check the license of the RO")
-        check["total_tests_run"] += 1
-
-
-        # test 2. License in data entities
-        all_elements = self.ro_json["@graph"]
-        valid_types = ["CreativeWork", "Dataset", "File"]
-
-        def check_nested_license(element):
-            ''' This function accepts a nested dictionary as argument
-                and iterate over all values of nested dictionaries.
-                It returns True if it finds a key named "license".
-            '''
-            if "license" in element:
-                return True
-
-            for _ , value in element.items():
-                if isinstance(value, dict):
-                    if "license" in value:
-                        return True
-                    else:
-                        check_nested_license(value)
-
-        unlicensed_elements = [element["@id"] for element in all_elements if any(type in element["@type"] for type in valid_types) and not check_nested_license(element)]
-
-        if len(unlicensed_elements) == 0:
+        entities = self.ro_parts + [self.ro_metadata]
+        unlicensed_entities = []
+        
+        for entity in entities:
+            if not "license" in entity:
+                unlicensed_entities.append(entity["@id"])
+        
+        if len(unlicensed_entities) == 0:
+            check["status"] = "ok"
+            check["explanation"] = "The RO and its components are licensed"
             check["total_passed_tests"] += 1
-            check["explanation"].append(f"All the data entities of type {valid_types} have a license")
         else:
-            check["explanation"].append(f"These entities of type {valid_types} have not a license: {' ,'.join(unlicensed_elements)}")
+            check["status"] = "error"
+            check["explanation"] = f"These entities have no licence: {unlicensed_entities}"
+            
         check["total_tests_run"] += 1
 
         self.fair_output["checks"].append(check)
@@ -298,52 +243,56 @@ class ROCrateFAIRnessCalculator():
                  "category_id": "Reusable",
                  "title": "(Meta)data are associated with detailed provenance",
                  "description": "This check verifies that: "
-                    "Dataset entities has an author, datePublished and citation. "
-                    "Files has an author",
+                            "Dataset has an author, datePublished and citation. "
+                            "Files has an author. "
+                            "Ontologies has an author and citation "
+                            "and other types has an author.",
                  "total_passed_tests": 0,
                  "total_tests_run": 0,
                  "explanation" : []
                  }
         
         # test 1
-        all_elements = self.ro_json["@graph"]
-        
-        # remove the root entity data
-        for i, element in enumerate(all_elements):
-            if element["@id"] == self.ro.metadata.as_jsonld()["@id"]:
-                all_elements.pop(i)
-                break
-        
+        all_elements = self.ro_parts + [self.ro_metadata]
         internal_checks = [
             ["Dataset", ["author", "datePublished", "citation"]],
-            ["File", ["author"]]
+            ["File", ["author"]],
+            ["Ontology", ["author", "citation"]]
         ]
-
-        for type_check in internal_checks:
-            for element in all_elements:
-                if element["@type"] == type_check[0]:
-                    tmp_missing_data = []
-                    for key in type_check[1]:
-                        if not key in element:
-                            tmp_missing_data.append(key)
-                    if len(tmp_missing_data) > 0:
-                        check["explanation"].append(f"The {element['@type']} with @id={element['@id']} do not have [{', '.join(tmp_missing_data)}]")        
-       
-        check["total_tests_run"] += 1
-
+        other_checks = ["author"]
+        
+        def add_explanation(element, has_not):
+            check["explanation"].append(f"The {element['@type']} {element['@id']} do not have {', '.join(has_not)}")
+            
+        for element in all_elements: 
+            # is a Dataset/File/Ontology
+            if any(type_check[0] in element["@type"] for type_check in internal_checks):
+               
+                for type_check in internal_checks:
+                    if element["@type"] == type_check[0]:
+                        _, has_not = check_element_has_key(element, type_check[1])
+                        if len(has_not) > 0:
+                            add_explanation(element, has_not)
+                            
+            # is other type
+            else:   
+                _, has_not = check_element_has_key(element, other_checks)
+                if len(has_not) > 0:
+                    add_explanation(element, has_not)
+            
         if len(check["explanation"]) == 0:
+            check["status"] = "ok"
             check["total_passed_tests"] += 1
-            for type_check in internal_checks:
+            for type_check in internal_checks + ["Other", other_checks]:
                  check["explanation"].append(f"All the {type_check[0]} has {', '.join(type_check[1])}")
-
+        else:
+             check["status"] = "error"
+        
+        check["total_tests_run"] += 1
+        
         self.fair_output["checks"].append(check)
 
 
-roFAIR = ROCrateFAIRnessCalculator("example-ro-crate")
-roFAIR.calculate_fairness()
+roFAIR = ROCrateFAIRnessCalculator("ro-example-1/")
+roFAIR.calculate_fairness(aggregation_mode=0)
 roFAIR.save_to_file()
-
-
-
-
-

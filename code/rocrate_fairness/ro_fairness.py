@@ -246,14 +246,11 @@ class ROCrateFAIRnessCalculator():
         self.fair_output["checks"].append(check)
 
     def evaluate_r1_2(self):
+        fields = ["author", "datePublished", "citation"]
         check = {"principle_id": "R1.2",
                  "category_id": "Reusable",
                  "title": "(Meta)data are associated with detailed provenance",
-                 "description": "This check verifies that: "
-                            "Dataset has an author, datePublished and citation. "
-                            "Files has an author. "
-                            "Ontologies has an author and citation "
-                            "and other types has an author.",
+                 "description": f"This check verifies that all elements of the RO have the following fields: {fields}",
                  "total_passed_tests": 0,
                  "total_tests_run": 0,
                  "explanation" : []
@@ -261,37 +258,19 @@ class ROCrateFAIRnessCalculator():
         
         # test 1
         all_elements = self.ro_parts + [self.ro_metadata]
-        internal_checks = [
-            ["Dataset", ["author", "datePublished", "citation"]],
-            ["File", ["author"]],
-            ["Ontology", ["author", "citation"]]
-        ]
-        other_checks = ["author"]
         
         def add_explanation(element, has_not):
-            check["explanation"].append(f"The {element['@type']} {element['@id']} do not have {', '.join(has_not)}")
+            check["explanation"].append(f"{element['@id']} do not have {', '.join(has_not)}")
             
         for element in all_elements: 
-            # is a Dataset/File/Ontology
-            if any(type_check[0] in element["@type"] for type_check in internal_checks):
-               
-                for type_check in internal_checks:
-                    if element["@type"] == type_check[0]:
-                        _, has_not = check_element_has_key(element, type_check[1])
-                        if len(has_not) > 0:
-                            add_explanation(element, has_not)
-                            
-            # is other type
-            else:   
-                _, has_not = check_element_has_key(element, other_checks)
-                if len(has_not) > 0:
-                    add_explanation(element, has_not)
+            _, has_not = check_element_has_key(element, fields)
+            if len(has_not) > 0:
+                add_explanation(element, has_not)
+     
             
         if len(check["explanation"]) == 0:
             check["status"] = "ok"
             check["total_passed_tests"] += 1
-            for type_check in internal_checks + ["Other", other_checks]:
-                 check["explanation"].append(f"All the {type_check[0]} has {', '.join(type_check[1])}")
         else:
              check["status"] = "error"
         

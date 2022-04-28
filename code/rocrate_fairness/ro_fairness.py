@@ -29,7 +29,6 @@ class ROCrateFAIRnessCalculator():
         self.evaluate_f1()
         self.evaluate_f2()
         self.evaluate_f3()
-        self.evaluate_i2()
         self.evaluate_r1_1()
         self.evaluate_r1_2()
         self.calculate_fair_score(aggregation_mode)
@@ -177,7 +176,7 @@ class ROCrateFAIRnessCalculator():
         check["total_tests_run"] += 1
         self.fair_output["checks"].append(check)
 
-    def evaluate_i2(self):
+    def evaluate_i2(self): # not used ATM
         # assume that it is a simple context ( "@context": "https://w3id.org/ro/crate/1.0/context" )
         check = {"principle_id": "I2",
                  "category_id" : "Interoperable",

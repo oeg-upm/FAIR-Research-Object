@@ -33,6 +33,7 @@ class ROCrateFAIRnessCalculator():
         self.evaluate_r1_1()
         self.evaluate_r1_2()
         self.calculate_fair_score(aggregation_mode)
+        return self.fair_output
         
     def save_to_file(self):
         with open('ro-crate-fairness.json', 'w') as f:
@@ -41,7 +42,13 @@ class ROCrateFAIRnessCalculator():
     def add_header_to_file(self):
         # add header info to the final output
         self.fair_output["rocrate_path"] = self.ro_path + Metadata.BASENAME
-        
+    
+    def get_identifier(self):
+        if "identifier" in self.ro_metadata:
+            return self.ro_metadata["identifier"]
+        else:
+            return self.ro_path + Metadata.BASENAME
+            
     def calculate_fair_score(self, aggregation_mode): # Proof of concept. TODO:
         
         if aggregation_mode == 0:
@@ -144,9 +151,10 @@ class ROCrateFAIRnessCalculator():
             if validators.url(part_id):
                 response = requests.get(part_id)
                 if response.status_code < 400:
-                    print(f"{part_id} exists remotely")
+                    # print(f"{part_id} exists remotely")
+                    pass
                 else:
-                    print(f"{part_id} could not be found")
+                    # print(f"{part_id} could not be found")
                     errors_found.append(f"This IRI could not be found: {part_id}")
              
             # The ROCrate library does not allow an id that is not defined. 
@@ -155,7 +163,7 @@ class ROCrateFAIRnessCalculator():
                 path = join(self.ro_path, part_id)
                 
                 if not isdir(path) and not isfile(path):
-                    print("UNKOWN: ", part_id)
+                    # print("UNKOWN: ", part_id)
                     errors_found.append(f"{part_id} is described but has not been found locally")
 
         if len(errors_found) > 0:
@@ -195,7 +203,7 @@ class ROCrateFAIRnessCalculator():
                 if key[0] != '@':
                     if not any(vocab in context_vocab[key] for vocab in valid_vocab):
                         unfair_vocabs.append(context_vocab[key])
-                        print("UNFAIR vocab: ",context_vocab[key])
+                        # print("UNFAIR vocab: ",context_vocab[key])
                         
         if len(unfair_vocabs) == 0:
             check["status"] = "ok"
@@ -293,6 +301,6 @@ class ROCrateFAIRnessCalculator():
         self.fair_output["checks"].append(check)
 
 
-roFAIR = ROCrateFAIRnessCalculator("ro-example-1/")
-roFAIR.calculate_fairness(aggregation_mode=0)
-roFAIR.save_to_file()
+# roFAIR = ROCrateFAIRnessCalculator("ro-example-1/")
+# roFAIR.calculate_fairness(aggregation_mode=0)
+# roFAIR.save_to_file()

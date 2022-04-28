@@ -10,6 +10,7 @@
             "conformsTo": {
                 "@id": "https://w3id.org/ro/crate/1.1"
             },
+            "identifier": "https://google.es",
             "description": "RO-Crate Metadata File Descriptor (this file)"
         },
         {

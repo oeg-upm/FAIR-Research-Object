@@ -27,7 +27,8 @@ class SoftwareFAIRnessCalculator:
         # TODO: calculate fairness
         print("final output:")
         print(self.fair_output)
-
+        return self.fair_output
+    
     def evaluate_f1(self):
         check = {"principle_id": "F1",
                  "category_id" : "Findable",
@@ -166,3 +167,7 @@ class SoftwareFAIRnessCalculator:
             self.fair_output["license"] = self.somef_output["license"]["excerpt"]["url"]
         except:
             self.fair_output["license"] = ""
+
+
+# a = SoftwareFAIRnessCalculator("https://github.com/BenitezDev/CluedoApp")
+# a.calculate_fairness()

@@ -28,7 +28,10 @@
             "description": "Develop a tool to which you pass basic information of a project or a research article (such as the datasets, software, people who have been involved, bibliograpy...) and generates two files with structured information with the intention of easing the readability for machines and people. One file is a webpage with all the relevant information and the other one is a Research Object.",
             "hasPart": [
                 {
-                    "@id": "#ya2ro"
+                    "@id": "https://w3id.org/example"
+                },
+                {
+                    "@id": "https://doi.org/10.1594/PANGAEA.908011"
                 },
                 {
                     "@id": "#somef"
@@ -59,8 +62,8 @@
             ]
         },
         {
-            "@id": "#ya2ro",
-            "@type": "SoftwareApplication",
+            "@id": "https://doi.org/10.1594/PANGAEA.908011",
+            "@type": "Dataset",
             "description": "<p>Python package designed to create Research Objects out of simple YAML files. Given the dataset dois, source code links and author DOIs, ya2ro will generate an HTML representation of the aggregated contents, as well as an RO-Crate with the machine-readable representation of the Research Object</p>\n",
             "installUrl": "https://github.com/oeg-upm/ya2ro"
         },
@@ -74,6 +77,11 @@
             "@id": "index-en.html",
             "@type": "WebPage",
             "name": "HTML representation of this data."
+        },
+        {
+            "@id": "https://w3id.org/example",
+            "@type": "Ontology",
+            "description": "test ontology"
         }
     ]
 }

@@ -23,6 +23,7 @@ class ROCrateFAIRnessCalculator():
         
         self.fair_output = {}
         self.add_header_to_file()
+        self.fair_output["score"]= {}
         self.fair_output["checks"] = []
         
     def calculate_fairness(self, aggregation_mode=0):
@@ -47,6 +48,77 @@ class ROCrateFAIRnessCalculator():
             return self.ro_metadata["identifier"]
         else:
             return self.ro_path + Metadata.BASENAME
+    
+    def get_element_basic_checks(self, element_id):
+        checks = []
+        element = self.rocrate.dereference(element_id).as_jsonld()
+        # TODO: refactor
+        # f2
+        minimum_metadata = ["author", "license", "description"]
+        check = {"principle_id": "F2",
+                "category_id" : "Findable",
+                "title"       : "Data are described with rich metadata",
+                "description" : f"This check verifies if the the following minimum metadata {minimum_metadata} are present in the element",
+                "total_passed_tests": 0,
+                "total_tests_run"   : 0
+                }
+        missing_metadata_error = "Missing the following metadata: "
+        minimum_metadata = ["author", "license", "description"]
+        missing_metadata = []
+        for meta in minimum_metadata:
+            if not meta in element:
+                missing_metadata.append(meta)
+        if len(missing_metadata) > 0:
+            check["status"] = "error"
+            missing_metadata_error += ", ".join(missing_metadata)
+            check["explanation"] = missing_metadata_error
+        else:
+            check["status"] = "ok"
+            check["total_passed_tests"] += 1
+            check["explanation"] = f"This element has the following metadata {minimum_metadata}"
+        check["total_tests_run"] += 1
+        checks.append(check)
+        
+        # r1.1
+        check = {"principle_id": "R1.1",
+                "category_id" : "Reusable",
+                "title"       : "(Meta)data are released with a clear and accessible data usage license",
+                "description" : "This check verifies whether the element has a licence",
+                "total_passed_tests": 0,
+                "total_tests_run"   : 0
+                }
+        if not "license" in element:
+            check["status"] = "error"
+            check["explanation"] = f"This element have no licence"
+        else:
+            check["status"] = "ok"
+            check["explanation"] = "This element has a license"
+            check["total_passed_tests"] += 1
+        check["total_tests_run"] += 1
+        checks.append(check)
+
+        # r1.2
+        fields = ["author", "datePublished", "citation"]
+        check = {"principle_id": "R1.2",
+                 "category_id": "Reusable",
+                 "title": "(Meta)data are associated with detailed provenance",
+                 "description": f"This check verifies that the element has the following fields: {fields}",
+                 "total_passed_tests": 0,
+                 "total_tests_run": 0,
+                 "explanation" : []
+                 }
+        
+        _, has_not = check_element_has_key(element, fields)
+        if len(has_not) > 0:
+            check["explanation"] = f"This element has no :{', '.join(has_not)}"
+            check["status"] = "error"
+        else:
+            check["status"] = "ok"
+            check["explanation"] = f"This element has: {fields}"
+            check["total_passed_tests"] += 1
+        check["total_tests_run"]+=1
+        checks.append(check)
+        return checks
             
     def calculate_fair_score(self, aggregation_mode): # Proof of concept. TODO:
         
@@ -282,3 +354,5 @@ class ROCrateFAIRnessCalculator():
 # roFAIR = ROCrateFAIRnessCalculator("ro-example-1/")
 # roFAIR.calculate_fairness(aggregation_mode=0)
 # roFAIR.save_to_file()
+
+# print(roFAIR.get_element_fairness("https://raw.githubusercontent.com/nf-core/chipseq/1.2.1/main.nf"))

@@ -1,6 +1,7 @@
+from joblib import PrintTime
 from rocrate.rocrate import ROCrate
 from rocrate_fairness.ro_fairness import ROCrateFAIRnessCalculator
-# from fuji_wrapper.fujiwrapper import FujiWrapper
+from fuji_wrapper.fujiwrapper import FujiWrapper, FujiWrapperv2
 from someFAIR.somefFAIR import SoftwareFAIRnessCalculator
 from foops_wrapper.foopswrapper import FoopsWrapper
 import json
@@ -14,63 +15,122 @@ class ROFairnessCalculator():
         self.rocrate = ROCrate(ro_path)
         self.ro          = self.rocrate.dereference("./").as_jsonld() # ro itself
         self.ro_parts    = [self.rocrate.dereference(part["@id"]).as_jsonld() for part in self.ro["hasPart"]] # all the parts of the ro
-        self.output = {}
+        self.ro_calculator = ROCrateFAIRnessCalculator(self.ro_path)        
+        self.output = {"components":[]}
     
     def save_to_file(self):
             with open('ro-full-fairness.json', 'w') as f:
-                json.dump(self.output, f, sort_keys=True, indent=4)
-            
-    def extract_ro(self):
-        ro_calculator = ROCrateFAIRnessCalculator(self.ro_path)        
-        ro_output = ro_calculator.calculate_fairness()
+                json.dump(self.output, f, indent=4)
+    
+    def create_component_output(self, name, identifier, type, tool_used, info=""):
+        element = { 
+            "name":name,
+            "identifier": identifier,
+            "type":type, 
+            "tool-used":tool_used,
+        }
+        if info:
+            element["information"] = info
+        element["checks"] = []
+        return element
         
-        # this is the common header. TODO: extract to function
-        ro_element = { 
-            "name":ro_output["rocrate_path"],
-            "identifier": ro_calculator.get_identifier(),
-            "type":"ro-crate", 
-            "tool-used":"ro-crate-FAIR"}
-        ro_element["checks"] = ro_output["checks"]
-        self.output["components"] = [ro_element]
+    
+    def extract_ro(self):     
+        ro_output = self.ro_calculator.calculate_fairness()
+        name = ro_output["rocrate_path"]
+        identifier = self.ro_calculator.get_identifier()
+        
+        element = self.create_component_output(name, identifier, "ro-crate", "ro-crate-FAIR")
+        
+        element["checks"] = ro_output["checks"]
+        
+        self.output["components"].append(element)
     
         
     def calculate_fairness(self):
         self.output["components"] = []
-    
+        software_valid_types = ["SoftwareSourceCode", "installUrl", "codeRepository"]
         self.extract_ro()
         
         for part in self.ro_parts:
             type = part["@type"]
             if type == "Dataset":
-                break
-                uri = part["identifier"] # identifier?? @id???
-                fuji = FujiWrapper()
-                fuji_results = fuji.get_metric(uri)
-                print("F-UJI results:", fuji_results)
-            
+                if validators.url(part["@id"]):
+                    # TODO: unify FUJI output
+                    
+                    # fuji = FujiWrapperv2()
+                    # fuji_results = fuji.get_metrics(part["@id"])
+                    pass
+                
+                else:
+                    # Using the basic metadata analyzer
+                    element = self.create_component_output(part["name"] if "name" in part else None,
+                                                           part["@id"], 
+                                                           type, 
+                                                           "ro-crate-FAIR",
+                                                           "These checks have only been done by checking their metadata in the RO")
+                    
+                    element["checks"] = self.ro_calculator.get_element_basic_checks(part["@id"])
+                    self.output["components"].append(element)
+                
             elif type == "SoftwareApplication":
-                repo_url = part["installUrl"] # only this?
-                sw = SoftwareFAIRnessCalculator(repo_url)
-                print("SOMEEEEEEEEEEEEF ",sw.calculate_fairness())
-                # TODO
+                if any(vocab in part for vocab in software_valid_types):
+                    
+                    for vocab in software_valid_types:
+                        if vocab in part:
+                            repo_url_vocab = vocab
+                            break
+                    
+                    sw = SoftwareFAIRnessCalculator(part[repo_url_vocab])
+                    sw.calculate_fairness()
+                    
+                    element = self.create_component_output(sw.get_name(),
+                                                           sw.get_identifier(), 
+                                                           type, 
+                                                           "somef-fairness")
+                    element["checks"] = sw.get_checks()
+                    self.output["components"].append(element)                                      
+
+                else:
+                    # Using the basic metadata analyzer
+                    element = self.create_component_output( part["name"]       if "name"       in part else None,
+                                                            part["identifier"] if "identifier" in part else None, 
+                                                            type, 
+                                                            "ro-crate-FAIR",
+                                                            "These checks have only been done by checking their metadata in the RO")
+                    
+                    element["checks"] = self.ro_calculator.get_element_basic_checks(part["@id"])
+                    self.output["components"].append(element)
                 
             elif type == "Ontology":
-                onto_uri = part["@id"] # id?? , identifier?
+                onto_uri = part["@id"]
                 onto = FoopsWrapper(onto_uri)
-                onto.get_metric()
-                print("FOPPPPPPPPPPPPS ", onto.get_metric() )
+                element = self.create_component_output( onto.get_ontology_title(),
+                                                        onto.get_ontology_URI(), 
+                                                        type, 
+                                                        "foops")
+                element["checks"] = onto.get_ontology_checks()
+                self.output["components"].append(element)
                 
             else:
-                # fuji o ro
-                if validators.url(part["@id"]): # id? identifier?
-                    # fuji = FujiWrapper()
-                    # fuji_results = fuji.get_metric(part["@id"])
+                
+                if validators.url(part["@id"]):
+                    # fuji = FujiWrapperv2()
+                    # fuji_results = fuji.get_metrics(part["@id"])
                     pass
                 else:
-                # evaluate fairness checking author, license, identifier, description...
-                    pass
+                    # Using the basic metadata analyzer
+                    element = self.create_component_output( part["name"]       if "name"       in part else None,
+                                                            part["identifier"] if "identifier" in part else None, 
+                                                            type, 
+                                                            "ro-crate-FAIR",
+                                                            "These checks have only been done by checking their metadata in the RO")
+                    
+                    element["checks"] = self.ro_calculator.get_element_basic_checks(part["@id"])
+                    self.output["components"].append(element)
+                    
                 
 ro_fairness = ROFairnessCalculator("ro-example-2/")
-ro_fairness.extract_ro()
-ro_fairness.save_to_file()
+
 ro_fairness.calculate_fairness()
+ro_fairness.save_to_file()

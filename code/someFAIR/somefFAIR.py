@@ -9,7 +9,6 @@ class SoftwareFAIRnessCalculator:
         # store the somef output and reuse it if needed
         if not os.path.exists(self.tmp_file):
             os.system(f"somef describe -r {self.repoURL} -o {self.generate_temp_file_name()} -t 0.8")            
-            # self.read_temp_file()
 
         self.somef_output = self.read_temp_file()
 
@@ -28,6 +27,15 @@ class SoftwareFAIRnessCalculator:
         print("final output:")
         print(self.fair_output)
         return self.fair_output
+    
+    def get_name(self):
+        return self.fair_output["software_title"]
+    
+    def get_identifier(self):
+        return self.fair_output["software_repo_path"]
+    
+    def get_checks(self):
+        return self.fair_output["checks"]
     
     def evaluate_f1(self):
         check = {"principle_id": "F1",
@@ -167,7 +175,3 @@ class SoftwareFAIRnessCalculator:
             self.fair_output["license"] = self.somef_output["license"]["excerpt"]["url"]
         except:
             self.fair_output["license"] = ""
-
-
-# a = SoftwareFAIRnessCalculator("https://github.com/BenitezDev/CluedoApp")
-# a.calculate_fairness()

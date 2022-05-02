@@ -4,6 +4,34 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 import time, os, json, tempfile
 
+import requests
+from requests.structures import CaseInsensitiveDict
+
+class FujiWrapperv2:
+	def __init__(self):
+		pass
+	def get_metrics(self, url):
+		fuji_api = "http://localhost:1071/fuji/api/v1/evaluate"
+		headers = CaseInsensitiveDict()
+		headers["accept"] = "application/json"
+		headers["Authorization"] = "Basic bWFydmVsOndvbmRlcndvbWFu"
+		headers["Content-Type"] = "application/json"
+
+		data = ('{'
+      			'"metadata_service_endpoint": "http://ws.pangaea.de/oai/provider",'
+				'"metadata_service_type": "oai_pmh",'
+    			f'"object_identifier": \"{url}\",'
+    			'"test_debug": true,'
+       			'"use_datacite": true'
+				"}")
+  
+
+		resp = requests.post(fuji_api, headers=headers, data=data)
+		
+		print(resp.json())
+
+
+    
 class FujiWrapper:
 
 	def __init__(self):
@@ -21,7 +49,7 @@ class FujiWrapper:
 		chrome_options.add_experimental_option("prefs", prefs)
 
 		# Provide the path of chromedriver present on your system.
-		driver = webdriver.Chrome(executable_path="chromedriver",
+		driver = webdriver.Chrome(executable_path=r"C:/chromedriver.exe",
 								  chrome_options=chrome_options)
 		# driver.minimize_window()
 		return driver
@@ -77,18 +105,6 @@ class FujiWrapper:
 		finally:
 			self.driver.quit()
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+ 
+# roFAIR = FujiWrapperv2()
+# roFAIR.get_metrics("https://doi.org/10.1594/PANGAEA.908011")

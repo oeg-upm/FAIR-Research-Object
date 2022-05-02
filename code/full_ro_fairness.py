@@ -53,15 +53,18 @@ class ROFairnessCalculator():
         self.extract_ro()
         
         for part in self.ro_parts:
+            # TODO: a bit of refactor
             type = part["@type"]
             if type == "Dataset":
                 if validators.url(part["@id"]):
-                    # TODO: unify FUJI output
-                    
-                    # fuji = FujiWrapperv2()
-                    # fuji_results = fuji.get_metrics(part["@id"])
-                    pass
-                
+                    fuji = FujiWrapperv2(part["@id"])
+                    element = self.create_component_output(part["name"] if "name" in part else None,
+                                                           fuji.get_identifier(), 
+                                                           type, 
+                                                           "F-uji")
+                    element["checks"] = fuji.get_checks()
+                    self.output["components"].append(element)    
+
                 else:
                     # Using the basic metadata analyzer
                     element = self.create_component_output(part["name"] if "name" in part else None,
@@ -115,9 +118,14 @@ class ROFairnessCalculator():
             else:
                 
                 if validators.url(part["@id"]):
-                    # fuji = FujiWrapperv2()
-                    # fuji_results = fuji.get_metrics(part["@id"])
-                    pass
+                    fuji = FujiWrapperv2(part["@id"])
+                    element = self.create_component_output(part["name"] if "name" in part else None,
+                                                           fuji.get_identifier(), 
+                                                           type, 
+                                                           "F-uji")
+                    element["checks"] = fuji.get_checks()
+                    self.output["components"].append(element)    
+                    
                 else:
                     # Using the basic metadata analyzer
                     element = self.create_component_output( part["name"]       if "name"       in part else None,

@@ -323,6 +323,219 @@
             ]
         },
         {
+            "name": null,
+            "identifier": "https://doi.org/10.1594/PANGAEA.908011/",
+            "type": "Dataset",
+            "tool-used": "F-uji",
+            "checks": [
+                {
+                    "principle_id": "F1.1",
+                    "category_id": "Findable",
+                    "status": "error",
+                    "total_passed_tests": 1,
+                    "total_tests_run": 2,
+                    "title": "Data is assigned a globally unique identifier.",
+                    "explanation": [
+                        "PASS: Identifier is resolvable and follows a defined unique identifier syntax (IRI, URL)",
+                        "FAIL: Identifier is not resolvable but follows an UUID or HASH type syntax"
+                    ]
+                },
+                {
+                    "principle_id": "F1.2",
+                    "category_id": "Findable",
+                    "status": "error",
+                    "total_passed_tests": 1,
+                    "total_tests_run": 2,
+                    "title": "Data is assigned a persistent identifier.",
+                    "explanation": [
+                        "PASS: Identifier follows a defined persistent identifier syntax",
+                        "FAIL: Persistent identifier is resolvable"
+                    ]
+                },
+                {
+                    "principle_id": "F2.1",
+                    "category_id": "Findable",
+                    "status": "error",
+                    "total_passed_tests": 0,
+                    "total_tests_run": 7,
+                    "title": "Metadata includes descriptive core elements (creator, title, data identifier, publisher, publication date, summary and keywords) to support data findability.",
+                    "explanation": [
+                        "FAIL: Metadata has been made available via common web methods",
+                        "FAIL: Metadata is embedded in the landing page XHTML/HTML code",
+                        "FAIL: Metadata is accessible through content negotiation",
+                        "FAIL: Metadata is accessible via typed links",
+                        "FAIL: Metadata is accessible via signposting links",
+                        "FAIL: Core data citation metadata is available",
+                        "FAIL: Core descriptive metadata is available"
+                    ]
+                },
+                {
+                    "principle_id": "F3.1",
+                    "category_id": "Findable",
+                    "status": "error",
+                    "total_passed_tests": 0,
+                    "total_tests_run": 2,
+                    "title": "Metadata includes the identifier of the data it describes.",
+                    "explanation": [
+                        "FAIL: Metadata contains data content related information (file name, size, type)",
+                        "FAIL: Metadata contains a PID or URL which indicates the location of the downloadable data content"
+                    ]
+                },
+                {
+                    "principle_id": "F4.1",
+                    "category_id": "Findable",
+                    "status": "error",
+                    "total_passed_tests": 1,
+                    "total_tests_run": 2,
+                    "title": "Metadata is offered in such a way that it can be retrieved programmatically.",
+                    "explanation": [
+                        "FAIL: Metadata is given in a way major search engines can ingest it for their catalogues (JSON-LD, Dublin Core, RDFa)",
+                        "PASS: Metadata is registered in major research data registries (DataCite)"
+                    ]
+                },
+                {
+                    "principle_id": "A1.1",
+                    "category_id": "Accessible",
+                    "status": "error",
+                    "total_passed_tests": 0,
+                    "total_tests_run": 3,
+                    "title": "Metadata contains access level and access conditions of the data.",
+                    "explanation": [
+                        "FAIL: Information about access restrictions or rights can be identified in metadata",
+                        "FAIL: Data access information is machine readable",
+                        "FAIL: Data access information is indicated by (not machine readable) standard terms"
+                    ]
+                },
+                {
+                    "principle_id": "I1.1",
+                    "category_id": "Interoperable",
+                    "status": "error",
+                    "total_passed_tests": 0,
+                    "total_tests_run": 2,
+                    "title": "Metadata is represented using a formal knowledge representation language.",
+                    "explanation": [
+                        "FAIL: Parsable, structured metadata (JSON-LD, RDFa) is embedded in the landing page XHTML/HTML code",
+                        "FAIL: Parsable, graph data (RDF, JSON-LD) is accessible through content negotiation, typed links or sparql endpoint"
+                    ]
+                },
+                {
+                    "principle_id": "I1.2",
+                    "category_id": "Interoperable",
+                    "status": "error",
+                    "total_passed_tests": 0,
+                    "total_tests_run": 2,
+                    "title": "Metadata uses semantic resources",
+                    "explanation": [
+                        "FAIL: Vocabulary namespace URIs can be identified in metadata",
+                        "FAIL: Namespaces of known semantic resources can be identified in metadata"
+                    ]
+                },
+                {
+                    "principle_id": "I3.1",
+                    "category_id": "Interoperable",
+                    "status": "error",
+                    "total_passed_tests": 0,
+                    "total_tests_run": 2,
+                    "title": "Metadata includes links between the data and its related entities.",
+                    "explanation": [
+                        "FAIL: Related resources are explicitly mentioned in metadata",
+                        "FAIL: Related resources are indicated by machine readable links or identifiers"
+                    ]
+                },
+                {
+                    "principle_id": "R1.1",
+                    "category_id": "Reusable",
+                    "status": "error",
+                    "total_passed_tests": 0,
+                    "total_tests_run": 8,
+                    "title": "Metadata specifies the content of the data.",
+                    "explanation": [
+                        "FAIL: Minimal information about available data content is given in metadata",
+                        "FAIL: Resource type (e.g. dataset) is given in metadata",
+                        "FAIL: Information about data content (e.g. links) is given in metadata",
+                        "FAIL: Verifiable data descriptors (file info, measured variables or observation types) are specified in metadata",
+                        "FAIL: File size and type information are specified in metadata",
+                        "FAIL: Measured variables or observation types are specified in metadata",
+                        "FAIL: Data content matches file type and size specified in metadata",
+                        "FAIL: Data content matches measured variables or observation types specified in metadata"
+                    ]
+                },
+                {
+                    "principle_id": "R1.1.1",
+                    "category_id": "Reusable",
+                    "status": "error",
+                    "total_passed_tests": 0,
+                    "total_tests_run": 2,
+                    "title": "Metadata includes license information under which data can be reused.",
+                    "explanation": [
+                        "FAIL: Licence information is given in an appropriate metadata element",
+                        "FAIL: Recognized licence is valid and registered at SPDX"
+                    ]
+                },
+                {
+                    "principle_id": "R1.2.1",
+                    "category_id": "Reusable",
+                    "status": "error",
+                    "total_passed_tests": 0,
+                    "total_tests_run": 2,
+                    "title": "Metadata includes provenance information about data creation or generation.",
+                    "explanation": [
+                        "FAIL: Metadata contains elements which hold provenance information and can be mapped to PROV",
+                        "FAIL: Metadata contains provenance information using formal provenance ontologies (PROV-O)"
+                    ]
+                },
+                {
+                    "principle_id": "R1.3.1",
+                    "category_id": "Reusable",
+                    "status": "error",
+                    "total_passed_tests": 0,
+                    "total_tests_run": 3,
+                    "title": "Metadata follows a standard recommended by the target research community of the data.",
+                    "explanation": [
+                        "FAIL: Community specific metadata standard is detected using namespaces or schemas found in provided metadata or metadata services outputs",
+                        "FAIL: Community specific metadata standard is listed in the re3data record of the responsible repository",
+                        "FAIL: Multidisciplinary but community endorsed metadata (RDA Metadata Standards Catalog) standard is listed in the re3data record or detected by namespace"
+                    ]
+                },
+                {
+                    "principle_id": "R1.3.2",
+                    "category_id": "Reusable",
+                    "status": "error",
+                    "total_passed_tests": 0,
+                    "total_tests_run": 4,
+                    "title": "Data is available in a file format recommended by the target research community.",
+                    "explanation": [
+                        "FAIL: The format of a data file given in the metadata is listed in the long term file formats, open file formats or scientific file formats controlled list",
+                        "FAIL: The format of the data file is an open format",
+                        "FAIL: The format of the data file is a long term format",
+                        "FAIL: The format of the data file is a scientific format"
+                    ]
+                },
+                {
+                    "principle_id": "A1.3",
+                    "category_id": "Accessible",
+                    "status": "error",
+                    "total_passed_tests": 0,
+                    "total_tests_run": 1,
+                    "title": "Data is accessible through a standardized communication protocol.",
+                    "explanation": [
+                        "FAIL: Metadata includes a resolvable link to data based on standardized web communication protocols."
+                    ]
+                },
+                {
+                    "principle_id": "A1.2",
+                    "category_id": "Accessible",
+                    "status": "error",
+                    "total_passed_tests": 0,
+                    "total_tests_run": 1,
+                    "title": "Metadata is accessible through a standardized communication protocol.",
+                    "explanation": [
+                        "FAIL: Landing page link is based on standardized web communication protocols."
+                    ]
+                }
+            ]
+        },
+        {
             "name": "Software Metadata Extraction Framework (SOMEF)",
             "identifier": "https://github.com/KnowledgeCaptureAndDiscovery/somef/",
             "type": "SoftwareApplication",

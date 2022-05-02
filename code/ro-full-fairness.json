@@ -71,7 +71,7 @@
             "name": "The example ontology",
             "identifier": "https://w3id.org/example",
             "type": "Ontology",
-            "tool-used": "foops",
+            "tool-used": "foops + ro-metadata",
             "checks": [
                 {
                     "principle_id": "A1",
@@ -319,6 +319,36 @@
                     "description": "This check verifies if the ontology URI is equal to the ontology ID",
                     "total_passed_tests": 1,
                     "total_tests_run": 1
+                },
+                {
+                    "principle_id": "F2",
+                    "category_id": "Findable",
+                    "title": "Data are described with rich metadata",
+                    "description": "This check verifies if the the following minimum metadata ['author', 'license', 'description'] are present in the reserch object",
+                    "total_passed_tests": 0,
+                    "total_tests_run": 1,
+                    "status": "error",
+                    "explanation": "Missing the following metadata: author, license"
+                },
+                {
+                    "principle_id": "R1.1",
+                    "category_id": "Reusable",
+                    "title": "(Meta)data are released with a clear and accessible data usage license",
+                    "description": "This check verifies whether the element in the reserch object has a licence",
+                    "total_passed_tests": 0,
+                    "total_tests_run": 1,
+                    "status": "error",
+                    "explanation": "This element have no licence"
+                },
+                {
+                    "principle_id": "R1.2",
+                    "category_id": "Reusable",
+                    "title": "(Meta)data are associated with detailed provenance",
+                    "description": "This check verifies that the element in the reserch object has the following fields: ['author', 'datePublished', 'citation']",
+                    "total_passed_tests": 0,
+                    "total_tests_run": 1,
+                    "explanation": "This element has no :author, datePublished, citation",
+                    "status": "error"
                 }
             ]
         },
@@ -326,7 +356,7 @@
             "name": null,
             "identifier": "https://doi.org/10.1594/PANGAEA.908011/",
             "type": "Dataset",
-            "tool-used": "F-uji",
+            "tool-used": "F-uji + ro-metadata",
             "checks": [
                 {
                     "principle_id": "F1.1",
@@ -532,6 +562,36 @@
                     "explanation": [
                         "FAIL: Landing page link is based on standardized web communication protocols."
                     ]
+                },
+                {
+                    "principle_id": "F2",
+                    "category_id": "Findable",
+                    "title": "Data are described with rich metadata",
+                    "description": "This check verifies if the the following minimum metadata ['author', 'license', 'description'] are present in the reserch object",
+                    "total_passed_tests": 0,
+                    "total_tests_run": 1,
+                    "status": "error",
+                    "explanation": "Missing the following metadata: author, license"
+                },
+                {
+                    "principle_id": "R1.1",
+                    "category_id": "Reusable",
+                    "title": "(Meta)data are released with a clear and accessible data usage license",
+                    "description": "This check verifies whether the element in the reserch object has a licence",
+                    "total_passed_tests": 0,
+                    "total_tests_run": 1,
+                    "status": "error",
+                    "explanation": "This element have no licence"
+                },
+                {
+                    "principle_id": "R1.2",
+                    "category_id": "Reusable",
+                    "title": "(Meta)data are associated with detailed provenance",
+                    "description": "This check verifies that the element in the reserch object has the following fields: ['author', 'datePublished', 'citation']",
+                    "total_passed_tests": 0,
+                    "total_tests_run": 1,
+                    "explanation": "This element has no :author, datePublished, citation",
+                    "status": "error"
                 }
             ]
         },
@@ -539,7 +599,7 @@
             "name": "Software Metadata Extraction Framework (SOMEF)",
             "identifier": "https://github.com/KnowledgeCaptureAndDiscovery/somef/",
             "type": "SoftwareApplication",
-            "tool-used": "somef-fairness",
+            "tool-used": "somef-fairness + ro-metadata",
             "checks": [
                 {
                     "principle_id": "F1",
@@ -570,6 +630,36 @@
                     "total_tests_run": 1,
                     "status": "ok",
                     "explanation": "The software contains the following metadata [title, description, license, installation instructions, requirements, creator, creationDate]"
+                },
+                {
+                    "principle_id": "F2",
+                    "category_id": "Findable",
+                    "title": "Data are described with rich metadata",
+                    "description": "This check verifies if the the following minimum metadata ['author', 'license', 'description'] are present in the reserch object",
+                    "total_passed_tests": 0,
+                    "total_tests_run": 1,
+                    "status": "error",
+                    "explanation": "Missing the following metadata: author, license"
+                },
+                {
+                    "principle_id": "R1.1",
+                    "category_id": "Reusable",
+                    "title": "(Meta)data are released with a clear and accessible data usage license",
+                    "description": "This check verifies whether the element in the reserch object has a licence",
+                    "total_passed_tests": 0,
+                    "total_tests_run": 1,
+                    "status": "error",
+                    "explanation": "This element have no licence"
+                },
+                {
+                    "principle_id": "R1.2",
+                    "category_id": "Reusable",
+                    "title": "(Meta)data are associated with detailed provenance",
+                    "description": "This check verifies that the element in the reserch object has the following fields: ['author', 'datePublished', 'citation']",
+                    "total_passed_tests": 0,
+                    "total_tests_run": 1,
+                    "explanation": "This element has no :author, datePublished, citation",
+                    "status": "error"
                 }
             ]
         },
@@ -584,7 +674,7 @@
                     "principle_id": "F2",
                     "category_id": "Findable",
                     "title": "Data are described with rich metadata",
-                    "description": "This check verifies if the the following minimum metadata ['author', 'license', 'description'] are present in the element",
+                    "description": "This check verifies if the the following minimum metadata ['author', 'license', 'description'] are present in the reserch object",
                     "total_passed_tests": 0,
                     "total_tests_run": 1,
                     "status": "error",
@@ -594,7 +684,7 @@
                     "principle_id": "R1.1",
                     "category_id": "Reusable",
                     "title": "(Meta)data are released with a clear and accessible data usage license",
-                    "description": "This check verifies whether the element has a licence",
+                    "description": "This check verifies whether the element in the reserch object has a licence",
                     "total_passed_tests": 0,
                     "total_tests_run": 1,
                     "status": "error",
@@ -604,7 +694,7 @@
                     "principle_id": "R1.2",
                     "category_id": "Reusable",
                     "title": "(Meta)data are associated with detailed provenance",
-                    "description": "This check verifies that the element has the following fields: ['author', 'datePublished', 'citation']",
+                    "description": "This check verifies that the element in the reserch object has the following fields: ['author', 'datePublished', 'citation']",
                     "total_passed_tests": 0,
                     "total_tests_run": 1,
                     "explanation": "This element has no :author, datePublished, citation",

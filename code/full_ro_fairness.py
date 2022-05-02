@@ -46,8 +46,14 @@ class ROFairnessCalculator():
         
         self.output["components"].append(element)
     
+    def __add_ro_metadata_checks(self, element, element_id):
+        element["tool-used"] += " + ro-metadata"
+        extra_checks = self.ro_calculator.get_element_basic_checks(element_id)
         
-    def calculate_fairness(self):
+        for ec in extra_checks:
+            element["checks"].append(ec) 
+
+    def calculate_fairness(self, evaluate_ro_metadata=True):
         self.output["components"] = []
         software_valid_types = ["SoftwareSourceCode", "installUrl", "codeRepository"]
         self.extract_ro()
@@ -63,7 +69,12 @@ class ROFairnessCalculator():
                                                            type, 
                                                            "F-uji")
                     element["checks"] = fuji.get_checks()
-                    self.output["components"].append(element)    
+                    
+                    
+                    if evaluate_ro_metadata:
+                        self.__add_ro_metadata_checks(element, part["@id"])
+                        
+                    self.output["components"].append(element)
 
                 else:
                     # Using the basic metadata analyzer
@@ -92,6 +103,10 @@ class ROFairnessCalculator():
                                                            type, 
                                                            "somef-fairness")
                     element["checks"] = sw.get_checks()
+                    
+                    if evaluate_ro_metadata:
+                        self.__add_ro_metadata_checks(element, part["@id"])
+                        
                     self.output["components"].append(element)                                      
 
                 else:
@@ -113,6 +128,9 @@ class ROFairnessCalculator():
                                                         type, 
                                                         "foops")
                 element["checks"] = onto.get_ontology_checks()
+                
+                if evaluate_ro_metadata:
+                    self.__add_ro_metadata_checks(element, part["@id"])
                 self.output["components"].append(element)
                 
             else:
@@ -124,6 +142,10 @@ class ROFairnessCalculator():
                                                            type, 
                                                            "F-uji")
                     element["checks"] = fuji.get_checks()
+                    
+                    if evaluate_ro_metadata:
+                        self.__add_ro_metadata_checks(element, part["@id"])
+                            
                     self.output["components"].append(element)    
                     
                 else:
@@ -140,5 +162,5 @@ class ROFairnessCalculator():
                 
 ro_fairness = ROFairnessCalculator("ro-example-2/")
 
-ro_fairness.calculate_fairness()
+ro_fairness.calculate_fairness(evaluate_ro_metadata=True)
 ro_fairness.save_to_file()

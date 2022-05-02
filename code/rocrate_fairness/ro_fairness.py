@@ -58,7 +58,7 @@ class ROCrateFAIRnessCalculator():
         check = {"principle_id": "F2",
                 "category_id" : "Findable",
                 "title"       : "Data are described with rich metadata",
-                "description" : f"This check verifies if the the following minimum metadata {minimum_metadata} are present in the element",
+                "description" : f"This check verifies if the the following minimum metadata {minimum_metadata} are present in the reserch object",
                 "total_passed_tests": 0,
                 "total_tests_run"   : 0
                 }
@@ -83,7 +83,7 @@ class ROCrateFAIRnessCalculator():
         check = {"principle_id": "R1.1",
                 "category_id" : "Reusable",
                 "title"       : "(Meta)data are released with a clear and accessible data usage license",
-                "description" : "This check verifies whether the element has a licence",
+                "description" : f"This check verifies whether the element in the reserch object has a licence",
                 "total_passed_tests": 0,
                 "total_tests_run"   : 0
                 }
@@ -102,7 +102,7 @@ class ROCrateFAIRnessCalculator():
         check = {"principle_id": "R1.2",
                  "category_id": "Reusable",
                  "title": "(Meta)data are associated with detailed provenance",
-                 "description": f"This check verifies that the element has the following fields: {fields}",
+                 "description": f"This check verifies that the element in the reserch object has the following fields: {fields}",
                  "total_passed_tests": 0,
                  "total_tests_run": 0,
                  "explanation" : []

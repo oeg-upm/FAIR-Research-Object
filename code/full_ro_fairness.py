@@ -52,6 +52,27 @@ class ROFairnessCalculator():
         
         for ec in extra_checks:
             element["checks"].append(ec) 
+    
+    def __build_component(self, name, identifier, type, tool_used, checks, info=""):
+        element = self.create_component_output(name, identifier, type, tool_used, info)
+        element["checks"] = checks
+        # self.output["components"].append(element)
+        return element
+    
+    def __generate_partial_scores(self):
+        for component in self.output["components"]:
+            tmp = {"earned" : 0, "total" : 0 }
+            score = {"Findable"    : dict(tmp),
+                   "Accessible"    : dict(tmp),
+                   "Interoperable" : dict(tmp),
+                   "Reusable"      : dict(tmp)} 
+            total_passed, total_tests = 0, 0
+           
+            for check in component["checks"]:
+                cat = check["category_id"]
+                score[cat]["earned"] += check["total_passed_tests"]
+                score[cat]["total"]  += check["total_tests_run"]
+            component["score"] = score
 
     def calculate_fairness(self, evaluate_ro_metadata=True):
         self.output["components"] = []
@@ -64,29 +85,29 @@ class ROFairnessCalculator():
             if type == "Dataset":
                 if validators.url(part["@id"]):
                     fuji = FujiWrapperv2(part["@id"])
-                    element = self.create_component_output(part["name"] if "name" in part else None,
-                                                           fuji.get_identifier(), 
-                                                           type, 
-                                                           "F-uji")
-                    element["checks"] = fuji.get_checks()
                     
+                    component = self.__build_component( part["name"] if "name" in part else None,
+                                                    fuji.get_identifier(), 
+                                                    type, 
+                                                    "F-uji",
+                                                    fuji.get_checks())
                     
                     if evaluate_ro_metadata:
-                        self.__add_ro_metadata_checks(element, part["@id"])
-                        
-                    self.output["components"].append(element)
-
+                        self.__add_ro_metadata_checks(component, part["@id"])
+                    
+                    self.output["components"].append(component)
+                    
                 else:
                     # Using the basic metadata analyzer
-                    element = self.create_component_output(part["name"] if "name" in part else None,
-                                                           part["@id"], 
-                                                           type, 
-                                                           "ro-crate-FAIR",
-                                                           "These checks have only been done by checking their metadata in the RO")
+                    component = self.__build_component( part["name"] if "name" in part else None,
+                                                    part["@id"],  
+                                                    type, 
+                                                    "F-uji",
+                                                    "ro-crate-FAIR",
+                                                    self.ro_calculator.get_element_basic_checks(part["@id"]),
+                                                    "These checks have only been done by checking their metadata in the RO")
+                    self.output["components"].append(component)
                     
-                    element["checks"] = self.ro_calculator.get_element_basic_checks(part["@id"])
-                    self.output["components"].append(element)
-                
             elif type == "SoftwareApplication":
                 if any(vocab in part for vocab in software_valid_types):
                     
@@ -98,67 +119,69 @@ class ROFairnessCalculator():
                     sw = SoftwareFAIRnessCalculator(part[repo_url_vocab])
                     sw.calculate_fairness()
                     
-                    element = self.create_component_output(sw.get_name(),
-                                                           sw.get_identifier(), 
-                                                           type, 
-                                                           "somef-fairness")
-                    element["checks"] = sw.get_checks()
+                    component = self.__build_component( sw.get_name(),
+                                                    sw.get_identifier(), 
+                                                    type, 
+                                                    "somef-fairness",
+                                                    sw.get_checks(),
+                                                    "These checks have only been done by checking their metadata in the RO")
                     
                     if evaluate_ro_metadata:
-                        self.__add_ro_metadata_checks(element, part["@id"])
-                        
-                    self.output["components"].append(element)                                      
-
+                        self.__add_ro_metadata_checks(component, part["@id"])
+                    
+                    self.output["components"].append(component)              
+                    
                 else:
                     # Using the basic metadata analyzer
-                    element = self.create_component_output( part["name"]       if "name"       in part else None,
-                                                            part["identifier"] if "identifier" in part else None, 
-                                                            type, 
-                                                            "ro-crate-FAIR",
-                                                            "These checks have only been done by checking their metadata in the RO")
+                    component = self.__build_component( part["name"]       if "name"       in part else None,
+                                                    part["identifier"] if "identifier" in part else None, 
+                                                    type, 
+                                                    "ro-crate-FAIR",
+                                                    self.ro_calculator.get_element_basic_checks(part["@id"]),
+                                                    "These checks have only been done by checking their metadata in the RO")
+                    self.output["components"].append(component)
                     
-                    element["checks"] = self.ro_calculator.get_element_basic_checks(part["@id"])
-                    self.output["components"].append(element)
-                
             elif type == "Ontology":
                 onto_uri = part["@id"]
                 onto = FoopsWrapper(onto_uri)
-                element = self.create_component_output( onto.get_ontology_title(),
+                
+                component = self.__build_component( onto.get_ontology_title(),
                                                         onto.get_ontology_URI(), 
                                                         type, 
-                                                        "foops")
-                element["checks"] = onto.get_ontology_checks()
+                                                        "foops",
+                                                        onto.get_ontology_checks())
                 
                 if evaluate_ro_metadata:
-                    self.__add_ro_metadata_checks(element, part["@id"])
-                self.output["components"].append(element)
+                    self.__add_ro_metadata_checks(component, part["@id"])
+                
+                self.output["components"].append(component)
                 
             else:
                 
                 if validators.url(part["@id"]):
                     fuji = FujiWrapperv2(part["@id"])
-                    element = self.create_component_output(part["name"] if "name" in part else None,
-                                                           fuji.get_identifier(), 
-                                                           type, 
-                                                           "F-uji")
-                    element["checks"] = fuji.get_checks()
                     
+                    component = self.__build_component(part["name"] if "name" in part else None,
+                                                   fuji.get_identifier(), 
+                                                   type, 
+                                                   fuji.get_checks(),
+                                                   "F-uji")
                     if evaluate_ro_metadata:
-                        self.__add_ro_metadata_checks(element, part["@id"])
-                            
-                    self.output["components"].append(element)    
+                        self.__add_ro_metadata_checks(component, part["@id"])
+                    
+                    self.output["components"].append(component)
                     
                 else:
                     # Using the basic metadata analyzer
-                    element = self.create_component_output( part["name"]       if "name"       in part else None,
-                                                            part["identifier"] if "identifier" in part else None, 
-                                                            type, 
-                                                            "ro-crate-FAIR",
-                                                            "These checks have only been done by checking their metadata in the RO")
-                    
-                    element["checks"] = self.ro_calculator.get_element_basic_checks(part["@id"])
-                    self.output["components"].append(element)
-                    
+                    component = self.__build_component( part["name"]       if "name"       in part else None,
+                                                    part["identifier"] if "identifier" in part else None, 
+                                                    type, 
+                                                    "ro-crate-FAIR",
+                                                    self.ro_calculator.get_element_basic_checks(part["@id"]),
+                                                    "These checks have only been done by checking their metadata in the RO")
+                    self.output["components"].append(component)
+        
+        self.__generate_partial_scores()
                 
 ro_fairness = ROFairnessCalculator("ro-example-2/")
 

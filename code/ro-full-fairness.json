@@ -65,7 +65,25 @@
                     ],
                     "status": "error"
                 }
-            ]
+            ],
+            "score": {
+                "Findable": {
+                    "earned": 0,
+                    "total": 3
+                },
+                "Accessible": {
+                    "earned": 0,
+                    "total": 0
+                },
+                "Interoperable": {
+                    "earned": 0,
+                    "total": 0
+                },
+                "Reusable": {
+                    "earned": 0,
+                    "total": 2
+                }
+            }
         },
         {
             "name": "The example ontology",
@@ -350,7 +368,25 @@
                     "explanation": "This element has no :author, datePublished, citation",
                     "status": "error"
                 }
-            ]
+            ],
+            "score": {
+                "Findable": {
+                    "earned": 15,
+                    "total": 17
+                },
+                "Accessible": {
+                    "earned": 3,
+                    "total": 4
+                },
+                "Interoperable": {
+                    "earned": 2,
+                    "total": 3
+                },
+                "Reusable": {
+                    "earned": 24,
+                    "total": 37
+                }
+            }
         },
         {
             "name": null,
@@ -593,13 +629,32 @@
                     "explanation": "This element has no :author, datePublished, citation",
                     "status": "error"
                 }
-            ]
+            ],
+            "score": {
+                "Findable": {
+                    "earned": 3,
+                    "total": 16
+                },
+                "Accessible": {
+                    "earned": 0,
+                    "total": 5
+                },
+                "Interoperable": {
+                    "earned": 0,
+                    "total": 6
+                },
+                "Reusable": {
+                    "earned": 0,
+                    "total": 21
+                }
+            }
         },
         {
             "name": "Software Metadata Extraction Framework (SOMEF)",
             "identifier": "https://github.com/KnowledgeCaptureAndDiscovery/somef/",
             "type": "SoftwareApplication",
             "tool-used": "somef-fairness + ro-metadata",
+            "information": "These checks have only been done by checking their metadata in the RO",
             "checks": [
                 {
                     "principle_id": "F1",
@@ -661,7 +716,25 @@
                     "explanation": "This element has no :author, datePublished, citation",
                     "status": "error"
                 }
-            ]
+            ],
+            "score": {
+                "Findable": {
+                    "earned": 3,
+                    "total": 4
+                },
+                "Accessible": {
+                    "earned": 0,
+                    "total": 0
+                },
+                "Interoperable": {
+                    "earned": 0,
+                    "total": 0
+                },
+                "Reusable": {
+                    "earned": 0,
+                    "total": 2
+                }
+            }
         },
         {
             "name": "HTML representation of this data.",
@@ -700,7 +773,25 @@
                     "explanation": "This element has no :author, datePublished, citation",
                     "status": "error"
                 }
-            ]
+            ],
+            "score": {
+                "Findable": {
+                    "earned": 0,
+                    "total": 1
+                },
+                "Accessible": {
+                    "earned": 0,
+                    "total": 0
+                },
+                "Interoperable": {
+                    "earned": 0,
+                    "total": 0
+                },
+                "Reusable": {
+                    "earned": 0,
+                    "total": 2
+                }
+            }
         }
     ]
 }

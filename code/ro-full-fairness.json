@@ -68,20 +68,20 @@
             ],
             "score": {
                 "Findable": {
-                    "earned": 0,
-                    "total": 3
+                    "tests_passed": 0,
+                    "total_tests": 1
                 },
                 "Accessible": {
-                    "earned": 0,
-                    "total": 0
+                    "tests_passed": 0,
+                    "total_tests": 0
                 },
                 "Interoperable": {
-                    "earned": 0,
-                    "total": 0
+                    "tests_passed": 0,
+                    "total_tests": 0
                 },
                 "Reusable": {
-                    "earned": 0,
-                    "total": 2
+                    "tests_passed": 0,
+                    "total_tests": 1
                 }
             }
         },
@@ -371,20 +371,20 @@
             ],
             "score": {
                 "Findable": {
-                    "earned": 15,
-                    "total": 17
+                    "tests_passed": 0,
+                    "total_tests": 1
                 },
                 "Accessible": {
-                    "earned": 3,
-                    "total": 4
+                    "tests_passed": 1,
+                    "total_tests": 1
                 },
                 "Interoperable": {
-                    "earned": 2,
-                    "total": 3
+                    "tests_passed": 0,
+                    "total_tests": 1
                 },
                 "Reusable": {
-                    "earned": 24,
-                    "total": 37
+                    "tests_passed": 0,
+                    "total_tests": 1
                 }
             }
         },
@@ -632,20 +632,20 @@
             ],
             "score": {
                 "Findable": {
-                    "earned": 3,
-                    "total": 16
+                    "tests_passed": 0,
+                    "total_tests": 1
                 },
                 "Accessible": {
-                    "earned": 0,
-                    "total": 5
+                    "tests_passed": 0,
+                    "total_tests": 1
                 },
                 "Interoperable": {
-                    "earned": 0,
-                    "total": 6
+                    "tests_passed": 0,
+                    "total_tests": 2
                 },
                 "Reusable": {
-                    "earned": 0,
-                    "total": 21
+                    "tests_passed": 0,
+                    "total_tests": 1
                 }
             }
         },
@@ -719,20 +719,20 @@
             ],
             "score": {
                 "Findable": {
-                    "earned": 3,
-                    "total": 4
+                    "tests_passed": 0,
+                    "total_tests": 1
                 },
                 "Accessible": {
-                    "earned": 0,
-                    "total": 0
+                    "tests_passed": 0,
+                    "total_tests": 0
                 },
                 "Interoperable": {
-                    "earned": 0,
-                    "total": 0
+                    "tests_passed": 0,
+                    "total_tests": 0
                 },
                 "Reusable": {
-                    "earned": 0,
-                    "total": 2
+                    "tests_passed": 0,
+                    "total_tests": 1
                 }
             }
         },
@@ -776,20 +776,20 @@
             ],
             "score": {
                 "Findable": {
-                    "earned": 0,
-                    "total": 1
+                    "tests_passed": 0,
+                    "total_tests": 1
                 },
                 "Accessible": {
-                    "earned": 0,
-                    "total": 0
+                    "tests_passed": 0,
+                    "total_tests": 0
                 },
                 "Interoperable": {
-                    "earned": 0,
-                    "total": 0
+                    "tests_passed": 0,
+                    "total_tests": 0
                 },
                 "Reusable": {
-                    "earned": 0,
-                    "total": 2
+                    "tests_passed": 0,
+                    "total_tests": 1
                 }
             }
         }

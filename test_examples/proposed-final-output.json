@@ -1,0 +1,299 @@
+{
+    "root_path": "https://github.com/oeg-upm/FAIR-Research-Object",
+    "ro-crate_path": "https://github.com/oeg-upm/FAIR-Research-Object/ro-crate.json",
+    
+    "score_OPTION_1": {
+        "____description" : "add the individual \"scores\" of the four categories (F-A-I-R) of all ro components (e.g. ro-crate, software1, ontology1, other) and calculate the percentage (e.g. 34/52 -> 65%).",
+        "final" : 72.2,
+        "total_sum":{ "earned" : 16, "total" : 22, "___description": "sum of all component fairnesses score togethe. total_sum = findable_score + acessible_score..."},
+        "PROS": "gives more weight to the most important categories (those with the most tests done)",
+        "CONS": "not all categories are weighted equally"
+    },
+    "score_OPTION_2": {
+        "____description" : "add the individual \"total_passed_tests/total_tests_run\" of the four categories (F-A-I-R) of all ro components (e.g. ro-crate, software1, ontology1, other) and calculate the percentage (e.g. 34/52 -> 65%).",
+        "final" : 64.5,
+        "total_sum":{ "earned" : 20, "total" : 31, "___description": "sum of all component \"total_passed_tests/total_tests_run\" togethe. total_sum = findable_test_pass + acessible_test_pass... / findable_test_run + acessible_test_run"},
+        
+        "PROS": "gives more weight to the most important categories (those with the most tests done)",
+        "CONS": [
+            "there may be unimportant tests that should not be counted for the score. We would not take the score given by f-uji. It would have to be recalculated according to the tests done and passed.",
+            "not all categories are weighted equally"
+        ]
+    },
+    "score_OPTION_3": {
+        "____description" : "arithmetic mean of the \"score\" of each category",
+        "final" : 53.725,
+        "findable":     { "earned" : 11, "total" : 15, "score": 73.3 ,"______": "sum of all component fairnesses score together (ro.findable + ontology.findable + software.findable + dataset.findable + other.findable)"},
+        "accessible":   { "earned" :  3, "total" :  4, "score": 75.0 },
+        "interoperable":{ "earned" :  2, "total" :  3, "score": 66.6 },
+        "reusable":     { "earned" :  0, "total" :  0, "score": 0    },
+        "PROS": "all categories are weighted the same",
+        "CONS": "having few tests in one category has the same weight as having many tests in another category. Few tests are heavily weighted. Many tests weight little."
+    },
+    "score_OPTION_4": {
+        "____description" : "arithmetic mean of the \"total_passed_tests/total_tests_run\"  of each category",
+        "final" : 52.7,
+        "findable":     { "earned" : 14, "total" : 23 , "score": 60.8 , "______": "sum of all component fairnesses tests together (ro.findable.total_passed_tests + ro.findable.total_tests_run + sowftware.findable.total_passed_tests...)"},
+        "accessible":   { "earned" :  3, "total" :  4 , "score": 75.0 },
+        "interoperable":{ "earned" :  3, "total" :  4 , "score": 75.0 },
+        "reusable":     { "earned" :  0, "total" :  0 , "score": 0.0 },
+        "PROS": "all categories are weighted the same",
+        "CONS": [
+            "there may be unimportant tests that should not be counted for the score. We would not take the score given by f-uji. It would have to be recalculated according to the tests done and passed.",
+            "having few tests in one category has the same weight as having many tests in another category. Few tests are heavily weighted. Many tests weight little."
+        ]
+    },
+    "components":[
+        {
+            "name":"ro-crate.json",
+            "identifier":"https://github.com/oeg-upm/FAIR-Research-Object/ro-crate.json",
+            "type":"ro-crate",
+            "tool-used" : "ro-crate-FAIR",
+            "score": {
+                "final" : 83.3,
+                "findable":     { "earned" : 5, "total" : 6 },
+                "accessible":   { "earned" : 0, "total" : 0 },
+                "interoperable":{ "earned" : 0, "total" : 0 },
+                "reusable":     { "earned" : 0, "total" : 0 }
+            },
+            "checks":[
+                {
+                    "principle_id": "F1",
+                    "category_id": "Findable",
+                    "status": "ok",
+                    "title": "(Meta)data are assigned a globally unique and persistent identifier",
+                    "explanation": "Identifier is resolvable and follows a defined unique identifier syntax (IRI, URL)",
+                    "description": "This checks if the given identifier match the IRI or URL syntax.",
+                    "total_passed_tests": 1,
+                    "total_tests_run": 1
+                },
+                {
+                    "principle_id": "F2",
+                    "category_id": "Findable",
+                    "status": "ok",
+                    "title": "Data are described with rich metadata",
+                    "explanation": "All the minimum metadata were found",
+                    "description": "This check verifies if the The following  minimum metadata [context, graph, autor, license other node inside graph distict from autor] are present",
+                    "total_passed_tests": 4,
+                    "total_tests_run": 5
+                }
+            ]
+        },
+        {
+            "name":"The example ontology",
+            "identifier":"https://w3id.org/example",
+            "type":"ontology",
+            "tool-used" : "foops",
+            "score": {
+                "final" : 75.0,
+                "findable":     { "earned" : 0, "total" : 0 },
+                "accessible":   { "earned" : 3, "total" : 4 },
+                "interoperable":{ "earned" : 0, "total" : 0 },
+                "reusable":     { "earned" : 0, "total" : 0 }
+            },
+            "checks":[
+                {
+                    "principle_id": "A1",
+                    "category_id": "Accessible",
+                    "status": "ok",
+                    "title": "Content negotiation for RDF and HTML",
+                    "explanation": "Ontology available in: HTML, RDF",
+                    "description": "This check verifies of the ontology URI is published following the right content negotiation for RDF and HTML",
+                    "total_passed_tests": 2,
+                    "total_tests_run": 2
+                },
+                {
+                    "principle_id": "A1.1",
+                    "category_id": "Accessible",
+                    "status": "ok",
+                    "title": "Open protocol",
+                    "explanation": "The ontology uses an open protocol",
+                    "description": "This check verifies if the ontology uses an open protocol (HTTP or HTTPS)",
+                    "total_passed_tests": 1,
+                    "total_tests_run": 1
+                },
+                {
+                    "principle_id": "A2",
+                    "category_id": "Accessible",
+                    "status": "ok",
+                    "title": "Metadata are accessible, even when ontology is not",
+                    "explanation": "Ontology not found in a public registry",
+                    "description": "Metadata are accessible even when the ontology is no longer available. Since the metadata is usually included in the ontology, this check verifies whether the ontology is registered in a public metadata registry (LOV)",
+                    "total_passed_tests": 0,
+                    "total_tests_run": 1
+                }
+            ]
+        },
+        {
+            "name":"WIzard for DOCumenting Ontologies (WIDOCO)",
+            "identifier":"https://github.com/dgarijo/Widoco/",
+            "type":"software",
+            "tool-used" : "SomeFAIR",
+            "score": {
+                "final" : 75.0,
+                "findable":     { "earned" : 2, "total" : 2 },
+                "accessible":   { "earned" : 0, "total" : 0 },
+                "interoperable":{ "earned" : 0, "total" : 0 },
+                "reusable":     { "earned" : 0, "total" : 0 }
+            },
+            "checks":[
+                {
+                    "principle_id": "F1",
+                    "category_id": "Findable",
+                    "status": "ok",
+                    "title": "Software is assigned a globally unique and persistent identifier",
+                    "explanation": "A Digital Object Identifier (DOI) is assigned to the Software",
+                    "description": "This checks if there ir at least one DOI for this Software",
+                    "total_passed_tests": 1,
+                    "total_tests_run": 1
+                },
+                {
+                    "principle_id": "F1.2",
+                    "category_id": "Findable",
+                    "status": "ok",
+                    "title": "Different versions of the same software must be assigned distinct identifiers",
+                    "explanation": "Each version must have a different identifier",
+                    "description": "This checks if every version has different and uniques identifiers",
+                    "total_passed_tests": 1,
+                    "total_tests_run": 1
+                }
+              
+            ]
+        },
+        {
+            "name": null,
+            "identifier":"https://doi.org/10.1186/2041-1480-4-37",
+            "type":"dataset",
+            "tool-used" : "f-uji",
+            "score": {
+                "final" : 75.0,
+                "findable":     { "earned" : 0, "total" : 0 },
+                "accessible":   { "earned" : 0, "total" : 0 },
+                "interoperable":{ "earned" : 2, "total" : 3 },
+                "reusable":     { "earned" : 0, "total" : 0 }
+            },
+            "checks":[
+                {
+                    "principle_id": "I1.1",
+                    "category_id": "Interoperable",
+                    "title": "Metadata is represented using a formal knowledge representation language.",
+                    "explanation": [
+                        "fail", "pass"
+                    ],
+                    "description": [
+                        "Parsable, structured metadata (JSON-LD, RDFa) is embedded in the landing page XHTML/HTML code",
+                        "Parsable, graph data (RDF, JSON-LD) is accessible through content negotiation, typed links or sparql endpoint"
+                    ],
+                    "total_passed_tests": 1,
+                    "total_tests_run": 2
+                },
+                {
+                    "principle_id": "I1.2",
+                    "category_id": "Interoperable",
+                    "title": "Metadata uses semantic resources",
+                    "explanation": [
+                        "pass", "pass"
+                    ],
+                    "description": [
+                        "Vocabulary namespace URIs can be identified in metadata",
+                        "Namespaces of known semantic resources can be identified in metadata"
+                    ],
+                    "total_passed_tests": 2,
+                    "total_tests_run": 2
+                }
+              
+            ]
+        },
+        {
+            "name": null,
+            "identifier":"https://orcid.org/0000-0003-0454-7145",
+            "type":"other",
+            "tool-used" : "f-uji",
+            "score": {
+                "final" : 75.0,
+                "findable":     { "earned" : 4, "total" : 7 },
+                "accessible":   { "earned" : 0, "total" : 0 },
+                "interoperable":{ "earned" : 0, "total" : 0 },
+                "reusable":     { "earned" : 0, "total" : 0 }
+            },
+            "checks":[
+                {
+                    "principle_id": "F1.1",
+                    "category_id": "Findable",
+                    "title": "Data is assigned a globally unique identifier.",
+                    "explanation": [
+                        "pass", "fail"
+                    ],
+                    "description": [
+                        "Identifier is resolvable and follows a defined unique identifier syntax (IRI, URL)",
+                        "Identifier is not resolvable but follows an UUID or HASH type syntax"
+                    ],
+                    "total_passed_tests": 1,
+                    "total_tests_run": 2
+                },
+                {
+                    "principle_id": "F1.2",
+                    "category_id": "Findable",
+                    "title": "Data is assigned a persistent identifier.",
+                    "explanation": [
+                        "pass", "pass"
+                    ],
+                    "description": [
+                        "Identifier follows a defined persistent identifier syntax",
+                        "Persistent identifier is resolvable"
+                    ],
+                    "total_passed_tests": 2,
+                    "total_tests_run": 2
+                },
+                {
+                    "principle_id": "F2",
+                    "category_id": "Findable",
+                    "title": "Metadata includes descriptive core elements (creator, title, data identifier, publisher, publication date, summary and keywords) to support data findability.",
+                    "explanation": [
+                        "pass", "pass", "fail", "fail", "fail", "pass", "pass"
+                    ],
+                    "description": [
+                        "Metadata has been made available via common web methods",
+                        "Metadata is embedded in the landing page XHTML\/HTML code",
+                        "Metadata is accessible through content negotiation",
+                        "Metadata is accessible via typed links",
+                        "Metadata is accessible via signposting links",
+                        "Core data citation metadata is available",
+                        "Core descriptive metadata is available"
+                    ],
+                    "total_passed_tests": 3,
+                    "total_tests_run": 7
+                },
+                {
+                    "principle_id": "F3",
+                    "category_id": "Findable",
+                    "title": "Metadata includes the identifier of the data it describes.",
+                    "explanation": [
+                        "fail", "fail"
+                    ],
+                    "description": [
+                        "Metadata contains data content related information (file name, size, type)",
+                        "Metadata contains a PID or URL which indicates the location of the downloadable data content"
+                    ],
+                    "total_passed_tests": 0,
+                    "total_tests_run": 2
+                },
+                {
+                    "principle_id": "F4",
+                    "category_id": "Findable",
+                    "title": "Metadata is offered in such a way that it can be retrieved programmatically.",
+                    "explanation": [
+                        "pass", "fail"
+                    ],
+                    "description": [
+                        "Metadata is given in a way major search engines can ingest it for their catalogues (JSON-LD, Dublin Core, RDFa)",
+                        "Metadata is registered in major research data registries (DataCite)"
+                    ],
+                    "total_passed_tests": 1,
+                    "total_tests_run": 2
+                }
+              
+            ]
+        }
+    ]
+}

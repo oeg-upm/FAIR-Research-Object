@@ -1,0 +1,147 @@
+{
+    "object_id": "urn:uuid:dc308d7c-7949-446a-9c39-511b8ab40caf",
+    "spec_version": "https://w3id.org/ieee/ieee-2791-schema/",
+    "etag": "f8b213e62dfc7d05934ffdb7a36e4661f13b9cd04ad2de3ff3da6e933c4aebc8",
+    "provenance_domain": {
+        "name": "nf-core/chipseq: ChIP-seq peak-calling, QC and differential analysis pipeline",
+        "version": "1.2.1",
+        "created": "2020-07-29T17:33:46+01:00",
+        "modified": "2020-09-10T13:11:58+01:00",
+        "contributors": [
+            {"contribution": ["authoredBy"], "name": "Harshil Patel" },
+            {"contribution": ["authoredBy"], "name": "Chuan Wang" },
+            {"contribution": ["authoredBy"], "name": "Phil Ewels" },
+            {"contribution": ["authoredBy"], "name": "Alexander Peltzer" },
+            {"contribution": ["authoredBy"], "name": "Tiago Chedraoui Silva" },
+            {"contribution": ["authoredBy"], "name": "Drew Behrens" },
+            {"contribution": ["authoredBy"], "name": "Maxime Garcia" },
+            {"contribution": ["authoredBy"], "name": "mashehu" },
+            {"contribution": ["authoredBy"], "name": "Rotholandus" },
+            {"contribution": ["authoredBy"], "name": "Sofia Haglund" },
+            {"contribution": ["authoredBy"], "name": "Winni Kretzschmar" },
+            {"contribution": ["createdBy"],
+              "name": "Stian Soiland-Reyes",
+              "orcid": "https://orcid.org/0000-0001-9842-9718"
+            }   
+        ],
+        "license": "https://github.com/nf-core/chipseq/blob/1.2.1/LICENSE"
+    },
+    "usability_domain": [
+        "nfcore/chipseq is a bioinformatics analysis pipeline used for Chromatin ImmunopreciPitation sequencing (ChIP-seq) data.",
+        "For use with multiple replicates, the group identifier should be identical when you have multiple replicates from the same experimental group, just increment the replicate identifier appropriately. The first replicate value for any given experimental group must be 1.",
+        "Both the group and replicate identifiers should be the same when you have re-sequenced the same sample more than once e.g. to increase sequencing depth. The pipeline will perform the alignments in parallel, and subsequently merge them before further analysis. "
+    ],
+    "description_domain": {
+        "keywords": [
+            "chipseq",
+            "QC"            
+        ],
+        "pipeline_steps": [
+            {"step_number": 1, "name": "CHECK_DESIGN", "description": "", "input_list": [], "output_list": []},
+            {"step_number": 2, "name": "output_documentation", "description": "", "input_list": [], "output_list": []},
+            {"step_number": 3, "name": "MAKE_GENE_BED", "description": "", "input_list": [], "output_list": []},
+            {"step_number": 5, "name": "get_software_versions", "description": "", "input_list": [], "output_list": []},
+            {"step_number": 6, "name": "BWA_INDEX", "description": "", "input_list": [], "output_list": []},
+            {"step_number": 7, "name": "MAKE_GENOME_FILTER", "description": "", "input_list": [], "output_list": []},
+            {"step_number": 8, "name": "FASTQC", "description": "", "input_list": [], "output_list": []},
+            {"step_number": 9, "name": "TRIMGALORE", "description": "", "input_list": [], "output_list": []},
+            {"step_number": 10, "name": "BWA_MEM", "description": "", "input_list": [], "output_list": []},
+            {"step_number": 11, "name": "SORT_BAM", "description": "", "input_list": [], "output_list": []},
+            {"step_number": 12, "name": "MERGED_BAM", "description": "", "input_list": [], "output_list": []},
+            {"step_number": 13, "name": "PRESEQ", "description": "", "input_list": [], "output_list": []},
+            {"step_number": 14, "name": "MERGED_BAM_FILTER", "description": "", "input_list": [], "output_list": []},
+            {"step_number": 15, "name": "MERGED_BAM_REMOVE_ORPHAN", "description": "", "input_list": [], "output_list": []},
+            {"step_number": 16, "name": "PHANTOMPEAKQUALTOOLS", "description": "", "input_list": [], "output_list": []},
+            {"step_number": 17, "name": "BIGWIG", "description": "", "input_list": [], "output_list": []},
+            {"step_number": 18, "name": "PICARD_METRICS", "description": "", "input_list": [], "output_list": []},
+            {"step_number": 19, "name": "PLOTFINGERPRINT", "description": "", "input_list": [], "output_list": []},
+            {"step_number": 20, "name": "MACS2", "description": "", "input_list": [], "output_list": []},
+            {"step_number": 21, "name": "PLOTPROFILE", "description": "", "input_list": [], "output_list": []},
+            {"step_number": 22, "name": "MACS2_ANNOTATE", "description": "", "input_list": [], "output_list": []},
+            {"step_number": 23, "name": "CONSENSUS_PEAKS", "description": "", "input_list": [], "output_list": []},
+            {"step_number": 24, "name": "CONSENSUS_PEAKS_COUNTS", "description": "", "input_list": [], "output_list": []},
+            {"step_number": 25, "name": "CONSENSUS_PEAKS_ANNOTATE", "description": "", "input_list": [], "output_list": []},
+            {"step_number": 26, "name": "MACS2_QC", "description": "", "input_list": [], "output_list": []},
+            {"step_number": 27, "name": "CONSENSUS_PEAKS_DESEQ2", "description": "", "input_list": [], "output_list": []},
+            {"step_number": 28, "name": "MULTIQC", "description": "", "input_list": [], "output_list": []},
+            {"step_number": 29, "name": "IGV", "description": "", "input_list": [], "output_list": []},
+            {"step_number": 30, "name": "but", "description": "", "input_list": [], "output_list": []},
+            {"step_number": 31, "name": "errored", "description": "", "input_list": [], "output_list": []},
+            {"step_number": 32, "name": "ran", "description": "", "input_list": [], "output_list": []}
+        ]
+    },
+    "execution_domain": {
+		"script": ["https://raw.githubusercontent.com/nf-core/chipseq/1.2.1/main.nf"],
+        "script_driver": "nextflow",
+        "software_prerequisites": [
+          {"name": "nextflow",
+           "version": "20.07", 
+           "uri": {
+             "uri": "http://nextflow.io/"
+           }
+          },
+          {	"name": "conda",
+            "version": "4.8.4",
+          	"uri": {
+	          "uri": "https://docs.conda.io/en/latest/miniconda.html"
+            }
+          },
+{"name": "python", "version": "3.7.6", "uri": {"uri": "https://anaconda.org/conda-forge/python"} },
+{"name": "markdown", "version": "3.2.2", "uri": {"uri": "https://anaconda.org/conda-forge/markdown"} },
+{"name": "pymdown-extensions", "version": "7.1", "uri": {"uri": "https://anaconda.org/conda-forge/pymdown-extensions"} },
+{"name": "pygments", "version": "2.6.1", "uri": {"uri": "https://anaconda.org/conda-forge/pygments"} },
+{"name": "r-base", "version": "3.6.2", "uri": {"uri": "https://anaconda.org/conda-forge/r-base"} },
+{"name": "r-optparse", "version": "1.6.6", "uri": {"uri": "https://anaconda.org/conda-forge/r-optparse"} },
+{"name": "r-rcolorbrewer", "version": "1.1_2", "uri": {"uri": "https://anaconda.org/conda-forge/r-rcolorbrewer"} },
+{"name": "r-reshape2", "version": "1.4.4", "uri": {"uri": "https://anaconda.org/conda-forge/r-reshape2"} },
+{"name": "r-ggplot2", "version": "3.3.2", "uri": {"uri": "https://anaconda.org/conda-forge/r-ggplot2"} },
+{"name": "r-tidyr", "version": "1.1.0", "uri": {"uri": "https://anaconda.org/conda-forge/r-tidyr"} },
+{"name": "r-scales", "version": "1.1.1", "uri": {"uri": "https://anaconda.org/conda-forge/r-scales"} },
+{"name": "r-pheatmap", "version": "1.0.12", "uri": {"uri": "https://anaconda.org/conda-forge/r-pheatmap"} },
+{"name": "r-lattice", "version": "0.20_41", "uri": {"uri": "https://anaconda.org/conda-forge/r-lattice"} },
+{"name": "r-upsetr", "version": "1.4.0", "uri": {"uri": "https://anaconda.org/conda-forge/r-upsetr"} },
+{"name": "r-xfun", "version": "0.15", "uri": {"uri": "https://anaconda.org/conda-forge/r-xfun"} },
+{"name": "gawk", "version": "5.1.0", "uri": {"uri": "https://anaconda.org/conda-forge/gawk"} },
+{"name": "pigz", "version": "2.3.4", "uri": {"uri": "https://anaconda.org/conda-forge/pigz"} },
+
+          
+{"name": "fastqc", "version": "0.11.9", "uri": {"uri": "https://bioconda.github.io/recipes/fastqc/README.html"} },
+{"name": "trim-galore", "version": "0.6.5", "uri": {"uri": "https://bioconda.github.io/recipes/trim-galore/README.html"} },
+{"name": "bwa", "version": "0.7.17", "uri": {"uri": "https://bioconda.github.io/recipes/bwa/README.html"} },
+{"name": "samtools", "version": "1.10", "uri": {"uri": "https://bioconda.github.io/recipes/samtools/README.html"} },
+{"name": "picard", "version": "2.23.1", "uri": {"uri": "https://bioconda.github.io/recipes/picard/README.html"} },
+{"name": "bamtools", "version": "2.5.1", "uri": {"uri": "https://bioconda.github.io/recipes/bamtools/README.html"} },
+{"name": "pysam", "version": "0.15.3", "uri": {"uri": "https://bioconda.github.io/recipes/pysam/README.html"} },
+{"name": "bedtools", "version": "2.29.2", "uri": {"uri": "https://bioconda.github.io/recipes/bedtools/README.html"} },
+{"name": "ucsc-bedgraphtobigwig", "version": "357", "uri": {"uri": "https://bioconda.github.io/recipes/ucsc-bedgraphtobigwig/README.html"} },
+{"name": "deeptools", "version": "3.4.3", "uri": {"uri": "https://bioconda.github.io/recipes/deeptools/README.html"} },
+{"name": "macs2", "version": "2.2.7.1", "uri": {"uri": "https://bioconda.github.io/recipes/macs2/README.html"} },
+{"name": "homer", "version": "4.11", "uri": {"uri": "https://bioconda.github.io/recipes/homer/README.html"} },
+{"name": "subread", "version": "2.0.1", "uri": {"uri": "https://bioconda.github.io/recipes/subread/README.html"} },
+{"name": "phantompeakqualtools", "version": "1.2.2", "uri": {"uri": "https://bioconda.github.io/recipes/phantompeakqualtools/README.html"} },
+{"name": "preseq", "version": "2.0.3", "uri": {"uri": "https://bioconda.github.io/recipes/preseq/README.html"} },
+{"name": "multiqc", "version": "1.9", "uri": {"uri": "https://bioconda.github.io/recipes/multiqc/README.html"} },
+{"name": "bioconductor-biocparallel", "version": "1.20.0", "uri": {"uri": "https://bioconda.github.io/recipes/bioconductor-biocparallel/README.html"} },
+{"name": "bioconductor-deseq2", "version": "1.26.0", "uri": {"uri": "https://bioconda.github.io/recipes/bioconductor-deseq2/README.html"} },
+{"name": "bioconductor-vsn", "version": "3.54.0", "uri": {"uri": "https://bioconda.github.io/recipes/bioconductor-vsn/README.html"} }          
+        ],
+        "external_data_endpoints": [
+          {"name": "Experiment design file for minimal test dataset",
+           "url": "https://raw.githubusercontent.com/nf-core/test-datasets/chipseq/design.csv"
+          },
+          {"name": "iGenomes R64-1-1 Ensembl (Fasta sequence)",
+           "url": "https://raw.githubusercontent.com/nf-core/test-datasets/atacseq/reference/genome.fa"
+          },
+          {"name": "iGenomes R64-1-1 Ensembl (GTF Genes)",
+           "url": "https://raw.githubusercontent.com/nf-core/test-datasets/atacseq/reference/genes.gtf"
+          }                    
+        ],
+        "environment_variables": {}
+    },
+    "io_domain": {
+      "input_subdomain": [],
+      "output_subdomain": []     
+    }
+}
+
+

@@ -1,7 +1,7 @@
 {
     "components": [
         {
-            "name": "ro-example-2/ro-crate-metadata.json",
+            "name": "ro-examples/ro-example-2/ro-crate-metadata.json",
             "identifier": "https://google.es",
             "type": "ro-crate",
             "tool-used": "ro-crate-FAIR",
@@ -793,5 +793,13 @@
                 }
             }
         }
-    ]
+    ],
+    "overall_score": {
+        "description": "The score is calculated by adding all the scores of the different components together. All passed tests and all total tests are added together and then the percentage is calculated",
+        "score": 0.4065040650406504,
+        "total_sum": {
+            "total_passed_tests": 50,
+            "total_run_tests": 123
+        }
+    }
 }

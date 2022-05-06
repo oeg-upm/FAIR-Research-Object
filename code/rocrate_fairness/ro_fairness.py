@@ -349,10 +349,3 @@ class ROCrateFAIRnessCalculator():
         check["total_tests_run"] += 1
         
         self.fair_output["checks"].append(check)
-
-
-# roFAIR = ROCrateFAIRnessCalculator("ro-example-1/")
-# roFAIR.calculate_fairness(aggregation_mode=0)
-# roFAIR.save_to_file()
-
-# print(roFAIR.get_element_fairness("https://raw.githubusercontent.com/nf-core/chipseq/1.2.1/main.nf"))

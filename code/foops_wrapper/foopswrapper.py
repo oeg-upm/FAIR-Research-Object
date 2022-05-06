@@ -24,5 +24,3 @@ class FoopsWrapper:
         
         return checks
     
-
-# print(FoopsWrapper("https://w3id.org/example").get_ontology_checks())

@@ -1,7 +1,7 @@
 from joblib import PrintTime
 from rocrate.rocrate import ROCrate
 from rocrate_fairness.ro_fairness import ROCrateFAIRnessCalculator
-from fuji_wrapper.fujiwrapper import FujiWrapper, FujiWrapperv2
+from fuji_wrapper.fujiwrapper import FujiWrapper
 from someFAIR.somefFAIR import SoftwareFAIRnessCalculator
 from foops_wrapper.foopswrapper import FoopsWrapper
 import json
@@ -62,6 +62,26 @@ class ROFairnessCalculator:
         element["checks"] = checks
         return element
 
+    def __generate_overall_score(self, aggregation_mode):
+        overall_score = {
+            "description" : "",
+            "score" : 0
+        }
+        
+        if aggregation_mode == 0:
+            description = "The score is calculated by adding all the scores of the different components together. All passed tests and all total tests are added together and then the percentage is calculated"
+            passed, total = 0, 0
+            for component in self.output["components"]:
+                for check in component["checks"]:
+                    passed += check["total_passed_tests"]
+                    total += check["total_tests_run"]
+            
+            overall_score["description"] = description
+            overall_score["score"] = passed / total
+            overall_score["total_sum"] = {"total_passed_tests" : passed, "total_run_tests": total}
+                
+            self.output["overall_score"] = overall_score
+        
     def __generate_partial_scores(self):
         for component in self.output["components"]:
             tmp = {"tests_passed": 0, "total_tests": 0}
@@ -80,7 +100,7 @@ class ROFairnessCalculator:
 
     def __evaluate_dataset(self, element, evaluate_ro_metadata):
         if validators.url(element["@id"]):
-            fuji = FujiWrapperv2(element["@id"])
+            fuji = FujiWrapper(element["@id"])
 
             component = self.__build_component(
                 element["name"] if "name" in element else None,
@@ -165,7 +185,7 @@ class ROFairnessCalculator:
     
     def __evaluate_other(self, element, evaluate_ro_metadata):
         if validators.url(element["@id"]):
-            fuji = FujiWrapperv2(element["@id"])
+            fuji = FujiWrapper(element["@id"])
 
             component = self.__build_component(
                 element["name"] if "name" in element else None,
@@ -192,7 +212,7 @@ class ROFairnessCalculator:
             self.output["components"].append(component)
             
             
-    def calculate_fairness(self, evaluate_ro_metadata=True):
+    def calculate_fairness(self, evaluate_ro_metadata=True, aggregation_mode=0):
         self.output["components"] = []
         
         self.extract_ro()
@@ -215,10 +235,10 @@ class ROFairnessCalculator:
             
 
         self.__generate_partial_scores()
+        self.__generate_overall_score(aggregation_mode)
 
 
-ro_fairness = ROFairnessCalculator("ro-example-2/")
+ro_fairness = ROFairnessCalculator("ro-examples/ro-example-2/")
 
-ro_fairness.calculate_fairness(evaluate_ro_metadata=True)
+ro_fairness.calculate_fairness(evaluate_ro_metadata=True, aggregation_mode=0)
 ro_fairness.save_to_file()
-

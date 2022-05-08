@@ -1,8 +1,6 @@
 from attr import attributes
 import graphviz
 import json
-from graphviz import nohtml
-
 
 def create_node(g, id, texts: list):
     texts.insert(0, "<")
@@ -20,8 +18,8 @@ def show_component_score(g, id, component):
     cat = ["Findable", "Accessible", "Interoperable", "Reusable"]
     
     for c in cat:   
-        passes = component['score'][c]['earned']
-        total = component['score'][c]['total']
+        passes = component['score'][c]['tests_passed']
+        total = component['score'][c]['total_tests']
         if total == 0:
             continue
         sc.append(f" {{ {c} |  {passes} / {total} | {round((passes/total)*100,2)}% }}")
@@ -31,7 +29,7 @@ def show_component_score(g, id, component):
     return id
 
 def show_checks(g, id, component):
-    id2 = id
+    parent_id = id
     id += "-check"
 
     cat = ["Findable", "Accessible", "Interoperable", "Reusable"]
@@ -49,7 +47,7 @@ def show_checks(g, id, component):
 
         score += " | ".join(checks) + " }"
         create_box_node(g, id_c, [score])
-        g.edge(id2, id_c)
+        g.edge(parent_id, id_c)
     return id_c
 
 def create_component_node(g, component, i):
@@ -57,23 +55,34 @@ def create_component_node(g, component, i):
     name = " Name | " + str(component["name"])
     identifier = " Identifier | " + str(component["identifier"])
     type = " Type | " + component["type"]
-   
-    score = " Score | <here>  XXX% "
-    print(score)
-    create_box_node(g, id, [name, identifier, type, score])
+    tool_used = " Tool used | " + component["tool-used"]
+    # calculate overall score of a component. average of their parts
+    scores = []
+    for cat in component["score"]:
+        cat = component["score"][cat]
+        if int(cat["total_tests"]) == 0:
+            continue
+        scores.append(round((cat["tests_passed"] / cat["total_tests"]) * 100 , 2))
+    
+    score = f" Score | {round(sum(scores)/len(scores),2)}% | <here>  Average of the parts "
+
+    create_box_node(g, id, [name, identifier, type, tool_used, score])
     return id
 
-def generate_visual_graph(output):
+def generate_visual_graph(output_file):
 
-    with open(output) as f:
+    with open(output_file) as f:
         output = json.load(f)
-
-    g = graphviz.Digraph('G', filename='visual-RO-FAIRnes')
+    dot_filename = "visual-" + output_file.rsplit('.', 1)[0]
+    g = graphviz.Digraph('G', filename=dot_filename)
     g.graph_attr['rankdir'] = 'LR' 
 
     # add root element
     percentaje = str(round (output["overall_score"]["score"] * 100, 2)) + "%"
-    create_node(g, "ROOT", ["Final aggregation", percentaje])
+    description = output["overall_score"]["description"]
+    texts = ["Final aggregation", percentaje]
+    create_node(g, "ROOT",  texts + description.split("."))
+    # create_node(g, "ROOT", )
 
     # create subcomponents nodes
     for i, component in enumerate(output["components"]):

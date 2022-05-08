@@ -94,5 +94,3 @@ def generate_visual_graph(output_file):
         # check_id = show_checks(g, score_id, component)
         
     g.view()
-
-generate_visual_graph("ro-full-fairness.json")

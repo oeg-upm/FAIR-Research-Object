@@ -94,8 +94,8 @@ class ROFairnessCalculator:
 
             for check in component["checks"]:
                 cat = check["category_id"]
-                score[cat]["tests_passed"] = check["total_passed_tests"]
-                score[cat]["total_tests"] = check["total_tests_run"]
+                score[cat]["tests_passed"] += check["total_passed_tests"]
+                score[cat]["total_tests"] += check["total_tests_run"]
             component["score"] = score
 
     def __evaluate_dataset(self, element, evaluate_ro_metadata):

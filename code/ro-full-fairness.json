@@ -69,7 +69,7 @@
             "score": {
                 "Findable": {
                     "tests_passed": 0,
-                    "total_tests": 1
+                    "total_tests": 3
                 },
                 "Accessible": {
                     "tests_passed": 0,
@@ -81,7 +81,7 @@
                 },
                 "Reusable": {
                     "tests_passed": 0,
-                    "total_tests": 1
+                    "total_tests": 2
                 }
             }
         },
@@ -371,20 +371,20 @@
             ],
             "score": {
                 "Findable": {
-                    "tests_passed": 0,
-                    "total_tests": 1
+                    "tests_passed": 15,
+                    "total_tests": 17
                 },
                 "Accessible": {
-                    "tests_passed": 1,
-                    "total_tests": 1
+                    "tests_passed": 3,
+                    "total_tests": 4
                 },
                 "Interoperable": {
-                    "tests_passed": 0,
-                    "total_tests": 1
+                    "tests_passed": 2,
+                    "total_tests": 3
                 },
                 "Reusable": {
-                    "tests_passed": 0,
-                    "total_tests": 1
+                    "tests_passed": 24,
+                    "total_tests": 37
                 }
             }
         },
@@ -632,20 +632,20 @@
             ],
             "score": {
                 "Findable": {
-                    "tests_passed": 0,
-                    "total_tests": 1
+                    "tests_passed": 3,
+                    "total_tests": 16
                 },
                 "Accessible": {
                     "tests_passed": 0,
-                    "total_tests": 1
+                    "total_tests": 5
                 },
                 "Interoperable": {
                     "tests_passed": 0,
-                    "total_tests": 2
+                    "total_tests": 6
                 },
                 "Reusable": {
                     "tests_passed": 0,
-                    "total_tests": 1
+                    "total_tests": 21
                 }
             }
         },
@@ -719,8 +719,8 @@
             ],
             "score": {
                 "Findable": {
-                    "tests_passed": 0,
-                    "total_tests": 1
+                    "tests_passed": 3,
+                    "total_tests": 4
                 },
                 "Accessible": {
                     "tests_passed": 0,
@@ -732,7 +732,7 @@
                 },
                 "Reusable": {
                     "tests_passed": 0,
-                    "total_tests": 1
+                    "total_tests": 2
                 }
             }
         },
@@ -789,7 +789,7 @@
                 },
                 "Reusable": {
                     "tests_passed": 0,
-                    "total_tests": 1
+                    "total_tests": 2
                 }
             }
         }

@@ -75,12 +75,23 @@ class ROFairnessCalculator:
                 for check in component["checks"]:
                     passed += check["total_passed_tests"]
                     total += check["total_tests_run"]
-            
-            overall_score["description"] = description
             overall_score["score"] = passed / total
             overall_score["total_sum"] = {"total_passed_tests" : passed, "total_run_tests": total}
                 
-            self.output["overall_score"] = overall_score
+        elif aggregation_mode == 1:
+            description = "The score is calculated by averaging the scores of its components. The component score is the average of the score of each FAIR principle"
+            component_scores = []
+            for component in self.output["components"]:
+                principles_scores = []
+                for score_category in component["score"]:
+                    score_category = component["score"][score_category]
+                    if score_category["total_tests"] == 0: continue 
+                    principles_scores.append(round((score_category["tests_passed"] / score_category["total_tests"]) * 100 , 2))
+                component_scores.append(round(sum(principles_scores)/len(principles_scores),2))
+            overall_score["score"] = round(sum(component_scores)/len(component_scores),2)
+        
+        overall_score["description"] = description    
+        self.output["overall_score"] = overall_score    
         
     def __generate_partial_scores(self):
         for component in self.output["components"]:
@@ -240,5 +251,5 @@ class ROFairnessCalculator:
 
 ro_fairness = ROFairnessCalculator("ro-examples/ro-example-2/")
 
-ro_fairness.calculate_fairness(evaluate_ro_metadata=True, aggregation_mode=0)
+ro_fairness.calculate_fairness(evaluate_ro_metadata=True, aggregation_mode=1)
 ro_fairness.save_to_file()

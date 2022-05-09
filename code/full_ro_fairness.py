@@ -6,7 +6,7 @@ from someFAIR.somefFAIR import SoftwareFAIRnessCalculator
 from foops_wrapper.foopswrapper import FoopsWrapper
 import json
 import validators
-
+import visualizer
 
 class ROFairnessCalculator:
     def __init__(self, ro_path) -> None:
@@ -21,9 +21,10 @@ class ROFairnessCalculator:
         self.ro_calculator = ROCrateFAIRnessCalculator(self.ro_path)
         self.output = {"components": []}
 
-    def save_to_file(self):
-        with open("ro-full-fairness.json", "w") as f:
+    def save_to_file(self, filename="ro-full-fairness.json"):
+        with open(filename, "w") as f:
             json.dump(self.output, f, indent=4)
+        
 
     def create_component_output(self, name, identifier, type, tool_used, info=""):
         element = {
@@ -251,5 +252,8 @@ class ROFairnessCalculator:
 
 ro_fairness = ROFairnessCalculator("ro-examples/ro-example-2/")
 
+
 ro_fairness.calculate_fairness(evaluate_ro_metadata=True, aggregation_mode=1)
-ro_fairness.save_to_file()
+filename = "ro-full-fairness.json"
+ro_fairness.save_to_file(filename)
+visualizer.generate_visual_graph(filename)

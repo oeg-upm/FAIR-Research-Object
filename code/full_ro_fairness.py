@@ -76,7 +76,7 @@ class ROFairnessCalculator:
                 for check in component["checks"]:
                     passed += check["total_passed_tests"]
                     total += check["total_tests_run"]
-            overall_score["score"] = passed / total
+            overall_score["score"] = round((passed / total)*100, 2)
             overall_score["total_sum"] = {"total_passed_tests" : passed, "total_run_tests": total}
                 
         elif aggregation_mode == 1:

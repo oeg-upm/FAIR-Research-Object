@@ -1,4 +1,3 @@
-from joblib import PrintTime
 from rocrate.rocrate import ROCrate
 from rocrate_fairness.ro_fairness import ROCrateFAIRnessCalculator
 from fuji_wrapper.fujiwrapper import FujiWrapper
@@ -7,6 +6,7 @@ from foops_wrapper.foopswrapper import FoopsWrapper
 import json
 import validators
 import visualizer
+import argparse
 
 class ROFairnessCalculator:
     def __init__(self, ro_path) -> None:
@@ -76,7 +76,7 @@ class ROFairnessCalculator:
                 for check in component["checks"]:
                     passed += check["total_passed_tests"]
                     total += check["total_tests_run"]
-            overall_score["score"] = passed / total
+            overall_score["score"] = round((passed / total)*100, 2)
             overall_score["total_sum"] = {"total_passed_tests" : passed, "total_run_tests": total}
                 
         elif aggregation_mode == 1:
@@ -224,7 +224,7 @@ class ROFairnessCalculator:
             self.output["components"].append(component)
             
             
-    def calculate_fairness(self, evaluate_ro_metadata=True, aggregation_mode=0):
+    def __calculate_fairness(self, evaluate_ro_metadata, aggregation_mode):
         self.output["components"] = []
         
         self.extract_ro()
@@ -250,10 +250,52 @@ class ROFairnessCalculator:
         self.__generate_overall_score(aggregation_mode)
 
 
-ro_fairness = ROFairnessCalculator("ro-examples/ro-example-2/")
+    def calculate_fairness(self, evaluate_ro_metadata, aggregation_mode, output_name ,show_diagram):
+        
+        self.__calculate_fairness(evaluate_ro_metadata, aggregation_mode)
+        self.save_to_file(output_name)
+
+        if show_diagram:
+            visualizer.generate_visual_graph(output_name)
 
 
-ro_fairness.calculate_fairness(evaluate_ro_metadata=True, aggregation_mode=1)
-filename = "ro-full-fairness.json"
-ro_fairness.save_to_file(filename)
-visualizer.generate_visual_graph(filename)
+def parse_boolean(value):
+    value = value.lower()
+
+    if value in ["true", "yes", "y", "1", "t"]:
+        return True
+    elif value in ["false", "no", "n", "0", "f"]:
+        return False
+
+    return False
+
+parser = argparse.ArgumentParser(description='Tool to calculate the FAIRness of a Reserch Objects.')
+
+parser.add_argument('-ro', dest='ro_path', type=str, required=True, 
+                    help='The location where the Reserch Object is. Do not include the "ro-crate-metadata.json"')
+
+parser.add_argument('-o', dest='output_file_name', type=str, default="ro-fairness.json" ,required=False, 
+                    help='Output file name including ".json"')
+
+parser.add_argument('-m', dest='evaluate_ro_metadata', type=parse_boolean, default=False ,required=False, 
+                    help='Whether or not the metadata of the components of the Reserch Object are analyzed')
+
+parser.add_argument('-a', dest='aggregation_mode', type=int, default=0 ,required=False, 
+                    help='Select the different aggregation mode'
+                    '\n1: The score is calculated by adding all the scores of the different components together.'
+                          'All passed tests and all total tests are added together and then the percentage is calculated'
+                    '\n2: The score is calculated by averaging the scores of its components.'
+                          'The component score is the average of the score of each FAIR principle')
+
+parser.add_argument('-d', dest='generate_diagram', type=bool, default=False ,required=False, 
+                    help='Generate a visual representation')
+
+args = parser.parse_args()
+
+ROFairnessCalculator(args.ro_path).\
+        calculate_fairness(args.evaluate_ro_metadata, 
+                           args.aggregation_mode, 
+                           args.output_file_name,
+                           args.generate_diagram)
+
+

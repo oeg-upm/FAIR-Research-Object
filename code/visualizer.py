@@ -1,4 +1,3 @@
-from attr import attributes
 import graphviz
 import json
 
@@ -78,7 +77,7 @@ def generate_visual_graph(output_file):
     g.graph_attr['rankdir'] = 'LR' 
 
     # add root element
-    percentaje = str(round (output["overall_score"]["score"] * 100, 2)) + "%"
+    percentaje = str(round (output["overall_score"]["score"], 2)) + "%"
     description = output["overall_score"]["description"]
     texts = ["Final aggregation", percentaje]
     create_node(g, "ROOT",  texts + description.split("."))

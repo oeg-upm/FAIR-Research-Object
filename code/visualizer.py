@@ -50,10 +50,17 @@ def show_checks(g, id, component):
     return id_c
 
 def create_component_node(g, component, i):
+    
+    # remove forbidden characters
+    fields = ["name", "identifier", "type", "tool-used"]
+    for field in fields:
+        if component[field]:
+            component[field] = component[field].replace(":","").replace("|","")
+            
     id = str(i) + str(component["name"]) 
     name = " Name | " + str(component["name"])
     identifier = " Identifier | " + str(component["identifier"])
-    type = " Type | " + component["type"]
+    component_type = " Type | " + component["type"]   if type(component["type"]) == str else ", ".join(component["type"])
     tool_used = " Tool used | " + component["tool-used"]
     # calculate overall score of a component. average of their parts
     scores = []
@@ -65,7 +72,7 @@ def create_component_node(g, component, i):
     
     score = f" Score | {round(sum(scores)/len(scores),2)}% | <here>  Average of the parts "
 
-    create_box_node(g, id, [name, identifier, type, tool_used, score])
+    create_box_node(g, id, [name, identifier, component_type, tool_used, score])
     return id
 
 def generate_visual_graph(output_file):
@@ -81,7 +88,6 @@ def generate_visual_graph(output_file):
     description = output["overall_score"]["description"]
     texts = ["Final aggregation", percentaje]
     create_node(g, "ROOT",  texts + description.split("."))
-    # create_node(g, "ROOT", )
 
     # create subcomponents nodes
     for i, component in enumerate(output["components"]):

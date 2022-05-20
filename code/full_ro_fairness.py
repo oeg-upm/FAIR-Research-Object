@@ -133,7 +133,6 @@ class ROFairnessCalculator:
                 element["name"] if "name" in element else None,
                 element["@id"],
                 element["@type"],
-                "F-uji",
                 "ro-crate-FAIR",
                 self.ro_calculator.get_element_basic_checks(element["@id"]),
                 "These checks have only been done by checking their metadata in the RO",
@@ -203,8 +202,8 @@ class ROFairnessCalculator:
                 element["name"] if "name" in element else None,
                 fuji.get_identifier(),
                 element["@type"],
-                fuji.get_checks(),
                 "F-uji",
+                fuji.get_checks(),     
             )
             if evaluate_ro_metadata:
                 self.__add_ro_metadata_checks(component, element["@id"])

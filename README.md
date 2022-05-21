@@ -43,7 +43,21 @@ Install dependencies:
 ```
 pip3 install -r requirements.txt
 ```
-Later you must configure [SOMEF](https://github.com/KnowledgeCaptureAndDiscovery/somef#usage)
+Then you must configure [SOMEF](https://github.com/KnowledgeCaptureAndDiscovery/somef#usage)
+
+#### Finally you need Graphviz binary (https://graphviz.org/download/):
+
+##### MacOs
+
+Recommend use of ``` brew install graphviz ```
+
+##### Linux
+Check in https://graphviz.org/download/ your current distro.
+
+#### Windows
+Download the graphviz-3.0.0 exe installer. 
+
+Important! In the installer make sure that add Graphviz to the system PATH is checked.
 
 
 ## Running the validator

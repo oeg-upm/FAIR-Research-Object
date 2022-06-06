@@ -98,4 +98,4 @@ def generate_visual_graph(output_file):
         # its a mess 
         # check_id = show_checks(g, score_id, component)
         
-    g.view()
+    # g.view() this open the pdf file

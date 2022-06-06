@@ -13,6 +13,12 @@ Fuji requires python 3.5.2+
 
 Clone the repo: https://github.com/pangaea-data-publisher/fuji
 
+From the fuji source folder run
+
+```
+pip3 install .
+```
+
 #### Set Fuji Database
 
 * Download the latest Dataset Search corpus file from: https://www.kaggle.com/googleai/dataset-search-metadata-for-datasets
@@ -21,10 +27,6 @@ Clone the repo: https://github.com/pangaea-data-publisher/fuji
 
 Before running the service, please set user details in the configuration file, see config/users.py.
 
-Install Fuji dependencies:
-```
-pip3 install .
-```
 
 The F-uji server can now be started with.
 ```
@@ -76,6 +78,6 @@ python3 code/full_ro_fairness.py -ro code/ro-examples/ro-example-2 -o my_FAIR_RO
 
 Will generate a .json with all the evaluation.
 
-If the flag -d is True a diagram will pop up and store in .pdf. The same file name without extensions is a graph written in DOT Language.
+If the flag -d is True a diagram will be store in .pdf. The same file name without extensions is a graph written in DOT Language.
 
 Also somef output will be store.

@@ -1,14 +1,14 @@
 from rocrate.rocrate import ROCrate
 from rocrate_fairness.ro_fairness import ROCrateFAIRnessCalculator
 from fuji_wrapper.fujiwrapper import FujiWrapper
-from someFAIR.somefFAIR import SoftwareFAIRnessCalculator
+from somefFAIR.somefFAIR import SoftwareFAIRnessCalculator
 from foops_wrapper.foopswrapper import FoopsWrapper
 import json
 import validators
 import visualizer
 import argparse
 
-class ROFairnessCalculator:
+class FAIROs:
     def __init__(self, ro_path) -> None:
         self.ro_path = ro_path
 
@@ -291,7 +291,7 @@ parser.add_argument('-d', dest='generate_diagram', type=bool, default=False ,req
 
 args = parser.parse_args()
 
-ROFairnessCalculator(args.ro_path).\
+FAIROs(args.ro_path).\
         calculate_fairness(args.evaluate_ro_metadata, 
                            args.aggregation_mode, 
                            args.output_file_name,

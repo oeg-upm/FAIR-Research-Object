@@ -1,8 +1,8 @@
 {
     "components": [
         {
-            "name": "ro-examples/ro-example-2/ro-crate-metadata.json",
-            "identifier": "https://google.es",
+            "name": "code/ro-examples/ro-example-2ro-crate-metadata.json",
+            "identifier": "code/ro-examples/ro-example-2ro-crate-metadata.json",
             "type": "ro-crate",
             "tool-used": "ro-crate-FAIR",
             "checks": [
@@ -14,7 +14,7 @@
                     "total_passed_tests": 0,
                     "total_tests_run": 1,
                     "status": "error",
-                    "explanation": "The identifier (https://google.es) of the root data entity is not persistent. The identifier should be store in any of this [w3id.org, doi.org, purl.org, www.w3.org]"
+                    "explanation": "No identifier in root data entity"
                 },
                 {
                     "principle_id": "F2",

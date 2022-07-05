@@ -35,8 +35,6 @@ python3 -m fuji_server -c fuji_server/config/server.ini
 
 Fuji server must be launch before using the tool.
 
-You must be authenticated in the API
-
 ### Setting up the tool
 
 Clone this repository

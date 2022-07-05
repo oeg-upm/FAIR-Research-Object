@@ -54,7 +54,7 @@ def create_component_node(g, component, i):
     # remove forbidden characters
     fields = ["name", "identifier", "type", "tool-used"]
     for field in fields:
-        if component[field]:
+        if component[field] == list :
             component[field] = component[field].replace(":","").replace("|","")
             
     id = str(i) + str(component["name"]) 
@@ -98,4 +98,4 @@ def generate_visual_graph(output_file):
         # its a mess 
         # check_id = show_checks(g, score_id, component)
         
-    # g.view() this open the pdf file
+    g.view() #this open the pdf file

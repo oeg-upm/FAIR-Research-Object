@@ -60,7 +60,7 @@ def create_component_node(g, component, i):
     id = str(i) + str(component["name"]) 
     name = " Name | " + str(component["name"])
     identifier = " Identifier | " + str(component["identifier"])
-    component_type = " Type | " + component["type"]   if type(component["type"]) == str else ", ".join(component["type"])
+    component_type = " Type | " + (component["type"]  if type(component["type"]) == str else ", ".join(component["type"]))
     tool_used = " Tool used | " + component["tool-used"]
     # calculate overall score of a component. average of their parts
     scores = []
@@ -98,4 +98,4 @@ def generate_visual_graph(output_file):
         # its a mess 
         # check_id = show_checks(g, score_id, component)
         
-    g.view() #this open the pdf file
+    # g.view() this open the pdf file

@@ -54,13 +54,13 @@ def create_component_node(g, component, i):
     # remove forbidden characters
     fields = ["name", "identifier", "type", "tool-used"]
     for field in fields:
-        if component[field]:
+        if component[field] == list :
             component[field] = component[field].replace(":","").replace("|","")
             
     id = str(i) + str(component["name"]) 
     name = " Name | " + str(component["name"])
     identifier = " Identifier | " + str(component["identifier"])
-    component_type = " Type | " + component["type"]   if type(component["type"]) == str else ", ".join(component["type"])
+    component_type = " Type | " + (component["type"]  if type(component["type"]) == str else ", ".join(component["type"]))
     tool_used = " Tool used | " + component["tool-used"]
     # calculate overall score of a component. average of their parts
     scores = []

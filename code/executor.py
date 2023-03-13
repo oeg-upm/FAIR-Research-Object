@@ -5,10 +5,12 @@ import os
 import json
 import sqlite3 as sql
 import queue
+import traceback
 
 SCHEDULED = 0
 RUNNING = 1
 COMPLETED = 2
+ERROR = 3
 
 fifo_queue = queue.Queue(10)
 
@@ -19,18 +21,25 @@ def run_fairos():
         print('Processing job:'+next_job)
 
         update_job(next_job,RUNNING)
-        os.system("mkdir /tmp/"+next_job+" & unzip  /home/egonzalez/FAIR_assessment_service/pending_jobs/"+next_job+".zip -d /tmp/"+next_job)
+        #os.system("mkdir /tmp/"+next_job+" & unzip  /home/egonzalez/FAIR_assessment_service/pending_jobs/"+next_job+".zip -d /tmp/"+next_job)
+        #print("Creating directory: /tmp/"+next_job)
+        #print("Moving file "+next_job+".jsonld to ")
+        os.system("mkdir /tmp/"+next_job+" & mv /home/egonzalez/FAIR_assessment_service/pending_jobs/"+next_job+".jsonld /tmp/"+next_job+"/ro-crate-metadata.json")
         ro_path = "/tmp/"+next_job
         evaluate_ro_metadata = True
         aggregation_mode=0
         output_file_name ="/home/egonzalez/FAIR_assessment_service/completed_jobs/"+next_job+".json"
         generate_diagram = False
-        ROFairnessCalculator(ro_path).\
-            calculate_fairness(evaluate_ro_metadata,
+        try:
+            ROFairnessCalculator(ro_path).\
+                calculate_fairness(evaluate_ro_metadata,
                             aggregation_mode,
                             output_file_name,
                             generate_diagram)
-        update_job(next_job,COMPLETED)
+            update_job(next_job,COMPLETED)
+        except:
+            update_job(next_job,ERROR)
+            traceback.print_exc()
         os.system("rm -rf /tmp/"+next_job)
 
 def update_job (ticket: str, status:int):

@@ -1,0 +1,958 @@
+
+
+<html>
+<head>
+
+
+<script type="application/ld+json"> 
+  {
+  "@context": "https://w3id.org/ro/crate/1.1-DRAFT/context",
+  "@graph": [
+    {
+      "@id": "ro-crate-metadata.json",
+      "@type": "CreativeWork",
+      "conformsTo": {
+        "@id": "https://w3id.org/ro/crate/1.0"
+      },
+      "about": {
+        "@id": "./"
+      },
+      "license": {
+        "@id": "https://spdx.org/licenses/CC0-1.0"
+      }
+    },
+    {
+      "@id": "./",
+      "@type": "Dataset",
+      "author": {
+        "@id": "https://orcid.org/0000-0001-9842-9718"
+      },
+      "citation": {
+        "@id": "https://doi.org/10.5281/zenodo.3966161"
+      },
+      "contactPoint": {
+        "@id": "https://github.com/stain/bco-ro-example-chipseq/issues"
+      },
+      "datePublished": "2020-09-09T23:00:00.000Z",
+      "description": "Workflow run of a ChIP-seq peak-calling, QC and differential analysis pipeline",
+      "distribution": {
+        "@id": "https://github.com/stain/bco-ro-example-chipseq/archive/main.zip"
+      },
+      "hasPart": [
+        {
+          "@id": "https://raw.githubusercontent.com/nf-core/chipseq/1.2.1/main.nf"
+        },
+        {
+          "@id": "chipseq_20200910.json"
+        },
+        {
+          "@id": "results/"
+        },
+        {
+          "@id": "nextflow.log"
+        },
+        {
+          "@id": ".nextflow.log"
+        }
+      ],
+      "license": {
+        "@id": "https://spdx.org/licenses/CC0-1.0"
+      },
+      "name": "Workflow run of nf-core/chipseq",
+      "publisher": {
+        "@id": "https://biocomputeobject.org/"
+      },
+      "@reverse": {
+        "about": [
+          {
+            "@id": "ro-crate-metadata.json"
+          }
+        ]
+      }
+    },
+    {
+      "@id": ".nextflow.log",
+      "@type": "File",
+      "dateModified": "2020-09-10T13:10:50.246Z",
+      "name": ".nextflow.log",
+      "isPartOf": [
+        {
+          "@id": "./"
+        }
+      ]
+    },
+    {
+      "@id": "chipseq_20200910.json",
+      "@type": "File",
+      "conformsTo": {
+        "@id": "https://w3id.org/ieee/ieee-2791-schema/"
+      },
+      "dateModified": "2020-09-10T13:50:02.378Z",
+      "identifier": {
+        "@id": "urn:uuid:dc308d7c-7949-446a-9c39-511b8ab40caf"
+      },
+      "license": {
+        "@id": "https://spdx.org/licenses/CC0-1.0"
+      },
+      "name": "chipseq_20200910.json",
+      "isPartOf": [
+        {
+          "@id": "./"
+        }
+      ]
+    },
+    {
+      "@id": "https://biocomputeobject.org/",
+      "@type": "Organization",
+      "description": " Two non-overlapping entities work in parallel to help drive BioCompute, the IEEE 2791-2020 Standard, and a Public Private Partnership. Leadership for the Public Private Partnership consists of an Executive Steering Committee and a Technical Steering Committee. The schema that is referenced by the current draft of the IEEE standard is maintained by an IEEE GitLab repository. ",
+      "name": "BioCompute Objects",
+      "@reverse": {
+        "publisher": [
+          {
+            "@id": "./"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "https://doi.org/10.5281/zenodo.3966161",
+      "@type": "ScholarlyArticle",
+      "name": "nf-core/chipseq: nf-core/chipseq v1.2.1 - Platinum Mole",
+      "@reverse": {
+        "citation": [
+          {
+            "@id": "./"
+          },
+          {
+            "@id": "https://raw.githubusercontent.com/nf-core/chipseq/1.2.1/main.nf"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "https://github.com/nf-core/chipseq/blob/1.2.1/LICENSE",
+      "@type": "CreativeWork",
+      "identifier": "https://spdx.org/licenses/MIT",
+      "name": "MIT License",
+      "@reverse": {
+        "license": [
+          {
+            "@id": "https://raw.githubusercontent.com/nf-core/chipseq/1.2.1/main.nf"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "https://github.com/nf-core/test-datasets/blob/atacseq/LICENSE",
+      "@type": "CreativeWork",
+      "description": "\nMIT License\n\nCopyright (c) 2018 nf-core\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.",
+      "name": "MIT License",
+      "@reverse": {
+        "license": [
+          {
+            "@id": "results/"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "https://github.com/stain/bco-ro-example-chipseq/archive/main.zip",
+      "@type": "DataDownload",
+      "path": "https://github.com/stain/bco-ro-example-chipseq/archive/main.zip",
+      "license": {
+        "@id": "https://spdx.org/licenses/CC0-1.0"
+      },
+      "name": "GitHub download of stain/bco-ro-example-chipseq",
+      "@reverse": {
+        "distribution": [
+          {
+            "@id": "./"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "https://github.com/stain/bco-ro-example-chipseq/issues",
+      "@type": "ContactPoint",
+      "name": " bco-ro-example-chipseq GitHub issue tracker",
+      "url": "https://github.com/stain/bco-ro-example-chipseq/issues",
+      "@reverse": {
+        "contactPoint": [
+          {
+            "@id": "./"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "https://orcid.org/0000-0001-9842-9718",
+      "@type": "Person",
+      "name": "Stian Soiland-Reyes",
+      "@reverse": {
+        "author": [
+          {
+            "@id": "./"
+          },
+          {
+            "@id": "results/"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "https://raw.githubusercontent.com/nf-core/chipseq/1.2.1/main.nf",
+      "@type": [
+        "ComputationalWorkflow",
+        "File"
+      ],
+      "author": [
+        {
+          "@id": "#714de175-aa77-47f1-9f99-6a4fba65530a"
+        },
+        {
+          "@id": "#bfb876e7-e767-4209-ad66-e1e1379c249f"
+        },
+        {
+          "@id": "#0164006f-bd58-4ebc-9a50-b8bd4ac3025c"
+        },
+        {
+          "@id": "#556c747c-376a-4a85-82a1-9b99520d24fd"
+        },
+        {
+          "@id": "#93c23523-03b5-41dc-be4c-6a9a2e0e221d"
+        },
+        {
+          "@id": "#781b9b5a-dc06-4709-8f14-65ee08b8c543"
+        },
+        {
+          "@id": "#f652b13e-0ba2-4394-a990-7304f54c7b9a"
+        },
+        {
+          "@id": "#a58abf42-751d-49bd-a477-1d5065ac70c6"
+        },
+        {
+          "@id": "#e11af59b-8e24-4cc8-8f5e-cef411ab0823"
+        },
+        {
+          "@id": "#f262954b-a218-480d-8a01-0e0b1ca20ffc"
+        },
+        {
+          "@id": "#64bd387d-60ad-4df8-804e-1f6b9ea72de5"
+        }
+      ],
+      "citation": {
+        "@id": "https://doi.org/10.5281/zenodo.3966161"
+      },
+      "description": "nfcore/chipseq is a bioinformatics analysis pipeline used for Chromatin ImmunopreciPitation sequencing (ChIP-seq) data",
+      "license": {
+        "@id": "https://github.com/nf-core/chipseq/blob/1.2.1/LICENSE"
+      },
+      "name": "nf-core/chipseq",
+      "isPartOf": [
+        {
+          "@id": "./"
+        }
+      ],
+      "@reverse": {
+        "about": [
+          {
+            "@id": "results/pipeline_info/pipeline_dag.svg"
+          },
+          {
+            "@id": "#fcb32545-04bd-474d-9b6e-0fb7321c38b4"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "nextflow.log",
+      "@type": "File",
+      "creator": {
+        "@id": "#db65dfb7-4867-400e-a12f-a1652d46a333"
+      },
+      "dateModified": "2020-09-10T13:10:50.250Z",
+      "name": "nextflow.log",
+      "isPartOf": [
+        {
+          "@id": "./"
+        }
+      ]
+    },
+    {
+      "@id": "results/",
+      "@type": "Dataset",
+      "author": {
+        "@id": "https://orcid.org/0000-0001-9842-9718"
+      },
+      "creator": {
+        "@id": "#db65dfb7-4867-400e-a12f-a1652d46a333"
+      },
+      "dateModified": "2020-09-10T13:20:49.143Z",
+      "description": "Nextflow outputs from examplar run of nf-core/ pipeline workflow.",
+      "hasPart": [
+        {
+          "@id": "results/bwa/"
+        },
+        {
+          "@id": "results/fastqc/"
+        },
+        {
+          "@id": "results/genome/"
+        },
+        {
+          "@id": "results/igv/"
+        },
+        {
+          "@id": "results/multiqc/"
+        },
+        {
+          "@id": "results/pipeline_info/"
+        },
+        {
+          "@id": "results/trim_galore/"
+        }
+      ],
+      "license": {
+        "@id": "https://github.com/nf-core/test-datasets/blob/atacseq/LICENSE"
+      },
+      "name": "results",
+      "isPartOf": [
+        {
+          "@id": "./"
+        }
+      ]
+    },
+    {
+      "@id": "results/bwa/",
+      "@type": "Dataset",
+      "dateModified": "2020-09-10T12:00:09.238Z",
+      "hasPart": {
+        "@id": "results/bwa/mergedLibrary/"
+      },
+      "name": "bwa",
+      "isPartOf": [
+        {
+          "@id": "results/"
+        }
+      ]
+    },
+    {
+      "@id": "results/bwa/mergedLibrary/",
+      "@type": "Dataset",
+      "dateModified": "2020-09-10T12:02:59.495Z",
+      "hasPart": [
+        {
+          "@id": "results/bwa/mergedLibrary/bigwig/"
+        },
+        {
+          "@id": "results/bwa/mergedLibrary/deepTools/"
+        },
+        {
+          "@id": "results/bwa/mergedLibrary/macs/"
+        },
+        {
+          "@id": "results/bwa/mergedLibrary/phantompeakqualtools/"
+        },
+        {
+          "@id": "results/bwa/mergedLibrary/picard_metrics/"
+        }
+      ],
+      "name": "mergedLibrary",
+      "isPartOf": [
+        {
+          "@id": "results/bwa/"
+        }
+      ]
+    },
+    {
+      "@id": "results/bwa/mergedLibrary/bigwig/",
+      "@type": "Dataset",
+      "dateModified": "2020-09-10T12:04:31.692Z",
+      "hasPart": {
+        "@id": "results/bwa/mergedLibrary/bigwig/scale/"
+      },
+      "name": "bigwig",
+      "isPartOf": [
+        {
+          "@id": "results/bwa/mergedLibrary/"
+        }
+      ]
+    },
+    {
+      "@id": "results/bwa/mergedLibrary/bigwig/scale/",
+      "@type": "Dataset",
+      "dateModified": "2020-09-10T12:04:31.696Z",
+      "name": "scale",
+      "isPartOf": [
+        {
+          "@id": "results/bwa/mergedLibrary/bigwig/"
+        }
+      ]
+    },
+    {
+      "@id": "results/bwa/mergedLibrary/deepTools/",
+      "@type": "Dataset",
+      "dateModified": "2020-09-10T12:11:43.943Z",
+      "hasPart": [
+        {
+          "@id": "results/bwa/mergedLibrary/deepTools/plotFingerprint/"
+        },
+        {
+          "@id": "results/bwa/mergedLibrary/deepTools/plotProfile/"
+        }
+      ],
+      "name": "deepTools",
+      "isPartOf": [
+        {
+          "@id": "results/bwa/mergedLibrary/"
+        }
+      ]
+    },
+    {
+      "@id": "results/bwa/mergedLibrary/deepTools/plotFingerprint/",
+      "@type": "Dataset",
+      "dateModified": "2020-09-10T12:05:17.700Z",
+      "name": "plotFingerprint",
+      "isPartOf": [
+        {
+          "@id": "results/bwa/mergedLibrary/deepTools/"
+        }
+      ]
+    },
+    {
+      "@id": "results/bwa/mergedLibrary/deepTools/plotProfile/",
+      "@type": "Dataset",
+      "dateModified": "2020-09-10T12:26:12.375Z",
+      "name": "plotProfile",
+      "isPartOf": [
+        {
+          "@id": "results/bwa/mergedLibrary/deepTools/"
+        }
+      ]
+    },
+    {
+      "@id": "results/bwa/mergedLibrary/macs/",
+      "@type": "Dataset",
+      "dateModified": "2020-09-10T12:02:33.471Z",
+      "name": "macs",
+      "isPartOf": [
+        {
+          "@id": "results/bwa/mergedLibrary/"
+        }
+      ]
+    },
+    {
+      "@id": "results/bwa/mergedLibrary/phantompeakqualtools/",
+      "@type": "Dataset",
+      "dateModified": "2020-09-10T12:04:26.336Z",
+      "name": "phantompeakqualtools",
+      "isPartOf": [
+        {
+          "@id": "results/bwa/mergedLibrary/"
+        }
+      ]
+    },
+    {
+      "@id": "results/bwa/mergedLibrary/picard_metrics/",
+      "@type": "Dataset",
+      "dateModified": "2020-09-10T12:04:45.952Z",
+      "name": "picard_metrics",
+      "isPartOf": [
+        {
+          "@id": "results/bwa/mergedLibrary/"
+        }
+      ]
+    },
+    {
+      "@id": "results/fastqc/",
+      "@type": "Dataset",
+      "dateModified": "2020-09-10T11:58:56.905Z",
+      "hasPart": {
+        "@id": "results/fastqc/zips/"
+      },
+      "name": "fastqc",
+      "isPartOf": [
+        {
+          "@id": "results/"
+        }
+      ]
+    },
+    {
+      "@id": "results/fastqc/zips/",
+      "@type": "Dataset",
+      "dateModified": "2020-09-10T11:58:56.909Z",
+      "name": "zips",
+      "isPartOf": [
+        {
+          "@id": "results/fastqc/"
+        }
+      ]
+    },
+    {
+      "@id": "results/genome/",
+      "@type": "Dataset",
+      "dateModified": "2020-09-10T11:56:45.292Z",
+      "hasPart": {
+        "@id": "results/genome/genome.fa"
+      },
+      "name": "genome",
+      "isPartOf": [
+        {
+          "@id": "results/"
+        }
+      ]
+    },
+    {
+      "@id": "results/genome/genome.fa",
+      "@type": "File",
+      "dateModified": "2020-09-10T11:56:45.324Z",
+      "name": "genome.fa",
+      "isPartOf": [
+        {
+          "@id": "results/genome/"
+        }
+      ]
+    },
+    {
+      "@id": "results/igv/",
+      "@type": "Dataset",
+      "dateModified": "2020-09-10T12:26:50.263Z",
+      "hasPart": {
+        "@id": "results/igv/broadPeak/"
+      },
+      "name": "igv",
+      "isPartOf": [
+        {
+          "@id": "results/"
+        }
+      ]
+    },
+    {
+      "@id": "results/igv/broadPeak/",
+      "@type": "Dataset",
+      "dateModified": "2020-09-10T12:26:50.267Z",
+      "hasPart": {
+        "@id": "results/igv/broadPeak/igv_session.xml"
+      },
+      "name": "broadPeak",
+      "isPartOf": [
+        {
+          "@id": "results/igv/"
+        }
+      ]
+    },
+    {
+      "@id": "results/igv/broadPeak/igv_session.xml",
+      "@type": "File",
+      "dateModified": "2020-09-10T12:26:50.267Z",
+      "name": "igv_session.xml",
+      "isPartOf": [
+        {
+          "@id": "results/igv/broadPeak/"
+        }
+      ]
+    },
+    {
+      "@id": "results/multiqc/",
+      "@type": "Dataset",
+      "dateModified": "2020-09-10T12:26:59.183Z",
+      "hasPart": {
+        "@id": "results/multiqc/broadPeak/"
+      },
+      "name": "multiqc",
+      "isPartOf": [
+        {
+          "@id": "results/"
+        }
+      ]
+    },
+    {
+      "@id": "results/multiqc/broadPeak/",
+      "@type": "Dataset",
+      "dateModified": "2020-09-10T12:26:59.183Z",
+      "hasPart": [
+        {
+          "@id": "results/multiqc/broadPeak/multiqc_data/"
+        },
+        {
+          "@id": "results/multiqc/broadPeak/multiqc_report.html"
+        }
+      ],
+      "name": "broadPeak",
+      "isPartOf": [
+        {
+          "@id": "results/multiqc/"
+        }
+      ]
+    },
+    {
+      "@id": "results/multiqc/broadPeak/multiqc_data/",
+      "@type": "Dataset",
+      "dateModified": "2020-09-10T12:26:59.207Z",
+      "name": "multiqc_data",
+      "isPartOf": [
+        {
+          "@id": "results/multiqc/broadPeak/"
+        }
+      ]
+    },
+    {
+      "@id": "results/multiqc/broadPeak/multiqc_report.html",
+      "@type": "File",
+      "dateModified": "2020-09-10T12:26:59.191Z",
+      "name": "multiqc_report.html",
+      "isPartOf": [
+        {
+          "@id": "results/multiqc/broadPeak/"
+        }
+      ]
+    },
+    {
+      "@id": "results/pipeline_info/",
+      "@type": "Dataset",
+      "creator": {
+        "@id": "#db65dfb7-4867-400e-a12f-a1652d46a333"
+      },
+      "dateModified": "2020-09-10T12:27:01.599Z",
+      "hasPart": {
+        "@id": "results/pipeline_info/pipeline_dag.svg"
+      },
+      "name": "pipeline_info",
+      "isPartOf": [
+        {
+          "@id": "results/"
+        }
+      ]
+    },
+    {
+      "@id": "results/pipeline_info/pipeline_dag.svg",
+      "@type": [
+        "WorkflowSketch",
+        "File"
+      ],
+      "about": {
+        "@id": "https://raw.githubusercontent.com/nf-core/chipseq/1.2.1/main.nf"
+      },
+      "dateModified": "2020-09-10T12:27:01.755Z",
+      "encodingFormat": "image/svg+xml",
+      "name": "pipeline_dag.svg",
+      "isPartOf": [
+        {
+          "@id": "results/pipeline_info/"
+        }
+      ]
+    },
+    {
+      "@id": "results/trim_galore/",
+      "@type": "Dataset",
+      "dateModified": "2020-09-10T11:57:13.996Z",
+      "hasPart": [
+        {
+          "@id": "results/trim_galore/fastqc/"
+        },
+        {
+          "@id": "results/trim_galore/logs/"
+        }
+      ],
+      "name": "trim_galore",
+      "isPartOf": [
+        {
+          "@id": "results/"
+        }
+      ]
+    },
+    {
+      "@id": "results/trim_galore/fastqc/",
+      "@type": "Dataset",
+      "dateModified": "2020-09-10T11:58:55.705Z",
+      "hasPart": {
+        "@id": "results/trim_galore/fastqc/zips/"
+      },
+      "name": "fastqc",
+      "isPartOf": [
+        {
+          "@id": "results/trim_galore/"
+        }
+      ]
+    },
+    {
+      "@id": "results/trim_galore/fastqc/zips/",
+      "@type": "Dataset",
+      "dateModified": "2020-09-10T11:58:55.705Z",
+      "name": "zips",
+      "isPartOf": [
+        {
+          "@id": "results/trim_galore/fastqc/"
+        }
+      ]
+    },
+    {
+      "@id": "results/trim_galore/logs/",
+      "@type": "Dataset",
+      "dateModified": "2020-09-10T11:58:55.705Z",
+      "name": "logs",
+      "isPartOf": [
+        {
+          "@id": "results/trim_galore/"
+        }
+      ]
+    },
+    {
+      "@id": "#0164006f-bd58-4ebc-9a50-b8bd4ac3025c",
+      "@type": "Person",
+      "name": "Phil Ewels",
+      "@reverse": {
+        "author": [
+          {
+            "@id": "https://raw.githubusercontent.com/nf-core/chipseq/1.2.1/main.nf"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "https://spdx.org/licenses/CC0-1.0",
+      "@type": "CreativeWork",
+      "identifier": "https://spdx.org/licenses/CC0-1.0",
+      "name": "Creative Commons Zero v1.0 Universal",
+      "@reverse": {
+        "license": [
+          {
+            "@id": "ro-crate-metadata.json"
+          },
+          {
+            "@id": "./"
+          },
+          {
+            "@id": "chipseq_20200910.json"
+          },
+          {
+            "@id": "https://github.com/stain/bco-ro-example-chipseq/archive/main.zip"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "#556c747c-376a-4a85-82a1-9b99520d24fd",
+      "@type": "Person",
+      "name": "Alexander Peltzer",
+      "@reverse": {
+        "author": [
+          {
+            "@id": "https://raw.githubusercontent.com/nf-core/chipseq/1.2.1/main.nf"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "#64bd387d-60ad-4df8-804e-1f6b9ea72de5",
+      "@type": "Person",
+      "name": "Winni Kretzschmar",
+      "@reverse": {
+        "author": [
+          {
+            "@id": "https://raw.githubusercontent.com/nf-core/chipseq/1.2.1/main.nf"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "#714de175-aa77-47f1-9f99-6a4fba65530a",
+      "@type": "Person",
+      "name": "Harshil Patel",
+      "@reverse": {
+        "author": [
+          {
+            "@id": "https://raw.githubusercontent.com/nf-core/chipseq/1.2.1/main.nf"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "#781b9b5a-dc06-4709-8f14-65ee08b8c543",
+      "@type": "Person",
+      "name": "Drew Behrens",
+      "@reverse": {
+        "author": [
+          {
+            "@id": "https://raw.githubusercontent.com/nf-core/chipseq/1.2.1/main.nf"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "#93c23523-03b5-41dc-be4c-6a9a2e0e221d",
+      "@type": "Person",
+      "name": "Tiago Chedraoui Silva",
+      "@reverse": {
+        "author": [
+          {
+            "@id": "https://raw.githubusercontent.com/nf-core/chipseq/1.2.1/main.nf"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "#a58abf42-751d-49bd-a477-1d5065ac70c6",
+      "@type": "Person",
+      "name": "mashehu",
+      "@reverse": {
+        "author": [
+          {
+            "@id": "https://raw.githubusercontent.com/nf-core/chipseq/1.2.1/main.nf"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "#bfb876e7-e767-4209-ad66-e1e1379c249f",
+      "@type": "Person",
+      "name": "Chuan Wang",
+      "@reverse": {
+        "author": [
+          {
+            "@id": "https://raw.githubusercontent.com/nf-core/chipseq/1.2.1/main.nf"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "#db65dfb7-4867-400e-a12f-a1652d46a333",
+      "@type": "Person",
+      "name": "Nextflow 19.10.0",
+      "@reverse": {
+        "creator": [
+          {
+            "@id": "nextflow.log"
+          },
+          {
+            "@id": "results/"
+          },
+          {
+            "@id": "results/pipeline_info/"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "#e11af59b-8e24-4cc8-8f5e-cef411ab0823",
+      "@type": "Person",
+      "name": "Rotholandus",
+      "@reverse": {
+        "author": [
+          {
+            "@id": "https://raw.githubusercontent.com/nf-core/chipseq/1.2.1/main.nf"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "#f262954b-a218-480d-8a01-0e0b1ca20ffc",
+      "@type": "Person",
+      "name": "Sofia Haglund",
+      "@reverse": {
+        "author": [
+          {
+            "@id": "https://raw.githubusercontent.com/nf-core/chipseq/1.2.1/main.nf"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "#f652b13e-0ba2-4394-a990-7304f54c7b9a",
+      "@type": "Person",
+      "name": "Maxime Garcia",
+      "@reverse": {
+        "author": [
+          {
+            "@id": "https://raw.githubusercontent.com/nf-core/chipseq/1.2.1/main.nf"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "#fcb32545-04bd-474d-9b6e-0fb7321c38b4",
+      "about": {
+        "@id": "https://raw.githubusercontent.com/nf-core/chipseq/1.2.1/main.nf"
+      }
+    },
+    {
+      "@id": "urn:uuid:dc308d7c-7949-446a-9c39-511b8ab40caf",
+      "@type": "PropertyValue",
+      "name": "object_id",
+      "value": "dc308d7c-7949-446a-9c39-511b8ab40caf",
+      "@reverse": {
+        "identifier": [
+          {
+            "@id": "chipseq_20200910.json"
+          }
+        ]
+      }
+    }
+  ]
+}
+</script>
+
+    
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+
+
+<script src="https://data.research.uts.edu.au/examples/ro-crate/examples/src/crate.js"></script>
+
+
+
+
+
+<link rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+      integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+      crossorigin="anonymous"/>
+
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<meta charset='utf-8'/>
+<style>
+
+table.table {
+  padding-bottom: 300px;
+}
+</style>
+</head>
+
+
+<body>
+
+  <nav class="navbar">
+
+    <ul class="nav navbar-nav" >
+        <li ><a href="#"><span class="glyphicon glyphicon-home dataset_name">&nbsp;Workflow run of nf-core/chipseq</span></a></li>
+    </ul>
+
+  </nav>
+<div class="container">
+<div class="jumbotron">
+<h4 class="citation"></h3>
+<h3 class="item_name">Workflow run of nf-core/chipseq</h4>
+
+
+<a href="./ro-crate-metadata.json">⬇️🏷️ Download all the metadata for <span class='name'>Workflow run of nf-core/chipseq</span> in JSON-LD format</a>
+<div class="check"></div>
+</div>
+
+
+
+<div id="summary">
+<div><h3><a href="https://github.com/stain/bco-ro-example-chipseq/archive/main.zip">&#x2B07;&#xFE0F;&#x1F4E6; Download this dataset: GitHub download of stain/bco-ro-example-chipseq</a><br><br></h3><table class="table metadata table-striped" id="./"><tbody><tr><th style="white-space: nowrap; width: 1%;">name<span>&#xA0;</span><a href="http://schema.org/name">[?]</a></th><td style="text-align:left"> <span>Workflow run of nf-core/chipseq</span></td></tr><tr><th style="white-space: nowrap; width: 1%;">@type</th><td style="text-align:left"> <span>Dataset</span></td></tr><tr><th style="white-space: nowrap; width: 1%;">description<span>&#xA0;</span><a href="http://schema.org/description">[?]</a></th><td style="text-align:left"> <span>Workflow run of a ChIP-seq peak-calling, QC and differential analysis pipeline</span></td></tr><tr><th style="white-space: nowrap; width: 1%;">datePublished<span>&#xA0;</span><a href="http://schema.org/datePublished">[?]</a></th><td style="text-align:left"> <span>2020-09-09T23:00:00.000Z</span></td></tr><tr><th style="white-space: nowrap; width: 1%;">author<span>&#xA0;</span><a href="http://schema.org/author">[?]</a></th><td style="text-align:left"> <a href="#https://orcid.org/0000-0001-9842-9718">Stian Soiland-Reyes</a></td></tr><tr><th style="white-space: nowrap;">Referenced by</th><td style="text-align:left"> <tbody><tr><th style="white-space: nowrap; width: 1%;">about<span>&#xA0;</span><a href="http://schema.org/about">[?]</a></th><td style="text-align:left"> <a href="#ro-crate-metadata.json">ro-crate-metadata.json</a></td></tr></tbody></td></tr><tr><th style="white-space: nowrap; width: 1%;">citation<span>&#xA0;</span><a href="http://schema.org/citation">[?]</a></th><td style="text-align:left"> <a href="#https://doi.org/10.5281/zenodo.3966161">nf-core/chipseq: nf-core/chipseq v1.2.1 - Platinum Mole</a></td></tr><tr><th style="white-space: nowrap; width: 1%;">contactPoint<span>&#xA0;</span><a href="http://schema.org/contactPoint">[?]</a></th><td style="text-align:left"> <a href="#https://github.com/stain/bco-ro-example-chipseq/issues"> bco-ro-example-chipseq GitHub issue tracker</a></td></tr><tr><th style="white-space: nowrap; width: 1%;">distribution<span>&#xA0;</span><a href="http://schema.org/distribution">[?]</a></th><td style="text-align:left"> <a href="#https://github.com/stain/bco-ro-example-chipseq/archive/master.zip">GitHub download of stain/bco-ro-example-chipseq</a></td></tr><tr><th style="white-space: nowrap; width: 1%;">hasPart<span>&#xA0;</span><a href="http://schema.org/hasPart">[?]</a></th><td style="text-align:left"> <ul><li><a href="#https://raw.githubusercontent.com/nf-core/chipseq/1.2.1/main.nf">nf-core/chipseq</a></li><li><a href="#chipseq_20200910.json">chipseq_20200910.json</a></li><li><a href="#results/">results</a></li><li><a href="#nextflow.log">nextflow.log</a></li><li><a href="#.nextflow.log">.nextflow.log</a></li></ul></td></tr><tr><th style="white-space: nowrap; width: 1%;">license<span>&#xA0;</span><a href="http://schema.org/license">[?]</a></th><td style="text-align:left"> <a href="#https://spdx.org/licenses/CC0-1.0">Creative Commons Zero v1.0 Universal</a></td></tr><tr><th style="white-space: nowrap; width: 1%;">publisher<span>&#xA0;</span><a href="http://schema.org/publisher">[?]</a></th><td style="text-align:left"> <a href="#https://biocomputeobject.org/">BioCompute Objects</a></td></tr></tbody></table></div><div><h3><a href="https://orcid.org/0000-0001-9842-9718">Go to: https://orcid.org/0000-0001-9842-9718</a></h3><table class="table metadata table-striped" id="https://orcid.org/0000-0001-9842-9718"><tbody><tr><th style="white-space: nowrap; width: 1%;">name<span>&#xA0;</span><a href="http://schema.org/name">[?]</a></th><td style="text-align:left"> <span>Stian Soiland-Reyes</span></td></tr><tr><th style="white-space: nowrap; width: 1%;">@type</th><td style="text-align:left"> <span>Person</span></td></tr><tr><th style="white-space: nowrap;">Referenced by</th><td style="text-align:left"> <tbody><tr><th style="white-space: nowrap; width: 1%;">author<span>&#xA0;</span><a href="http://schema.org/author">[?]</a></th><td style="text-align:left"> <ul><li><a href="#./">Workflow run of nf-core/chipseq</a></li><li><a href="#results/">results</a></li></ul></td></tr></tbody></td></tr></tbody></table></div><div><h3><a href="https://doi.org/10.5281/zenodo.3966161">Go to: https://doi.org/10.5281/zenodo.3966161</a></h3><table class="table metadata table-striped" id="https://doi.org/10.5281/zenodo.3966161"><tbody><tr><th style="white-space: nowrap; width: 1%;">name<span>&#xA0;</span><a href="http://schema.org/name">[?]</a></th><td style="text-align:left"> <span>nf-core/chipseq: nf-core/chipseq v1.2.1 - Platinum Mole</span></td></tr><tr><th style="white-space: nowrap; width: 1%;">@type</th><td style="text-align:left"> <span>ScholarlyArticle</span></td></tr><tr><th style="white-space: nowrap;">Referenced by</th><td style="text-align:left"> <tbody><tr><th style="white-space: nowrap; width: 1%;">citation<span>&#xA0;</span><a href="http://schema.org/citation">[?]</a></th><td style="text-align:left"> <ul><li><a href="#./">Workflow run of nf-core/chipseq</a></li><li><a href="#https://raw.githubusercontent.com/nf-core/chipseq/1.2.1/main.nf">nf-core/chipseq</a></li></ul></td></tr></tbody></td></tr></tbody></table></div><div><h3><a href="https://github.com/stain/bco-ro-example-chipseq/issues">Go to: https://github.com/stain/bco-ro-example-chipseq/issues</a></h3><table class="table metadata table-striped" id="https://github.com/stain/bco-ro-example-chipseq/issues"><tbody><tr><th style="white-space: nowrap; width: 1%;">name<span>&#xA0;</span><a href="http://schema.org/name">[?]</a></th><td style="text-align:left"> <span> bco-ro-example-chipseq GitHub issue tracker</span></td></tr><tr><th style="white-space: nowrap; width: 1%;">@type</th><td style="text-align:left"> <span>ContactPoint</span></td></tr><tr><th style="white-space: nowrap;">Referenced by</th><td style="text-align:left"> <tbody><tr><th style="white-space: nowrap; width: 1%;">contactPoint<span>&#xA0;</span><a href="http://schema.org/contactPoint">[?]</a></th><td style="text-align:left"> <a href="#./">Workflow run of nf-core/chipseq</a></td></tr></tbody></td></tr><tr><th style="white-space: nowrap; width: 1%;">url<span>&#xA0;</span><a href="http://schema.org/url">[?]</a></th><td style="text-align:left"> <a href="https://github.com/stain/bco-ro-example-chipseq/issues">https://github.com/stain/bco-ro-example-chipseq/issues</a></td></tr></tbody></table></div><div><h3><a href="https://github.com/stain/bco-ro-example-chipseq/archive/master.zip">Go to: https://github.com/stain/bco-ro-example-chipseq/archive/master.zip</a></h3><table class="table metadata table-striped" id="https://github.com/stain/bco-ro-example-chipseq/archive/master.zip"><tbody><tr><th style="white-space: nowrap; width: 1%;">name<span>&#xA0;</span><a href="http://schema.org/name">[?]</a></th><td style="text-align:left"> <span>GitHub download of stain/bco-ro-example-chipseq</span></td></tr><tr><th style="white-space: nowrap; width: 1%;">@type</th><td style="text-align:left"> <span>DataDownload</span></td></tr><tr><th style="white-space: nowrap;">Referenced by</th><td style="text-align:left"> <tbody><tr><th style="white-space: nowrap; width: 1%;">distribution<span>&#xA0;</span><a href="http://schema.org/distribution">[?]</a></th><td style="text-align:left"> <a href="#./">Workflow run of nf-core/chipseq</a></td></tr></tbody></td></tr><tr><th style="white-space: nowrap; width: 1%;">path<span>&#xA0;</span><a href="http://schema.org/contentUrl">[?]</a></th><td style="text-align:left"> <a href="https://github.com/stain/bco-ro-example-chipseq/archive/master.zip">https://github.com/stain/bco-ro-example-chipseq/archive/master.zip</a></td></tr><tr><th style="white-space: nowrap; width: 1%;">license<span>&#xA0;</span><a href="http://schema.org/license">[?]</a></th><td style="text-align:left"> <a href="#https://spdx.org/licenses/CC0-1.0">Creative Commons Zero v1.0 Universal</a></td></tr></tbody></table></div><div><h3><a href="https://raw.githubusercontent.com/nf-core/chipseq/1.2.1/main.nf">Go to: https://raw.githubusercontent.com/nf-core/chipseq/1.2.1/main.nf</a></h3><table class="table metadata table-striped" id="https://raw.githubusercontent.com/nf-core/chipseq/1.2.1/main.nf"><tbody><tr><th style="white-space: nowrap; width: 1%;">name<span>&#xA0;</span><a href="http://schema.org/name">[?]</a></th><td style="text-align:left"> <span>nf-core/chipseq</span></td></tr><tr><th style="white-space: nowrap; width: 1%;">@type</th><td style="text-align:left"> <ul><li><span>ComputationalWorkflow</span></li><li><span>File</span></li></ul></td></tr><tr><th style="white-space: nowrap; width: 1%;">description<span>&#xA0;</span><a href="http://schema.org/description">[?]</a></th><td style="text-align:left"> <span>nfcore/chipseq is a bioinformatics analysis pipeline used for Chromatin ImmunopreciPitation sequencing (ChIP-seq) data</span></td></tr><tr><th style="white-space: nowrap; width: 1%;">isPartOf<span>&#xA0;</span><a href="http://schema.org/isPartOf">[?]</a></th><td style="text-align:left"> <a href="#./">Workflow run of nf-core/chipseq</a></td></tr><tr><th style="white-space: nowrap; width: 1%;">author<span>&#xA0;</span><a href="http://schema.org/author">[?]</a></th><td style="text-align:left"> <ul><li><a href="##714de175-aa77-47f1-9f99-6a4fba65530a">Harshil Patel</a></li><li><a href="##bfb876e7-e767-4209-ad66-e1e1379c249f">Chuan Wang</a></li><li><a href="##0164006f-bd58-4ebc-9a50-b8bd4ac3025c">Phil Ewels</a></li><li><a href="##556c747c-376a-4a85-82a1-9b99520d24fd">Alexander Peltzer</a></li><li><a href="##93c23523-03b5-41dc-be4c-6a9a2e0e221d">Tiago Chedraoui Silva</a></li><li><a href="##781b9b5a-dc06-4709-8f14-65ee08b8c543">Drew Behrens</a></li><li><a href="##f652b13e-0ba2-4394-a990-7304f54c7b9a">Maxime Garcia</a></li><li><a href="##a58abf42-751d-49bd-a477-1d5065ac70c6">mashehu</a></li><li><a href="##e11af59b-8e24-4cc8-8f5e-cef411ab0823">Rotholandus</a></li><li><a href="##f262954b-a218-480d-8a01-0e0b1ca20ffc">Sofia Haglund</a></li><li><a href="##64bd387d-60ad-4df8-804e-1f6b9ea72de5">Winni Kretzschmar</a></li></ul></td></tr><tr><th style="white-space: nowrap;">Referenced by</th><td style="text-align:left"> <tbody><tr><th style="white-space: nowrap; width: 1%;">about<span>&#xA0;</span><a href="http://schema.org/about">[?]</a></th><td style="text-align:left"> <ul><li><a href="#results/pipeline_info/pipeline_dag.svg">pipeline_dag.svg</a></li><li><a href="##fcb32545-04bd-474d-9b6e-0fb7321c38b4">#fcb32545-04bd-474d-9b6e-0fb7321c38b4</a></li></ul></td></tr></tbody></td></tr><tr><th style="white-space: nowrap; width: 1%;">citation<span>&#xA0;</span><a href="http://schema.org/citation">[?]</a></th><td style="text-align:left"> <a href="#https://doi.org/10.5281/zenodo.3966161">nf-core/chipseq: nf-core/chipseq v1.2.1 - Platinum Mole</a></td></tr><tr><th style="white-space: nowrap; width: 1%;">license<span>&#xA0;</span><a href="http://schema.org/license">[?]</a></th><td style="text-align:left"> <a href="#https://github.com/nf-core/chipseq/blob/1.2.1/LICENSE">MIT License</a></td></tr></tbody></table></div><div><h3><a href="chipseq_20200910.json">&#x2B07;&#xFE0F; Download: chipseq_20200910.json</a></h3><table class="table metadata table-striped" id="chipseq_20200910.json"><tbody><tr><th style="white-space: nowrap; width: 1%;">name<span>&#xA0;</span><a href="http://schema.org/name">[?]</a></th><td style="text-align:left"> <span>chipseq_20200910.json</span></td></tr><tr><th style="white-space: nowrap; width: 1%;">@type</th><td style="text-align:left"> <span>File</span></td></tr><tr><th style="white-space: nowrap; width: 1%;">isPartOf<span>&#xA0;</span><a href="http://schema.org/isPartOf">[?]</a></th><td style="text-align:left"> <a href="#./">Workflow run of nf-core/chipseq</a></td></tr><tr><th style="white-space: nowrap; width: 1%;">conformsTo<span>&#xA0;</span><a href="http://purl.org/dc/terms/conformsTo">[?]</a></th><td style="text-align:left"> </td></tr><tr><th style="white-space: nowrap; width: 1%;">dateModified<span>&#xA0;</span><a href="http://schema.org/dateModified">[?]</a></th><td style="text-align:left"> <span>2020-09-10T13:50:02.378Z</span></td></tr><tr><th style="white-space: nowrap; width: 1%;">identifier<span>&#xA0;</span><a href="http://schema.org/identifier">[?]</a></th><td style="text-align:left"> <a href="#urn:uuid:dc308d7c-7949-446a-9c39-511b8ab40caf">object_id</a></td></tr><tr><th style="white-space: nowrap; width: 1%;">license<span>&#xA0;</span><a href="http://schema.org/license">[?]</a></th><td style="text-align:left"> <a href="#https://spdx.org/licenses/CC0-1.0">Creative Commons Zero v1.0 Universal</a></td></tr></tbody></table></div><div><h3></h3><table class="table metadata table-striped" id="results/"><tbody><tr><th style="white-space: nowrap; width: 1%;">name<span>&#xA0;</span><a href="http://schema.org/name">[?]</a></th><td style="text-align:left"> <span>results</span></td></tr><tr><th style="white-space: nowrap; width: 1%;">@type</th><td style="text-align:left"> <span>Dataset</span></td></tr><tr><th style="white-space: nowrap; width: 1%;">description<span>&#xA0;</span><a href="http://schema.org/description">[?]</a></th><td style="text-align:left"> <span>Nextflow outputs from examplar run of nf-core/ pipeline workflow.</span></td></tr><tr><th style="white-space: nowrap; width: 1%;">isPartOf<span>&#xA0;</span><a href="http://schema.org/isPartOf">[?]</a></th><td style="text-align:left"> <a href="#./">Workflow run of nf-core/chipseq</a></td></tr><tr><th style="white-space: nowrap; width: 1%;">author<span>&#xA0;</span><a href="http://schema.org/author">[?]</a></th><td style="text-align:left"> <a href="#https://orcid.org/0000-0001-9842-9718">Stian Soiland-Reyes</a></td></tr><tr><th style="white-space: nowrap; width: 1%;">creator<span>&#xA0;</span><a href="http://schema.org/creator">[?]</a></th><td style="text-align:left"> <a href="##db65dfb7-4867-400e-a12f-a1652d46a333">Nextflow 19.10.0</a></td></tr><tr><th style="white-space: nowrap; width: 1%;">dateModified<span>&#xA0;</span><a href="http://schema.org/dateModified">[?]</a></th><td style="text-align:left"> <span>2020-09-10T13:20:49.143Z</span></td></tr><tr><th style="white-space: nowrap; width: 1%;">hasPart<span>&#xA0;</span><a href="http://schema.org/hasPart">[?]</a></th><td style="text-align:left"> <ul><li><a href="#results/bwa/">bwa</a></li><li><a href="#results/fastqc/">fastqc</a></li><li><a href="#results/genome/">genome</a></li><li><a href="#results/igv/">igv</a></li><li><a href="#results/multiqc/">multiqc</a></li><li><a href="#results/pipeline_info/">pipeline_info</a></li><li><a href="#results/trim_galore/">trim_galore</a></li></ul></td></tr><tr><th style="white-space: nowrap; width: 1%;">license<span>&#xA0;</span><a href="http://schema.org/license">[?]</a></th><td style="text-align:left"> <a href="#https://github.com/nf-core/test-datasets/blob/atacseq/LICENSE">MIT License</a></td></tr></tbody></table></div><div><h3><a href="nextflow.log">&#x2B07;&#xFE0F; Download: nextflow.log</a></h3><table class="table metadata table-striped" id="nextflow.log"><tbody><tr><th style="white-space: nowrap; width: 1%;">name<span>&#xA0;</span><a href="http://schema.org/name">[?]</a></th><td style="text-align:left"> <span>nextflow.log</span></td></tr><tr><th style="white-space: nowrap; width: 1%;">@type</th><td style="text-align:left"> <span>File</span></td></tr><tr><th style="white-space: nowrap; width: 1%;">isPartOf<span>&#xA0;</span><a href="http://schema.org/isPartOf">[?]</a></th><td style="text-align:left"> <a href="#./">Workflow run of nf-core/chipseq</a></td></tr><tr><th style="white-space: nowrap; width: 1%;">creator<span>&#xA0;</span><a href="http://schema.org/creator">[?]</a></th><td style="text-align:left"> <a href="##db65dfb7-4867-400e-a12f-a1652d46a333">Nextflow 19.10.0</a></td></tr><tr><th style="white-space: nowrap; width: 1%;">dateModified<span>&#xA0;</span><a href="http://schema.org/dateModified">[?]</a></th><td style="text-align:left"> <span>2020-09-10T13:10:50.250Z</span></td></tr></tbody></table></div><div><h3><a href=".nextflow.log">&#x2B07;&#xFE0F; Download: .nextflow.log</a></h3><table class="table metadata table-striped" id=".nextflow.log"><tbody><tr><th style="white-space: nowrap; width: 1%;">name<span>&#xA0;</span><a href="http://schema.org/name">[?]</a></th><td style="text-align:left"> <span>.nextflow.log</span></td></tr><tr><th style="white-space: nowrap; width: 1%;">@type</th><td style="text-align:left"> <span>File</span></td></tr><tr><th style="white-space: nowrap; width: 1%;">isPartOf<span>&#xA0;</span><a href="http://schema.org/isPartOf">[?]</a></th><td style="text-align:left"> <a href="#./">Workflow run of nf-core/chipseq</a></td></tr><tr><th style="white-space: nowrap; width: 1%;">dateModified<span>&#xA0;</span><a href="http://schema.org/dateModified">[?]</a></th><td style="text-align:left"> <span>2020-09-10T13:10:50.246Z</span></td></tr></tbody></table></div><div><h3><a href="https://spdx.org/licenses/CC0-1.0">Go to: https://spdx.org/licenses/CC0-1.0</a></h3><table class="table metadata table-striped" id="https://spdx.org/licenses/CC0-1.0"><tbody><tr><th style="white-space: nowrap; width: 1%;">name<span>&#xA0;</span><a href="http://schema.org/name">[?]</a></th><td style="text-align:left"> <span>Creative Commons Zero v1.0 Universal</span></td></tr><tr><th style="white-space: nowrap; width: 1%;">@type</th><td style="text-align:left"> <span>CreativeWork</span></td></tr><tr><th style="white-space: nowrap;">Referenced by</th><td style="text-align:left"> <tbody><tr><th style="white-space: nowrap; width: 1%;">license<span>&#xA0;</span><a href="http://schema.org/license">[?]</a></th><td style="text-align:left"> <ul><li><a href="#ro-crate-metadata.json">ro-crate-metadata.json</a></li><li><a href="#./">Workflow run of nf-core/chipseq</a></li><li><a href="#chipseq_20200910.json">chipseq_20200910.json</a></li><li><a href="#https://github.com/stain/bco-ro-example-chipseq/archive/master.zip">GitHub download of stain/bco-ro-example-chipseq</a></li></ul></td></tr></tbody></td></tr><tr><th style="white-space: nowrap; width: 1%;">identifier<span>&#xA0;</span><a href="http://schema.org/identifier">[?]</a></th><td style="text-align:left"> <a href="https://spdx.org/licenses/CC0-1.0">https://spdx.org/licenses/CC0-1.0</a></td></tr></tbody></table></div><div><h3><a href="https://biocomputeobject.org/">Go to: https://biocomputeobject.org/</a></h3><table class="table metadata table-striped" id="https://biocomputeobject.org/"><tbody><tr><th style="white-space: nowrap; width: 1%;">name<span>&#xA0;</span><a href="http://schema.org/name">[?]</a></th><td style="text-align:left"> <span>BioCompute Objects</span></td></tr><tr><th style="white-space: nowrap; width: 1%;">@type</th><td style="text-align:left"> <span>Organization</span></td></tr><tr><th style="white-space: nowrap; width: 1%;">description<span>&#xA0;</span><a href="http://schema.org/description">[?]</a></th><td style="text-align:left"> <span> Two non-overlapping entities work in parallel to help drive BioCompute, the IEEE 2791-2020 Standard, and a Public Private Partnership. Leadership for the Public Private Partnership consists of an Executive Steering Committee and a Technical Steering Committee. The schema that is referenced by the current draft of the IEEE standard is maintained by an IEEE GitLab repository. </span></td></tr><tr><th style="white-space: nowrap;">Referenced by</th><td style="text-align:left"> <tbody><tr><th style="white-space: nowrap; width: 1%;">publisher<span>&#xA0;</span><a href="http://schema.org/publisher">[?]</a></th><td style="text-align:left"> <a href="#./">Workflow run of nf-core/chipseq</a></td></tr></tbody></td></tr></tbody></table></div>
+</div>
+
+
+<p>This file was created at 1600346224360 by
+<a href='https://code.research.uts.edu.au/eresearch/calcytejs'>
+Calcyte</a> which implements the <a href=''>
+Draft RO-Crate format</a>, version 
+ </p>
+
+
+</body>
+</html>

@@ -1,0 +1,79 @@
+{
+    "checks": [
+        {
+            "category_id": "Findable",
+            "description": "This check verifies if the RO has a persintance identifier ['w3id.org', 'doi.org', 'purl.org', 'www.w3.org']",
+            "explanation": "The identifier (ro-crate-metadata.json) of the root data entity is not persistent. The identifier should be store in any of this [w3id.org, doi.org, purl.org, www.w3.org]",
+            "principle_id": "F1",
+            "status": "error",
+            "title": "(Meta)data are assigned a persistent identifier",
+            "total_passed_tests": 0,
+            "total_tests_run": 1
+        },
+        {
+            "category_id": "Findable",
+            "description": "This check verifies if the the following minimum metadata ['author', 'license', 'description'] are present in the ro-crate",
+            "explanation": "The ro-crate contains the following metadata ['author', 'license', 'description']",
+            "principle_id": "F2",
+            "status": "ok",
+            "title": "Data are described with rich metadata",
+            "total_passed_tests": 1,
+            "total_tests_run": 1
+        },
+        {
+            "category_id": "Findable",
+            "description": "This check verifies that the hasPart elements exists and are describe in the ro",
+            "explanation": "All element identifiers exists",
+            "principle_id": "F3",
+            "status": "ok",
+            "title": "Metadata clearly and explicitly include the identifier of the data they describe",
+            "total_passed_tests": 1,
+            "total_tests_run": 1
+        },
+        {
+            "category_id": "Interoperable",
+            "description": "This check verifies if the RO use a FAIR context (schema.org)",
+            "explanation": "This vocabularies are unFAIR: ['http://purl.org/dc/terms/conformsTo']",
+            "principle_id": "I2",
+            "status": "error",
+            "title": "(Meta)data use vocabularies that follow FAIR principles",
+            "total_passed_tests": 0,
+            "total_tests_run": 1
+        },
+        {
+            "category_id": "Reusable",
+            "description": "This check verifies whether the RO has a licence. It also checks that there is a licence in RO parts",
+            "explanation": "These entities have no licence: ['nextflow.log', '.nextflow.log']",
+            "principle_id": "R1.1",
+            "status": "error",
+            "title": "(Meta)data are released with a clear and accessible data usage license",
+            "total_passed_tests": 0,
+            "total_tests_run": 1
+        },
+        {
+            "category_id": "Reusable",
+            "description": "This check verifies that: Dataset has an author, datePublished and citation. Files has an author. Ontologies has an author and citation and other types has an author.",
+            "explanation": [
+                "The File chipseq_20200910.json do not have author",
+                "The Dataset results/ do not have datePublished, citation",
+                "The File nextflow.log do not have author",
+                "The File .nextflow.log do not have author",
+                "The CreativeWork ro-crate-metadata.json do not have author"
+            ],
+            "principle_id": "R1.2",
+            "status": "error",
+            "title": "(Meta)data are associated with detailed provenance",
+            "total_passed_tests": 0,
+            "total_tests_run": 1
+        }
+    ],
+    "rocrate_path": "ro-example-1/ro-crate-metadata.json",
+    "score": {
+        "description": "Description of the way of calculate the score",
+        "final": 33.33333333333333,
+        "total_sum": {
+            "earned": 2,
+            "total": 6
+        }
+    }
+}

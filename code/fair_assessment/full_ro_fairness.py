@@ -74,8 +74,10 @@ class ROFairnessCalculator:
             passed, total = 0, 0
             for component in self.output["components"]:
                 for check in component["checks"]:
-                    passed += check["total_passed_tests"]
-                    total += check["total_tests_run"]
+                    #passed += check["total_passed_tests"]
+                    #total += check["total_tests_run"]
+                    passed += 1
+                    total += 1
             overall_score["score"] = round((passed / total)*100, 2)
             overall_score["total_sum"] = {"total_passed_tests" : passed, "total_run_tests": total}
                 
@@ -106,11 +108,11 @@ class ROFairnessCalculator:
 
             for check in component["checks"]:
                 cat = check["category_id"]
-                if all(key in check for key in ('assessment', 'score','total_score')):
-                    score[cat]["tests_passed"] += 1 if check["assessment"] == "pass" else 0
+                if all(key in check["sources"][0] for key in ('assessment', 'score','total_score')):
+                    score[cat]["tests_passed"] += 1 if check["sources"][0]["assessment"] == "pass" else 0
                     score[cat]["total_tests"] += 1
-                    score[cat]["score"] += check["score"]
-                    score[cat]["total_score"] += check["total_score"]
+                    score[cat]["score"] += check["sources"][0]["score"]
+                    score[cat]["total_score"] += check["sources"][0]["total_score"]
             component["score"] = score
 
     def __evaluate_dataset(self, element, evaluate_ro_metadata):

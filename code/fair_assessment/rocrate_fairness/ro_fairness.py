@@ -12,6 +12,10 @@ def check_element_has_key(element, keys):
     return has, has_not
 
 class ROCrateFAIRnessCalculator():
+
+    F2_1_1_message = "metadata [title, description, publicationDate, summary,keywords] in ro-crate-metadata file"
+    F2_1_2_message = "metadata [creator, autor] in ro-crate-metadata file"
+
     def __init__(self, ro_path) -> None:
         self.ro_path = ro_path
 
@@ -49,6 +53,49 @@ class ROCrateFAIRnessCalculator():
         else:
             return self.ro_path + Metadata.BASENAME
     
+    def rocrate_principle_check(self, element_id, principle_id):
+        checks = []
+        element = self.rocrate.dereference(element_id).as_jsonld()
+        explanations = []
+        checks_source = []
+        check = {}
+        score = 0
+        total_score = 0
+
+        total_passed_tests = 0
+        total_tests_run = 0
+
+        check["source"] = "ro-crate"
+
+        if principle_id=="F2.1":
+            score = 0
+            total_score = 2
+            if all(key in element for key in ('title', 'description','publicationDate, summary, keywords')):
+                score += 1
+                total_passed_tests += 1
+                explanations.append("PASS: " +self.F2_1_1_message)
+            else:
+                explanations.append("FAIL: Missing "+self.F2_1_1_message)
+            total_tests_run += total_tests_run
+            if all(key in element for key in ('publisher', 'creator')):
+                score = +1
+                total_passed_tests += 1
+                explanations.append("PASS: " +self.F2_1_2_message)
+            else: 
+                explanations.append("FAIL: " +self.F2_1_2_message)
+            total_tests_run += total_tests_run
+
+            check["score"] = score
+            check["total_tests_run"] = total_tests_run
+            check["total_passed_tests"] = total_passed_tests
+            check["total_score"] = total_score
+            if score == 2:
+                check["assessment"] = "pass"
+                check["assessment"] = "fail"
+            check["explanations"] = explanations
+        
+        return check
+
     def get_element_basic_checks(self, element_id):
         checks = []
         element = self.rocrate.dereference(element_id).as_jsonld()

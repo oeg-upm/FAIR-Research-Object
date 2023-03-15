@@ -1,7 +1,7 @@
 from rocrate.rocrate import ROCrate
 from rocrate_fairness.ro_fairness import ROCrateFAIRnessCalculator
 from fuji_wrapper.fujiwrapper import FujiWrapper
-from someFAIR.somefFAIR import SoftwareFAIRnessCalculator
+from somef_wrapper.somefFAIR import SoftwareFAIRnessCalculator
 from foops_wrapper.foopswrapper import FoopsWrapper
 import json
 import validators
@@ -96,7 +96,7 @@ class ROFairnessCalculator:
         
     def __generate_partial_scores(self):
         for component in self.output["components"]:
-            tmp = {"tests_passed": 0, "total_tests": 0}
+            tmp = {"tests_passed": 0, "total_tests": 0, "score": 0, "total_score":0}
             score = {
                 "Findable": dict(tmp),
                 "Accessible": dict(tmp),
@@ -106,8 +106,11 @@ class ROFairnessCalculator:
 
             for check in component["checks"]:
                 cat = check["category_id"]
-                score[cat]["tests_passed"] += check["total_passed_tests"]
-                score[cat]["total_tests"] += check["total_tests_run"]
+                if all(key in check for key in ('assessment', 'score','total_score')):
+                    score[cat]["tests_passed"] += 1 if check["assessment"] == "pass" else 0
+                    score[cat]["total_tests"] += 1
+                    score[cat]["score"] += check["score"]
+                    score[cat]["total_score"] += check["total_score"]
             component["score"] = score
 
     def __evaluate_dataset(self, element, evaluate_ro_metadata):

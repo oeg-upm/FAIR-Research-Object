@@ -80,6 +80,7 @@ class FujiWrapper:
 			check["category_id"] = self.__set_category(check["principle_id"])
 			check["title"] = result["metric_name"]
 
+			check_fuji["id"]="F-UJI"
 			check_fuji["total_passed_tests"], check_fuji["total_tests_run"] = self.__calculate_tests_and_status(result)
 			check_fuji["explanation"] = self.__get_explanation(result)
 			check_fuji["assessment"] = result["test_status"]

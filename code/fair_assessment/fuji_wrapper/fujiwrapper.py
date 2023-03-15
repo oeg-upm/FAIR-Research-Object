@@ -55,7 +55,8 @@ class FujiWrapper:
 		tests = result["metric_tests"]
 		passed, total = 0, len(tests)
 		for test in tests:
-		        print(result["metric_tests"][test]);passed += 1 if result["metric_tests"][test]["metric_test_status"] == "pass" else 0
+			print(result["metric_tests"][test]);passed += 1 if result["metric_tests"][test]["metric_test_status"] == "pass" else 0
+		
 		return "ok" if passed == total else "error", passed, total
   
 	def __get_explanation(self, result):
@@ -77,6 +78,9 @@ class FujiWrapper:
 			check["status"], check["total_passed_tests"], check["total_tests_run"] = self.__calculate_tests_and_status(result)
 			check["title"] = result["metric_name"]
 			check["explanation"] = self.__get_explanation(result)
+			check["assessment"] = result["test_status"]
+			check["score"] = result["score"]["earned"]
+			check["total_score"] = result["score"]["total"]
 			# check["description"] = ""
 			self.output["checks"].append(check)
 	

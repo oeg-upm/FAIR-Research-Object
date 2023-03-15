@@ -53,10 +53,14 @@ class ROFairnessCalculator:
 
     def __add_ro_metadata_checks(self, element, element_id):
         element["tool-used"] += " + ro-metadata"
-        extra_checks = self.ro_calculator.get_element_basic_checks(element_id)
+        for test in element["checks"]:
+            if test["status"]=="fail":
+                extra_checks = self.ro_calculator.rocrate_principle_check(element_id,test["principle_id"])
+                test["sources"].append(extra_checks)
+        #extra_checks = self.ro_calculator.get_element_basic_checks(element_id)
 
-        for ec in extra_checks:
-            element["checks"].append(ec)
+        #for ec in extra_checks:
+            #element["checks"].append(ec)
 
     def __build_component(self, name, identifier, type, tool_used, checks, info=""):
         element = self.create_component_output(name, identifier, type, tool_used, info)
@@ -127,8 +131,8 @@ class ROFairnessCalculator:
                 fuji.get_checks(),
             )
 
-            if evaluate_ro_metadata:
-                self.__add_ro_metadata_checks(component, element["@id"])
+            
+            self.__add_ro_metadata_checks(component, element["@id"])
 
             self.output["components"].append(component)
 

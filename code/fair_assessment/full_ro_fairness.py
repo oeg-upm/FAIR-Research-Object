@@ -112,7 +112,7 @@ class ROFairnessCalculator:
 
             for check in component["checks"]:
                 cat = check["category_id"]
-                if all(key in check["sources"][0] for key in ('assessment', 'score','total_score')):
+                if "sources" in check and all(key in check["sources"][0] for key in ('assessment', 'score','total_score')):
                     score[cat]["tests_passed"] += 1 if check["sources"][0]["assessment"] == "pass" else 0
                     score[cat]["total_tests"] += 1
                     score[cat]["score"] += check["sources"][0]["score"]
@@ -239,19 +239,17 @@ class ROFairnessCalculator:
 
         for element in self.ro_parts:
 
-            type = element["@type"]
-            print(type)    
-            if type == "Dataset":   
+            type = element["@type"]   
+            if "Dataset" in type and not "http://purl.org/wf4ever/wf4ever#Folder" in type: 
                self.__evaluate_dataset(element, evaluate_ro_metadata)
-                
+
             elif type == "SoftwareApplication":
                self.__evaluate_software_application(element, evaluate_ro_metadata)
-
+               
             elif type == "Ontology":
                 self.__evaluate_ontology(element, evaluate_ro_metadata)
-                
-            else:
-                self.__evaluate_other(element, evaluate_ro_metadata)
+            elif "File" in type:
+                self.__evaluate_dataset(element, evaluate_ro_metadata)
             
 
         self.__generate_partial_scores()

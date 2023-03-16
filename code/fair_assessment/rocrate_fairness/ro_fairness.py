@@ -76,7 +76,7 @@ class ROCrateFAIRnessCalculator():
                 explanations.append("PASS: " +self.F2_1_1_message)
             else:
                 explanations.append("FAIL: Missing "+self.F2_1_1_message)
-            total_tests_run += total_tests_run
+            total_tests_run += 1
             if all(key in element for key in ('publisher', 'creator')):
                 score = +1
                 total_passed_tests += 1

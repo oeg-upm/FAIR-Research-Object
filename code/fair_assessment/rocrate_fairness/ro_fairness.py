@@ -83,7 +83,7 @@ class ROCrateFAIRnessCalculator():
                 explanations.append("PASS: " +self.F2_1_2_message)
             else: 
                 explanations.append("FAIL: " +self.F2_1_2_message)
-            total_tests_run += total_tests_run
+            total_tests_run += 1
 
             check["score"] = score
             check["total_tests_run"] = total_tests_run

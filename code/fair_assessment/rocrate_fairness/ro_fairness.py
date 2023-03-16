@@ -91,6 +91,7 @@ class ROCrateFAIRnessCalculator():
             check["total_score"] = total_score
             if score == 2:
                 check["assessment"] = "pass"
+            else:
                 check["assessment"] = "fail"
             check["explanations"] = explanations
         

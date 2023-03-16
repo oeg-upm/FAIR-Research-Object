@@ -40,8 +40,8 @@ class ROFairnessCalculator:
 
     def extract_ro(self):
         ro_output = self.ro_calculator.calculate_fairness()
-        name = ro_output["rocrate_path"]
-        identifier = self.ro_calculator.get_identifier()
+        name = self.ro["title"]
+        identifier = self.ro["identifier"]
 
         element = self.create_component_output(
             name, identifier, "ro-crate", "ro-crate-FAIR"

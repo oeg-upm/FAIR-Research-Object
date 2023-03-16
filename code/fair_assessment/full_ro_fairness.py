@@ -31,7 +31,7 @@ class ROFairnessCalculator:
             "name": name,
             "identifier": identifier,
             "type": type,
-            "tool-used": tool_used,
+            "tool-used": [tool_used],
         }
         if info:
             element["information"] = info
@@ -52,7 +52,8 @@ class ROFairnessCalculator:
         self.output["components"].append(element)
 
     def __add_ro_metadata_checks(self, element, element_id):
-        element["tool-used"] += " + ro-metadata"
+        #todo create urls for describing the terms of tools used
+        element["tool-used"].append("ro-crate-metadata") 
         for test in element["checks"]:
             if test["status"]=="fail":
                 extra_checks = self.ro_calculator.rocrate_principle_check(element_id,test["principle_id"])
@@ -245,7 +246,7 @@ class ROFairnessCalculator:
 
             elif type == "SoftwareApplication":
                self.__evaluate_software_application(element, evaluate_ro_metadata)
-               
+
             elif type == "Ontology":
                 self.__evaluate_ontology(element, evaluate_ro_metadata)
             elif "File" in type:

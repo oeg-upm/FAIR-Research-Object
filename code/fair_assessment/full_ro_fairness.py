@@ -56,8 +56,17 @@ class ROFairnessCalculator:
         element["tool-used"].append("ro-crate-metadata") 
         for test in element["checks"]:
             if test["status"]=="fail":
+                fuji_score = test["sources"][0]["score"]
                 extra_checks = self.ro_calculator.rocrate_principle_check(element_id,test["principle_id"])
                 test["sources"].append(extra_checks)
+                if "score" in extra_checks:
+                    if fuji_score > extra_checks["score"]:
+                        test["score"] = fuji_score
+                    else:
+                        test["score"] = extra_checks["score"]
+                    test["total_score"] = extra_checks["total_score"]
+                if "assessment" in extra_checks and extra_checks["assessment"] == True:
+                    test["status"] = "ok"
         #extra_checks = self.ro_calculator.get_element_basic_checks(element_id)
 
         #for ec in extra_checks:

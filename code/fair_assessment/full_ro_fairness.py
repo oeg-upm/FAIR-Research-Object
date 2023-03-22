@@ -38,6 +38,35 @@ class ROFairnessCalculator:
         element["checks"] = []
         return element
 
+    def evaluate_ro(self):
+        
+        if validators.url(element["@id"]):
+            fuji = FujiWrapper(element["@id"])
+
+            component = self.__build_component(
+                element["name"] if "name" in element else None,
+                fuji.get_identifier(),
+                element["@type"],
+                "F-uji",
+                fuji.get_checks(),
+            )
+
+            
+            self.__add_ro_metadata_checks(component, element["@id"])
+
+            self.output["components"].append(component)
+
+        name = self.ro["title"]
+        identifier = self.ro["identifier"]
+
+        element = self.create_component_output(
+            name, identifier, "ro-crate", "ro-crate-FAIR"
+        )
+
+        element["checks"] = ro_output["checks"]
+
+        self.output["components"].append(element)
+
     def extract_ro(self):
         ro_output = self.ro_calculator.calculate_fairness()
         name = self.ro["title"]

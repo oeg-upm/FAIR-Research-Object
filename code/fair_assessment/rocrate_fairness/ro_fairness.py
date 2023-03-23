@@ -355,14 +355,13 @@ class ROCrateFAIRnessCalculator():
                 score += 1
                 total_passed_tests += 1
                 explanations.append("PASS: Licence information is given in an appropriate metadata element (copyrightHoder metadata)")
+                explanations.append("FAIL: Recognized licence is valid and registered at SPDX")
+                total_tests_run += 1
             else:
                 explanations.append("FAIL: Licence information is not given in an appropriate metadata element (copyrightHoder metadata not found)")
-
-            total_tests_run += 1
-
-            score += 1
-            total_passed_tests += 1
-            explanations.append("PASS: Recognized licence is valid and registered at SPDX")
+                explanations.append("FAIL: Recognized licence is valid and registered at SPDX")
+                total_tests_run += 1
+                
             total_tests_run += 1
 
             check["score"] = score

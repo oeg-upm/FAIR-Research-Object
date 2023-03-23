@@ -152,10 +152,10 @@ class ROFairnessCalculator:
             for check in component["checks"]:
                 cat = check["category_id"]
                 if "sources" in check and all(key in check["sources"][0] for key in ('assessment', 'score','total_score')):
-                    score[cat]["tests_passed"] += 1 if check["sources"][0]["assessment"] == "pass" else 0
-                    score[cat]["total_tests"] += 1
-                    score[cat]["score"] += check["sources"][0]["score"]
-                    score[cat]["total_score"] += check["sources"][0]["total_score"]
+                    #score[cat]["tests_passed"] += 1 if check["sources"][0]["assessment"] == "pass" else 0
+                    #score[cat]["total_tests"] += 1
+                    score[cat]["score"] += check["sources"]["score"]
+                    score[cat]["total_score"] += check["sources"]["total_score"]
             component["score"] = score
 
     def __evaluate_dataset(self, element, evaluate_ro_metadata):

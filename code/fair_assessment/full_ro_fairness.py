@@ -112,6 +112,18 @@ class ROFairnessCalculator:
             "score" : 0
         }
         
+        score = 0.0
+        total_score = 0.0
+
+        for component in self.output["components"]:
+            for check in component["checks"]:
+                if "score" in check and "total_score" in check:
+                    score += check["score"]
+                    total_score += check["total_score"]
+
+        overall_score["score"] = round((score / total_score) * 100,2)
+
+        """
         if aggregation_mode == 0:
             description = "The score is calculated by adding all the scores of the different components together. All passed tests and all total tests are added together and then the percentage is calculated"
             passed, total = 0, 0
@@ -135,8 +147,8 @@ class ROFairnessCalculator:
                     principles_scores.append(round((score_category["tests_passed"] / score_category["total_tests"]) * 100 , 2))
                 component_scores.append(round(sum(principles_scores)/len(principles_scores),2))
             overall_score["score"] = round(sum(component_scores)/len(component_scores),2)
-        
-        overall_score["description"] = description    
+        """
+        overall_score["description"] = "Formula: score of each principle / total score"    
         self.output["overall_score"] = overall_score    
         
     def __generate_partial_scores(self):

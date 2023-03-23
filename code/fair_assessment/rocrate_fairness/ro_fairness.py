@@ -300,7 +300,7 @@ class ROCrateFAIRnessCalculator():
             score = 0
             total_score = 4
 
-            if all(key in element for key in ('encodingFormat')):
+            if 'encodingFormat' in element:
                 score += 0.5
                 total_passed_tests += 1
                 explanations.append("PASS: Resource type is given in metadata (encondingFormat metadata found")
@@ -308,7 +308,7 @@ class ROCrateFAIRnessCalculator():
                 explanations.append("FAIL: Resource type is not given in metadata (encondingFormat metadata not found")
             total_tests_run += 1
 
-            if all(key in element for key in ('encodingFormat')):
+            if 'encodingFormat' in element:
                 score += 0.5
                 total_passed_tests += 1
                 explanations.append("PASS: Information about data content (e.g. links) is given in metadata (encondingFormat metadata found")
@@ -316,7 +316,7 @@ class ROCrateFAIRnessCalculator():
                 explanations.append("FAIL: Information about data content (e.g. links) is not given in metadata (encondingFormat metadata not found")
             total_tests_run += 1
             
-            if all(key in element for key in ('contentSize', 'encodingFormat')):
+            if 'contentSize' in element and 'encodingFormat' in element:
                 score += 0.5
                 total_passed_tests += 1
                 explanations.append("PASS: File size and type information are specified in metadata (contentSize and encondingFormat metadata found")
@@ -324,7 +324,7 @@ class ROCrateFAIRnessCalculator():
                 explanations.append("FAIL: File size and type information are not specified in metadata (contentSize and encondingFormat metadata not found")
             total_tests_run += 1
 
-            if all(key in element for key in ('contentSize', 'encodingFormat')):
+            if 'contentSize' in element and 'encodingFormat' in element:
                 score += 0.5
                 total_passed_tests += 1
                 explanations.append("PASS: Measured variables or observation types are specified in metadata (contentSize and encondingFormat metadata found")
@@ -382,12 +382,11 @@ class ROCrateFAIRnessCalculator():
                 score += 1
                 total_passed_tests += 1
                 explanations.append("PASS: Metadata contains elements which hold provenance information and can be mapped to PROV (author and datePublished metadata found)")
+                explanations.append("FAIL: Metadata contains provenance information using formal provenance ontologies (PROV-O)")
+                total_tests_run += 1
             else:
                 explanations.append("FAIL: Metadata not contains elements which hold provenance information and can be mapped to PROV (author and datePublished metadata not found)")
 
-            total_tests_run += 1
-
-            explanations.append("FAIL: Metadata contains provenance information using formal provenance ontologies (PROV-O)")
             total_tests_run += 1
 
             check["score"] = score
@@ -422,7 +421,7 @@ class ROCrateFAIRnessCalculator():
             total_score = 1
 
             if "encodingFormat" in element:
-                if element["encodingFormat"] in ["ASCII", "png", "csv", "json"]:
+                if element["encodingFormat"] in ["ASCII", "image/png", "csv", "json"]:
                     score += 1
                     total_passed_tests += 1
                     explanations.append("PASS: type has an open format") 

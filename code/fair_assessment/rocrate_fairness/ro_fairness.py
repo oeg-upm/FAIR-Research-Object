@@ -86,7 +86,7 @@ class ROCrateFAIRnessCalculator():
             else:
                 check["assessment"] = "fail"
             check["explanations"] = explanations
-        elif principle_id=="F1.1":
+        elif principle_id=="F1.2":
             score = 0
             total_score = 1
 
@@ -109,7 +109,7 @@ class ROCrateFAIRnessCalculator():
         elif principle_id=="F2.1":
             score = 0
             total_score = 2
-            if all(key in element for key in ('title', 'description','publicationDate, summary, keywords')):
+            if all(key in element for key in ('title', 'description','publicationDate', 'summary', 'keywords')):
                 score += 1
                 total_passed_tests += 1
                 explanations.append("PASS: " +self.F2_1_1_message)
@@ -133,7 +133,56 @@ class ROCrateFAIRnessCalculator():
             else:
                 check["assessment"] = "fail"
             check["explanations"] = explanations
-        
+        elif principle_id=="F3.1":
+            score = 0
+            total_score = 1
+
+            if all(key in element for key in ('contentSize', 'encodingFormat')):
+                score += 0.5
+                total_passed_tests += 1
+                explanations.append("PASS: Metadata fields contentSize & encodingFormat founded")
+            else:
+                explanations.append("FAIL: Metadata fields contentSize & encodingFormat missing")
+            total_tests_run += 1
+
+            if all(key in element for key in ('dataDistribution')):
+                score += 0.5
+                total_passed_tests += 1
+                explanations.append("PASS: Metadata field dataDistribution founded")
+            else:
+                explanations.append("FAIL: Metadata field dataDistribution missing")
+            total_tests_run += 1
+
+
+            check["score"] = score
+            check["total_tests_run"] = total_tests_run
+            check["total_passed_tests"] = total_passed_tests
+            check["total_score"] = total_score
+            if score == 1:
+                check["assessment"] = "pass"
+            else:
+                check["assessment"] = "fail"
+            check["explanations"] = explanations
+        elif principle_id=="F4.1":
+            score = 0
+            total_score = 2
+
+            #Metadata is in JSON-LD format by default
+            score = 1
+            total_passed_tests = 1
+            explanations.append("PASS: Metadata is in JSON-LD format")
+
+            total_tests_run = 2
+
+            check["score"] = score
+            check["total_tests_run"] = total_tests_run
+            check["total_passed_tests"] = total_passed_tests
+            check["total_score"] = total_score
+            if score == 1:
+                check["assessment"] = "pass"
+            else:
+                check["assessment"] = "fail"
+            check["explanations"] = explanations
         return check
 
     def get_element_basic_checks(self, element_id):

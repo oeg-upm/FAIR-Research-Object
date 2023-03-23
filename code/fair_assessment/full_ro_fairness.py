@@ -94,7 +94,7 @@ class ROFairnessCalculator:
                     else:
                         test["score"] = extra_checks["score"]
                     test["total_score"] = extra_checks["total_score"]
-                if "assessment" in extra_checks and extra_checks["assessment"] == True:
+                if "assessment" in extra_checks and extra_checks["assessment"] == "pass":
                     test["status"] = "ok"
         #extra_checks = self.ro_calculator.get_element_basic_checks(element_id)
 

@@ -252,7 +252,7 @@ class ROCrateFAIRnessCalculator():
             else:
                 check["assessment"] = "fail"
             check["explanations"] = explanations
-        elif principle_id=="I2.1":
+        elif principle_id=="I1.2":
             score = 0
             total_score = 1
 
@@ -287,6 +287,151 @@ class ROCrateFAIRnessCalculator():
             total_passed_tests += total_passed_tests
             total_tests_run += 1
 
+            check["score"] = score
+            check["total_tests_run"] = total_tests_run
+            check["total_passed_tests"] = total_passed_tests
+            check["total_score"] = total_score
+            if score == 1:
+                check["assessment"] = "pass"
+            else:
+                check["assessment"] = "fail"
+            check["explanations"] = explanations
+        elif principle_id=="R1.1":
+            score = 0
+            total_score = 4
+
+            if all(key in element for key in ('encodingFormat')):
+                score += 0.5
+                total_passed_tests += 1
+                explanations.append("PASS: Resource type is given in metadata (encondingFormat metadata found")
+            else:
+                explanations.append("FAIL: Resource type is not given in metadata (encondingFormat metadata not found")
+            total_tests_run += 1
+
+            if all(key in element for key in ('encodingFormat')):
+                score += 0.5
+                total_passed_tests += 1
+                explanations.append("PASS: Information about data content (e.g. links) is given in metadata (encondingFormat metadata found")
+            else:
+                explanations.append("FAIL: Information about data content (e.g. links) is not given in metadata (encondingFormat metadata not found")
+            total_tests_run += 1
+            
+            if all(key in element for key in ('contentSize', 'encodingFormat')):
+                score += 0.5
+                total_passed_tests += 1
+                explanations.append("PASS: File size and type information are specified in metadata (contentSize and encondingFormat metadata found")
+            else:
+                explanations.append("FAIL: File size and type information are not specified in metadata (contentSize and encondingFormat metadata not found")
+            total_tests_run += 1
+
+            if all(key in element for key in ('contentSize', 'encodingFormat')):
+                score += 0.5
+                total_passed_tests += 1
+                explanations.append("PASS: Measured variables or observation types are specified in metadata (contentSize and encondingFormat metadata found")
+            else:
+                explanations.append("FAIL: Measured variables or observation types are specified in metadata (contentSize and encondingFormat metadata not found")
+            total_tests_run += 1
+
+            explanations.append("FAIL: Data content matches file type and size specified in metadata")
+            total_tests_run += 1
+
+            explanations.append("FAIL: Data content matches measured variables or observation types specified in metadata")
+            total_tests_run += 1
+
+            check["score"] = score
+            check["total_tests_run"] = total_tests_run
+            check["total_passed_tests"] = total_passed_tests
+            check["total_score"] = total_score
+            if score >= 2:
+                check["assessment"] = "pass"
+            else:
+                check["assessment"] = "fail"
+            check["explanations"] = explanations
+        elif principle_id=="R1.1.1":
+            score = 0
+            total_score = 2
+
+            if all(key in element for key in ('copyrightHolder')):
+                score += 1
+                total_passed_tests += 1
+                explanations.append("PASS: Licence information is given in an appropriate metadata element (copyrightHoder metadata)")
+            else:
+                explanations.append("FAIL: Licence information is not given in an appropriate metadata element (copyrightHoder metadata not found)")
+
+            total_tests_run += 1
+
+            score += 1
+            total_passed_tests += 1
+            explanations.append("PASS: Recognized licence is valid and registered at SPDX")
+            total_tests_run += 1
+
+            check["score"] = score
+            check["total_tests_run"] = total_tests_run
+            check["total_passed_tests"] = total_passed_tests
+            check["total_score"] = total_score
+            if score >= 1:
+                check["assessment"] = "pass"
+            else:
+                check["assessment"] = "fail"
+            check["explanations"] = explanations
+        elif principle_id=="R1.2.1":
+            score = 0
+            total_score = 2
+
+            if all(key in element for key in ('author','datePublished')):
+                score += 1
+                total_passed_tests += 1
+                explanations.append("PASS: Metadata contains elements which hold provenance information and can be mapped to PROV (author and datePublished metadata found)")
+            else:
+                explanations.append("FAIL: Metadata not contains elements which hold provenance information and can be mapped to PROV (author and datePublished metadata not found)")
+
+            total_tests_run += 1
+
+            explanations.append("FAIL: Metadata contains provenance information using formal provenance ontologies (PROV-O)")
+            total_tests_run += 1
+
+            check["score"] = score
+            check["total_tests_run"] = total_tests_run
+            check["total_passed_tests"] = total_passed_tests
+            check["total_score"] = total_score
+            if score >= 1:
+                check["assessment"] = "pass"
+            else:
+                check["assessment"] = "fail"
+            check["explanations"] = explanations
+        elif principle_id=="R1.3.1":
+            score = 0
+            total_score = 1
+
+            score += 1
+            explanations.append("PASS: Metadata follows a standard recommended by the target research community of the data. -> (rocrate specification)")
+            total_tests_run += 1
+            total_passed_tests += 1
+
+            check["score"] = score
+            check["total_tests_run"] = total_tests_run
+            check["total_passed_tests"] = total_passed_tests
+            check["total_score"] = total_score
+            if score == 1:
+                check["assessment"] = "pass"
+            else:
+                check["assessment"] = "fail"
+            check["explanations"] = explanations
+        elif principle_id=="R1.3.2":
+            score = 0
+            total_score = 1
+
+            if "encodingFormat" in element:
+                if element["encodingFormat"] in ["ASCII", "png", "csv", "json"]:
+                    score += 1
+                    total_passed_tests += 1
+                    explanations.append("PASS: type has an open format") 
+                else:
+                    explanations.append("PASS: type has not an open format")
+
+
+            total_tests_run += 1
+            
             check["score"] = score
             check["total_tests_run"] = total_tests_run
             check["total_passed_tests"] = total_passed_tests

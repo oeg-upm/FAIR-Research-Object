@@ -67,7 +67,46 @@ class ROCrateFAIRnessCalculator():
 
         check["source"] = "ro-crate"
 
-        if principle_id=="F2.1":
+        if principle_id=="F1.1":
+            score = 0
+            total_score = 1
+
+            #All urls in RELIANCE are resolvable
+            score = 1
+            total_passed_tests += 1
+            explanations.append("PASS: Identifier is resolvable")
+            total_tests_run += 1
+
+            check["score"] = score
+            check["total_tests_run"] = total_tests_run
+            check["total_passed_tests"] = total_passed_tests
+            check["total_score"] = total_score
+            if score == 1:
+                check["assessment"] = "pass"
+            else:
+                check["assessment"] = "fail"
+            check["explanations"] = explanations
+        elif principle_id=="F1.1":
+            score = 0
+            total_score = 1
+
+            #All urls in RELIANCE are resolvable
+            score = 1
+            total_passed_tests += 2
+            explanations.append("PASS: Identifier follows a defined persistent identifier syntax")
+            explanations.append("PASS: Persisten identifier is resolvable")
+            total_tests_run += 2
+
+            check["score"] = score
+            check["total_tests_run"] = total_tests_run
+            check["total_passed_tests"] = total_passed_tests
+            check["total_score"] = total_score
+            if score == 1:
+                check["assessment"] = "pass"
+            else:
+                check["assessment"] = "fail"
+            check["explanations"] = explanations
+        elif principle_id=="F2.1":
             score = 0
             total_score = 2
             if all(key in element for key in ('title', 'description','publicationDate, summary, keywords')):

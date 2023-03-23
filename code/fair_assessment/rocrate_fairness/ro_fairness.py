@@ -148,7 +148,7 @@ class ROCrateFAIRnessCalculator():
             if all(key in element for key in ('dataDistribution')):
                 score += 0.5
                 total_passed_tests += 1
-                explanations.append("PASS: Metadata field dataDistribution founded")
+                explanations.append("PASS: Metadata field dataDistribution found")
             else:
                 explanations.append("FAIL: Metadata field dataDistribution missing")
             total_tests_run += 1
@@ -183,6 +183,120 @@ class ROCrateFAIRnessCalculator():
             else:
                 check["assessment"] = "fail"
             check["explanations"] = explanations
+        elif principle_id=="A1.1":
+            score = 0
+            total_score = 1
+
+            if all(key in element for key in ('copyrightHolder')):
+                score += 1
+                total_passed_tests += 1
+                explanations.append("PASS: Data access information is machine readable (copyrightHoder metadata)")
+            else:
+                explanations.append("FAIL: Data access information is machine readable (copyrightHoder metadata not found)")
+
+            total_tests_run += 1
+
+            check["score"] = score
+            check["total_tests_run"] = total_tests_run
+            check["total_passed_tests"] = total_passed_tests
+            check["total_score"] = total_score
+            if score == 1:
+                check["assessment"] = "pass"
+            else:
+                check["assessment"] = "fail"
+            check["explanations"] = explanations
+        elif principle_id=="A1.3":
+            score = 0
+            total_score = 1
+
+            if all(key in element for key in ('dataDistribution')):
+                score += 1
+                total_passed_tests += 1
+                explanations.append("PASS: downloaded link found (dataDistribution metadata found)")
+            else:
+                explanations.append("FAIL: downloaded link not found (dataDistribution metadata not found)")
+
+            total_tests_run += 1
+
+            check["score"] = score
+            check["total_tests_run"] = total_tests_run
+            check["total_passed_tests"] = total_passed_tests
+            check["total_score"] = total_score
+            if score == 1:
+                check["assessment"] = "pass"
+            else:
+                check["assessment"] = "fail"
+            check["explanations"] = explanations
+        elif principle_id=="I1.1":
+            score = 0
+            total_score = 2
+
+            #Always in an ro-crate metadata file
+            score += 1
+            explanations.append("PASS: Metadata in JSON-LD format")
+            total_passed_tests += total_passed_tests
+            total_tests_run += 1
+
+            #Always in an ro-crate metadata file
+            score += 1
+            explanations.append("PASS: Graph data in JSON-LD format")
+            total_passed_tests += total_passed_tests
+            total_tests_run += 1
+
+            check["score"] = score
+            check["total_tests_run"] = total_tests_run
+            check["total_passed_tests"] = total_passed_tests
+            check["total_score"] = total_score
+            if score == 2:
+                check["assessment"] = "pass"
+            else:
+                check["assessment"] = "fail"
+            check["explanations"] = explanations
+        elif principle_id=="I2.1":
+            score = 0
+            total_score = 1
+
+            #Always in an ro-crate metadata file
+            score += 1
+            explanations.append("PASS: Metadata uses semantic resources")
+            total_passed_tests += total_passed_tests
+            total_tests_run += 1
+
+            check["score"] = score
+            check["total_tests_run"] = total_tests_run
+            check["total_passed_tests"] = total_passed_tests
+            check["total_score"] = total_score
+            if score == 1:
+                check["assessment"] = "pass"
+            else:
+                check["assessment"] = "fail"
+            check["explanations"] = explanations
+        elif principle_id=="I3.1":
+            score = 0
+            total_score = 1
+
+            #Include a hasPart metadata field
+            score += 0.5
+            explanations.append("PASS: Resource is mentioned in the metadata (hasPart relation)")
+            total_passed_tests += total_passed_tests
+            total_tests_run += 1
+
+            #Include a hasPart metadata field
+            score += 0.5
+            explanations.append("PASS: Resource is mentioned with a machine readable link (@id metadata)")
+            total_passed_tests += total_passed_tests
+            total_tests_run += 1
+
+            check["score"] = score
+            check["total_tests_run"] = total_tests_run
+            check["total_passed_tests"] = total_passed_tests
+            check["total_score"] = total_score
+            if score == 1:
+                check["assessment"] = "pass"
+            else:
+                check["assessment"] = "fail"
+            check["explanations"] = explanations
+
         return check
 
     def get_element_basic_checks(self, element_id):

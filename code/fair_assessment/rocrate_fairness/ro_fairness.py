@@ -205,6 +205,26 @@ class ROCrateFAIRnessCalculator():
             else:
                 check["assessment"] = "fail"
             check["explanations"] = explanations
+        elif principle_id=="A1.2":
+            score = 0
+            total_score = 1
+
+            
+            score += 1
+            total_passed_tests += 1
+            explanations.append("PASS: Landing page link is based on standardized web communication protocols.")
+            
+            total_tests_run += 1
+
+            check["score"] = score
+            check["total_tests_run"] = total_tests_run
+            check["total_passed_tests"] = total_passed_tests
+            check["total_score"] = total_score
+            if score == 1:
+                check["assessment"] = "pass"
+            else:
+                check["assessment"] = "fail"
+            check["explanations"] = explanations
         elif principle_id=="A1.3":
             score = 0
             total_score = 1
@@ -361,7 +381,7 @@ class ROCrateFAIRnessCalculator():
                 explanations.append("FAIL: Licence information is not given in an appropriate metadata element (copyrightHoder metadata not found)")
                 explanations.append("FAIL: Recognized licence is valid and registered at SPDX")
                 total_tests_run += 1
-                
+
             total_tests_run += 1
 
             check["score"] = score
@@ -425,7 +445,7 @@ class ROCrateFAIRnessCalculator():
                     total_passed_tests += 1
                     explanations.append("PASS: type has an open format") 
                 else:
-                    explanations.append("PASS: type has not an open format")
+                    explanations.append("FAIL: type has not an open format")
 
 
             total_tests_run += 1

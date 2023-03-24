@@ -40,32 +40,29 @@ class ROFairnessCalculator:
 
     def evaluate_ro(self):
         
-        if validators.url(element["@id"]):
-            fuji = FujiWrapper(element["@id"])
-
-            component = self.__build_component(
-                element["name"] if "name" in element else None,
-                fuji.get_identifier(),
-                element["@type"],
-                "F-uji",
-                fuji.get_checks(),
-            )
-
-            
-            self.__add_ro_metadata_checks(component, element["@id"])
-
-            self.output["components"].append(component)
-
         name = self.ro["title"]
         identifier = self.ro["identifier"]
+        identifier_rocrate = self.ro["@id"]
 
         element = self.create_component_output(
             name, identifier, "ro-crate", "ro-crate-FAIR"
         )
 
-        element["checks"] = ro_output["checks"]
+        if validators.url(identifier):
+            fuji = FujiWrapper(identifier)
 
-        self.output["components"].append(element)
+            component = self.__build_component(
+                element["name"] if "name" in element else None,
+                fuji.get_identifier(),
+                "ro-crate",
+                "F-uji",
+                fuji.get_checks(),
+            )
+ 
+        self.__add_ro_metadata_checks(component, identifier_rocrate)
+
+
+        self.output["components"].append(component)
 
     def extract_ro(self):
         ro_output = self.ro_calculator.calculate_fairness()
@@ -166,8 +163,9 @@ class ROFairnessCalculator:
                 if "sources" in check and all(key in check["sources"][0] for key in ('assessment', 'score','total_score')):
                     #score[cat]["tests_passed"] += 1 if check["sources"][0]["assessment"] == "pass" else 0
                     #score[cat]["total_tests"] += 1
-                    score[cat]["score"] += check["sources"]["score"]
-                    score[cat]["total_score"] += check["sources"]["total_score"]
+                    if "score" in check and "total_score" in check:
+                        score[cat]["score"] += check["score"]
+                        score[cat]["total_score"] += check["total_score"]
             component["score"] = score
 
     def __evaluate_dataset(self, element, evaluate_ro_metadata):
@@ -286,7 +284,7 @@ class ROFairnessCalculator:
     def __calculate_fairness(self, evaluate_ro_metadata, aggregation_mode):
         self.output["components"] = []
         
-        self.extract_ro()
+        self.evaluate_ro()
 
         for element in self.ro_parts:
 

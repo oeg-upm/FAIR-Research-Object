@@ -55,8 +55,9 @@ class FujiWrapper:
 		tests = result["metric_tests"]
 		passed, total = 0, len(tests)
 		for test in tests:
-			passed += 1 if result["metric_tests"][test]["metric_test_status"] == "pass" else 0
-		return "ok" if passed == total else "error", passed, total
+			print(result["metric_tests"][test]);passed += 1 if result["metric_tests"][test]["metric_test_status"] == "pass" else 0
+		
+		return passed, total
   
 	def __get_explanation(self, result):
 		tests = result["metric_tests"]
@@ -72,12 +73,25 @@ class FujiWrapper:
   
 		for result in raw["results"]:
 			check = {}
+			check_fuji = {}
+			check_sources = []
+			check_fuji["source"]="F-UJI"
 			check["principle_id"] = self.__reformat_principle_id(result)
 			check["category_id"] = self.__set_category(check["principle_id"])
-			check["status"], check["total_passed_tests"], check["total_tests_run"] = self.__calculate_tests_and_status(result)
 			check["title"] = result["metric_name"]
-			check["explanation"] = self.__get_explanation(result)
-			# check["description"] = ""
+
+			check_fuji["id"]="F-UJI"
+			check_fuji["total_passed_tests"], check_fuji["total_tests_run"] = self.__calculate_tests_and_status(result)
+			check_fuji["explanation"] = self.__get_explanation(result)
+			check_fuji["assessment"] = result["test_status"]
+			check_fuji["score"] = result["score"]["earned"]
+			check_fuji["total_score"] = result["score"]["total"]
+			
+			check["status"] = result["test_status"]
+			check_sources.append(check_fuji)
+
+			check["sources"] = check_sources
+
 			self.output["checks"].append(check)
 	
 

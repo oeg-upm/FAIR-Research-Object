@@ -79,3 +79,20 @@ Will generate a .json with all the evaluation.
 If the flag -d is True a diagram will be store in .pdf. The same file name without extensions is a graph written in DOT Language.
 
 Also somef output will be store.
+
+## Citing FAIROs
+If you use FAIROs, please refer to our TPDL publication:
+```
+@inproceedings{10.1007/978-3-031-16802-4_6,
+author="Gonz{\'a}lez, Esteban and Ben{\'i}tez, Alejandro and Garijo, Daniel",
+editor="Silvello, Gianmaria and Corcho, Oscar and Manghi, Paolo and Di Nunzio, Giorgio Maria and Golub, Koraljka and Ferro, Nicola and Poggi, Antonella",
+title="FAIROs: Towards FAIR Assessment in Research Objects",
+booktitle="Linking Theory and Practice of Digital Libraries",
+year="2022",
+publisher="Springer International Publishing",
+address="Cham",
+pages="68--80",
+isbn="978-3-031-16802-4",
+doi={https://doi.org/10.1007/978-3-031-16802-4_6}
+}
+```

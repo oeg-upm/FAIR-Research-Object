@@ -1,4 +1,5 @@
 # FAIR-Research-Object
+[![DOI](https://zenodo.org/badge/431199041.svg)](https://zenodo.org/badge/latestdoi/431199041)
 
 Tool to calculate the FAIRness of a Reserch Objects
 

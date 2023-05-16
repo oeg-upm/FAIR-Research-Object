@@ -1,0 +1,97 @@
+{
+    "@context": "https://w3id.org/ro/crate/1.1/context",
+    "@graph": [
+        {
+            "@id": "ro-crate-metadata.json",
+            "@type": "CreativeWork",
+            "about": {
+                "@id": "./"
+            },
+            "conformsTo": {
+                "@id": "https://w3id.org/ro/crate/1.1"
+            },
+            "description": "RO-Crate Metadata File Descriptor (this file)"
+        },
+        {
+            "@id": "./",
+            "@type": "Dataset",
+            "DataType": "Project",
+            "author": [
+                {
+                    "@id": "#none"
+                },
+                {
+                    "@id": "#alejandro_benitez"
+                },
+                {
+                    "@id": "#none"
+                }
+            ],
+            "description": "FAIROs is a service the assess the FAIRness of Research Objects.",
+            "hasPart": [
+                {
+                    "@id": "#fairos_repository"
+                },
+                {
+                    "@id": "#data_of_fair_assessment_in_research_objects_with_fairos"
+                },
+                {
+                    "@id": "ro-crate-preview.html"
+                }
+            ],
+            "name": "FAIROs - FAIR Research Objects Assessment"
+        },
+        {
+            "@id": "#none",
+            "@type": "Person",
+            "position": [
+                "PhD student"
+            ]
+        },
+        {
+            "@id": "#alejandro_benitez",
+            "@type": "Person",
+            "name": "Alejandro Benitez",
+            "position": [
+                "Student at UPM"
+            ]
+        },
+        {
+            "@id": "#none",
+            "@type": "Person",
+            "position": [
+                "Researcher at OEG-UPM"
+            ]
+        },
+        {
+            "@id": "#fairos_repository",
+            "@type": "SoftwareApplication",
+            "description": "This is the official repository of FAIROs. With FAIROs you will be able to assess your Research Objects, and it is integratred with the platform RELIANCE (https://reliance.rohub.org)",
+            "installUrl": "https://github.com/oeg-upm/FAIR-Research-Object/"
+        },
+        {
+            "@id": "#data_of_fair_assessment_in_research_objects_with_fairos",
+            "@type": "Dataset",
+            "description": "You can find in this data a collection of research objects published in RELIANCE to make an analysis of the assessment. Also, you can find an assessment of them",
+            "distribution": {
+                "@id": "https://doi.org/10.5281/zenodo.7808078"
+            },
+            "name": "Data of FAIR Assessment in Research Objects with FAIROs"
+        },
+        {
+            "workExample": [
+                {
+                    "@type": "Demo",
+                    "description": "This is the description of the FAIROs API.",
+                    "link": "https://w3id.org/FAIROS/api",
+                    "name": "FAIROs API"
+                }
+            ]
+        },
+        {
+            "@id": "ro-crate-preview.html",
+            "@type": "WebPage",
+            "name": "HTML representation of this data."
+        }
+    ]
+}

@@ -18,16 +18,16 @@
             "DataType": "Project",
             "author": [
                 {
-                    "@id": "#none"
+                    "@id": "https://orcid.org/0000-0003-4112-6825"
                 },
                 {
                     "@id": "#alejandro_benitez"
                 },
                 {
-                    "@id": "#none"
+                    "@id": "https://orcid.org/0000-0003-0454-7145"
                 }
             ],
-            "description": "FAIROs is a service the assess the FAIRness of Research Objects.",
+            "description": "Build  a service to assess the FAIRness of Research Objects.",
             "hasPart": [
                 {
                     "@id": "#fairos_repository"
@@ -42,8 +42,9 @@
             "name": "FAIROs - FAIR Research Objects Assessment"
         },
         {
-            "@id": "#none",
+            "@id": "https://orcid.org/0000-0003-4112-6825",
             "@type": "Person",
+            "name": "Esteban Gonzalez",
             "position": [
                 "PhD student"
             ]
@@ -57,8 +58,10 @@
             ]
         },
         {
-            "@id": "#none",
+            "@id": "https://orcid.org/0000-0003-0454-7145",
             "@type": "Person",
+            "description": "I am a researcher at Universidad Polit\u00e9cnica de Madrid. My research activities focus on e-Science and the Semantic Web, specifically on how to increase the ease of use of software and scientific workflows using provenance, metadata, intermediate results and Linked Data.",
+            "name": "Daniel Garijo",
             "position": [
                 "Researcher at OEG-UPM"
             ]

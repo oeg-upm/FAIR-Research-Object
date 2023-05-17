@@ -1,5 +1,6 @@
 site_name: FAIROs documentation
 nav:
+  - Architecture: architecture.md
   - Output: output.md
 theme:
   name: material

@@ -1,0 +1,12 @@
+site_name: FAIROs documentation
+nav:
+  - Output: output.md
+theme:
+  name: material
+
+markdown_extensions:
+  - admonition
+  - codehilite:
+      guess_lang: false
+  - toc:
+      permalink: true

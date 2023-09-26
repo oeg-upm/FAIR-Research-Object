@@ -32,26 +32,17 @@ img {display: block;margin-left: auto;margin-right: auto;}
 <div class="row" style="margin-bottom:2em;margin-top:2em;">
 <div class="column">
 <!-- Requiremnts okay logo -->
-<span id="recogn_logo"><a href="https://eelisa.eu/" target="_blank">
-<img alt="EELISA-logo" src="https://eelisa.eu/wp-content/uploads/2020/11/logo-white-1.png" style="width: 3em; width: fit-content;" title="This project has the necessary characteristics to be recognized as an EELISA project."/>
-</a></span>
+<span id="recogn_logo">
+    <a href="https://upm.es/" target="_blank">
+        <img alt="UPM logo" src="images/upmlogo.png" style="width: 3em; width: fit-content;" title="This project has the necessary characteristics to be recognized as a UPM project.">
+    </a>
+</span>
 </div>
 </div>
 <div class="w3-bar-block centered-element">
-<span id="sidebar"><a class="w3-bar-item w3-button w3-hover-white" href="#goal" onclick="w3_close()">Goal</a><a class="w3-bar-item w3-button w3-hover-white" href="#social_motivation" onclick="w3_close()">Social motivation</a><a class="w3-bar-item w3-button w3-hover-white" href="#areas" onclick="w3_close()">Areas</a><a class="w3-bar-item w3-button w3-hover-white" href="#activities" onclick="w3_close()">Activities</a><a class="w3-bar-item w3-button w3-hover-white" href="#demo" onclick="w3_close()">Demo</a><a class="w3-bar-item w3-button w3-hover-white" href="#datasets" onclick="w3_close()">Datasets</a><a class="w3-bar-item w3-button w3-hover-white" href="#software" onclick="w3_close()">Software</a><a class="w3-bar-item w3-button w3-hover-white" href="#bibliography" onclick="w3_close()">Bibliography</a><a class="w3-bar-item w3-button w3-hover-white" href="#authors" onclick="w3_close()">About the authors</a><a class="w3-bar-item w3-button w3-hover-white" href="#contact" onclick="w3_close()">Contact</a></span>
+<span id="sidebar"><a class="w3-bar-item w3-button w3-hover-white" href="#description" onclick="w3_close()">Description</a><a class="w3-bar-item w3-button w3-hover-white" href="#service" onclick="w3_close()">Service</a><a class="w3-bar-item w3-button w3-hover-white" href="#software" onclick="w3_close()">Software</a><a class="w3-bar-item w3-button w3-hover-white" href="#specification" onclick="w3_close()">Specification</a><a class="w3-bar-item w3-button w3-hover-white" href="#bibliography" onclick="w3_close()">Bibliography</a><a class="w3-bar-item w3-button w3-hover-white" href="#authors" onclick="w3_close()">About the authors</a><a class="w3-bar-item w3-button w3-hover-white" href="#contact" onclick="w3_close()">Contact</a></span>
 </div>
 <div class="row" style="position: absolute; bottom: 25px; height: 50px;">
-<div class="column">
-<a href="ro-crate-metadata.json" id="jsonld_svg">
-<img alt="JSON-LD" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/JSON-LD.svg/512px-JSON-LD.svg.png" style="filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(57deg) brightness(101%) contrast(102%); width: 30px; margin: 0; " title="Retrieve the JSON-LD ro-crate representation of this web."/>
-</a>
-</div>
-<div class="column">
-<!-- Help button -->
-<a href="help.html" id="help-button">
-<img alt="help-button" src="https://img.icons8.com/material-outlined/48/000000/help.png" style="filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(57deg) brightness(101%) contrast(102%); width: 30px; margin: 0;" title="Description of each element and how was this web created."/>
-</a>
-</div>
 </div>
 
 </nav>
@@ -69,368 +60,392 @@ img {display: block;margin-left: auto;margin-right: auto;}
 </div>
 <!-- Summary -->
 <span id="summary"></span>
-<!-- Goal -->
-<span id="goal"><div class="w3-container" style="margin-top:15px">
-<h1 class="w3-xxxlarge w3-text-green"><b>Goal</b></h1>
+<!-- Description -->
+<span id="description"><div class="w3-container" style="margin-top:15px">
+<h1 class="w3-xxxlarge w3-text-green"><b>Description</b></h1>
 <hr class="w3-round" style="width:50px;border:5px solid green"/>
-<p>Build  a service to assess the FAIRness of Research Objects.</p>
-</div></span>
-<!-- Social Motivation -->
-<span id="social_motivation"><div class="w3-container" style="margin-top:15px">
-<h1 class="w3-xxxlarge w3-text-green"><b>Social Motivation</b></h1>
-<hr class="w3-round" style="width:50px;border:5px solid green"/>
-<p>It contributes to make Research Objects more FAIR. </p>
-</div></span>
-<!-- Areas -->
-<span id="areas"><div class="w3-container" style="margin-top:15px">
-<h1 class="w3-xxxlarge w3-text-green"><b>Areas</b></h1>
-<hr class="w3-round" style="width:50px;border:5px solid green"/>
-<ul><li>FAIR Assessment.</li><li>Research Objects.</li></ul>
-</div></span>
-<!-- Activities -->
-<span id="activities"><div class="w3-container" style="margin-top:15px">
-<h1 class="w3-xxxlarge w3-text-green"><b>Activities</b></h1>
-<hr class="w3-round" style="width:50px;border:5px solid green"/>
-<ul><li>Subtask 1: Assessment of Research Objects.</li><li>Subtask 2: Assessment of data.</li><li>Subtask 3: Creation of the assessment.</li></ul>
+<p>FAIROs, a framework for assessing the compliance of a Research Object (and its constituents) against the FAIR principles.</p>
+<p> FAIROs reuses existing FAIR validators for individual resources and proposes:
+    <ul>
+        <li>
+            Two scoring methods for assessing the fairness of Research Objects
+        </li>
+        <li>
+            An initial implementation of the scoring methods in the FAIROs framework
+        </li>
+        <li>
+            An explanation-based approach designed to visualize the obtained scores.
+        </li>
+    </ul> 
 </div></span>
 <!-- Sketch -->
 <span id="sketch"></span>
-<!-- Demo -->
-<span id="demo"><div class="w3-container" id="demo" style="margin-top:75px">
-<h1 class="w3-xxxlarge w3-text-green"><b>Demo</b></h1>
+<!-- Service -->
+<span id="service"><div class="w3-container" id="service" style="margin-top:75px">
+<h1 class="w3-xxxlarge w3-text-green"><b>Service</b></h1>
 <hr class="w3-round" style="width:50px;border:5px solid green"/>
-<ul><li><a href="https://w3id.org/FAIROS/api">FAIROs API</a>: This is the description of the FAIROs API.</li></ul>
+<p>
+    FAIROs is a service accesible through an API. You can find a complete specification <a href="https://w3id.org/FAIROS/api">here</a>.
+</p>
+<p>
+    FAIROs is integrated in the platform <a href="https://reliance.rohub.org/">ROHUB</a>, deployed by the project <a href="https://www.reliance-project.eu/">RELIANCE</a>.
+</p>
+<p>
+    In this platform, you can find a huge variety of research objects. Note that each research object has been assessed using FAIROs. 
+    
+    See this <a href="https://www.rohub.org/998dccd6-7192-4d88-af39-6018c71e6bdf">example</a> that analyzes the air and water quality during COVID-19 lockdown in Venice.
+    
+</p>
+
+<a href="https://www.rohub.org/998dccd6-7192-4d88-af39-6018c71e6bdf?activetab=assessment&category=fairness"><img src="images/rohub_fairos.png" style="width:100%"/></a>
+
+<p>
+    Note that the assessment will take some time due to the size of the research object.
+</p>
 </div></span>
-<!-- datasets -->
-<span id="datasets"><div class="w3-container" id="datasets" style="margin-top:75px">
-<h1 class="w3-xxxlarge w3-text-green"><b>Datasets</b></h1>
-<hr class="w3-round" style="width:50px;border:5px solid green"/>
-<ul><li><p><a href="https://doi.org/10.5281/zenodo.7808078">Data of FAIR Assessment in Research Objects with FAIROs</a></p>
-<ul><li><b>Description:</b> You can find in this data a collection of research objects published in RELIANCE to make an analysis of the assessment. Also, you can find an assessment of them</li><li><b>License:</b> 'https://creativecommons.org/licenses/by/4.0/legalcode' and 'info:eu-repo/semantics/openAccess'</li><li><b>Author:</b> Esteban Gonzalez</li></ul></li></ul>
+<!-- Specification -->
+<span id="specification"><div class="w3-container" id="specification" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-green"><b>Output Specification</b></h1>
+    <hr class="w3-round" style="width:50px;border:5px solid green"/>
+
+    <p>
+    FAIROs has a very complete output in JSON format that describe each FAIR principle assessment, as well as the scoring.
+
+    You can find a complete description of the output in this <a href="https://fairos.readthedocs.io/en/latest/output/">link</a>.
+    </p>    
 </div></span>
 <!-- Software -->
 <span id="software"><div class="w3-container" id="software" style="margin-top:75px">
-<h1 class="w3-xxxlarge w3-text-green"><b>Software</b></h1>
-<hr class="w3-round" style="width:50px;border:5px solid green"/>
-        The pointers for the main software used can be found below:
-        
-            <ul></ul>
-<div style="max-width: 1600px;display: flex; align-content: flex-start; flex-wrap: wrap; 
-            flex-direction: row;justify-content: center; margin-top: 3rem;font-size: 15px;"><article class="soca-card" id="https://github.com/oeg-upm/FAIR-Research-Object"><div class="card-row"><div class="card-col"><div class="flex-horizontal"><a href="https://github.com/oeg-upm/FAIR-Research-Object" style="text-decoration: none;" target="_blank"><h4 class="title">FAIR-Research-Object</h4></a><button class="copy-btn" data-placement="right" data-toggle="tooltip" style="background:url('https://github.com/dakixr/soca/raw/main/src/soca/assets/repo_icons/copy.svg')transparent;background-repeat:no-repeat;background-size:auto;" title="Copy card as embbeded HTML" value="https://github.com/oeg-upm/FAIR-Research-Object"></button></div><div class="description"><span><p>Repository for the work on evaluating FAIRnes of Research Objects</p></span><div class="modal"><div class="modal-content"><span class="close">×</span><span style="display:flex;"><h2 style="margin-bottom: 1rem;">FAIR-Research-Object</h2></span><div style="margin-bottom: 1rem; overflow: auto;"><p><span><p>Repository for the work on evaluating FAIRnes of Research Objects</p></span></p></div></div></div></div></div><div><div style="min-height: 6rem;display: flex;align-items: center;justify-content: center;"><a href="https://github.com/oeg-upm/FAIR-Research-Object" style="text-decoration: none;" target="_blank"><img alt="repo-logo" class="repo-logo" src="https://github.com/dakixr/soca/raw/main/src/soca/assets/img/github-default.svg"/></a></div><div class="flex-horizontal float-right"><div class="recently-updated" data-placement="right" data-toggle="tooltip" style="background-color: #a88d62;" title="Last updated on: 03-04-2023"></div></div><div alt="Stars" class="flex-horizontal float-right" data-placement="right" data-toggle="tooltip" style="margin-top: 0.3rem;" title="Stars"><a class="flex-horizontal float-right" href="https://github.com/oeg-upm/FAIR-Research-Object/stargazers" style="text-decoration: none;" target="_blank"><b>3</b><img alt="stars" class="repo-icon" src="https://github.com/dakixr/soca/raw/main/src/soca/assets/repo_icons/star.png"/></a></div><div alt="Last release: FAIROs 0.0.2: Bug fixes and integration with RELIANCE" class="flex-horizontal float-right" data-placement="right" data-toggle="tooltip" title="Last release: FAIROs 0.0.2: Bug fixes and integration with RELIANCE"><a class="flex-horizontal" href="https://github.com/oeg-upm/FAIR-Research-Object/releases" style="text-decoration: none;" target="_blank"><b>2</b><img alt="releases" class="repo-icon" src="https://github.com/dakixr/soca/raw/main/src/soca/assets/repo_icons/releases.png"/></a></div></div></div><div class="card-row"><div class="card-col"><div class="flex-horizontal ref-repo-icons"><div class="icon-wrapper"><div class="icon"><a class="repo-icon" href="https://raw.githubusercontent.com/oeg-upm/FAIR-Research-Object/main/README.md" target="_blank"><img alt="Readme" class="repo-icon" data-placement="bottom" data-toggle="tooltip" src="https://github.com/dakixr/soca/raw/main/src/soca/assets/repo_icons/readme.png" title="Readme"/></a></div></div><div class="icon-wrapper ref-license" data-url="https://api.github.com/licenses/apache-2.0"><div class="icon"><img alt="License: Apache License 2.0" class="repo-icon" data-placement="bottom" data-toggle="tooltip" src="https://github.com/dakixr/soca/raw/main/src/soca/assets/repo_icons/license.png" title="License: Apache License 2.0"/></div><div class="modal"><div class="modal-content"><span class="close">×</span><span style="display:flex;"><h2 style="margin-bottom: 1rem;">License</h2></span><div style="margin-bottom: 1rem; overflow: auto;"><h3 class="ref-name"></h3><span class="ref-description-aux"><h4>Description:</h4><p class="ref-description" style="text-align: justify;">Loading...</p><h4>Permissions:</h4><div class="ref-permissions"><ul><li>Loading...</li></ul></div><h4>Conditions:</h4><div class="ref-conditions"><ul><li>Loading...</li></ul></div><h4>Limitations:</h4><div class="ref-limitations"><ul><li>Loading...</li></ul></div></span></div></div></div></div><div class="icon-wrapper"><div class="icon"><img alt="Citation" class="repo-icon" data-placement="bottom" data-toggle="tooltip" src="https://github.com/dakixr/soca/raw/main/src/soca/assets/repo_icons/citation.png" title="Citation"/></div><div class="modal"><div class="modal-content"><span class="close">×</span><span style="display:flex;"><h2 style="margin-bottom: 1rem;">Citation</h2><button class="copy-citation-btn" data-original-title="Copy citation" data-placement="right" data-toggle="tooltip" style="background:url('repo_icons/copy.svg')transparent;background-repeat:no-repeat;background-size:auto;" value="https://github.com/oeg-upm/FAIR-Research-Object"></button></span><div style="margin-bottom: 1rem; overflow: auto;"><div style="font-family: monospace;"><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
-   "http://www.w3.org/TR/html4/strict.dtd">
-<!--
-generated by Pygments <https://pygments.org/>
-Copyright 2006-2023 by the Pygments team.
-Licensed under the BSD license, see LICENSE for details.
---><html><head><title></title><meta content="text/html; charset=utf-8" http-equiv="content-type"/><style type="text/css">
-/*
-generated by Pygments <https://pygments.org/>
-Copyright 2006-2023 by the Pygments team.
-Licensed under the BSD license, see LICENSE for details.
-*/
-pre { line-height: 125%; }
-td.linenos .normal { color: #666666; background-color: transparent; padding-left: 5px; padding-right: 5px; }
-span.linenos { color: #666666; background-color: transparent; padding-left: 5px; padding-right: 5px; }
-td.linenos .special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
-span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
-body .hll { background-color: #ffffcc }
-body { background: #f0f0f0; }
-body .c { color: #60a0b0; font-style: italic } /* Comment */
-body .err { border: 1px solid #FF0000 } /* Error */
-body .k { color: #007020; font-weight: bold } /* Keyword */
-body .o { color: #666666 } /* Operator */
-body .ch { color: #60a0b0; font-style: italic } /* Comment.Hashbang */
-body .cm { color: #60a0b0; font-style: italic } /* Comment.Multiline */
-body .cp { color: #007020 } /* Comment.Preproc */
-body .cpf { color: #60a0b0; font-style: italic } /* Comment.PreprocFile */
-body .c1 { color: #60a0b0; font-style: italic } /* Comment.Single */
-body .cs { color: #60a0b0; background-color: #fff0f0 } /* Comment.Special */
-body .gd { color: #A00000 } /* Generic.Deleted */
-body .ge { font-style: italic } /* Generic.Emph */
-body .gr { color: #FF0000 } /* Generic.Error */
-body .gh { color: #000080; font-weight: bold } /* Generic.Heading */
-body .gi { color: #00A000 } /* Generic.Inserted */
-body .go { color: #888888 } /* Generic.Output */
-body .gp { color: #c65d09; font-weight: bold } /* Generic.Prompt */
-body .gs { font-weight: bold } /* Generic.Strong */
-body .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
-body .gt { color: #0044DD } /* Generic.Traceback */
-body .kc { color: #007020; font-weight: bold } /* Keyword.Constant */
-body .kd { color: #007020; font-weight: bold } /* Keyword.Declaration */
-body .kn { color: #007020; font-weight: bold } /* Keyword.Namespace */
-body .kp { color: #007020 } /* Keyword.Pseudo */
-body .kr { color: #007020; font-weight: bold } /* Keyword.Reserved */
-body .kt { color: #902000 } /* Keyword.Type */
-body .m { color: #40a070 } /* Literal.Number */
-body .s { color: #4070a0 } /* Literal.String */
-body .na { color: #4070a0 } /* Name.Attribute */
-body .nb { color: #007020 } /* Name.Builtin */
-body .nc { color: #0e84b5; font-weight: bold } /* Name.Class */
-body .no { color: #60add5 } /* Name.Constant */
-body .nd { color: #555555; font-weight: bold } /* Name.Decorator */
-body .ni { color: #d55537; font-weight: bold } /* Name.Entity */
-body .ne { color: #007020 } /* Name.Exception */
-body .nf { color: #06287e } /* Name.Function */
-body .nl { color: #002070; font-weight: bold } /* Name.Label */
-body .nn { color: #0e84b5; font-weight: bold } /* Name.Namespace */
-body .nt { color: #062873; font-weight: bold } /* Name.Tag */
-body .nv { color: #bb60d5 } /* Name.Variable */
-body .ow { color: #007020; font-weight: bold } /* Operator.Word */
-body .w { color: #bbbbbb } /* Text.Whitespace */
-body .mb { color: #40a070 } /* Literal.Number.Bin */
-body .mf { color: #40a070 } /* Literal.Number.Float */
-body .mh { color: #40a070 } /* Literal.Number.Hex */
-body .mi { color: #40a070 } /* Literal.Number.Integer */
-body .mo { color: #40a070 } /* Literal.Number.Oct */
-body .sa { color: #4070a0 } /* Literal.String.Affix */
-body .sb { color: #4070a0 } /* Literal.String.Backtick */
-body .sc { color: #4070a0 } /* Literal.String.Char */
-body .dl { color: #4070a0 } /* Literal.String.Delimiter */
-body .sd { color: #4070a0; font-style: italic } /* Literal.String.Doc */
-body .s2 { color: #4070a0 } /* Literal.String.Double */
-body .se { color: #4070a0; font-weight: bold } /* Literal.String.Escape */
-body .sh { color: #4070a0 } /* Literal.String.Heredoc */
-body .si { color: #70a0d0; font-style: italic } /* Literal.String.Interpol */
-body .sx { color: #c65d09 } /* Literal.String.Other */
-body .sr { color: #235388 } /* Literal.String.Regex */
-body .s1 { color: #4070a0 } /* Literal.String.Single */
-body .ss { color: #517918 } /* Literal.String.Symbol */
-body .bp { color: #007020 } /* Name.Builtin.Pseudo */
-body .fm { color: #06287e } /* Name.Function.Magic */
-body .vc { color: #bb60d5 } /* Name.Variable.Class */
-body .vg { color: #bb60d5 } /* Name.Variable.Global */
-body .vi { color: #bb60d5 } /* Name.Variable.Instance */
-body .vm { color: #bb60d5 } /* Name.Variable.Magic */
-body .il { color: #40a070 } /* Literal.Number.Integer.Long */
-
-  </style></head><body><h2></h2><div class="highlight"><pre><span></span>If you use FAIROs, please refer to our TPDL publication:
-<span class="s">```</span>
-@inproceedings{10.1007/978-3-031-16802-4_6,
-author="Gonz{\'a}lez, Esteban and Ben{\'i}tez, Alejandro and Garijo, Daniel",
-editor="Silvello, Gianmaria and Corcho, Oscar and Manghi, Paolo and Di Nunzio, Giorgio Maria and Golub, Koraljka and Ferro, Nicola and Poggi, Antonella",
-title="FAIROs: Towards FAIR Assessment in Research Objects",
-booktitle="Linking Theory and Practice of Digital Libraries",
-year="2022",
-publisher="Springer International Publishing",
-address="Cham",
-pages="68--80",
-isbn="978-3-031-16802-4",
-doi={https://doi.org/10.1007/978-3-031-16802-4_6}
-}
-<span class="s">```</span>
-</pre></div></body></html></div></div></div></div></div><div class="icon-wrapper"><div class="icon"><img alt="Installation" class="repo-icon" data-placement="bottom" data-toggle="tooltip" src="https://github.com/dakixr/soca/raw/main/src/soca/assets/repo_icons/installation.png" title="Installation"/></div><div class="modal"><div class="modal-content"><span class="close">×</span><span style="display:flex;"><h2 style="margin-bottom: 1rem;">Installation</h2></span><div style="margin-bottom: 1rem; overflow: auto;"><p>Fuji requires python 3.5.2+</p><p>Clone the repo: https://github.com/pangaea-data-publisher/fuji</p><p>From the fuji source folder run</p><pre><code>pip3 install .
-</code></pre><ul><li>Download the latest Dataset Search corpus file from: https://www.kaggle.com/googleai/dataset-search-metadata-for-datasets</li><li>Open file fuji_server/helper/create_google_cache_db.py and set variable 'google_file_location' according to the file location of the corpus file</li><li>Run create_google_cache_db.py which creates a SQLite database in the data directory. From root directory run <code>python3 -m fuji_server.helper.create_google_cache_db</code>.</li></ul><p>Before running the service, please set user details in the configuration file, see config/users.py.</p><p>The F-uji server can now be started with.</p><pre><code>python3 -m fuji_server -c fuji_server/config/server.ini
-</code></pre><p>Fuji server must be launch before using the tool.</p><p>Clone this repository</p><p>Install dependencies:</p><pre><code>pip3 install -r requirements.txt
-</code></pre><p>Then you must configure <a href="https://github.com/KnowledgeCaptureAndDiscovery/somef#usage">SOMEF</a></p><p>Recommend use of <code>brew install graphviz</code></p><p>Check in https://graphviz.org/download/ your current distro.</p><p>Download the graphviz-3.0.0 exe installer.</p><p>Important! In the installer make sure that add Graphviz to the system PATH is checked.</p></div></div></div></div><div class="icon-wrapper"><div class="icon"><img alt="Requirements" class="repo-icon" data-placement="bottom" data-toggle="tooltip" src="https://github.com/dakixr/soca/raw/main/src/soca/assets/repo_icons/requirements.png" title="Requirements"/></div><div class="modal"><div class="modal-content"><span class="close">×</span><span style="display:flex;"><h2 style="margin-bottom: 1rem;">Requirements</h2></span><div style="margin-bottom: 1rem; overflow: auto;"><p>The development of the tool has been done in python 3.9.12</p><p>Recommend use of <code>brew install graphviz</code></p><p>Check in https://graphviz.org/download/ your current distro.</p><p>Download the graphviz-3.0.0 exe installer.</p><p>Important! In the installer make sure that add Graphviz to the system PATH is checked.</p></div></div></div></div><div class="icon-wrapper"><div class="icon"><a class="repo-icon" href="https://github.com/oeg-upm/FAIR-Research-Object/releases" target="_blank"><img alt="Download" class="repo-icon" data-placement="bottom" data-toggle="tooltip" src="https://github.com/dakixr/soca/raw/main/src/soca/assets/repo_icons/download.png" title="Download"/></a></div></div></div></div><div><div class="flex-horizontal float-right"><img alt="html" class="repo-icon grey-color-svg" data-placement="bottom" data-toggle="tooltip" src="https://github.com/dakixr/soca/raw/main/src/soca/assets/language_icons/html.svg" title="Html"/><img alt="python" class="repo-icon grey-color-svg" data-placement="bottom" data-toggle="tooltip" src="https://github.com/dakixr/soca/raw/main/src/soca/assets/language_icons/python.svg" title="Python"/></div></div></div><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script><script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script><script>
-$(document).ready(function(){
-    $('[data-toggle="tooltip"]').tooltip();
-});
-</script><script>
-btns = document.getElementsByClassName('copy-btn');
-for (let index = 0; index < btns.length; index++) {
-    const element = btns[index];
-    element.addEventListener('click', function () {
-        console.log('copy btn!');
-        for (let index = 0; index < cards.length; index++) {
-            const card = cards[index];
-            if(card.id == $(this).val()){
-                navigator.clipboard.writeText(card.html_card_embedded);
-                break;
-            }
-        }
-    });
-}
-
-btns = document.getElementsByClassName('copy-citation-btn');
-for (let index = 0; index < btns.length; index++) {
-    const element = btns[index];
-    element.addEventListener('click', function () {
-        console.log('copy citation btn!');
-        for (let index = 0; index < cards.length; index++) {
-            const card = cards[index];
-            if(card.id == $(this).val()){
-                navigator.clipboard.writeText(card.citationText);
-                break;
-            }
-        }
-    });
-}</script><script>function add_modals() {
-    cards_icons_list = document.getElementsByClassName('ref-repo-icons');
-    for(const cards_icons of cards_icons_list){
-        for(const card_icon of cards_icons.children){
-            const icon = card_icon.getElementsByClassName('icon')[0];
-            const modal = card_icon.getElementsByClassName('modal')[0];
-            const modal_content = card_icon.getElementsByClassName('modal-content')[0];
-            const span_close = card_icon.getElementsByClassName('close')[0];
+    <h1 class="w3-xxxlarge w3-text-green"><b>Software</b></h1>
+    <hr class="w3-round" style="width:50px;border:5px solid green"/>
+            The pointers for the main software used can be found below:
             
-            if (modal != undefined){
-                icon.addEventListener('click', () => { 
-                    modal.classList.add('modal-on');
-                });
-                span_close.addEventListener('click', () => { 
-                    modal.classList.remove('modal-on');
-                });
-                modal_content.addEventListener('click', (event) => { 
-                    event.stopPropagation();
-                });
-                modal.addEventListener('click', () => { 
-                    modal.classList.remove('modal-on');
-
+                <ul></ul>
+    <div style="max-width: 1600px;display: flex; align-content: flex-start; flex-wrap: wrap; 
+                flex-direction: row;justify-content: center; margin-top: 3rem;font-size: 15px;"><article class="soca-card" id="https://github.com/oeg-upm/FAIR-Research-Object"><div class="card-row"><div class="card-col"><div class="flex-horizontal"><a href="https://github.com/oeg-upm/FAIR-Research-Object" style="text-decoration: none;" target="_blank"><h4 class="title">FAIR-Research-Object</h4></a><button class="copy-btn" data-placement="right" data-toggle="tooltip" style="background:url('https://github.com/dakixr/soca/raw/main/src/soca/assets/repo_icons/copy.svg')transparent;background-repeat:no-repeat;background-size:auto;" title="Copy card as embbeded HTML" value="https://github.com/oeg-upm/FAIR-Research-Object"></button></div><div class="description"><span><p>Repository for the work on evaluating FAIRnes of Research Objects</p></span><div class="modal"><div class="modal-content"><span class="close">×</span><span style="display:flex;"><h2 style="margin-bottom: 1rem;">FAIR-Research-Object</h2></span><div style="margin-bottom: 1rem; overflow: auto;"><p><span><p>Repository for the work on evaluating FAIRnes of Research Objects</p></span></p></div></div></div></div></div><div><div style="min-height: 6rem;display: flex;align-items: center;justify-content: center;"><a href="https://github.com/oeg-upm/FAIR-Research-Object" style="text-decoration: none;" target="_blank"><img alt="repo-logo" class="repo-logo" src="https://github.com/dakixr/soca/raw/main/src/soca/assets/img/github-default.svg"/></a></div><div class="flex-horizontal float-right"><div class="recently-updated" data-placement="right" data-toggle="tooltip" style="background-color: #a88d62;" title="Last updated on: 03-04-2023"></div></div><div alt="Stars" class="flex-horizontal float-right" data-placement="right" data-toggle="tooltip" style="margin-top: 0.3rem;" title="Stars"><a class="flex-horizontal float-right" href="https://github.com/oeg-upm/FAIR-Research-Object/stargazers" style="text-decoration: none;" target="_blank"><b>3</b><img alt="stars" class="repo-icon" src="https://github.com/dakixr/soca/raw/main/src/soca/assets/repo_icons/star.png"/></a></div><div alt="Last release: FAIROs 0.0.2: Bug fixes and integration with RELIANCE" class="flex-horizontal float-right" data-placement="right" data-toggle="tooltip" title="Last release: FAIROs 0.0.2: Bug fixes and integration with RELIANCE"><a class="flex-horizontal" href="https://github.com/oeg-upm/FAIR-Research-Object/releases" style="text-decoration: none;" target="_blank"><b>2</b><img alt="releases" class="repo-icon" src="https://github.com/dakixr/soca/raw/main/src/soca/assets/repo_icons/releases.png"/></a></div></div></div><div class="card-row"><div class="card-col"><div class="flex-horizontal ref-repo-icons"><div class="icon-wrapper"><div class="icon"><a class="repo-icon" href="https://raw.githubusercontent.com/oeg-upm/FAIR-Research-Object/main/README.md" target="_blank"><img alt="Readme" class="repo-icon" data-placement="bottom" data-toggle="tooltip" src="https://github.com/dakixr/soca/raw/main/src/soca/assets/repo_icons/readme.png" title="Readme"/></a></div></div><div class="icon-wrapper ref-license" data-url="https://api.github.com/licenses/apache-2.0"><div class="icon"><img alt="License: Apache License 2.0" class="repo-icon" data-placement="bottom" data-toggle="tooltip" src="https://github.com/dakixr/soca/raw/main/src/soca/assets/repo_icons/license.png" title="License: Apache License 2.0"/></div><div class="modal"><div class="modal-content"><span class="close">×</span><span style="display:flex;"><h2 style="margin-bottom: 1rem;">License</h2></span><div style="margin-bottom: 1rem; overflow: auto;"><h3 class="ref-name"></h3><span class="ref-description-aux"><h4>Description:</h4><p class="ref-description" style="text-align: justify;">Loading...</p><h4>Permissions:</h4><div class="ref-permissions"><ul><li>Loading...</li></ul></div><h4>Conditions:</h4><div class="ref-conditions"><ul><li>Loading...</li></ul></div><h4>Limitations:</h4><div class="ref-limitations"><ul><li>Loading...</li></ul></div></span></div></div></div></div><div class="icon-wrapper"><div class="icon"><img alt="Citation" class="repo-icon" data-placement="bottom" data-toggle="tooltip" src="https://github.com/dakixr/soca/raw/main/src/soca/assets/repo_icons/citation.png" title="Citation"/></div><div class="modal"><div class="modal-content"><span class="close">×</span><span style="display:flex;"><h2 style="margin-bottom: 1rem;">Citation</h2><button class="copy-citation-btn" data-original-title="Copy citation" data-placement="right" data-toggle="tooltip" style="background:url('repo_icons/copy.svg')transparent;background-repeat:no-repeat;background-size:auto;" value="https://github.com/oeg-upm/FAIR-Research-Object"></button></span><div style="margin-bottom: 1rem; overflow: auto;"><div style="font-family: monospace;"><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+       "http://www.w3.org/TR/html4/strict.dtd">
+    <!--
+    generated by Pygments <https://pygments.org/>
+    Copyright 2006-2023 by the Pygments team.
+    Licensed under the BSD license, see LICENSE for details.
+    --><html><head><title></title><meta content="text/html; charset=utf-8" http-equiv="content-type"/><style type="text/css">
+    /*
+    generated by Pygments <https://pygments.org/>
+    Copyright 2006-2023 by the Pygments team.
+    Licensed under the BSD license, see LICENSE for details.
+    */
+    pre { line-height: 125%; }
+    td.linenos .normal { color: #666666; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+    span.linenos { color: #666666; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+    td.linenos .special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+    span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+    body .hll { background-color: #ffffcc }
+    body { background: #f0f0f0; }
+    body .c { color: #60a0b0; font-style: italic } /* Comment */
+    body .err { border: 1px solid #FF0000 } /* Error */
+    body .k { color: #007020; font-weight: bold } /* Keyword */
+    body .o { color: #666666 } /* Operator */
+    body .ch { color: #60a0b0; font-style: italic } /* Comment.Hashbang */
+    body .cm { color: #60a0b0; font-style: italic } /* Comment.Multiline */
+    body .cp { color: #007020 } /* Comment.Preproc */
+    body .cpf { color: #60a0b0; font-style: italic } /* Comment.PreprocFile */
+    body .c1 { color: #60a0b0; font-style: italic } /* Comment.Single */
+    body .cs { color: #60a0b0; background-color: #fff0f0 } /* Comment.Special */
+    body .gd { color: #A00000 } /* Generic.Deleted */
+    body .ge { font-style: italic } /* Generic.Emph */
+    body .gr { color: #FF0000 } /* Generic.Error */
+    body .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+    body .gi { color: #00A000 } /* Generic.Inserted */
+    body .go { color: #888888 } /* Generic.Output */
+    body .gp { color: #c65d09; font-weight: bold } /* Generic.Prompt */
+    body .gs { font-weight: bold } /* Generic.Strong */
+    body .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+    body .gt { color: #0044DD } /* Generic.Traceback */
+    body .kc { color: #007020; font-weight: bold } /* Keyword.Constant */
+    body .kd { color: #007020; font-weight: bold } /* Keyword.Declaration */
+    body .kn { color: #007020; font-weight: bold } /* Keyword.Namespace */
+    body .kp { color: #007020 } /* Keyword.Pseudo */
+    body .kr { color: #007020; font-weight: bold } /* Keyword.Reserved */
+    body .kt { color: #902000 } /* Keyword.Type */
+    body .m { color: #40a070 } /* Literal.Number */
+    body .s { color: #4070a0 } /* Literal.String */
+    body .na { color: #4070a0 } /* Name.Attribute */
+    body .nb { color: #007020 } /* Name.Builtin */
+    body .nc { color: #0e84b5; font-weight: bold } /* Name.Class */
+    body .no { color: #60add5 } /* Name.Constant */
+    body .nd { color: #555555; font-weight: bold } /* Name.Decorator */
+    body .ni { color: #d55537; font-weight: bold } /* Name.Entity */
+    body .ne { color: #007020 } /* Name.Exception */
+    body .nf { color: #06287e } /* Name.Function */
+    body .nl { color: #002070; font-weight: bold } /* Name.Label */
+    body .nn { color: #0e84b5; font-weight: bold } /* Name.Namespace */
+    body .nt { color: #062873; font-weight: bold } /* Name.Tag */
+    body .nv { color: #bb60d5 } /* Name.Variable */
+    body .ow { color: #007020; font-weight: bold } /* Operator.Word */
+    body .w { color: #bbbbbb } /* Text.Whitespace */
+    body .mb { color: #40a070 } /* Literal.Number.Bin */
+    body .mf { color: #40a070 } /* Literal.Number.Float */
+    body .mh { color: #40a070 } /* Literal.Number.Hex */
+    body .mi { color: #40a070 } /* Literal.Number.Integer */
+    body .mo { color: #40a070 } /* Literal.Number.Oct */
+    body .sa { color: #4070a0 } /* Literal.String.Affix */
+    body .sb { color: #4070a0 } /* Literal.String.Backtick */
+    body .sc { color: #4070a0 } /* Literal.String.Char */
+    body .dl { color: #4070a0 } /* Literal.String.Delimiter */
+    body .sd { color: #4070a0; font-style: italic } /* Literal.String.Doc */
+    body .s2 { color: #4070a0 } /* Literal.String.Double */
+    body .se { color: #4070a0; font-weight: bold } /* Literal.String.Escape */
+    body .sh { color: #4070a0 } /* Literal.String.Heredoc */
+    body .si { color: #70a0d0; font-style: italic } /* Literal.String.Interpol */
+    body .sx { color: #c65d09 } /* Literal.String.Other */
+    body .sr { color: #235388 } /* Literal.String.Regex */
+    body .s1 { color: #4070a0 } /* Literal.String.Single */
+    body .ss { color: #517918 } /* Literal.String.Symbol */
+    body .bp { color: #007020 } /* Name.Builtin.Pseudo */
+    body .fm { color: #06287e } /* Name.Function.Magic */
+    body .vc { color: #bb60d5 } /* Name.Variable.Class */
+    body .vg { color: #bb60d5 } /* Name.Variable.Global */
+    body .vi { color: #bb60d5 } /* Name.Variable.Instance */
+    body .vm { color: #bb60d5 } /* Name.Variable.Magic */
+    body .il { color: #40a070 } /* Literal.Number.Integer.Long */
+    
+      </style></head><body><h2></h2><div class="highlight"><pre><span></span>If you use FAIROs, please refer to our TPDL publication:
+    <span class="s">```</span>
+    @inproceedings{10.1007/978-3-031-16802-4_6,
+    author="Gonz{\'a}lez, Esteban and Ben{\'i}tez, Alejandro and Garijo, Daniel",
+    editor="Silvello, Gianmaria and Corcho, Oscar and Manghi, Paolo and Di Nunzio, Giorgio Maria and Golub, Koraljka and Ferro, Nicola and Poggi, Antonella",
+    title="FAIROs: Towards FAIR Assessment in Research Objects",
+    booktitle="Linking Theory and Practice of Digital Libraries",
+    year="2022",
+    publisher="Springer International Publishing",
+    address="Cham",
+    pages="68--80",
+    isbn="978-3-031-16802-4",
+    doi={https://doi.org/10.1007/978-3-031-16802-4_6}
+    }
+    <span class="s">```</span>
+    </pre></div></body></html></div></div></div></div></div><div class="icon-wrapper"><div class="icon"><img alt="Installation" class="repo-icon" data-placement="bottom" data-toggle="tooltip" src="https://github.com/dakixr/soca/raw/main/src/soca/assets/repo_icons/installation.png" title="Installation"/></div><div class="modal"><div class="modal-content"><span class="close">×</span><span style="display:flex;"><h2 style="margin-bottom: 1rem;">Installation</h2></span><div style="margin-bottom: 1rem; overflow: auto;"><p>Fuji requires python 3.5.2+</p><p>Clone the repo: https://github.com/pangaea-data-publisher/fuji</p><p>From the fuji source folder run</p><pre><code>pip3 install .
+    </code></pre><ul><li>Download the latest Dataset Search corpus file from: https://www.kaggle.com/googleai/dataset-search-metadata-for-datasets</li><li>Open file fuji_server/helper/create_google_cache_db.py and set variable 'google_file_location' according to the file location of the corpus file</li><li>Run create_google_cache_db.py which creates a SQLite database in the data directory. From root directory run <code>python3 -m fuji_server.helper.create_google_cache_db</code>.</li></ul><p>Before running the service, please set user details in the configuration file, see config/users.py.</p><p>The F-uji server can now be started with.</p><pre><code>python3 -m fuji_server -c fuji_server/config/server.ini
+    </code></pre><p>Fuji server must be launch before using the tool.</p><p>Clone this repository</p><p>Install dependencies:</p><pre><code>pip3 install -r requirements.txt
+    </code></pre><p>Then you must configure <a href="https://github.com/KnowledgeCaptureAndDiscovery/somef#usage">SOMEF</a></p><p>Recommend use of <code>brew install graphviz</code></p><p>Check in https://graphviz.org/download/ your current distro.</p><p>Download the graphviz-3.0.0 exe installer.</p><p>Important! In the installer make sure that add Graphviz to the system PATH is checked.</p></div></div></div></div><div class="icon-wrapper"><div class="icon"><img alt="Requirements" class="repo-icon" data-placement="bottom" data-toggle="tooltip" src="https://github.com/dakixr/soca/raw/main/src/soca/assets/repo_icons/requirements.png" title="Requirements"/></div><div class="modal"><div class="modal-content"><span class="close">×</span><span style="display:flex;"><h2 style="margin-bottom: 1rem;">Requirements</h2></span><div style="margin-bottom: 1rem; overflow: auto;"><p>The development of the tool has been done in python 3.9.12</p><p>Recommend use of <code>brew install graphviz</code></p><p>Check in https://graphviz.org/download/ your current distro.</p><p>Download the graphviz-3.0.0 exe installer.</p><p>Important! In the installer make sure that add Graphviz to the system PATH is checked.</p></div></div></div></div><div class="icon-wrapper"><div class="icon"><a class="repo-icon" href="https://github.com/oeg-upm/FAIR-Research-Object/releases" target="_blank"><img alt="Download" class="repo-icon" data-placement="bottom" data-toggle="tooltip" src="https://github.com/dakixr/soca/raw/main/src/soca/assets/repo_icons/download.png" title="Download"/></a></div></div></div></div><div><div class="flex-horizontal float-right"><img alt="html" class="repo-icon grey-color-svg" data-placement="bottom" data-toggle="tooltip" src="https://github.com/dakixr/soca/raw/main/src/soca/assets/language_icons/html.svg" title="Html"/><img alt="python" class="repo-icon grey-color-svg" data-placement="bottom" data-toggle="tooltip" src="https://github.com/dakixr/soca/raw/main/src/soca/assets/language_icons/python.svg" title="Python"/></div></div></div><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script><script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script><script>
+    $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+    </script><script>
+    btns = document.getElementsByClassName('copy-btn');
+    for (let index = 0; index < btns.length; index++) {
+        const element = btns[index];
+        element.addEventListener('click', function () {
+            console.log('copy btn!');
+            for (let index = 0; index < cards.length; index++) {
+                const card = cards[index];
+                if(card.id == $(this).val()){
+                    navigator.clipboard.writeText(card.html_card_embedded);
+                    break;
+                }
+            }
+        });
+    }
+    
+    btns = document.getElementsByClassName('copy-citation-btn');
+    for (let index = 0; index < btns.length; index++) {
+        const element = btns[index];
+        element.addEventListener('click', function () {
+            console.log('copy citation btn!');
+            for (let index = 0; index < cards.length; index++) {
+                const card = cards[index];
+                if(card.id == $(this).val()){
+                    navigator.clipboard.writeText(card.citationText);
+                    break;
+                }
+            }
+        });
+    }</script><script>function add_modals() {
+        cards_icons_list = document.getElementsByClassName('ref-repo-icons');
+        for(const cards_icons of cards_icons_list){
+            for(const card_icon of cards_icons.children){
+                const icon = card_icon.getElementsByClassName('icon')[0];
+                const modal = card_icon.getElementsByClassName('modal')[0];
+                const modal_content = card_icon.getElementsByClassName('modal-content')[0];
+                const span_close = card_icon.getElementsByClassName('close')[0];
+                
+                if (modal != undefined){
+                    icon.addEventListener('click', () => { 
+                        modal.classList.add('modal-on');
+                    });
+                    span_close.addEventListener('click', () => { 
+                        modal.classList.remove('modal-on');
+                    });
+                    modal_content.addEventListener('click', (event) => { 
+                        event.stopPropagation();
+                    });
+                    modal.addEventListener('click', () => { 
+                        modal.classList.remove('modal-on');
+    
+                    });
+                }
+            }
+            
+            const license = cards_icons.getElementsByClassName('ref-license')[0];
+            if (license != undefined) {
+                license.addEventListener('click', () => { 
+                    getGithub(license);
                 });
             }
+            
         }
-        
-        const license = cards_icons.getElementsByClassName('ref-license')[0];
-        if (license != undefined) {
-            license.addEventListener('click', () => { 
-                getGithub(license);
-            });
-        }
+        const descriptions = document.getElementsByClassName('description');
+        [].forEach.call(descriptions, function (description) {
+            if (isOverflown(description)) {
+                description.style.cursor="pointer";
+                const modal = description.getElementsByClassName('modal')[0];
+                const modal_content = description.getElementsByClassName('modal-content')[0];
+                const span_close = description.getElementsByClassName('close')[0];
+                if (modal != undefined){
+                    description.addEventListener('click', () => { 
+                        modal.classList.add('modal-on');
+                    });
+                    span_close.addEventListener('click', () => { 
+                        modal.classList.remove('modal-on');
+                    });
+                    modal_content.addEventListener('click', (event) => { 
+                        event.stopPropagation();
+                    });
+                    modal.addEventListener('click', (event) => { 
+                        modal.classList.remove('modal-on');
+                        event.stopPropagation();
+                    });
+                }
+            }
+        });
+        const ontologies = document.getElementsByClassName('m_ontology');
+        [].forEach.call(ontologies, function (ontology) {
+                const modal = ontology.getElementsByClassName('modal')[0];
+                const modal_content = ontology.getElementsByClassName('modal-content')[0];
+                const span_close = ontology.getElementsByClassName('close')[0];
+                if (modal != undefined){
+                    ontology.addEventListener('click', () => { 
+                        modal.classList.add('modal-on');
+                    });
+                    span_close.addEventListener('click', () => { 
+                        modal.classList.remove('modal-on');
+                    });
+                    modal_content.addEventListener('click', (event) => { 
+                        event.stopPropagation();
+                    });
+                    modal.addEventListener('click', (event) => { 
+                        modal.classList.remove('modal-on');
+                        event.stopPropagation();
+                    });
+                }
+        });
         
     }
-    const descriptions = document.getElementsByClassName('description');
-    [].forEach.call(descriptions, function (description) {
-        if (isOverflown(description)) {
-            description.style.cursor="pointer";
-            const modal = description.getElementsByClassName('modal')[0];
-            const modal_content = description.getElementsByClassName('modal-content')[0];
-            const span_close = description.getElementsByClassName('close')[0];
-            if (modal != undefined){
-                description.addEventListener('click', () => { 
-                    modal.classList.add('modal-on');
-                });
-                span_close.addEventListener('click', () => { 
-                    modal.classList.remove('modal-on');
-                });
-                modal_content.addEventListener('click', (event) => { 
-                    event.stopPropagation();
-                });
-                modal.addEventListener('click', (event) => { 
-                    modal.classList.remove('modal-on');
-                    event.stopPropagation();
-                });
-            }
-        }
-    });
-    const ontologies = document.getElementsByClassName('m_ontology');
-    [].forEach.call(ontologies, function (ontology) {
-            const modal = ontology.getElementsByClassName('modal')[0];
-            const modal_content = ontology.getElementsByClassName('modal-content')[0];
-            const span_close = ontology.getElementsByClassName('close')[0];
-            if (modal != undefined){
-                ontology.addEventListener('click', () => { 
-                    modal.classList.add('modal-on');
-                });
-                span_close.addEventListener('click', () => { 
-                    modal.classList.remove('modal-on');
-                });
-                modal_content.addEventListener('click', (event) => { 
-                    event.stopPropagation();
-                });
-                modal.addEventListener('click', (event) => { 
-                    modal.classList.remove('modal-on');
-                    event.stopPropagation();
-                });
-            }
-    });
     
-}
-
-function isOverflown(element) {
-    return element.scrollHeight > element.clientHeight || element.scrollWidth > element.clientWidth;
-}
-
-function addList(element, iterable){
-    var list = document.createElement("ol");
-        for (let i of iterable) {
-            let item = document.createElement("li");
-            item.innerHTML = i.charAt(0).toUpperCase() + i.slice(1);
-            list.appendChild(item);
-        }
-        element.innerHTML = '';
-        element.appendChild(list);
-}
-
-async function getGithub(license){
-    if (license.dataset.url != 'None'){
-        const response = await fetch(license.dataset.url);
-        const response_aux = response.clone();
-        try {
-            const data =  await response.json();
-
-            const name = license.getElementsByClassName('ref-name')[0];
-            const description = license.getElementsByClassName('ref-description')[0];
-            const permissions = license.getElementsByClassName('ref-permissions')[0];
-            const conditions = license.getElementsByClassName('ref-conditions')[0];
-            const limitations = license.getElementsByClassName('ref-limitations')[0];
-
-            name.innerHTML = await data.name;
-            description.innerHTML = await data.description;
-
-            addList(permissions, data.permissions);
-            addList(conditions, data.conditions);
-            addList(limitations, data.limitations);
-
-        } catch (error) {
-            const description = license.getElementsByClassName('ref-description-aux')[0];
-            description.innerHTML = '<pre style="font-family: monospace;">'+await response_aux.text()+'</pre>';
-        }
-    } else console.log('No license.');
-}add_modals();</script><style>.soca-card *{margin:0;box-sizing:border-box;color:#3e3e3e;font-family:Helvetica}
-.soca-card .copy-btn:active{position:relative;top:1px;background-color:#3e3e3e;color:#e0e0e0}
-.soca-card .copy-btn{margin-left: 0.3rem;border:none;height:1.1rem;width:1rem;cursor:pointer;}
-.soca-card .copy-citation-btn:active{position:relative;top:1px;background-color:#3e3e3e;color:#e0e0e0}
-.soca-card .copy-citation-btn{margin-left: 0.3rem;border:none;height:1.1rem;width:1rem;cursor:pointer;}
-.soca-card .tooltip{position:absolute;z-index:1070;display:block;font-style:normal;font-weight:400;line-height:1.42857143;line-break:auto;text-align:left;text-align:start;text-decoration:none;text-shadow:none;text-transform:none;letter-spacing:normal;word-break:normal;word-spacing:normal;word-wrap:normal;white-space:normal;font-size:12px;opacity:0}
-.soca-card .tooltip.in{opacity:.9}
-.soca-card .tooltip.top{padding:5px 0;margin-top:-3px}
-.soca-card .tooltip.right{padding:0 5px;margin-left:3px}
-.soca-card .tooltip.bottom{padding:5px 0;margin-top:3px}
-.soca-card .tooltip.left{padding:0 5px;margin-left:-3px}
-.soca-card .tooltip.top .tooltip-arrow{bottom:0;left:50%;margin-left:-5px;border-width:5px 5px 0;border-top-color:#3e3e3e}
-.soca-card .tooltip.top-left .tooltip-arrow{right:5px;bottom:0;margin-bottom:-5px;border-width:5px 5px 0;border-top-color:#3e3e3e}
-.soca-card .tooltip.top-right .tooltip-arrow{bottom:0;left:5px;margin-bottom:-5px;border-width:5px 5px 0;border-top-color:#3e3e3e}
-.soca-card .tooltip.right .tooltip-arrow{top:50%;left:0;margin-top:-5px;border-width:5px 5px 5px 0;border-right-color:#3e3e3e}
-.soca-card .tooltip.left .tooltip-arrow{top:50%;right:0;margin-top:-5px;border-width:5px 0 5px 5px;border-left-color:#3e3e3e}
-.soca-card .tooltip.bottom .tooltip-arrow{top:0;left:50%;margin-left:-5px;border-width:0 5px 5px;border-bottom-color:#3e3e3e}
-.soca-card .tooltip.bottom-left .tooltip-arrow{top:0;right:5px;margin-top:-5px;border-width:0 5px 5px;border-bottom-color:#3e3e3e}
-.soca-card .tooltip.bottom-right .tooltip-arrow{top:0;left:5px;margin-top:-5px;border-width:0 5px 5px;border-bottom-color:#3e3e3e}
-.soca-card .tooltip-inner{max-width:200px;padding:3px 8px;color:#e0e0e0;text-align:center;background-color:#3e3e3e;border-radius:4px}
-.soca-card .tooltip-arrow{position:absolute;width:0;height:0;border-color:transparent;border-style:solid}
-.soca-card {display: flex; flex-direction: column; justify-content: space-between; line-height: 1.42857143; margin: 0.2rem; min-width: 28rem; max-width: 28rem; min-height: 15rem; max-height: 15rem; padding: 1.3rem; border-radius: 19px; background-color: #e0e0e0; box-shadow: inset 5px 5px 10px #bebebe, inset -5px -5px 10px #ffffff;}
-.soca-card .repo-logo{width: 5.5rem;}
-.soca-card .description{text-align: justify; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 6; line-clamp: 6; -webkit-box-orient: vertical;}
-.soca-card .recently-updated{width: 1.4rem; height: 1.4rem; border-radius: 50%; margin-left: auto; margin-right: 0.1rem; background-color: #3e3e3e;}
-.soca-card .repo-icon{height: 1.1rem; margin-left: 0.2rem; margin-right: 0.2rem;}
-.soca-card .card-row{display: flex; flex-direction: row; justify-content: space-between;}
-.soca-card .card-col{width: 72%;}
-.soca-card .flex-horizontal{display: flex; align-items: center; flex-direction: row;}
-.soca-card .float-right{justify-content: flex-end;}
-.soca-card .grey-color-svg{filter: brightness(0) saturate(100%) invert(26%) sepia(0%) saturate(9%) hue-rotate(190deg) brightness(93%) contrast(100%);}
-.soca-card .title:hover{text-decoration: underline;}
-.soca-card .ref-repo-icons{flex-wrap: wrap;}
-.soca-card .icon-wrapper {cursor: pointer; width: 2rem; display: flex; align-items: center; justify-content: center;}
-.highlight *{font-family: monospace; font-size: large;}
-.modal {display: none;position: fixed;z-index: 1;padding-top: 20vh;left: 0;top: 0;width: 100%;height: 100%;overflow: auto;background-color: rgb(0,0,0);background-color: rgba(0,0,0,0.4);}
-.modal-content {background-color: #e0e0e0;margin: auto;padding: 20px;border: 0px;width: 90%;max-width: 40rem;border-radius: 1rem;}
-.modal-on{display: block;}
-.close {color: #3e3e3e;float: right;font-size: 28px;font-weight: bold;position: relative;bottom: 0.8rem;}
-.close:hover, .close:focus {  color: #000;  text-decoration: none; cursor: pointer;}
-.soca-card .repo-type{height: 1.4rem; margin-left: 0.2rem; margin-right: 0.2rem; cursor: pointer;}</style></article></div>
-</div></span>
+    function isOverflown(element) {
+        return element.scrollHeight > element.clientHeight || element.scrollWidth > element.clientWidth;
+    }
+    
+    function addList(element, iterable){
+        var list = document.createElement("ol");
+            for (let i of iterable) {
+                let item = document.createElement("li");
+                item.innerHTML = i.charAt(0).toUpperCase() + i.slice(1);
+                list.appendChild(item);
+            }
+            element.innerHTML = '';
+            element.appendChild(list);
+    }
+    
+    async function getGithub(license){
+        if (license.dataset.url != 'None'){
+            const response = await fetch(license.dataset.url);
+            const response_aux = response.clone();
+            try {
+                const data =  await response.json();
+    
+                const name = license.getElementsByClassName('ref-name')[0];
+                const description = license.getElementsByClassName('ref-description')[0];
+                const permissions = license.getElementsByClassName('ref-permissions')[0];
+                const conditions = license.getElementsByClassName('ref-conditions')[0];
+                const limitations = license.getElementsByClassName('ref-limitations')[0];
+    
+                name.innerHTML = await data.name;
+                description.innerHTML = await data.description;
+    
+                addList(permissions, data.permissions);
+                addList(conditions, data.conditions);
+                addList(limitations, data.limitations);
+    
+            } catch (error) {
+                const description = license.getElementsByClassName('ref-description-aux')[0];
+                description.innerHTML = '<pre style="font-family: monospace;">'+await response_aux.text()+'</pre>';
+            }
+        } else console.log('No license.');
+    }add_modals();</script><style>.soca-card *{margin:0;box-sizing:border-box;color:#3e3e3e;font-family:Helvetica}
+    .soca-card .copy-btn:active{position:relative;top:1px;background-color:#3e3e3e;color:#e0e0e0}
+    .soca-card .copy-btn{margin-left: 0.3rem;border:none;height:1.1rem;width:1rem;cursor:pointer;}
+    .soca-card .copy-citation-btn:active{position:relative;top:1px;background-color:#3e3e3e;color:#e0e0e0}
+    .soca-card .copy-citation-btn{margin-left: 0.3rem;border:none;height:1.1rem;width:1rem;cursor:pointer;}
+    .soca-card .tooltip{position:absolute;z-index:1070;display:block;font-style:normal;font-weight:400;line-height:1.42857143;line-break:auto;text-align:left;text-align:start;text-decoration:none;text-shadow:none;text-transform:none;letter-spacing:normal;word-break:normal;word-spacing:normal;word-wrap:normal;white-space:normal;font-size:12px;opacity:0}
+    .soca-card .tooltip.in{opacity:.9}
+    .soca-card .tooltip.top{padding:5px 0;margin-top:-3px}
+    .soca-card .tooltip.right{padding:0 5px;margin-left:3px}
+    .soca-card .tooltip.bottom{padding:5px 0;margin-top:3px}
+    .soca-card .tooltip.left{padding:0 5px;margin-left:-3px}
+    .soca-card .tooltip.top .tooltip-arrow{bottom:0;left:50%;margin-left:-5px;border-width:5px 5px 0;border-top-color:#3e3e3e}
+    .soca-card .tooltip.top-left .tooltip-arrow{right:5px;bottom:0;margin-bottom:-5px;border-width:5px 5px 0;border-top-color:#3e3e3e}
+    .soca-card .tooltip.top-right .tooltip-arrow{bottom:0;left:5px;margin-bottom:-5px;border-width:5px 5px 0;border-top-color:#3e3e3e}
+    .soca-card .tooltip.right .tooltip-arrow{top:50%;left:0;margin-top:-5px;border-width:5px 5px 5px 0;border-right-color:#3e3e3e}
+    .soca-card .tooltip.left .tooltip-arrow{top:50%;right:0;margin-top:-5px;border-width:5px 0 5px 5px;border-left-color:#3e3e3e}
+    .soca-card .tooltip.bottom .tooltip-arrow{top:0;left:50%;margin-left:-5px;border-width:0 5px 5px;border-bottom-color:#3e3e3e}
+    .soca-card .tooltip.bottom-left .tooltip-arrow{top:0;right:5px;margin-top:-5px;border-width:0 5px 5px;border-bottom-color:#3e3e3e}
+    .soca-card .tooltip.bottom-right .tooltip-arrow{top:0;left:5px;margin-top:-5px;border-width:0 5px 5px;border-bottom-color:#3e3e3e}
+    .soca-card .tooltip-inner{max-width:200px;padding:3px 8px;color:#e0e0e0;text-align:center;background-color:#3e3e3e;border-radius:4px}
+    .soca-card .tooltip-arrow{position:absolute;width:0;height:0;border-color:transparent;border-style:solid}
+    .soca-card {display: flex; flex-direction: column; justify-content: space-between; line-height: 1.42857143; margin: 0.2rem; min-width: 28rem; max-width: 28rem; min-height: 15rem; max-height: 15rem; padding: 1.3rem; border-radius: 19px; background-color: #e0e0e0; box-shadow: inset 5px 5px 10px #bebebe, inset -5px -5px 10px #ffffff;}
+    .soca-card .repo-logo{width: 5.5rem;}
+    .soca-card .description{text-align: justify; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 6; line-clamp: 6; -webkit-box-orient: vertical;}
+    .soca-card .recently-updated{width: 1.4rem; height: 1.4rem; border-radius: 50%; margin-left: auto; margin-right: 0.1rem; background-color: #3e3e3e;}
+    .soca-card .repo-icon{height: 1.1rem; margin-left: 0.2rem; margin-right: 0.2rem;}
+    .soca-card .card-row{display: flex; flex-direction: row; justify-content: space-between;}
+    .soca-card .card-col{width: 72%;}
+    .soca-card .flex-horizontal{display: flex; align-items: center; flex-direction: row;}
+    .soca-card .float-right{justify-content: flex-end;}
+    .soca-card .grey-color-svg{filter: brightness(0) saturate(100%) invert(26%) sepia(0%) saturate(9%) hue-rotate(190deg) brightness(93%) contrast(100%);}
+    .soca-card .title:hover{text-decoration: underline;}
+    .soca-card .ref-repo-icons{flex-wrap: wrap;}
+    .soca-card .icon-wrapper {cursor: pointer; width: 2rem; display: flex; align-items: center; justify-content: center;}
+    .highlight *{font-family: monospace; font-size: large;}
+    .modal {display: none;position: fixed;z-index: 1;padding-top: 20vh;left: 0;top: 0;width: 100%;height: 100%;overflow: auto;background-color: rgb(0,0,0);background-color: rgba(0,0,0,0.4);}
+    .modal-content {background-color: #e0e0e0;margin: auto;padding: 20px;border: 0px;width: 90%;max-width: 40rem;border-radius: 1rem;}
+    .modal-on{display: block;}
+    .close {color: #3e3e3e;float: right;font-size: 28px;font-weight: bold;position: relative;bottom: 0.8rem;}
+    .close:hover, .close:focus {  color: #000;  text-decoration: none; cursor: pointer;}
+    .soca-card .repo-type{height: 1.4rem; margin-left: 0.2rem; margin-right: 0.2rem; cursor: pointer;}</style></article></div>
+    </div></span>
 <!-- Bibliography -->
 <span id="bibliography"><div class="w3-container" id="bib" style="margin-top:75px">
 <h1 class="w3-xxxlarge w3-text-green"><b>Bibliography</b></h1>
 <hr class="w3-round" style="width:50px;border:5px solid green"/>
-<ul><li>FAIR Research Object Assessment: A landscape analysis</li><li>Gonz&aacute;lez, E., Ben&iacute;tez, A., &amp; Garijo, D. (2022). FAIROs: Towards FAIR Assessment inÂ Research Objects. Lecture Notes in Computer Science, 68â80. <a href="https://doi.org/10.1007/978-3-031-16802-4_6
-" target="_blank">https://doi.org/10.1007/978-3-031-16802-4_6
-</a></li></ul>
+<p>
+    In this publication, you can find a description of the tool, following by a discussion about the implementation of different scoring policies.
+</p>
+<p>
+    González, E., Benítez, A., Garijo, D. (2022). FAIROs: Towards FAIR Assessment in Research Objects. In: Silvello, G., et al. Linking Theory and Practice of Digital Libraries. TPDL 2022. Lecture Notes in Computer Science, vol 13541. Springer, Cham. <a href="https://doi.org/10.1007/978-3-031-16802-4_6"></a>
+</p>
+<p>
+    In this publication, you can find an extensive article about the integration of FAIROs in ROHUB, and an analysis of the results obtained. 
+</p>
+<p>
+    González, Esteban, Daniel Garijo, Óscar Corcho, Raúl Palma, Malgorzata Wolniewicz and Aron Rynkiewicz. “FAIR Research Object Assessment: A landscape analysis.” Workshop on Data and Research Objects Management for Linked Open Science (2023). DOI:10.4126/FRL01-006444989
+</p>
 </div></span>
 <!-- Contact -->
 <span id="contact"><div class="w3-container" style="margin-top:15px">
 <h1 class="w3-xxxlarge w3-text-green"><b>Contact</b></h1>
 <hr class="w3-round" style="width:50px;border:5px solid green"/>
-<ul><li>Email: egonzalez@fi.upm.es</li><li>Phone: +34 3365016</li></ul>
+<ul><li>Email: egonzalez@fi.upm.es</li></ul>
 </div></span>
 <!-- Authors -->
 <span id="authors"><div class="w3-container" id="authors" style="margin-top:75px">
@@ -441,10 +456,10 @@ async function getGithub(license){
 <div class="w3-light-grey" style="padding-bottom: 10px;">
 <div style="width:90%; height:0; overflow:hidden; height:0; padding-top: 12px; padding-bottom: 90%;
                             margin: auto;">
-<img alt="Daniel Garijo" src="https://dgarijo.com/images/danipic.jpg" style="width:100%;"/>
+<img alt="Daniel Garijo" src="images/danipic.jpg" style="width:100%;"/>
 </div>
 <div class="w3-container">
-<h3><a href="https://orcid.org/0000-0003-0454-7145">Daniel Garijo</a></h3>
+<h3><a href="">Daniel Garijo</a></h3>
 <p class="w3-opacity">Author</p>
 <p class="w3-opacity">Researcher at OEG-UPM</p>
 <a href="http://w3id.org/people/dgarijo">http://w3id.org/people/dgarijo</a>
@@ -456,16 +471,19 @@ async function getGithub(license){
 <div class="w3-light-grey" style="padding-bottom: 10px;">
 <div style="width:90%; height:0; overflow:hidden; height:0; padding-top: 12px; padding-bottom: 90%;
                             margin: auto;">
-<img alt="Esteban Gonzalez" src="https://pbs.twimg.com/profile_images/2630547954/6c8015de6c6f239c064d7c238d352963_400x400.jpeg" style="width:100%;"/>
+<img alt="Esteban González" src="images/esteban.jpeg" style="width:100%;"/>
 </div>
 <div class="w3-container">
-<h3><a href="https://orcid.org/0000-0003-4112-6825">Esteban Gonzalez</a></h3>
+<h3><a href="">Esteban González</a></h3>
 <p class="w3-opacity">Author</p>
 <p class="w3-opacity">PhD student</p>
-<p>I am a PhD student at Universidad Politécnica de Madrid. My research activities focus on OpenScience and NLP, specifically in the detection of research artefacts in scientific publications. Also, my research activities involve the publication of FAIR Research Objects.</p>
+<p>
+    I am a PhD student at Universidad Politécnica de Madrid. My research activities focus on OpenScience and NLP, specifically in the detection of research artefacts in scientific publications. Also, my research activities involve the publication of FAIR Research Objects.
+</p>
 </div>
 </div>
 </div>
+
 <div class="w3-col m4 w3-margin-bottom">
 <div class="w3-light-grey" style="padding-bottom: 10px;">
 <div style="width:90%; height:0; overflow:hidden; height:0; padding-top: 12px; padding-bottom: 90%;
@@ -473,7 +491,7 @@ async function getGithub(license){
 <img alt="Alejandro Benitez" src="images/default_author.jpg" style="width:100%;"/>
 </div>
 <div class="w3-container">
-<h3><a href="">Alejandro Benitez</a></h3>
+<h3><a href="">Alejandro Benítez</a></h3>
 <p class="w3-opacity">Author</p>
 <p class="w3-opacity">Student at UPM</p>
 </div>

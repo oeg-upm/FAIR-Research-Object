@@ -2,6 +2,8 @@
 [![DOI](https://zenodo.org/badge/431199041.svg)](https://zenodo.org/badge/latestdoi/431199041)
 [![Documentation Status](https://readthedocs.org/projects/fairos/badge/?version=latest)](https://fairos.readthedocs.io/en/latest/?badge=latest)
 
+<img src="docs/fairos_logo.png" alt="logo" width="200"/>
+
 Tool to calculate the FAIRness of a Reserch Objects
 
 ## Requirements

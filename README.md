@@ -4,7 +4,7 @@
 
 <img src="https://raw.githubusercontent.com/oeg-upm/FAIR-Research-Object/main/docs/fairos_logo.png" alt="logo" width="200"/>
 
-Tool to calculate the FAIRness of [Research Objects](https://www.researchobject.org/ro-crate/)
+Tool to calculate the FAIRness of [Research Objects](https://www.researchobject.org/), serialized as [RO-Crates](https://www.researchobject.org/ro-crate/).
 
 ## Requirements
 

@@ -1,4 +1,4 @@
-from fairness_calculator import ROFairnessCalculator
+#from fairness_calculator import ROFairnessCalculator
 import threading
 import paho.mqtt.client as mqtt
 import os
@@ -40,11 +40,11 @@ def run_fairos():
         generate_diagram = False
         try:
             logging.debug("Calculating FAIRness od job"+str(next_job));
-            ROFairnessCalculator(ro_path).\
-                calculate_fairness(evaluate_ro_metadata,
-                            aggregation_mode,
-                            output_file_name,
-                            generate_diagram)
+ #           ROFairnessCalculator(ro_path).\
+ #               calculate_fairness(evaluate_ro_metadata,
+ #                           aggregation_mode,
+ #                           output_file_name,
+ #                           generate_diagram)
             logging.debug("Updating jobs status")
             update_job(next_job,COMPLETED)
             logging.debug("Job status updated to COMPLETED")

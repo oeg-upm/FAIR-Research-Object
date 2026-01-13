@@ -1,27 +1,5 @@
 [
   {
-    "@id": "https://ror.org/03n6nwv02",
-    "@type": [
-      "http://www.w3.org/2006/vcard/ns#Organisation",
-      "http://www.w3.org/2006/vcard/ns#Organization"
-    ],
-    "http://purl.org/dc/terms/identifier": [
-      {
-        "@value": "https://ror.org/03n6nwv02>"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "Universidad Politécnica de Madrid"
-      }
-    ],
-    "http://www.w3.org/2006/vcard/ns#url": [
-      {
-        "@id": "https://www.upm.es/"
-      }
-    ]
-  },
-  {
     "@id": "https://oeg.fi.upm.es",
     "@type": [
       "http://www.w3.org/2006/vcard/ns#Organization"
@@ -34,6 +12,23 @@
     "http://www.w3.org/2006/vcard/ns#url": [
       {
         "@id": "https://oeg.fi.upm.es/"
+      }
+    ]
+  },
+  {
+    "@id": "https://orcid.org/0000-0003-4112-6825",
+    "@type": [
+      "http://www.w3.org/2006/vcard/ns#Individual"
+    ],
+    "http://www.w3.org/2006/vcard/ns#fn": [
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#string",
+        "@value": "Esteban Gonzalez"
+      }
+    ],
+    "http://www.w3.org/2006/vcard/ns#hasEmail": [
+      {
+        "@id": "mailto:egonzalez@fi.upm.es"
       }
     ]
   },
@@ -145,19 +140,24 @@
     ]
   },
   {
-    "@id": "https://orcid.org/0000-0003-4112-6825",
+    "@id": "https://ror.org/03n6nwv02",
     "@type": [
-      "http://www.w3.org/2006/vcard/ns#Individual"
+      "http://www.w3.org/2006/vcard/ns#Organisation",
+      "http://www.w3.org/2006/vcard/ns#Organization"
     ],
-    "http://www.w3.org/2006/vcard/ns#fn": [
+    "http://purl.org/dc/terms/identifier": [
       {
-        "@type": "http://www.w3.org/2001/XMLSchema#string",
-        "@value": "Esteban Gonzalez"
+        "@value": "https://ror.org/03n6nwv02>"
       }
     ],
-    "http://www.w3.org/2006/vcard/ns#hasEmail": [
+    "http://www.w3.org/2000/01/rdf-schema#label": [
       {
-        "@id": "mailto:egonzalez@fi.upm.es"
+        "@value": "Universidad Politécnica de Madrid"
+      }
+    ],
+    "http://www.w3.org/2006/vcard/ns#url": [
+      {
+        "@id": "https://www.upm.es/"
       }
     ]
   }

@@ -42,5 +42,5 @@
     rdfs:label "Universidad Politécnica de Madrid" ;
 	vcard:url <https://www.upm.es/> .
 
-<https://w3id.org/FAIROS/metric/FAIROS-I1-02> a dqv:Metric ; 
-    <http://semanticscience.org/resource/SIO_000234> <https://w3id.org/FAIROS/test/FUJI-I1-02> .
+<https://w3id.org/FAIROS/metric/FAIROS-I2-01> a dqv:Metric ; 
+    <http://semanticscience.org/resource/SIO_000234> <https://w3id.org/FAIROS/test/FUJI-I2-01> .

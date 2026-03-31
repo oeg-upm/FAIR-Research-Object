@@ -116,21 +116,21 @@ WHERE {
     ?s a ftr:Benchmark .
     ?s dcterms:title ?title .
     ?s rdfs:label ?label .
-    ?s dcterms:description ?description .
-    ?s dcat:keyword ?keywords .
-    ?s dcat:version ?version .
-    ?s dcterms:license ?license .
+    OPTIONAL { ?s dcterms:description ?description . }
+    OPTIONAL { ?s dcat:keyword ?keywords . }
+    OPTIONAL { ?s dcat:version ?version . }
+    OPTIONAL { ?s dcterms:license ?license . }
     OPTIONAL { ?s owl:sameAs ?same_as . }
-    ?s dcat:landingPage ?landing_page .
-    ?s ftr:status ?benchmark_status .
-    ?s dcterms:creator ?creator_orcid .
-    ?creator_orcid vcard:fn ?creator_name .
-    ?s ftr:hasAssociatedMetric ?hasAssociatedMetric .
-    ?hasAssociatedMetric dcterms:identifier ?metricIdentifier .
-    ?hasAssociatedMetric rdfs:label ?metricLabel .
-    ?s dcat:contactPoint ?contact_orcid .
-    ?contact_orcid vcard:fn ?contact_name .
-    ?contact_orcid vcard:hasEmail ?contact_mail .
+    OPTIONAL { ?s dcat:landingPage ?landing_page . }
+    OPTIONAL { ?s ftr:status ?benchmark_status . }
+    OPTIONAL { ?s dcterms:creator ?creator_orcid . }
+    OPTIONAL { ?creator_orcid vcard:fn ?creator_name . }
+    OPTIONAL { ?s ftr:hasAssociatedMetric ?hasAssociatedMetric . }
+    OPTIONAL { ?hasAssociatedMetric dcterms:identifier ?metricIdentifier . }
+    OPTIONAL { ?hasAssociatedMetric rdfs:label ?metricLabel . }
+    OPTIONAL { ?s dcat:contactPoint ?contact_orcid . }
+    OPTIONAL { ?contact_orcid vcard:fn ?contact_name . }
+    OPTIONAL { ?contact_orcid vcard:hasEmail ?contact_mail . }
 }
 """
 
@@ -652,7 +652,7 @@ def iterate_paths(path_source, path_destination, template, pquery, type_doc):
         case "M":
             subfolder = 'metrics'
         case "B":
-            subfolder = 'benchmark'
+            subfolder = 'benchmarks'
         case _:
             print("Unknown type doc")
 

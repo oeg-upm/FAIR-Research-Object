@@ -11,7 +11,7 @@
 @prefix dpv: <https://w3id.org/dpv#> .
 @prefix ro: <http://purl.org/wf4ever/ro#> .
 
-<https://w3id.org/FAIROS/test/ROCRATE-F1-01.ttl> a ftr:Test ;
+<https://w3id.org/FAIROS/test/ROCRATE-F1-01> a ftr:Test ;
     dcterms:identifier <https://w3id.org/FAIROS/test/ROCRATE-F1-01> ;
     dcterms:title "Presence of a persistent identifier"^^xsd:string ;
     rdfs:label "ROCRATE-F1-01"^^xsd:string ;

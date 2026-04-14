@@ -20,7 +20,7 @@ class FAIROS_DATASET_ROCRATE:
 
     def execute_algorithm(self, rocrate_dataset, ticket):
         
-        logger.info("xploring rocrate metadata fields")
+        logger.info("Exploring rocrate metadata fields")
 
          # Current UTC time
         now = datetime.now(timezone.utc)
@@ -58,8 +58,9 @@ class FAIROS_DATASET_ROCRATE:
                 #The result is an string with PASS: test_name or FAIL: test_name
                 value, test_text = explanation.split(':', 1)
                 test_text = test_text.strip()
-
+                logger.info("Test:"+str(test_text))
                 test_uri = self.mappings.get(test_text)
+                
 
                 if test_uri:
                     description = get_description(test_uri)

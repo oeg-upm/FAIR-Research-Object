@@ -201,5 +201,5 @@ class FAIROS_DATASET_FUJI:
                                 doc["hadMember"].append(test)
                         else:
                             logger.error(f"Invalid format for explanation:{explanation}")
-
+            logger.info("Assessment document generated")
             return doc

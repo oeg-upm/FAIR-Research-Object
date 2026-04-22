@@ -53,14 +53,17 @@ class FAIROS_DATASET_ROCRATE:
 
         results = self.get_results_from_rocrate(rocrate_dataset)
 
+        test_index = 0
         for explanation in results:
+            test_index = test_index + 1
             if ":" in explanation:
                 #The result is an string with PASS: test_name or FAIL: test_name
                 value, test_text = explanation.split(':', 1)
                 test_text = test_text.strip()
                 logger.info("Test:"+str(test_text))
                 test_uri = self.mappings.get(test_text)
-                
+                code = f"002"
+                test_id = f"{ticket}-{code}-{test_index}"
 
                 if test_uri:
                     description = get_description(test_uri)
@@ -75,6 +78,13 @@ class FAIROS_DATASET_ROCRATE:
                         "description": f"{description}",
                         "identifier": {
                             "@id": f"urn:fairos:{ticket}"
+                        },
+                        "assessmentTarget": {
+                            "@id": f"{rocrate_dataset['@id']}"
+                        },
+                        "outputFromTest": {
+                            "@id": f"{test_uri}",
+                            "@type": "Test"
                         },
                         "license": {
                             "@id": "http://creativecommons.org/licenses/by/4.0/"

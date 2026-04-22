@@ -87,24 +87,35 @@ class FAIROS_DATASET_FUJI:
             for src in item.get("sources", []):
                 explanations.extend(src.get("explanation", []))
                 #Each explanation is a test results
+                test_index = 0
                 for explanation in explanations:
+                    test_index = test_index + 1
                     if ":" in explanation:
                         #The result is an string with PASS: test_name or FAIL: test_name
                         value, test_text = explanation.split(':', 1)
                         test_text = test_text.strip()
 
                         test_uri = self.mappings.get(test_text)
+                        code = f"001"
+                        test_id = f"{ticket}-{code}-{test_index}"
 
                         if test_uri:
                             description = get_description(test_uri)
                             title = get_title(test_uri)
 
                             test = {
-                                "@id": f"urn:fairos:{ticket}",
+                                "@id": f"urn:fairos:{test_id}",
                                 "@type": "https://w3id.org/ftr#TestResult",
                                 "description": f"{description}",
                                 "identifier": {
-                                    "@id": f"urn:fairos:{ticket}"
+                                    "@id": f"urn:fairos:{test_id}"
+                                },
+                                "assessmentTarget": {
+                                    "@id": f"{resource_uri}"
+                                },
+                                "outputFromTest": {
+                                    "@id": f"{test_uri}",
+                                    "@type": "Test"
                                 },
                                 "license": {
                                     "@id": "http://creativecommons.org/licenses/by/4.0/"
@@ -168,24 +179,35 @@ class FAIROS_DATASET_FUJI:
                 for src in item.get("sources", []):
                     explanations.extend(src.get("explanation", []))
                     #Each explanation is a test results
+                    test_index = 0
                     for explanation in explanations:
+                        test_index = test_index + 1
                         if ":" in explanation:
                             #The result is an string with PASS: test_name or FAIL: test_name
                             value, test_text = explanation.split(':', 1)
                             test_text = test_text.strip()
 
                             test_uri = self.mappings.get(test_text)
+                            code = f"001"
+                            test_id = f"{ticket}-{code}-{test_index}"
 
                             if test_uri:
                                 description = get_description(test_uri)
                                 title = get_title(test_uri)
 
                                 test = {
-                                    "@id": f"urn:fairos:{ticket}",
+                                    "@id": f"urn:fairos:{test_id}",
                                     "@type": "https://w3id.org/ftr#TestResult",
                                     "description": f"{description}",
                                     "identifier": {
-                                        "@id": f"urn:fairos:{ticket}"
+                                        "@id": f"urn:fairos:{test_id}"
+                                    },
+                                    "assessmentTarget": {
+                                        "@id": f"{rocrate_dataset['@id']}"
+                                    },
+                                    "outputFromTest": {
+                                        "@id": f"{test_uri}",
+                                        "@type": "Test"
                                     },
                                     "license": {
                                         "@id": "http://creativecommons.org/licenses/by/4.0/"

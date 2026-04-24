@@ -30,7 +30,7 @@ class FAIROS_DATASET:
         logger.info("Generating file assessment-results-"+str(assessment_code)+" with "+str(resource)+ "assessment")
 
         # Write the JSON-LD to a file
-        output_file_results = f"C:\\Users\\egonzalez\\tests_results\\assessment-results-{assessment_code}.jsonld"
+        output_file_results = f"C:\\Users\\egonzalez\\FAIROS\\assessments\\assessment-results-{assessment_code}.jsonld"
         with open(output_file_results, "w", encoding="utf-8") as f:
             json.dump(tests_results, f, ensure_ascii=False, indent=2)
 

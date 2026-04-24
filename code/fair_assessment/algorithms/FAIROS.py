@@ -12,6 +12,78 @@ logger = logging.getLogger(__name__)
 
 class FAIROS:
 
+    EQUIVALENT_TESTS = {
+        "IDENTIFIER_PERSISTENCE": [
+            "FUJI-F1-01",
+            "ROCRATE-F1-01"
+        ],
+        "MINIMUM_METADATA": [
+            "FUJI-F2-01",
+            "FUJI-F2-02",
+            "ROCRATE-F2-01"
+        ],
+        "DATA_LINKAGE": [
+            "FUJI-F3-01",
+            "ROCRATE-F3-01"
+        ],
+        "SCHEMA_OR_SEMANTIC_CONTEXT": [
+            "FUJI-I2-01",
+            "ROCRATE-I2-01"
+        ]
+    }
+
+    def _compute_equivalent_results(test_results):
+        grouped = {}
+        used_test_ids = set()
+
+        # Evaluate declared equivalence groups
+        for group_name, equivalent_ids in FAIROS.EQUIVALENT_TESTS.items():
+            matching_tests = [
+                test for test in test_results
+                if test.get("outputFromTest", {}).get("@id", "").split("/")[-1] in equivalent_ids
+            ]
+
+            if matching_tests:
+                group_pass = any(test.get("value") == "PASS" for test in matching_tests)
+                grouped[group_name] = {
+                    "tests": [
+                        {
+                            "test_id": test.get("outputFromTest", {}).get("@id", "").split("/")[-1],
+                            "value": test.get("value")
+                        }
+                        for test in matching_tests
+                    ],
+                    "value": "PASS" if group_pass else "FAIL"
+                }
+                used_test_ids.update(
+                    test.get("outputFromTest", {}).get("@id", "").split("/")[-1]
+                    for test in matching_tests
+                )
+
+        # Keep non-equivalent tests as independent checks
+        for test in test_results:
+            test_id = test.get("outputFromTest", {}).get("@id", "").split("/")[-1]
+            if test_id not in used_test_ids:
+                grouped[test_id] = {
+                    "tests": [
+                        {
+                            "test_id": test_id,
+                            "value": test.get("value")
+                        }
+                    ],
+                    "value": test.get("value")
+                }
+
+        total = len(grouped)
+        passed = sum(1 for item in grouped.values() if item["value"] == "PASS")
+        percentage = (passed / total) * 100 if total else 0.0
+
+        return {
+            "grouped_results": grouped,
+            "passed": passed,
+            "total": total,
+            "percentage": percentage
+        }
 
     def execute_algorithm(rocrate_filename, ticket):
         # Current UTC time
@@ -69,21 +141,19 @@ class FAIROS:
                     result_testset = dataset.execute_algorithm(element, ticket)
                     doc["hadMember"] = doc["hadMember"]+result_testset["hadMember"]
                     
-                    percentage = 0
-                    total = len(result_testset["hadMember"])
-                    if total != 0:
-                        passed = sum(
-                            1 for test in result_testset["hadMember"]
-                            if test.get("value") == "PASS"
-                        )
-                        percentage = (passed / total) * 100
+                    equivalent_result = FAIROS._compute_equivalent_results(result_testset["hadMember"])
+
+                    percentage = equivalent_result["percentage"]
+                    passed = equivalent_result["passed"]
+                    total = equivalent_result["total"]
 
                     percentages.append(percentage)
                     log_entries.append({
                         "@id": id,
-                        "passed": passed if total != 0 else 0,
+                        "passed": passed,
                         "total": total,
-                        "percentage": percentage
+                        "percentage": percentage,
+                        "grouped_results": equivalent_result["grouped_results"]
                     })
 
             if percentages:
@@ -96,7 +166,7 @@ class FAIROS:
             logger.info("Generating file assessment-results-"+str(ticket))
 
             # Write the JSON-LD to a file
-            output_file_results = f"C:\\Users\\egonzalez\\tests_results\\assessment-results-{ticket}.jsonld"
+            output_file_results = f"C:\\Users\\egonzalez\\FAIROS\\assessments\\assessment-results-{ticket}.jsonld"
             with open(output_file_results, "w", encoding="utf-8") as f:
                 json.dump(doc, f, ensure_ascii=False, indent=2)
 
@@ -110,7 +180,7 @@ class FAIROS:
             }
 
             # Write the JSON-LD to a file
-            output_file_score = f"C:\\Users\\egonzalez\\tests_results\\score-{ticket}.jsonld"
+            output_file_score = f"C:\\Users\\egonzalez\\FAIROS\\scores\\score-{ticket}.jsonld"
             with open(output_file_score, "w", encoding="utf-8") as f:
                 json.dump(score, f, ensure_ascii=False, indent=2)
 

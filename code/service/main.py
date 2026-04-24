@@ -279,8 +279,8 @@ def execute_algorithm(
 
 @app.get("/assess/score/{ticket_id}")
 def get_score(ticket_id: str):
-    filename = app.config['DOWNLOAD_FOLDER'] + '/' +ticket_id+'.json'
-    logger(f"Requesting score {ticket_id}")
+    filename = settings.SCORE_DIRECTORY / f"score-{ticket_id}.jsonld"
+    #logger(f"Requesting score {ticket_id}")
 
     path = Path(filename)
     if not path.is_file():

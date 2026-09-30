@@ -1,18 +1,14 @@
 from rocrate.rocrate import ROCrate
 from rocrate_fairness.ro_fairness import ROCrateFAIRnessCalculator
 from fuji_wrapper.fujiwrapper import FujiWrapper
-<<<<<<<< HEAD:code/FAIROs.py
-from somefFAIR.somefFAIR import SoftwareFAIRnessCalculator
-========
-from somef_wrapper.somefFAIR import SoftwareFAIRnessCalculator
->>>>>>>> dev-reliance:code/fair_assessment/full_ro_fairness.py
+from someFAIR.somefFAIR import SoftwareFAIRnessCalculator
 from foops_wrapper.foopswrapper import FoopsWrapper
 import json
 import validators
 import visualizer
 import argparse
 
-class FAIROs:
+class ROFairnessCalculator:
     def __init__(self, ro_path) -> None:
         self.ro_path = ro_path
 
@@ -83,6 +79,7 @@ class FAIROs:
 
     def __add_ro_metadata_checks(self, element, element_id):
         #todo create urls for describing the terms of tools used
+        print("TOOL:"+str(element["tool-used"]))
         element["tool-used"].append("ro-crate-metadata") 
         for test in element["checks"]:
             if test["status"]=="fail":
@@ -96,7 +93,10 @@ class FAIROs:
                         test["score"] = extra_checks["score"]
                     test["total_score"] = extra_checks["total_score"]
                 if "assessment" in extra_checks and extra_checks["assessment"] == "pass":
-                    test["status"] = "ok"
+                    test["status"] = "pass"
+            else:
+                test["score"] = test["sources"][0]["score"]
+                test["total_score"] = test["sources"][0]["total_score"]
         #extra_checks = self.ro_calculator.get_element_basic_checks(element_id)
 
         #for ec in extra_checks:
@@ -164,12 +164,18 @@ class FAIROs:
 
             for check in component["checks"]:
                 cat = check["category_id"]
-                if "sources" in check and all(key in check["sources"][0] for key in ('assessment', 'score','total_score')):
-                    #score[cat]["tests_passed"] += 1 if check["sources"][0]["assessment"] == "pass" else 0
-                    #score[cat]["total_tests"] += 1
-                    if "score" in check and "total_score" in check:
-                        score[cat]["score"] += check["score"]
-                        score[cat]["total_score"] += check["total_score"]
+                print(check)
+                print(cat)
+                if "status" in check:
+                    print("PASO 1")
+                    if check['status'] == "pass":
+                        print("PASO 2")
+                        score[cat]["tests_passed"] = score[cat]["tests_passed"] +1
+                    score[cat]["total_tests"] = score[cat]["total_tests"] + 1
+                if "score" in check:
+                    score[cat]["score"] += check["score"]
+                    score[cat]["total_score"] += check["total_score"]
+            print(score)
             component["score"] = score
 
     def __evaluate_dataset(self, element, evaluate_ro_metadata):
@@ -351,7 +357,7 @@ parser.add_argument('-d', dest='generate_diagram', type=bool, default=False ,req
 
 args = parser.parse_args()
 
-FAIROs(args.ro_path).\
+ROFairnessCalculator(args.ro_path).\
         calculate_fairness(args.evaluate_ro_metadata, 
                            args.aggregation_mode, 
                            args.output_file_name,

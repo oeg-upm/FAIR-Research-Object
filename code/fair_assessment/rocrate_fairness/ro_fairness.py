@@ -13,8 +13,8 @@ def check_element_has_key(element, keys):
 
 class ROCrateFAIRnessCalculator():
 
-    F2_1_1_message = "metadata [title, description, publicationDate, summary,keywords] in ro-crate-metadata file"
-    F2_1_2_message = "metadata [creator, autor] in ro-crate-metadata file"
+    F2_1_1_message = "metadata [title, description, datePublished, keywords, identifier] in ro-crate-metadata file"
+    F2_1_2_message = "metadata [creator, publisher] in ro-crate-metadata file"
 
     def __init__(self, ro_path) -> None:
         self.ro_path = ro_path
@@ -70,7 +70,6 @@ class ROCrateFAIRnessCalculator():
         if principle_id=="F1.1":
             score = 0
             total_score = 1
-
             #All urls in RELIANCE are resolvable
             score = 1
             total_passed_tests += 1
@@ -109,15 +108,15 @@ class ROCrateFAIRnessCalculator():
         elif principle_id=="F2.1":
             score = 0
             total_score = 2
-            if all(key in element for key in ('title', 'description','publicationDate', 'summary', 'keywords')):
+            if all(key in element for key in ('description', 'datePublished', 'identifier', 'keywords')):
                 score += 1
                 total_passed_tests += 1
                 explanations.append("PASS: " +self.F2_1_1_message)
             else:
                 explanations.append("FAIL: Missing "+self.F2_1_1_message)
             total_tests_run += 1
-            if all(key in element for key in ('publisher', 'creator')):
-                score = +1
+            if any(key in element for key in ('publisher', 'creator')):
+                score += 1
                 total_passed_tests += 1
                 explanations.append("PASS: " +self.F2_1_2_message)
             else: 
@@ -128,7 +127,7 @@ class ROCrateFAIRnessCalculator():
             check["total_tests_run"] = total_tests_run
             check["total_passed_tests"] = total_passed_tests
             check["total_score"] = total_score
-            if score == 2:
+            if score >= 2:
                 check["assessment"] = "pass"
             else:
                 check["assessment"] = "fail"
@@ -145,12 +144,12 @@ class ROCrateFAIRnessCalculator():
                 explanations.append("FAIL: Metadata fields contentSize & encodingFormat missing")
             total_tests_run += 1
 
-            if all(key in element for key in ('dataDistribution')):
+            if 'contentUrl' in element or 'distribution' in element:
                 score += 0.5
                 total_passed_tests += 1
-                explanations.append("PASS: Metadata field dataDistribution found")
+                explanations.append("PASS: Metadata fields distribution or contentUrl found")
             else:
-                explanations.append("FAIL: Metadata field dataDistribution missing")
+                explanations.append("FAIL: Metadata fields distribution and contentUrl missing")
             total_tests_run += 1
 
 
@@ -187,12 +186,12 @@ class ROCrateFAIRnessCalculator():
             score = 0
             total_score = 1
 
-            if all(key in element for key in ('copyrightHolder')):
+            if any(key in element for key in ("accessRights", "copyrightHolder")):
                 score += 1
                 total_passed_tests += 1
-                explanations.append("PASS: Data access information is machine readable (copyrightHoder metadata)")
+                explanations.append("PASS: Data access information is machine readable (accessRights metadata)")
             else:
-                explanations.append("FAIL: Data access information is machine readable (copyrightHoder metadata not found)")
+                explanations.append("FAIL: Data access information is machine readable (accessRights metadata not found)")
 
             total_tests_run += 1
 
@@ -229,12 +228,12 @@ class ROCrateFAIRnessCalculator():
             score = 0
             total_score = 1
 
-            if all(key in element for key in ('dataDistribution')):
+            if 'distribution' in element or 'contentUrl' in element:
                 score += 1
                 total_passed_tests += 1
-                explanations.append("PASS: downloaded link found (dataDistribution metadata found)")
+                explanations.append("PASS: downloaded link found (distribution or contentUrl metadata found)")
             else:
-                explanations.append("FAIL: downloaded link not found (dataDistribution metadata not found)")
+                explanations.append("FAIL: downloaded link not found (distribution or contentUrl  metadata not found)")
 
             total_tests_run += 1
 
@@ -320,37 +319,32 @@ class ROCrateFAIRnessCalculator():
             score = 0
             total_score = 4
 
-            if 'encodingFormat' in element:
+            if '@type' in element:
                 score += 0.5
                 total_passed_tests += 1
-                explanations.append("PASS: Resource type is given in metadata (encondingFormat metadata found")
+                explanations.append("PASS: Resource type is given in metadata (type metadata found")
             else:
-                explanations.append("FAIL: Resource type is not given in metadata (encondingFormat metadata not found")
+                explanations.append("FAIL: Resource type is not given in metadata (type metadata not found")
             total_tests_run += 1
 
-            if 'encodingFormat' in element:
+            if 'distribution' in element or 'contentUrl' in element:
                 score += 0.5
                 total_passed_tests += 1
-                explanations.append("PASS: Information about data content (e.g. links) is given in metadata (encondingFormat metadata found")
+                explanations.append("PASS: Information about data content (e.g. links) is given in metadata (distribution or contentUrl metadata found")
             else:
-                explanations.append("FAIL: Information about data content (e.g. links) is not given in metadata (encondingFormat metadata not found")
+                explanations.append("FAIL: Information about data content (e.g. links) is not given in metadata (distribution or contentUrl metadata not found")
             total_tests_run += 1
             
             if 'contentSize' in element and 'encodingFormat' in element:
-                score += 0.5
-                total_passed_tests += 1
+                score += 1
+                total_passed_tests += 2
                 explanations.append("PASS: File size and type information are specified in metadata (contentSize and encondingFormat metadata found")
-            else:
-                explanations.append("FAIL: File size and type information are not specified in metadata (contentSize and encondingFormat metadata not found")
-            total_tests_run += 1
-
-            if 'contentSize' in element and 'encodingFormat' in element:
-                score += 0.5
-                total_passed_tests += 1
                 explanations.append("PASS: Measured variables or observation types are specified in metadata (contentSize and encondingFormat metadata found")
             else:
+                explanations.append("FAIL: File size and type information are not specified in metadata (contentSize and encondingFormat metadata not found")
                 explanations.append("FAIL: Measured variables or observation types are specified in metadata (contentSize and encondingFormat metadata not found")
-            total_tests_run += 1
+            total_tests_run += 2
+
 
             explanations.append("FAIL: Data content matches file type and size specified in metadata")
             total_tests_run += 1
@@ -371,15 +365,16 @@ class ROCrateFAIRnessCalculator():
             score = 0
             total_score = 2
 
-            if all(key in element for key in ('copyrightHolder')):
+            print ("ELEMENT LICENSE")
+            print(element)
+
+            if 'license' in element:
                 score += 1
                 total_passed_tests += 1
-                explanations.append("PASS: Licence information is given in an appropriate metadata element (copyrightHoder metadata)")
-                explanations.append("FAIL: Recognized licence is valid and registered at SPDX")
+                explanations.append("PASS: Licence information is given in an appropriate metadata element (license metadata)")
                 total_tests_run += 1
             else:
-                explanations.append("FAIL: Licence information is not given in an appropriate metadata element (copyrightHoder metadata not found)")
-                explanations.append("FAIL: Recognized licence is valid and registered at SPDX")
+                explanations.append("FAIL: Licence information is not given in an appropriate metadata element (license metadata not found)")
                 total_tests_run += 1
 
             total_tests_run += 1
@@ -440,12 +435,10 @@ class ROCrateFAIRnessCalculator():
             total_score = 1
 
             if "encodingFormat" in element:
-                if element["encodingFormat"] in ["ASCII", "image/png", "csv", "json"]:
-                    score += 1
-                    total_passed_tests += 1
-                    explanations.append("PASS: type has an open format") 
-                else:
-                    explanations.append("FAIL: type has not an open format")
+                score += 1
+                explanations.append("PASS: type has a format")
+            else:
+                explanations.append("FAIL: type has not a format")
 
 
             total_tests_run += 1

@@ -2,6 +2,7 @@ from fastapi import FastAPI, Request, HTTPException, Depends, Body, UploadFile, 
 from fastapi.responses import JSONResponse
 from pathlib import Path
 from fastapi.responses import FileResponse
+from fastapi.middleware.cors import CORSMiddleware
 from datetime import datetime, UTC
 import sqlite3
 import random
@@ -127,6 +128,18 @@ async def lifespan(app: FastAPI):
     yield
 
 app = FastAPI(lifespan=lifespan)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+        "http://localhost:8080",
+        "http://127.0.0.1:8080",
+    ],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+    expose_headers=["Location"],
+)
 
 @app.get("/")
 def read_root():

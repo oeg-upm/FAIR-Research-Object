@@ -1,0 +1,51 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+@prefix ftr: <https://w3id.org/ftr#> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix doap: <http://usefulinc.com/ns/doap#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dqv: <http://www.w3.org/ns/dqv#> .
+@prefix vivo: <http://vivoweb.org/ontology/core#> .
+@prefix dpv: <https://w3id.org/dpv#> .
+@prefix ro: <http://purl.org/wf4ever/ro#> .
+
+<https://w3id.org/FAIROS/test/ROCRATE-I1-01> a ftr:Test ;
+    dcterms:identifier <https://w3id.org/FAIROS/test/ROCRATE-I1-01> ;
+    dcterms:title "Metadata in JSON-LD format"^^xsd:string ;
+    rdfs:label "ROCRATE-I1-01"^^xsd:string ;
+    vivo:abbreviation "ROCRATE-I1-01"^^xsd:string ;
+    dcterms:description """The test assesses if the content is in JSON-LD"""^^xsd:string ;
+    dcat:keyword "metadata"@en ; 
+    dcat:theme  <http://www.fairsharing.org/ontology/subject/SRAO_0000401>; 
+    dcat:version "0.0.1"^^xsd:string ;
+    
+    dcterms:license <http://creativecommons.org/licenses/by/4.0/> ;
+    ftr:status "Active"@en ;
+    dcat:endpointURL <https://w3id.org/FAIROS> ;
+    
+    doap:repository <https://github.com/oeg-upm/FAIR-Research-Object> ;
+    ftr:supportedBy  <https://w3id.org/FARIOS>; 
+    dpv:IsApplicableFor ro:ROCrate;
+    dcterms:creator <https://ror.org/03n6nwv02> ;
+    dcterms:publisher <https://oeg.fi.upm.es>, <https://ror.org/03n6nwv02> ;
+
+    dcat:contactPoint <https://orcid.org/0000-0003-4112-6825>  . 
+    
+
+<https://orcid.org/0000-0003-4112-6825> a vcard:Individual ;
+    vcard:fn "Esteban Gonzalez"^^xsd:string ;
+    vcard:hasEmail <mailto:egonzalez@fi.upm.es> . 
+
+<https://oeg.fi.upm.es> a vcard:Organization ;
+    rdfs:label "Ontology Engineering Group" ;
+	vcard:url <https://oeg.fi.upm.es/> .
+
+<https://ror.org/03n6nwv02> a vcard:Organization ;
+    dcterms:identifier  "https://ror.org/03n6nwv02>" ;
+    rdfs:label "Universidad Politécnica de Madrid" ;
+	vcard:url <https://www.upm.es/> .
+
+<https://w3id.org/FAIROS/metric/FAIROS-I1-01> a dqv:Metric ; 
+    <http://semanticscience.org/resource/SIO_000234> <https://w3id.org/FAIROS/test/FUJI-I1-01> .

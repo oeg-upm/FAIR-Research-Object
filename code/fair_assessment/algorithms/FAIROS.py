@@ -15,20 +15,65 @@ class FAIROS:
     EQUIVALENT_TESTS = {
         "IDENTIFIER_PERSISTENCE": [
             "FUJI-F1-01",
+            "FUJI-F1-02",
             "ROCRATE-F1-01"
         ],
-        "MINIMUM_METADATA": [
+        "MINIMUM_RICH_METADATA": [
             "FUJI-F2-01",
             "FUJI-F2-02",
             "ROCRATE-F2-01"
         ],
-        "DATA_LINKAGE": [
+        "DATA_IDENTIFIER_INCLUDED": [
             "FUJI-F3-01",
             "ROCRATE-F3-01"
+        ],
+        "METADATA_RETRIEVABLE_FROM_SEARCH_RESOURCE": [
+            "FUJI-F4-01",
+            "ROCRATE-F4-01"
+        ],
+        "ACCESS_INFORMATION_IS_ACCESIBLE": [
+            "FUJI-A1-01",
+            "FUJI-A1-03",
+            "ROCRATE-A1-01",
+            "ROCRATE-A1-03"
+        ],
+        "METADATA_REPRESENTED_IN_A_SEMANTIC_FORMAT": [
+            "FUJI-I1-01",
+            "ROCRATE-I1-01"
+        ],
+        "METADATA_USE_SEMANTIC_RESOURCES": [
+            "FUJI-I1-02",
+            "ROCRATE-I1-02"
         ],
         "SCHEMA_OR_SEMANTIC_CONTEXT": [
             "FUJI-I2-01",
             "ROCRATE-I2-01"
+        ],
+        "RESOURCE_MENTIONED_IN_METADATA": [
+            "FUJI-I3-01",
+            "FUJI-I3-02",
+            "ROCRATE-I3-01"
+        ],
+        "METADATA_DESCRIBED_WITH_RICH_METADATA": [
+            "FUJI-R1-01",
+            "FUJI-R1-02",
+            "FUJI-R1-03",
+            "ROCRATE-R1-01"
+        ],
+        "METADATA_WITH_LICENSE": [
+            "FUJI-R1.1-01",
+            "ROCRATE-R1.1-01"
+        ],
+        "METADATA_WITH_PROVENANCE": [
+            "FUJI-R1.2-01",
+            "FUJI-R1.2-02",
+            "FUJI-R1.2-03",
+            "ROCRATE-R1.2-01"
+        ],
+        "METADATA_WITH_COMMUNITY_STANDARDS": [
+            "FUJI-R1.3-01",
+            "FUJI-R1.3-02",
+            "ROCRATE-R1.3-01"
         ]
     }
 

@@ -14,8 +14,17 @@ class FAIROS_DATASET_ROCRATE:
         "Identifier is resolvable":"https://w3id.org/FAIROS/test/ROCRATE-F1-01",
         "metadata [title, description, publicationDate, summary,keywords] in ro-crate-metadata file":"https://w3id.org/FAIROS/test/ROCRATE-F2-01",
         "Metadata fields contentSize & encodingFormat founded":"https://w3id.org/FAIROS/test/ROCRATE-F3-01",
+        "Metadata is in JSON-LD format":"https://w3id.org/FAIROS/test/ROCRATE-F4-01",
+        "Data access information is machine readable (copyrightHoder metadata)":"https://w3id.org/FAIROS/test/ROCRATE-A1-01",
+        "downloaded link found (dataDistribution metadata found)":"https://w3id.org/FAIROS/test/ROCRATE-A1-03",
+        "Metadata in JSON-LD format":"https://w3id.org/FAIROS/test/ROCRATE-I1-01",
+        "Metadata uses semantic resources":"https://w3id.org/FAIROS/test/ROCRATE-I1-02",
         "Metadata uses semantic resources":"https://w3id.org/FAIROS/test/ROCRATE-I2-01",
-        "Metadata contains elements which hold provenance information and can be mapped to PROV (author and datePublished metadata found)":"https://w3id.org/FAIROS/test/ROCRATE-R1.2-01"
+        "Resource is mentioned in the metadata (hasPart relation)":"https://w3id.org/FAIROS/test/ROCRATE-I3-01",
+        "Resource type is given in metadata (encondingFormat metadata found":"https://w3id.org/FAIROS/test/ROCRATE-R1-01",
+        "Licence information is given in an appropriate metadata element (copyrightHoder metadata)":"https://w3id.org/FAIROS/test/ROCRATE-R1-01",
+        "Metadata contains elements which hold provenance information and can be mapped to PROV (author and datePublished metadata found)":"https://w3id.org/FAIROS/test/ROCRATE-R1.2-01",
+        "Metadata follows a standard recommended by the target research community of the data. -> (rocrate specification)":"https://w3id.org/FAIROS/test/ROCRATE-R1.3-01"
     }
 
     def execute_algorithm(self, rocrate_dataset, ticket):

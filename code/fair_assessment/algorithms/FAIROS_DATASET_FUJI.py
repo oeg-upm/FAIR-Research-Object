@@ -23,7 +23,7 @@ class FAIROS_DATASET_FUJI:
         "Core descriptive metadata is available":"https://w3id.org/FAIROS/test/FUJI-F2-02",
         "Metadata includes the identifier of the data it describes.":"https://w3id.org/FAIROS/test/FUJI-F3-01",
         "Metadata contains a PID or URL which indicates the location of the downloadable data content":"https://w3id.org/FAIROS/test/FUJI-F3-01",
-        "Metadata is given in a way major search engines can ingest it for their catalogues (embedded JSON-LD, Dublin Core or RDFa)":"https://w3id.org/FAIROS/test/FAIR-I1-01",
+        "Metadata is given in a way major search engines can ingest it for their catalogues (embedded JSON-LD, Dublin Core or RDFa)":"https://w3id.org/FAIROS/test/FUJI-I1-01",
         "Information about access restrictions or rights can be identified in metadata":"https://w3id.org/FAIROS/test/FUJI-A1-01",
         "Metadata is accessible through a standardized communication protocol.":"https://w3id.org/FAIROS/test/FUJI-A1-02",
         "Data access information is indicated by (not machine readable) standard terms":"https://w3id.org/FAIROS/test/FUJI-A1-03",

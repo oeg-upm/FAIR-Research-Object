@@ -1,34 +1,12 @@
 [
   {
-    "@id": "https://orcid.org/0000-0003-4112-6825",
+    "@id": "https://w3id.org/FAIROS/metric/FAIROS-R1-02",
     "@type": [
-      "http://www.w3.org/2006/vcard/ns#Individual"
+      "http://www.w3.org/ns/dqv#Metric"
     ],
-    "http://www.w3.org/2006/vcard/ns#fn": [
+    "http://semanticscience.org/resource/SIO_000234": [
       {
-        "@type": "http://www.w3.org/2001/XMLSchema#string",
-        "@value": "Esteban Gonzalez"
-      }
-    ],
-    "http://www.w3.org/2006/vcard/ns#hasEmail": [
-      {
-        "@id": "mailto:egonzalez@fi.upm.es"
-      }
-    ]
-  },
-  {
-    "@id": "https://oeg.fi.upm.es",
-    "@type": [
-      "http://www.w3.org/2006/vcard/ns#Organization"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "Ontology Engineering Group"
-      }
-    ],
-    "http://www.w3.org/2006/vcard/ns#url": [
-      {
-        "@id": "https://oeg.fi.upm.es/"
+        "@id": "https://w3id.org/FAIROS/test/FUJI-R1-02"
       }
     ]
   },
@@ -54,13 +32,18 @@
     ]
   },
   {
-    "@id": "https://w3id.org/FAIROS/metric/FAIROS-R1-02",
+    "@id": "https://oeg.fi.upm.es",
     "@type": [
-      "http://www.w3.org/ns/dqv#Metric"
+      "http://www.w3.org/2006/vcard/ns#Organization"
     ],
-    "http://semanticscience.org/resource/SIO_000234": [
+    "http://www.w3.org/2000/01/rdf-schema#label": [
       {
-        "@id": "https://w3id.org/FAIROS/test/FUJI-R1-02"
+        "@value": "Ontology Engineering Group"
+      }
+    ],
+    "http://www.w3.org/2006/vcard/ns#url": [
+      {
+        "@id": "https://oeg.fi.upm.es/"
       }
     ]
   },
@@ -156,6 +139,23 @@
     "https://w3id.org/ftr#supportedBy": [
       {
         "@id": "https://www.f-uji.net/"
+      }
+    ]
+  },
+  {
+    "@id": "https://orcid.org/0000-0003-4112-6825",
+    "@type": [
+      "http://www.w3.org/2006/vcard/ns#Individual"
+    ],
+    "http://www.w3.org/2006/vcard/ns#fn": [
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#string",
+        "@value": "Esteban Gonzalez"
+      }
+    ],
+    "http://www.w3.org/2006/vcard/ns#hasEmail": [
+      {
+        "@id": "mailto:egonzalez@fi.upm.es"
       }
     ]
   }

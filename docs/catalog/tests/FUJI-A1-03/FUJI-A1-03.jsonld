@@ -1,22 +1,5 @@
 [
   {
-    "@id": "https://orcid.org/0000-0003-4112-6825",
-    "@type": [
-      "http://www.w3.org/2006/vcard/ns#Individual"
-    ],
-    "http://www.w3.org/2006/vcard/ns#fn": [
-      {
-        "@type": "http://www.w3.org/2001/XMLSchema#string",
-        "@value": "Esteban Gonzalez"
-      }
-    ],
-    "http://www.w3.org/2006/vcard/ns#hasEmail": [
-      {
-        "@id": "mailto:egonzalez@fi.upm.es"
-      }
-    ]
-  },
-  {
     "@id": "https://ror.org/03n6nwv02",
     "@type": [
       "http://www.w3.org/2006/vcard/ns#Organization"
@@ -38,17 +21,6 @@
     ]
   },
   {
-    "@id": "https://w3id.org/FAIROS/metric/FAIROS-A1-02",
-    "@type": [
-      "http://www.w3.org/ns/dqv#Metric"
-    ],
-    "http://semanticscience.org/resource/SIO_000234": [
-      {
-        "@id": "https://w3id.org/FAIROS/test/FUJI-A1-03"
-      }
-    ]
-  },
-  {
     "@id": "https://oeg.fi.upm.es",
     "@type": [
       "http://www.w3.org/2006/vcard/ns#Organization"
@@ -61,6 +33,17 @@
     "http://www.w3.org/2006/vcard/ns#url": [
       {
         "@id": "https://oeg.fi.upm.es/"
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/FAIROS/metric/FAIROS-A1-02",
+    "@type": [
+      "http://www.w3.org/ns/dqv#Metric"
+    ],
+    "http://semanticscience.org/resource/SIO_000234": [
+      {
+        "@id": "https://w3id.org/FAIROS/test/FUJI-A1-03"
       }
     ]
   },
@@ -160,6 +143,23 @@
     "https://w3id.org/ftr#supportedBy": [
       {
         "@id": "https://www.f-uji.net/"
+      }
+    ]
+  },
+  {
+    "@id": "https://orcid.org/0000-0003-4112-6825",
+    "@type": [
+      "http://www.w3.org/2006/vcard/ns#Individual"
+    ],
+    "http://www.w3.org/2006/vcard/ns#fn": [
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#string",
+        "@value": "Esteban Gonzalez"
+      }
+    ],
+    "http://www.w3.org/2006/vcard/ns#hasEmail": [
+      {
+        "@id": "mailto:egonzalez@fi.upm.es"
       }
     ]
   }

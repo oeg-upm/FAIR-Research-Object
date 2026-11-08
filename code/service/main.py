@@ -209,8 +209,22 @@ def execute_algorithm(
     ticket_id = f"{timestamp}-{random_suffix}"
     logger.info(f"New request arrived to execute algorithm '{algorithm_id}'. New ticket generated: {ticket_id}")
     
+#    if file is None and not resource_id:
+#        raise HTTPException(status_code=400, detail="Either a file or a resource_identifier must be provided.")
+
+    # Normalize resource_id
+    if resource_id:
+        resource_id = resource_id.strip()
+
+    # Give priority to the uploaded file
+    if file is not None:
+        resource_id = None
+
     if file is None and not resource_id:
-        raise HTTPException(status_code=400, detail="Either a file or a resource_identifier must be provided.")
+        raise HTTPException(
+            status_code=400,
+            detail="Either a file or a resource_identifier must be provided."
+        )
 
     if file and not resource_id:
         filename = f"{ticket_id}_{file.filename}"

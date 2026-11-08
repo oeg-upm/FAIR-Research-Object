@@ -1,206 +1,5 @@
 [
   {
-    "@id": "https://w3id.org/FAIROS/metric/FAIROS-F3-01",
-    "@type": [
-      "http://www.w3.org/ns/dqv#Metric"
-    ],
-    "http://purl.org/dc/terms/identifier": [
-      {
-        "@id": "https://w3id.org/FAIROS/metric/FAIROS-F3-01"
-      }
-    ],
-    "http://vivoweb.org/ontology/core#abbreviation": [
-      {
-        "@type": "http://www.w3.org/2001/XMLSchema#string",
-        "@value": "FAIROS-F3-01"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@type": "http://www.w3.org/2001/XMLSchema#string",
-        "@value": "Metric FAIROS-F3-01"
-      }
-    ]
-  },
-  {
-    "@id": "https://w3id.org/FAIROS/metric/FAIROS-R1-01",
-    "@type": [
-      "http://www.w3.org/ns/dqv#Metric"
-    ],
-    "http://purl.org/dc/terms/identifier": [
-      {
-        "@id": "https://w3id.org/FAIROS/metric/FAIROS-R1-01"
-      }
-    ],
-    "http://vivoweb.org/ontology/core#abbreviation": [
-      {
-        "@type": "http://www.w3.org/2001/XMLSchema#string",
-        "@value": "FAIROS-R1-01"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@type": "http://www.w3.org/2001/XMLSchema#string",
-        "@value": "Metric FAIROS-R1-01"
-      }
-    ]
-  },
-  {
-    "@id": "https://w3id.org/FAIROS/metric/FAIROS-R1.2-01",
-    "@type": [
-      "http://www.w3.org/ns/dqv#Metric"
-    ],
-    "http://purl.org/dc/terms/identifier": [
-      {
-        "@id": "https://w3id.org/FAIROS/metric/FAIROS-R1.2-01"
-      }
-    ],
-    "http://vivoweb.org/ontology/core#abbreviation": [
-      {
-        "@type": "http://www.w3.org/2001/XMLSchema#string",
-        "@value": "FAIROS-R1.2-01"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@type": "http://www.w3.org/2001/XMLSchema#string",
-        "@value": "Metric FAIROS-R1.2-01"
-      }
-    ]
-  },
-  {
-    "@id": "https://w3id.org/FAIROS/metric/FAIROS-I3-01",
-    "@type": [
-      "http://www.w3.org/ns/dqv#Metric"
-    ],
-    "http://purl.org/dc/terms/identifier": [
-      {
-        "@id": "https://w3id.org/FAIROS/metric/FAIROS-I3-01"
-      }
-    ],
-    "http://vivoweb.org/ontology/core#abbreviation": [
-      {
-        "@type": "http://www.w3.org/2001/XMLSchema#string",
-        "@value": "FAIROS-I3-01"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@type": "http://www.w3.org/2001/XMLSchema#string",
-        "@value": "Metric FAIROS-I3-01"
-      }
-    ]
-  },
-  {
-    "@id": "https://w3id.org/FAIROS/metric/FAIROS-I1-02",
-    "@type": [
-      "http://www.w3.org/ns/dqv#Metric"
-    ],
-    "http://purl.org/dc/terms/identifier": [
-      {
-        "@id": "https://w3id.org/FAIROS/metric/FAIROS-I1-02"
-      }
-    ],
-    "http://vivoweb.org/ontology/core#abbreviation": [
-      {
-        "@type": "http://www.w3.org/2001/XMLSchema#string",
-        "@value": "FAIROS-I1-02"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@type": "http://www.w3.org/2001/XMLSchema#string",
-        "@value": "Metric FAIROS-I1-02"
-      }
-    ]
-  },
-  {
-    "@id": "https://w3id.org/FAIROS/metric/FAIROS-A1-02",
-    "@type": [
-      "http://www.w3.org/ns/dqv#Metric"
-    ],
-    "http://purl.org/dc/terms/identifier": [
-      {
-        "@id": "https://w3id.org/FAIROS/metric/FAIROS-A1-02"
-      }
-    ],
-    "http://vivoweb.org/ontology/core#abbreviation": [
-      {
-        "@type": "http://www.w3.org/2001/XMLSchema#string",
-        "@value": "FAIROS-A1-02"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@type": "http://www.w3.org/2001/XMLSchema#string",
-        "@value": "Metric FAIROS-A1-02"
-      }
-    ]
-  },
-  {
-    "@id": "https://w3id.org/FAIROS/metric/FAIROS-A1-03",
-    "@type": [
-      "http://www.w3.org/ns/dqv#Metric"
-    ],
-    "http://purl.org/dc/terms/identifier": [
-      {
-        "@id": "hhttps://w3id.org/FAIROS/metric/FAIROS-A1-03"
-      }
-    ],
-    "http://vivoweb.org/ontology/core#abbreviation": [
-      {
-        "@type": "http://www.w3.org/2001/XMLSchema#string",
-        "@value": "FAIROS-A1-03>"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@type": "http://www.w3.org/2001/XMLSchema#string",
-        "@value": "Metric FAIROS-A1-03>"
-      }
-    ]
-  },
-  {
-    "@id": "https://w3id.org/FAIROS/metric/FAIROS-F1-01",
-    "@type": [
-      "http://www.w3.org/ns/dqv#Metric"
-    ],
-    "http://purl.org/dc/terms/identifier": [
-      {
-        "@id": "https://w3id.org/FAIROS/metric/FAIROS-F1-01"
-      }
-    ],
-    "http://vivoweb.org/ontology/core#abbreviation": [
-      {
-        "@type": "http://www.w3.org/2001/XMLSchema#string",
-        "@value": "FAIROS-F1-01"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@type": "http://www.w3.org/2001/XMLSchema#string",
-        "@value": "Metric FAIROS-F1-01"
-      }
-    ]
-  },
-  {
-    "@id": "https://orcid.org/0000-0003-4112-6825",
-    "@type": [
-      "http://www.w3.org/2006/vcard/ns#Individual"
-    ],
-    "http://www.w3.org/2006/vcard/ns#fn": [
-      {
-        "@type": "http://www.w3.org/2001/XMLSchema#string",
-        "@value": "Esteban Gonzalez"
-      }
-    ],
-    "http://www.w3.org/2006/vcard/ns#hasEmail": [
-      {
-        "@id": "mailto:egonzalez@fi.upm.es"
-      }
-    ]
-  },
-  {
     "@id": "https://w3id.org/FAIROS/metric/FAIROS-F1-02",
     "@type": [
       "http://www.w3.org/ns/dqv#Metric"
@@ -224,48 +23,41 @@
     ]
   },
   {
-    "@id": "https://w3id.org/FAIROS/metric/FAIROS-R1.3-01",
+    "@id": "https://oeg.fi.upm.es",
     "@type": [
-      "http://www.w3.org/ns/dqv#Metric"
-    ],
-    "http://purl.org/dc/terms/identifier": [
-      {
-        "@id": "https://w3id.org/FAIROS/metric/FAIROS-R1.3-01"
-      }
-    ],
-    "http://vivoweb.org/ontology/core#abbreviation": [
-      {
-        "@type": "http://www.w3.org/2001/XMLSchema#string",
-        "@value": "FAIROS-R1.3-01"
-      }
+      "http://www.w3.org/2006/vcard/ns#Organization"
     ],
     "http://www.w3.org/2000/01/rdf-schema#label": [
       {
-        "@type": "http://www.w3.org/2001/XMLSchema#string",
-        "@value": "Metric FAIROS-R1.3-01"
+        "@value": "Ontology Engineering Group"
+      }
+    ],
+    "http://www.w3.org/2006/vcard/ns#url": [
+      {
+        "@id": "https://oeg.fi.upm.es/"
       }
     ]
   },
   {
-    "@id": "https://w3id.org/FAIROS/metric/FAIROS-A1-01",
+    "@id": "https://w3id.org/FAIROS/metric/FAIROS-F3-01",
     "@type": [
       "http://www.w3.org/ns/dqv#Metric"
     ],
     "http://purl.org/dc/terms/identifier": [
       {
-        "@id": "https://w3id.org/FAIROS/metric/FAIROS-A1-01"
+        "@id": "https://w3id.org/FAIROS/metric/FAIROS-F3-01"
       }
     ],
     "http://vivoweb.org/ontology/core#abbreviation": [
       {
         "@type": "http://www.w3.org/2001/XMLSchema#string",
-        "@value": "Metric FAIROS-A1-01"
+        "@value": "FAIROS-F3-01"
       }
     ],
     "http://www.w3.org/2000/01/rdf-schema#label": [
       {
         "@type": "http://www.w3.org/2001/XMLSchema#string",
-        "@value": "Metric FAIROS-A1-01"
+        "@value": "Metric FAIROS-F3-01"
       }
     ]
   },
@@ -293,64 +85,111 @@
     ]
   },
   {
-    "@id": "https://oeg.fi.upm.es",
-    "@type": [
-      "http://www.w3.org/2006/vcard/ns#Organization"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "Ontology Engineering Group"
-      }
-    ],
-    "http://www.w3.org/2006/vcard/ns#url": [
-      {
-        "@id": "https://oeg.fi.upm.es/"
-      }
-    ]
-  },
-  {
-    "@id": "https://w3id.org/FAIROS/metric/FAIROS-A2-01",
+    "@id": "https://w3id.org/FAIROS/metric/FAIROS-F4-01",
     "@type": [
       "http://www.w3.org/ns/dqv#Metric"
     ],
     "http://purl.org/dc/terms/identifier": [
       {
-        "@id": "https://w3id.org/foops/metric/OM2"
+        "@id": "https://w3id.org/FAIROS/metric/FAIROS-F4-01"
       }
     ],
     "http://vivoweb.org/ontology/core#abbreviation": [
       {
         "@type": "http://www.w3.org/2001/XMLSchema#string",
-        "@value": "Metric FAIROS-A2-01"
+        "@value": "FAIROS-F4-01"
       }
     ],
     "http://www.w3.org/2000/01/rdf-schema#label": [
       {
         "@type": "http://www.w3.org/2001/XMLSchema#string",
-        "@value": "Metric FAIROS-A2-01"
+        "@value": "Metric FAIROS-F4-01"
       }
     ]
   },
   {
-    "@id": "https://w3id.org/FAIROS/metric/FAIROS-I1-01",
+    "@id": "https://w3id.org/FAIROS/metric/FAIROS-A1-03",
     "@type": [
       "http://www.w3.org/ns/dqv#Metric"
     ],
     "http://purl.org/dc/terms/identifier": [
       {
-        "@id": "https://w3id.org/FAIROS/metric/FAIROS-I1-01"
+        "@id": "hhttps://w3id.org/FAIROS/metric/FAIROS-A1-03"
       }
     ],
     "http://vivoweb.org/ontology/core#abbreviation": [
       {
         "@type": "http://www.w3.org/2001/XMLSchema#string",
-        "@value": "FAIROS-I1-01"
+        "@value": "FAIROS-A1-03>"
       }
     ],
     "http://www.w3.org/2000/01/rdf-schema#label": [
       {
         "@type": "http://www.w3.org/2001/XMLSchema#string",
-        "@value": "Metric FAIROS-I1-01"
+        "@value": "Metric FAIROS-A1-03>"
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/FAIROS/metric/FAIROS-A1-02",
+    "@type": [
+      "http://www.w3.org/ns/dqv#Metric"
+    ],
+    "http://purl.org/dc/terms/identifier": [
+      {
+        "@id": "https://w3id.org/FAIROS/metric/FAIROS-A1-02"
+      }
+    ],
+    "http://vivoweb.org/ontology/core#abbreviation": [
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#string",
+        "@value": "FAIROS-A1-02"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#string",
+        "@value": "Metric FAIROS-A1-02"
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/FAIROS/metric/FAIROS-I3-01",
+    "@type": [
+      "http://www.w3.org/ns/dqv#Metric"
+    ],
+    "http://purl.org/dc/terms/identifier": [
+      {
+        "@id": "https://w3id.org/FAIROS/metric/FAIROS-I3-01"
+      }
+    ],
+    "http://vivoweb.org/ontology/core#abbreviation": [
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#string",
+        "@value": "FAIROS-I3-01"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#string",
+        "@value": "Metric FAIROS-I3-01"
+      }
+    ]
+  },
+  {
+    "@id": "https://orcid.org/0000-0003-4112-6825",
+    "@type": [
+      "http://www.w3.org/2006/vcard/ns#Individual"
+    ],
+    "http://www.w3.org/2006/vcard/ns#fn": [
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#string",
+        "@value": "Esteban Gonzalez"
+      }
+    ],
+    "http://www.w3.org/2006/vcard/ns#hasEmail": [
+      {
+        "@id": "mailto:egonzalez@fi.upm.es"
       }
     ]
   },
@@ -413,7 +252,7 @@
     ],
     "http://www.w3.org/ns/dcat#theme": [
       {
-        "@id": "file:///C:/Users/egonzalez/projects/FAIR-Research-Object/docs/catalog/benchmarks/RESEARCH_OBJECT/Research Object"
+        "@value": "Research Object"
       }
     ],
     "http://www.w3.org/ns/dcat#version": [
@@ -491,69 +330,94 @@
     ]
   },
   {
-    "@id": "https://ror.org/03n6nwv02",
-    "@type": [
-      "http://www.w3.org/2006/vcard/ns#Organization"
-    ],
-    "http://purl.org/dc/terms/identifier": [
-      {
-        "@value": "https://ror.org/03n6nwv02>"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "Universidad Politécnica de Madrid"
-      }
-    ],
-    "http://www.w3.org/2006/vcard/ns#url": [
-      {
-        "@id": "https://www.upm.es/"
-      }
-    ]
-  },
-  {
-    "@id": "https://w3id.org/foops/metric/OM5.2",
+    "@id": "https://w3id.org/FAIROS/metric/FAIROS-R1.3-01",
     "@type": [
       "http://www.w3.org/ns/dqv#Metric"
     ],
     "http://purl.org/dc/terms/identifier": [
       {
-        "@id": "https://w3id.org/foops/metric/OM5.2"
+        "@id": "https://w3id.org/FAIROS/metric/FAIROS-R1.3-01"
       }
     ],
     "http://vivoweb.org/ontology/core#abbreviation": [
       {
         "@type": "http://www.w3.org/2001/XMLSchema#string",
-        "@value": "Metric OM5."
+        "@value": "FAIROS-R1.3-01"
       }
     ],
     "http://www.w3.org/2000/01/rdf-schema#label": [
       {
         "@type": "http://www.w3.org/2001/XMLSchema#string",
-        "@value": "Metric OM5.2"
+        "@value": "Metric FAIROS-R1.3-01"
       }
     ]
   },
   {
-    "@id": "https://w3id.org/FAIROS/metric/FAIROS-F4-01",
+    "@id": "https://w3id.org/FAIROS/metric/FAIROS-R1.2-01",
     "@type": [
       "http://www.w3.org/ns/dqv#Metric"
     ],
     "http://purl.org/dc/terms/identifier": [
       {
-        "@id": "https://w3id.org/FAIROS/metric/FAIROS-F4-01"
+        "@id": "https://w3id.org/FAIROS/metric/FAIROS-R1.2-01"
       }
     ],
     "http://vivoweb.org/ontology/core#abbreviation": [
       {
         "@type": "http://www.w3.org/2001/XMLSchema#string",
-        "@value": "FAIROS-F4-01"
+        "@value": "FAIROS-R1.2-01"
       }
     ],
     "http://www.w3.org/2000/01/rdf-schema#label": [
       {
         "@type": "http://www.w3.org/2001/XMLSchema#string",
-        "@value": "Metric FAIROS-F4-01"
+        "@value": "Metric FAIROS-R1.2-01"
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/FAIROS/metric/FAIROS-R1-01",
+    "@type": [
+      "http://www.w3.org/ns/dqv#Metric"
+    ],
+    "http://purl.org/dc/terms/identifier": [
+      {
+        "@id": "https://w3id.org/FAIROS/metric/FAIROS-R1-01"
+      }
+    ],
+    "http://vivoweb.org/ontology/core#abbreviation": [
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#string",
+        "@value": "FAIROS-R1-01"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#string",
+        "@value": "Metric FAIROS-R1-01"
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/FAIROS/metric/FAIROS-R1.3-02",
+    "@type": [
+      "http://www.w3.org/ns/dqv#Metric"
+    ],
+    "http://purl.org/dc/terms/identifier": [
+      {
+        "@id": "https://w3id.org/FAIROS/metric/FAIROS-R1.3-02"
+      }
+    ],
+    "http://vivoweb.org/ontology/core#abbreviation": [
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#string",
+        "@value": "FAIROS-R1.3-02"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#string",
+        "@value": "Metric FAIROS-R1.3-02"
       }
     ]
   },
@@ -581,6 +445,119 @@
     ]
   },
   {
+    "@id": "https://w3id.org/FAIROS/metric/FAIROS-I1-01",
+    "@type": [
+      "http://www.w3.org/ns/dqv#Metric"
+    ],
+    "http://purl.org/dc/terms/identifier": [
+      {
+        "@id": "https://w3id.org/FAIROS/metric/FAIROS-I1-01"
+      }
+    ],
+    "http://vivoweb.org/ontology/core#abbreviation": [
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#string",
+        "@value": "FAIROS-I1-01"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#string",
+        "@value": "Metric FAIROS-I1-01"
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/FAIROS/metric/FAIROS-F1-01",
+    "@type": [
+      "http://www.w3.org/ns/dqv#Metric"
+    ],
+    "http://purl.org/dc/terms/identifier": [
+      {
+        "@id": "https://w3id.org/FAIROS/metric/FAIROS-F1-01"
+      }
+    ],
+    "http://vivoweb.org/ontology/core#abbreviation": [
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#string",
+        "@value": "FAIROS-F1-01"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#string",
+        "@value": "Metric FAIROS-F1-01"
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/foops/metric/OM5.2",
+    "@type": [
+      "http://www.w3.org/ns/dqv#Metric"
+    ],
+    "http://purl.org/dc/terms/identifier": [
+      {
+        "@id": "https://w3id.org/foops/metric/OM5.2"
+      }
+    ],
+    "http://vivoweb.org/ontology/core#abbreviation": [
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#string",
+        "@value": "Metric OM5."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#string",
+        "@value": "Metric OM5.2"
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/FAIROS/metric/FAIROS-A1-01",
+    "@type": [
+      "http://www.w3.org/ns/dqv#Metric"
+    ],
+    "http://purl.org/dc/terms/identifier": [
+      {
+        "@id": "https://w3id.org/FAIROS/metric/FAIROS-A1-01"
+      }
+    ],
+    "http://vivoweb.org/ontology/core#abbreviation": [
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#string",
+        "@value": "Metric FAIROS-A1-01"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#string",
+        "@value": "Metric FAIROS-A1-01"
+      }
+    ]
+  },
+  {
+    "@id": "https://ror.org/03n6nwv02",
+    "@type": [
+      "http://www.w3.org/2006/vcard/ns#Organization"
+    ],
+    "http://purl.org/dc/terms/identifier": [
+      {
+        "@value": "https://ror.org/03n6nwv02>"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "Universidad Politécnica de Madrid"
+      }
+    ],
+    "http://www.w3.org/2006/vcard/ns#url": [
+      {
+        "@id": "https://www.upm.es/"
+      }
+    ]
+  },
+  {
     "@id": "https://w3id.org/FAIROS/metric/FAIROS-I2-01",
     "@type": [
       "http://www.w3.org/ns/dqv#Metric"
@@ -604,25 +581,48 @@
     ]
   },
   {
-    "@id": "https://w3id.org/FAIROS/metric/FAIROS-R1.3-02",
+    "@id": "https://w3id.org/FAIROS/metric/FAIROS-I1-02",
     "@type": [
       "http://www.w3.org/ns/dqv#Metric"
     ],
     "http://purl.org/dc/terms/identifier": [
       {
-        "@id": "https://w3id.org/FAIROS/metric/FAIROS-R1.3-02"
+        "@id": "https://w3id.org/FAIROS/metric/FAIROS-I1-02"
       }
     ],
     "http://vivoweb.org/ontology/core#abbreviation": [
       {
         "@type": "http://www.w3.org/2001/XMLSchema#string",
-        "@value": "FAIROS-R1.3-02"
+        "@value": "FAIROS-I1-02"
       }
     ],
     "http://www.w3.org/2000/01/rdf-schema#label": [
       {
         "@type": "http://www.w3.org/2001/XMLSchema#string",
-        "@value": "Metric FAIROS-R1.3-02"
+        "@value": "Metric FAIROS-I1-02"
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/FAIROS/metric/FAIROS-A2-01",
+    "@type": [
+      "http://www.w3.org/ns/dqv#Metric"
+    ],
+    "http://purl.org/dc/terms/identifier": [
+      {
+        "@id": "https://w3id.org/foops/metric/OM2"
+      }
+    ],
+    "http://vivoweb.org/ontology/core#abbreviation": [
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#string",
+        "@value": "Metric FAIROS-A2-01"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#string",
+        "@value": "Metric FAIROS-A2-01"
       }
     ]
   }

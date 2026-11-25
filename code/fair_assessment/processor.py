@@ -9,10 +9,18 @@ import sqlite3
 import importlib
 import traceback
 
+# Database configuration
+DB_PATH = os.getenv(
+    "DB_PATH", "../service/api_control.db"
+)
+DB_TIMEOUT = int(os.getenv("DB_TIMEOUT", "30"))
 
-# Create logs directory if it doesn't exist
-LOG_DIR = "../../logs"
-os.makedirs(LOG_DIR, exist_ok=True)
+# MQTT configuration
+MQTT_HOST = os.getenv("MQTT_HOST", "localhost")
+MQTT_PORT = int(os.getenv("MQTT_PORT", "1883"))
+
+# Logging configuration
+LOG_DIR = os.getenv("LOG_DIR", "../../logs")
 
 # Define log file path with date suffix
 log_file = os.path.join(LOG_DIR, "processor.log")
@@ -43,7 +51,7 @@ JOB_RUNNING = 1
 JOB_COMPLETED = 2
 JOB_ERROR = 3
 
-DB_PATH="../service/api_control.db"
+DB_PATH = os.getenv("DB_PATH", "/data/api_control.db")
 
 fifo_queue = queue.Queue(0)
 
@@ -56,7 +64,12 @@ def load_class(module_path: str, class_name: str):
     return cls
 
 def get_db():
-    return sqlite3.connect(DB_PATH)
+    conn = sqlite3.connect(
+        DB_PATH,
+        timeout=DB_TIMEOUT
+    )
+    conn.execute(f"PRAGMA busy_timeout={DB_TIMEOUT * 1000}")
+    return conn
 
 def get_db_algorithm(job_id:str):
     conn = get_db()
@@ -72,14 +85,17 @@ def get_db_algorithm(job_id:str):
     else:
         return None  # Ticket not found
 
-def update_job (ticket: str, status:int):
+def update_job(ticket: str, status: int):
     conn = get_db()
-    cursor = conn.cursor()
-    instruction = f"UPDATE jobs SET status='{status}' WHERE ticket = '{ticket}'"
 
-    cursor.execute(instruction)
-    conn.commit()
-    cursor.close()
+    try:
+        conn.execute(
+            "UPDATE jobs SET status = ? WHERE ticket = ?",
+            (status, ticket)
+        )
+        conn.commit()
+    finally:
+        conn.close()
 
 def on_connect(client, userdata, flags, rc):  # The callback for when the client connects to the broker
     logger.info("Connected  to channel job/create")  # Print result of connection attempt
@@ -148,8 +164,8 @@ try:
     client.on_connect = on_connect  # Define callback function for successful connection
     client.on_message = on_message  # Define callback function for receipt of a message
     logger.info("Connecting to broker")
-    client.connect('localhost', 1883)
-
+    client.connect(MQTT_HOST, MQTT_PORT)
+    
     client.loop_forever()  # Start networking daemon
     logger.info("Connecting to broker 3")
 except ConnectionRefusedError:

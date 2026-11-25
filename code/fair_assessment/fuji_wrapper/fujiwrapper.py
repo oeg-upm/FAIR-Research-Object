@@ -1,9 +1,10 @@
 import requests
 from requests.structures import CaseInsensitiveDict
+import os
 
 class FujiWrapper:
 	def __init__(self, url):
-		fuji_api = "http://localhost:1071/fuji/api/v1/evaluate"
+		fuji_api = os.getenv("FUJI_URL", "http://localhost:1071/fuji/api/v1/evaluate")
 		headers = CaseInsensitiveDict()
 		headers["accept"] = "application/json"
 		headers["Authorization"] = "Basic bWFydmVsOndvbmRlcndvbWFu"

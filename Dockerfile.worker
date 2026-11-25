@@ -1,0 +1,27 @@
+FROM python:3.12-slim
+
+ENV PYTHONUNBUFFERED=1
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONPATH=/app/code
+
+WORKDIR /app
+
+RUN apt-get update && apt-get install -y \
+    --no-install-recommends \
+    graphviz \
+    git \
+    build-essential \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY requirements-worker.txt .
+
+RUN pip install --no-cache-dir \
+    -r requirements-worker.txt
+
+COPY . .
+
+RUN mkdir -p /data /app/logs
+
+WORKDIR /app/code/fair_assessment
+
+CMD ["python", "processor.py"]

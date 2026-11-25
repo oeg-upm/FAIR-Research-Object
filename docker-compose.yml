@@ -1,0 +1,78 @@
+services:
+
+  mosquitto:
+    image: eclipse-mosquitto:2
+    container_name: fairos-mosquitto
+    restart: unless-stopped
+
+    networks:
+      - fairos_network
+
+  fuji:
+    image: ghcr.io/pangaea-data-publisher/fuji
+    container_name: fairos-fuji
+    restart: unless-stopped
+
+    expose:
+      - "1071"
+
+    networks:
+      - fairos_network
+
+  service:
+    build:
+      context: .
+      dockerfile: Dockerfile.service
+
+    image: fairos-service:local
+    container_name: fairos-service
+    restart: unless-stopped
+
+    env_file:
+      - .env
+
+    ports:
+      - "8000:8000"
+
+    volumes:
+      - ./data:/data
+      - ./logs/service:/app/logs
+
+    depends_on:
+      mosquitto:
+        condition: service_healthy
+
+    networks:
+      - fairos_network
+
+  worker:
+    build:
+      context: .
+      dockerfile: Dockerfile.worker
+
+    image: fairos-worker:local
+    container_name: fairos-worker
+    restart: unless-stopped
+
+    env_file:
+      - .env
+
+    volumes:
+      - ./data:/data
+      - ./logs/worker:/app/logs
+
+    depends_on:
+      mosquitto:
+        condition: service_healthy
+      fuji:
+        condition: service_started
+
+    networks:
+      - fairos_network
+
+volumes:
+  mosquitto_data:
+
+networks:
+  fairos_network:
+    driver: bridge

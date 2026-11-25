@@ -18,7 +18,7 @@ import json
 from typing import Optional
 
 # Create logs directory if it doesn't exist
-LOG_DIR = "../../logs"
+LOG_DIR = settings.LOG_DIR
 os.makedirs(LOG_DIR, exist_ok=True)
 
 JOB_SCHEDULED = 0
@@ -50,7 +50,7 @@ logger = logging.getLogger()
 logger.setLevel(logging.INFO)
 logger.addHandler(handler)
 
-DB_PATH = "api_control.db"
+DB_PATH = os.getenv("DB_PATH", "/data/api_control.db")
 
 def extract_metric_uris(metrics_root: Path) -> list[str]:
     metric_uris = []
@@ -158,7 +158,16 @@ def get_benchmarks():
     return app.state.benchmark_uris
 
 def get_db():
-    return sqlite3.connect(DB_PATH)
+    conn = sqlite3.connect(
+        DB_PATH,
+        timeout=settings.DB_TIMEOUT
+    )
+
+    conn.execute(
+        f"PRAGMA busy_timeout={settings.DB_TIMEOUT * 1000}"
+    )
+
+    return conn
 
 def get_client_ip(request: Request):
     return request.client.host  # You can adjust for proxies if needed

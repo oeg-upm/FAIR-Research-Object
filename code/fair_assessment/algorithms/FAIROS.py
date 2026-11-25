@@ -4,9 +4,21 @@ from rocrate.rocrate import ROCrate
 import os, sys
 from datetime import datetime, timezone
 import json
+from pathlib import Path
 
 sys.path.insert(0, os.path.dirname(__file__))
 from FAIROS_DATASET import FAIROS_DATASET
+
+ASSESSMENT_DIRECTORY = Path(
+    os.getenv("ASSESSMENT_DIRECTORY", "./assessments")
+)
+
+SCORE_DIRECTORY = Path(
+    os.getenv("SCORE_DIRECTORY", "./scores")
+)
+
+ASSESSMENT_DIRECTORY.mkdir(parents=True, exist_ok=True)
+SCORE_DIRECTORY.mkdir(parents=True, exist_ok=True)
 
 logger = logging.getLogger(__name__)
 
@@ -211,7 +223,7 @@ class FAIROS:
             logger.info("Generating file assessment-results-"+str(ticket))
 
             # Write the JSON-LD to a file
-            output_file_results = f"C:\\Users\\egonzalez\\FAIROS\\assessments\\assessment-results-{ticket}.jsonld"
+            output_file_results = (ASSESSMENT_DIRECTORY / f"assessment-results-{ticket}.jsonld")    
             with open(output_file_results, "w", encoding="utf-8") as f:
                 json.dump(doc, f, ensure_ascii=False, indent=2)
 
@@ -225,7 +237,7 @@ class FAIROS:
             }
 
             # Write the JSON-LD to a file
-            output_file_score = f"C:\\Users\\egonzalez\\FAIROS\\scores\\score-{ticket}.jsonld"
+            output_file_score = (SCORE_DIRECTORY / f"score-{ticket}.jsonld")
             with open(output_file_score, "w", encoding="utf-8") as f:
                 json.dump(score, f, ensure_ascii=False, indent=2)
 

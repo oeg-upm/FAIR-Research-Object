@@ -1,0 +1,32 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+@prefix ftr: <https://w3id.org/ftr#> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix doap: <http://usefulinc.com/ns/doap#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dqv: <http://www.w3.org/ns/dqv#> .
+@prefix vivo: <http://vivoweb.org/ontology/core#> .
+@prefix dpv: <https://w3id.org/dpv#> .
+
+<https://github.com/OSTrails/assessment-component-metadata-records/tree/main/algorithm/RESEARCH_OBJECT.ttl> a ftr:Algorithm ;
+    dcterms:identifier <https://github.com/OSTrails/assessment-component-metadata-records/tree/main/algorithm/RESEARCH_OBJECT.ttl> ;
+    dcterms:title "RESEARCH_OBJECT"^^xsd:string ;
+    rdfs:label "RESEARCH_OBJECT"^^xsd:string ;
+    vivo:abbreviation "RESEARCH_OBJECT"^^xsd:string ;
+    dcterms:description """Algorithm to score a Research Object"""^^xsd:string ;
+    
+    dcat:version "0.0.1"^^xsd:string ;
+    
+    dcterms:license <http://creativecommons.org/licenses/by/4.0/> ;
+    ftr:status "Active"@en ;    
+    doap:repository <https://github.com/oeg-upm/FAIR-Research-Object/> ;
+    ftr:supportedBy  <https://w3id.org/FAIROS>; 
+    ftr:invokesTest 
+        <https://w3id.org/FAIROS/test/ROCRATE-F1-01>,
+        <https://w3id.org/FAIROS/test/ROCRATE-F2-01>,
+        <https://w3id.org/FAIROS/test/ROCRATE-F3-01>,
+        <https://w3id.org/FAIROS/test/ROCRATE-I2-01>,
+        <https://w3id.org/FAIROS/test/ROCRATE-R1.2-01>;
+    dcat:endpointURL <https://fairos.linkeddata.es> .

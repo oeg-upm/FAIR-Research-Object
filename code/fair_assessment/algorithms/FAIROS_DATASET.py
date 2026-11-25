@@ -4,8 +4,18 @@ from FAIROS_DATASET_ROCRATE import FAIROS_DATASET_ROCRATE
 import json
 from datetime import datetime, UTC
 import random
+import os
+from pathlib import Path
+
+ASSESSMENT_DIRECTORY = Path(
+    os.getenv("ASSESSMENT_DIRECTORY", "./assessments")
+)
+
+ASSESSMENT_DIRECTORY.mkdir(parents=True, exist_ok=True)
 
 logger = logging.getLogger(__name__)
+
+
 
 class FAIROS_DATASET:
     def execute_algorithm(self, resource, ticket):
@@ -30,7 +40,7 @@ class FAIROS_DATASET:
         logger.info("Generating file assessment-results-"+str(assessment_code)+" with "+str(resource)+ "assessment")
 
         # Write the JSON-LD to a file
-        output_file_results = f"C:\\Users\\egonzalez\\FAIROS\\assessments\\assessment-results-{assessment_code}.jsonld"
+        output_file_results = (ASSESSMENT_DIRECTORY / f"assessment-results-{assessment_code}.jsonld")
         with open(output_file_results, "w", encoding="utf-8") as f:
             json.dump(tests_results, f, ensure_ascii=False, indent=2)
 

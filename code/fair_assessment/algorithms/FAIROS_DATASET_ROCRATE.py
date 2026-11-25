@@ -22,7 +22,7 @@ class FAIROS_DATASET_ROCRATE:
         "Metadata uses semantic resources":"https://w3id.org/FAIROS/test/ROCRATE-I2-01",
         "Resource is mentioned in the metadata (hasPart relation)":"https://w3id.org/FAIROS/test/ROCRATE-I3-01",
         "Resource type is given in metadata (encondingFormat metadata found":"https://w3id.org/FAIROS/test/ROCRATE-R1-01",
-        "Licence information is given in an appropriate metadata element (copyrightHoder metadata)":"https://w3id.org/FAIROS/test/ROCRATE-R1-01",
+        "Licence information is given in an appropriate metadata element (copyrightHoder metadata)":"https://w3id.org/FAIROS/test/ROCRATE-R1.1-01",
         "Metadata contains elements which hold provenance information and can be mapped to PROV (author and datePublished metadata found)":"https://w3id.org/FAIROS/test/ROCRATE-R1.2-01",
         "Metadata follows a standard recommended by the target research community of the data. -> (rocrate specification)":"https://w3id.org/FAIROS/test/ROCRATE-R1.3-01"
     }

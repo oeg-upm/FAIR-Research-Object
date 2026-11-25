@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+pydantic
+pydantic-settings
+python-multipart
+python-dotenv
+paho-mqtt
+rdflib
+requests

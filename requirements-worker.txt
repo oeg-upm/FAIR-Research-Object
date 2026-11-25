@@ -1,0 +1,6 @@
+rocrate==0.14.0
+validators==0.35.0
+graphviz==0.21
+paho-mqtt==2.1.0
+rdflib==7.1.4
+requests==2.32.4
